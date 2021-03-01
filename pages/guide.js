@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Actions from "../components/Actions";
 import Answer from "../components/Answer";
-import Question from "../components/question";
+import Question from "../components/Question";
 
 export default function Guide() {
     const [ step, setStep ] = useState(0);
