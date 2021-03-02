@@ -1,12 +1,14 @@
-import { AiOutlineHome } from 'react-icons/ai'
-import { HiOutlineOfficeBuilding } from 'react-icons/hi'
 import { MdSettingsInputHdmi, MdSettingsInputComponent } from 'react-icons/md'
 import { BsInfoCircle } from 'react-icons/bs'
 import Image from 'next/image'
 import { useState } from 'react'
+import HomeOrBusiness from './steps/homeOrBusiness'
+import CameraHousings from './CameraHousing/camera_housings'
+import SetCameraCount from './steps/setCameraCount'
 
 export default function Answer({
     step,
+    cameras,
     homeOrBusiness,
     setHomeOrBusiness, 
     indoorSelected, 
@@ -15,10 +17,13 @@ export default function Answer({
     setOutdoorSelected, 
     indoorCount,
     outdoorCount,
-    setIndoorCount,
-    setOutdoorCount,
+    incrementOutdoorCount,
+    incrementIndoorCount,
+    decrementOutdoorCount,
+    decrementIndoorCount,
     cviOrIp,
-    setCviOrIp
+    setCviOrIp,
+    selectHousing
     }) {
 
     const selected = 'bg-green-200 border-green-200 shadow-lg';
@@ -38,28 +43,13 @@ export default function Answer({
     switch(step) {
         case 0:
             return(
-                <section className="h-80 my-10 flex flex-row justify-around items-center">
-                    <span className={"text-center cursor-pointer px-16 py-8 border rounded border-gray-300 transition-colors transition-shadow " 
-                        + (homeOrBusiness == 'home' ? selected : 'hover:shadow-lg hover:border-green-200 hover:bg-green-50')}
-                        onClick={e => setHomeOrBusiness('home')}
-                        >
-                        <span className="text-6xl text-gray-700"><AiOutlineHome /></span>
-                        <h5 className="text-xl mt-4 font-light">Home</h5>
-                    </span>
-
-                    <span className={"text-center cursor-pointer px-16 py-8 border rounded border-gray-300 transition-colors transition-shadow " 
-                        + (homeOrBusiness == 'business' ? selected : 'hover:shadow-lg hover:border-green-200 hover:bg-green-50')}
-                        onClick={e => setHomeOrBusiness('business')}
-                        >
-                        <span className="text-6xl text-gray-700"><HiOutlineOfficeBuilding /></span>
-                        <h5 className="text-xl mt-4 font-light">Business</h5>
-                    </span>
-                </section>
+                <HomeOrBusiness homeOrBusiness={homeOrBusiness} setHomeOrBusiness={setHomeOrBusiness}/>
             )
             break;
         case 1:
             return(
                 <section className="h-72 my-10 ">
+                    <p className="mb-8 text-xl">Select any that apply.</p>
                     <div className="text-2xl mb-5 font-light">
                         <label className="inline-flex items-center">
                         <input
@@ -87,27 +77,15 @@ export default function Answer({
             break;
         case 2:
             return(
-                <section className="h-80 my-10 ">
-                    <label className={"flex flex-row items-center " + (indoorSelected ? '' : 'hidden')}>
-                        <span className="text-xl font-light text-gray-700 mr-4 w-20">Indoors:</span>
-                        <input
-                            type="number"
-                            className="mt-1 w-20 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            value={indoorCount}
-                            onChange={changeIndoorValue}
-                        />
-                    </label>
-
-                    <label className={"block mt-5 "  + (outdoorSelected ? '' : 'hidden')}>
-                        <span className="text-xl font-light text-gray-700 mr-4 ">Outdoors:</span>
-                        <input
-                            type="number"
-                            className="mt-1 w-20 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            value={outdoorCount}
-                            onChange={changeOutdoorValue}
-                        />
-                    </label>
-                </section>
+                <SetCameraCount 
+                    cameras={cameras}
+                    indoorSelected={indoorSelected} 
+                    outdoorSelected={outdoorSelected} 
+                    incrementOutdoorCount={incrementOutdoorCount}
+                    incrementIndoorCount={incrementIndoorCount}
+                    decrementOutdoorCount={decrementOutdoorCount}
+                    decrementIndoorCount={decrementIndoorCount}
+                />
             )
             break;
         case 3:
@@ -160,27 +138,10 @@ export default function Answer({
             break;
         case 5:
             return(
-                <section className="h-96 my-10">
-                    <p className="ml-3 text-xl">We sell cameras with 3 types of housing. Click on each one to see more information.</p>
-                    <div className="flex flex-row justify-around items-center mt-5">
-                        <div className="p-4 text-center border rounded border-black-200">
-                            <Image src="/images/dome-style.png" width={200} height={144} />
-                            <h5 className="text-lg">Dome style</h5>
-                        </div>
-
-                        <div className="p-4 text-center border rounded border-black-200">
-                            <Image src="/images/bullet-style.png" width={200} height={144} />
-                            <h5 className="text-lg">Bullet style </h5>
-                        </div>
-
-                        <div className="p-4 text-center border rounded border-black-200">
-                            <Image src="/images/ptz-style.png" width={200} height={144} />
-                            <h5 className="text-lg">PTZ style </h5>
-                        </div>
-                    </div>
-                    
-                    
-                </section>
+                <CameraHousings 
+                    cameras={cameras}
+                    selectHousing={selectHousing}
+                />
             )
     }    
 }

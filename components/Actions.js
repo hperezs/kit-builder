@@ -8,7 +8,7 @@ export default function Actions({ nextStep, prevStep, step }) {
     `}</style>
 
     return(
-        <section className="flex flex-row justify-center transition-colors">
+        <section className="flex flex-row justify-center transition-colors mb-96">
             <span className={(step == 0) ? '' : 'hidden'}>
                 <Link href="/">
                     <button 
