@@ -9,22 +9,22 @@ export default function Question({ step }) {
                 setCurrentQuestion('Are you purchasing a surveillance system for a home or a business?');
                 break;
             case 1:
-                setCurrentQuestion('Where are you placing your cameras?');
+                setCurrentQuestion('Choose your type of surveillance system')
                 break;
             case 2: 
-                setCurrentQuestion('How many cameras do you need?');
+                setCurrentQuestion('Where are you placing your cameras?');
                 break;
             case 3:
-                setCurrentQuestion('Choose your type of surveillance system')
+                setCurrentQuestion('How many cameras do you need?');
                 break;
             case 4:
                 setCurrentQuestion('Choosing the right cameras');
                 break;
             case 5:
-                setCurrentQuestion('Camera Housing');
+                setCurrentQuestion('About Camera Housings');
                 break;
             case 6:
-                setCurrentQuestion('Camera Lens');
+                setCurrentQuestion('Select Camera Housings');
                 break;
             case 7:
                 setCurrentQuestion('Camera Resolution');
