@@ -1,11 +1,11 @@
-import AddToCamera from './addToCamera';
+import AddToCamera from '../CameraHousing/addToCamera';
 
 export default function SelectHousing({ cameras,  selectHousing, indoorSelected, outdoorSelected }) {
 
 
     return(
         <section className={"relative my-6 border border-gray-300 rounded py-5"}>
-            <p className="mt-3 mb-5 text-xl font-light text-center">Click on each camera to make your selection</p>
+            <p className="mt-3 mb-5 text-xl font-light text-center"><span className="text-green-700">&#8594;</span>  Click on each camera to make your selection</p>
             {/* // Outdoor */}
             <div className={"text-center " + (!outdoorSelected ? 'hidden' : '')}>
                 <h3 className={"text-lg"}>Outdoor Cameras</h3>

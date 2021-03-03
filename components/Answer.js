@@ -2,9 +2,10 @@ import Image from 'next/image'
 import HomeOrBusiness from './steps/homeOrBusiness'
 import CameraHousings from './steps/camera_housings'
 import SetCameraCount from './steps/setCameraCount'
-import SelectHousing from './CameraHousing/SelectHousing'
+import SelectHousing from './steps/selectHousing'
 import SetCameraLocation from './steps/setCameraLocation'
 import SetSystemType from './steps/setSystemType'
+import SelectLens from './steps/selectLens'
 
 export default function Answer({
     step,
@@ -96,7 +97,7 @@ export default function Answer({
             break;
         case 7:
             return(
-                <div>Placeholder</div>
+                <SelectLens cameras={cameras} />
             )
             break;
     }    

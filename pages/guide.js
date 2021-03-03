@@ -16,6 +16,7 @@ export default function Guide() {
     
     const default_camera = {
         housing: '',
+        viewingArea: '',
         lens: '',
         nightVisionDist: '',
         resolution: ''
@@ -62,6 +63,12 @@ export default function Guide() {
         console.log('running selectHousing...');
         let temp_cameras = cameras;
         temp_cameras[indoorOrOutdoor][index].housing = housingSelected;
+        setCameras(temp_cameras);
+    }
+
+    const selectViewingArea = (indoorOrOutdoor, viewingArea, index) => {
+        let temp_cameras = cameras;
+        temp_cameras[indoorOrOutdoor][index].viewingArea = viewingArea;
         setCameras(temp_cameras);
     }
     
