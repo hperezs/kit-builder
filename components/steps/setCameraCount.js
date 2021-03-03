@@ -51,18 +51,28 @@ export default function SetCameraCount({
 
                 <div className="flex flex-row flex-wrap items-center w-10/12 border border-gray-300 rounded">
                     {/* List Cameras */}
-                    {cameras.outdoor.map((camera, index) => {
-                        return(
-                            <div className="flex flex-row justify-center flex-wrap mt-4">
-                                <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
-                                {
-                                    (camera.housing == '') ? <span className="text-2xl"><BiCameraHome /></span> :
-                                    <Image src={`/images/${camera.housing}-style.png`} width={80} height={57}/>
-                                }
-                                    <p className="mt-3">Camera {index + 1} </p>
-                                </div>
+                    {(cameras.outdoor.length == 0 ? 
+                        <div className="flex flex-row justify-center flex-wrap mt-4">
+                            <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
+
+                                <p className="mt-3 text-center">No cameras <br/>yet.</p>
                             </div>
-                        )})}
+                        </div>
+                    : 
+                        cameras.outdoor.map((camera, index) => {
+                            return(
+                                <div className="flex flex-row justify-center flex-wrap mt-4">
+                                    <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
+                                    {
+                                        (camera.housing == '') ? <span className="text-2xl"><BiCameraHome /></span> :
+                                        <Image src={`/images/${camera.housing}-style.png`} width={80} height={57}/>
+                                    }
+                                        <p className="mt-3">Camera {index + 1} </p>
+                                    </div>
+                                </div>
+                            )})
+                    )}
+
                 </div> 
             </div>
 
@@ -101,18 +111,27 @@ export default function SetCameraCount({
 
                 <div className="flex flex-row flex-wrap items-center w-10/12 border border-gray-300 rounded">
                     {/* List Cameras */}
-                    {cameras.indoor.map((camera, index) => {
-                        return(
-                            <div className="flex flex-row justify-center flex-wrap mt-4">
-                                <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
-                                {
-                                    (camera.housing == '') ? <span className="text-2xl"><BiCameraHome /></span> :
-                                    <Image src={`/images/${camera.housing}-style.png`} width={80} height={57}/>
-                                }
-                                    <p className="mt-3">Camera {index + 1} </p>
-                                </div>
+                    {(cameras.indoor.length == 0 ? 
+                        <div className="flex flex-row justify-center flex-wrap mt-4">
+                            <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
+
+                                <p className="mt-3 text-center">No cameras <br/>yet.</p>
                             </div>
-                        )})}
+                        </div>
+                    : 
+                        cameras.indoor.map((camera, index) => {
+                            return(
+                                <div className="flex flex-row justify-center flex-wrap mt-4">
+                                    <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
+                                    {
+                                        (camera.housing == '') ? <span className="text-2xl"><BiCameraHome /></span> :
+                                        <Image src={`/images/${camera.housing}-style.png`} width={80} height={57}/>
+                                    }
+                                        <p className="mt-3">Camera {index + 1} </p>
+                                    </div>
+                                </div>
+                            )})
+                    )}
                 </div> 
 
             </div>

@@ -58,10 +58,8 @@ export default function Guide() {
         setCameras(temp_cameras);
     }
 
-    const selectHousing = (indoorOrOutdoor, index, housingSelected) => {
+    const selectHousing = (indoorOrOutdoor, housingSelected, index) => {
         console.log('running selectHousing...');
-        console.log('Arguments: ');
-        console.log(indoorOrOutdoor, index, housingSelected);
         let temp_cameras = cameras;
         temp_cameras[indoorOrOutdoor][index].housing = housingSelected;
         setCameras(temp_cameras);

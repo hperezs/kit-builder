@@ -1,4 +1,4 @@
-export default function Description({ displayMoreInfo, setDisplayAddToCamera, housingSelected, displayAddToCamera }) {
+export default function Description({ displayMoreInfo, housingSelected }) {
     if(!displayMoreInfo){
         return(<div></div>)
     } else 
@@ -15,9 +15,6 @@ export default function Description({ displayMoreInfo, setDisplayAddToCamera, ho
                             <li>-Cursus</li>
                             <li>-Consequat</li>
                         </ul>
-                        <div className="w-full text-center mt-5">
-                            <a className={"cursor-pointer text-lg text-green-600 "  + (displayAddToCamera ? 'hidden' : '')} onClick={e => setDisplayAddToCamera(true)}>Select this housing for a camera</a>
-                        </div>
                     </div>
                 </section>
             )
@@ -34,10 +31,6 @@ export default function Description({ displayMoreInfo, setDisplayAddToCamera, ho
                             <li>-Cursus</li>
                             <li>-Consequat</li>
                         </ul>
-                        <div className="w-full text-center mt-5">
-                            <a className={"cursor-pointer text-lg text-green-600 "  + (displayAddToCamera ? 'hidden' : '')} onClick={e => setDisplayAddToCamera(true)}>Select this housing for a camera</a>
-                        </div>
-                        
                     </div>
                 </section>
             )
@@ -54,10 +47,6 @@ export default function Description({ displayMoreInfo, setDisplayAddToCamera, ho
                             <li>-Cursus</li>
                             <li>-Consequat</li>
                         </ul>
-                        <div className="w-full text-center mt-5">
-                            <a className={"cursor-pointer text-lg text-green-600 "  + (displayAddToCamera ? 'hidden' : '')} onClick={e => setDisplayAddToCamera(true)}>Select this housing for a camera</a>
-                        </div>
-                        
                     </div>
                 </section>
             )

@@ -1,12 +1,10 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react';
-import AddToCamera from './addToCamera';
-import Description from './description';
+import Description from '../CameraHousing/description';
 
-export default function CameraHousings({ cameras, selectHousing }) {
+export default function CameraHousings() {
     const [ displayMoreInfo, setDisplayMoreInfo ] = useState(false);
     const [ housingSelected, setHousingSelected ] = useState('');
-    const [ displayAddToCamera, setDisplayAddToCamera ] = useState(false);
 
     useEffect(() => {
         if(!displayMoreInfo && housingSelected != '') {
@@ -19,7 +17,7 @@ export default function CameraHousings({ cameras, selectHousing }) {
 
     return (
         <section className="my-10">
-            <p className="ml-3 text-xl mb-14">We sell cameras with 3 types of housing. Click on each one to see more information and add to your cameras.</p>
+            <p className="ml-3 text-xl mb-14">There are 3 types of camera housings. Click on each one to see more information about them. When you are ready, click Next to start your selections. </p>
             <div className="flex flex-row justify-around items-center mt-5 mb-10">
                 <div className={"p-4 text-center rounded border-black-200 "
                         + (housingSelected == 'dome' ? selected : 'border hover:shadow-lg hover:border-green-200')}
@@ -55,16 +53,7 @@ export default function CameraHousings({ cameras, selectHousing }) {
             </div>
             <Description 
                 displayMoreInfo={displayMoreInfo} 
-                setDisplayAddToCamera={setDisplayAddToCamera} 
                 housingSelected={housingSelected}
-                displayAddToCamera={displayAddToCamera}
-            />
-            <AddToCamera 
-                displayAddToCamera={displayAddToCamera} 
-                setDisplayAddToCamera={setDisplayAddToCamera}
-                cameras={cameras}
-                housingSelected={housingSelected}
-                selectHousing={selectHousing}
             />
         </section>
     )
