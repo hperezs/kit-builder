@@ -27,7 +27,7 @@ export default function SetCameraCount({
                     <div className="flex flex-row justify-center mt-4 w-full" >
                         {/* Remove Camera button */}
                         <button 
-                            className="flex flex-row justify-center flex-wrap mr-3"
+                            className="flex flex-row justify-center mr-3 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-300 focus:ring-opacity-50"
                             onClick={decrementOutdoorCount}
                         >
                             <div className="p-2 flex flex-col justify-center items-center border rounded border-gray-300 hover:shadow-md hover:border-green-300 cursor-pointer ">
@@ -37,7 +37,7 @@ export default function SetCameraCount({
 
                         {/* Add camera button */}
                         <button 
-                            className="flex flex-row justify-center flex-wrap"
+                            className="flex flex-row justify-center focus:outline-none focus:border-green-300 focus:ring focus:ring-green-300 focus:ring-opacity-50"
                             onClick={incrementOutdoorCount}
                         >
                             <div className="p-2 flex flex-col justify-center items-center border rounded border-gray-300 hover:shadow-md hover:border-green-300 cursor-pointer ">
@@ -87,7 +87,7 @@ export default function SetCameraCount({
                     <div className="flex flex-row justify-center mt-4 w-full" >
                         {/* Remove Camera button */}
                         <button 
-                            className="flex flex-row justify-center flex-wrap mr-3"
+                            className="flex flex-row justify-center mr-3 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-300 focus:ring-opacity-50"
                             onClick={decrementIndoorCount}
                         >
                             <div className="p-2 flex flex-col justify-center items-center border rounded border-gray-300 hover:shadow-md hover:border-green-300 cursor-pointer ">
@@ -97,7 +97,7 @@ export default function SetCameraCount({
 
                         {/* Add camera button */}
                         <button 
-                            className="flex flex-row justify-center flex-wrap"
+                            className="flex flex-row justify-center focus:outline-none focus:border-green-300 focus:ring focus:ring-green-300 focus:ring-opacity-50"
                             onClick={incrementIndoorCount}
                         >
                             <div className="p-2 flex flex-col justify-center items-center border rounded border-gray-300 hover:shadow-md hover:border-green-300 cursor-pointer ">

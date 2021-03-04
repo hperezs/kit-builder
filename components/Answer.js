@@ -2,9 +2,12 @@ import Image from 'next/image'
 import HomeOrBusiness from './steps/homeOrBusiness'
 import CameraHousings from './steps/camera_housings'
 import SetCameraCount from './steps/setCameraCount'
-import SelectHousing from './CameraHousing/SelectHousing'
+import SelectHousing from './steps/selectHousing'
 import SetCameraLocation from './steps/setCameraLocation'
 import SetSystemType from './steps/setSystemType'
+import SelectViewingArea from './steps/selectViewingArea'
+import SelectCameraLens from './steps/selectCameraLens'
+import SelectNightVision from './steps/selectNightVision'
 
 export default function Answer({
     step,
@@ -23,7 +26,10 @@ export default function Answer({
     decrementIndoorCount,
     cviOrIp,
     setCviOrIp,
-    selectHousing
+    selectHousing,
+    selectViewingArea,
+    selectCameraLens,
+    selectNightVision
     }) {
 
     
@@ -96,7 +102,17 @@ export default function Answer({
             break;
         case 7:
             return(
-                <div>Placeholder</div>
+                <SelectViewingArea cameras={cameras} selectViewingArea={selectViewingArea} />
+            )
+            break;
+        case 8:
+            return(
+                <SelectCameraLens cameras={cameras} selectCameraLens={selectCameraLens}/>
+            )
+            break;
+        case 9:
+            return(
+                <SelectNightVision cameras={cameras} selectNightVision={selectNightVision} />
             )
             break;
     }    

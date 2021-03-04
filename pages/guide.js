@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Actions from "../components/Actions";
 import Answer from "../components/Answer";
 import Question from "../components/Question";
+import SelectCameraLens from "../components/steps/selectCameraLens";
 
 export default function Guide() {
     const [ step, setStep ] = useState(0);
@@ -16,9 +17,10 @@ export default function Guide() {
     
     const default_camera = {
         housing: '',
-        lens: '',
+        viewingArea: '',
+        cameraLens: '',
         nightVisionDist: '',
-        resolution: ''
+        resolution: '',
     }
 
     const nextStep = () => {
@@ -64,6 +66,25 @@ export default function Guide() {
         temp_cameras[indoorOrOutdoor][index].housing = housingSelected;
         setCameras(temp_cameras);
     }
+
+    const selectViewingArea = (indoorOrOutdoor, viewingArea, index) => {
+        let temp_cameras = cameras;
+        temp_cameras[indoorOrOutdoor][index].viewingArea = viewingArea;
+        setCameras(temp_cameras);
+    }
+
+    const selectCameraLens = (indoorOrOutdoor, cameraLens, index) => {
+        let temp_cameras = cameras;
+        temp_cameras[indoorOrOutdoor][index].cameraLens = cameraLens;
+        setCameras(temp_cameras);
+    }
+
+    const selectNightVision = (indoorOrOutdoor, nightVisionDist, index) => {
+        let temp_cameras = cameras;
+        console.log('selectNightVision args: ' + indoorOrOutdoor + nightVisionDist + index)
+        temp_cameras[indoorOrOutdoor][index].nightVisionDist = nightVisionDist;
+        setCameras(temp_cameras);
+    }
     
     return(
         <main className="flex flex-col mt-14 px-20">
@@ -85,6 +106,9 @@ export default function Guide() {
                 cviOrIp={cviOrIp}
                 setCviOrIp={setCviOrIp}
                 selectHousing={selectHousing}
+                selectViewingArea={selectViewingArea}
+                selectCameraLens={selectCameraLens}
+                selectNightVision={selectNightVision}
             />
             <Actions nextStep={nextStep} prevStep={prevStep} step={step} />
         </main>
