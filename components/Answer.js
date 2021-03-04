@@ -5,7 +5,9 @@ import SetCameraCount from './steps/setCameraCount'
 import SelectHousing from './steps/selectHousing'
 import SetCameraLocation from './steps/setCameraLocation'
 import SetSystemType from './steps/setSystemType'
-import SelectLens from './steps/selectLens'
+import SelectViewingArea from './steps/selectViewingArea'
+import SelectCameraLens from './steps/selectCameraLens'
+import SelectNightVision from './steps/selectNightVision'
 
 export default function Answer({
     step,
@@ -24,7 +26,10 @@ export default function Answer({
     decrementIndoorCount,
     cviOrIp,
     setCviOrIp,
-    selectHousing
+    selectHousing,
+    selectViewingArea,
+    selectCameraLens,
+    selectNightVision
     }) {
 
     
@@ -97,7 +102,17 @@ export default function Answer({
             break;
         case 7:
             return(
-                <SelectLens cameras={cameras} />
+                <SelectViewingArea cameras={cameras} selectViewingArea={selectViewingArea} />
+            )
+            break;
+        case 8:
+            return(
+                <SelectCameraLens cameras={cameras} selectCameraLens={selectCameraLens}/>
+            )
+            break;
+        case 9:
+            return(
+                <SelectNightVision cameras={cameras} selectNightVision={selectNightVision} />
             )
             break;
     }    

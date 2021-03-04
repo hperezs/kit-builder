@@ -24,16 +24,19 @@ export default function Question({ step }) {
                 setCurrentQuestion('About Camera Housings');
                 break;
             case 6:
-                setCurrentQuestion('Select Camera Housings');
+                setCurrentQuestion('Select Camera Housing');
                 break;
             case 7:
-                setCurrentQuestion('Select Camera Lens');
+                setCurrentQuestion('Before Selecting a Camera Lens');
                 break;
             case 8:
-                setCurrentQuestion('Camera Resolution');
+                setCurrentQuestion('Select Camera Lens');
                 break;
             case 9:
-                setCurrentQuestion('Night Vision distance');
+                setCurrentQuestion('Night Vision Distance');    
+                break;
+            case 10:
+                setCurrentQuestion('Camera Resolution');
                 break;
         }
     })
