@@ -36,8 +36,10 @@ export default function Question({ step }) {
                 setCurrentQuestion('Night Vision Distance');    
                 break;
             case 10:
-                setCurrentQuestion('Camera Resolution');
+                setCurrentQuestion('Choose your cameras');
                 break;
+            case 11:
+                setCurrentQuestion('Choose a Video Recorder')
         }
     })
     

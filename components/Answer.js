@@ -8,6 +8,8 @@ import SetSystemType from './steps/setSystemType'
 import SelectViewingArea from './steps/selectViewingArea'
 import SelectCameraLens from './steps/selectCameraLens'
 import SelectNightVision from './steps/selectNightVision'
+import ChooseCameras from './steps/chooseCameras'
+import ChooseVideoRecorder from './steps/chooseVideoRecorder'
 
 export default function Answer({
     step,
@@ -113,6 +115,16 @@ export default function Answer({
         case 9:
             return(
                 <SelectNightVision cameras={cameras} selectNightVision={selectNightVision} />
+            )
+            break;
+        case 10: 
+            return(
+                <ChooseCameras cameras={cameras} />
+            )
+            break;
+        case 11: 
+            return(
+                <ChooseVideoRecorder />
             )
             break;
     }    
