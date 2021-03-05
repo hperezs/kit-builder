@@ -1,7 +1,23 @@
 import { useState } from "react";
+import { useEffect } from "react/cjs/react.development";
 
 export default function NightVisionDropdown({ camera, selectNightVision, indoorOrOutdoor, index }) {
     const [ selectedValue, setSelectedValue ] = useState(camera.nightVisionDist)
+
+    // Set defaults
+    useEffect(() => {
+        switch(camera.viewingArea) {
+            case 'Under 50 ft':
+                selectNightVision(indoorOrOutdoor, '60 ft', index);
+                break;
+            case '50-180 ft':
+                selectNightVision(indoorOrOutdoor, '70 ft', index);
+                break;
+            case '200-1000 ft':
+                selectNightVision(indoorOrOutdoor, '300 ft', index);
+                break;
+        }
+    }, [])
 
     const handleChange = (event) => {
         let value = event.target.value;
