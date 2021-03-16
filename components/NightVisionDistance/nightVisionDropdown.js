@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useEffect } from "react/cjs/react.development";
+import { useState, useEffect } from "react";
 
 export default function NightVisionDropdown({ camera, selectNightVision, indoorOrOutdoor, index }) {
     const [ selectedValue, setSelectedValue ] = useState(camera.nightVisionDist)
