@@ -41,13 +41,11 @@ export default function Answer({
             return(
                 <HomeOrBusiness homeOrBusiness={homeOrBusiness} setHomeOrBusiness={setHomeOrBusiness}/>
             )
-            break;
         case 1:
             return(
                 <SetSystemType cviOrIp={cviOrIp} setCviOrIp={setCviOrIp} />
                 
             )
-            break;
         case 2:
             return(
                 <SetCameraLocation 
@@ -58,7 +56,6 @@ export default function Answer({
                 />
                 
             )
-            break;
         case 3:
             return(
                 <SetCameraCount 
@@ -71,7 +68,6 @@ export default function Answer({
                     decrementIndoorCount={decrementIndoorCount}
                 />
             )
-            break;
         case 4:
             return(
                 <section className="h-96 my-10">
@@ -86,12 +82,10 @@ export default function Answer({
                     </div>
                 </section>
             )
-            break;
         case 5:
             return(
                 <CameraHousings />
             )
-            break;
         case 6:
             return(
                 <SelectHousing
@@ -101,31 +95,25 @@ export default function Answer({
                     outdoorSelected={outdoorSelected}
                 />
             )
-            break;
         case 7:
             return(
                 <SelectViewingArea cameras={cameras} selectViewingArea={selectViewingArea} />
             )
-            break;
         case 8:
             return(
                 <SelectCameraLens cameras={cameras} selectCameraLens={selectCameraLens}/>
             )
-            break;
         case 9:
             return(
                 <SelectNightVision cameras={cameras} selectNightVision={selectNightVision} />
             )
-            break;
         case 10: 
             return(
                 <ChooseCameras cameras={cameras} />
             )
-            break;
         case 11: 
             return(
                 <ChooseVideoRecorder />
             )
-            break;
     }    
 }

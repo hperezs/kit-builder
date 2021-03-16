@@ -1,10 +1,9 @@
-import { useState } from 'react'
-import { useEffect } from 'react/cjs/react.development';
+import { useState, useEffect } from 'react'
 
 export default function CameraLensDropdown({ indoorOrOutdoor, camera, index, selectCameraLens }) {
     const [ selectedValue, setSelectedValue ] = useState(camera.cameraLens);
 
-    // Select defaults
+    //Select defaults
     useEffect(() => {
         switch(camera.viewingArea) {
             case 'Under 50 ft':
