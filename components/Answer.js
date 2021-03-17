@@ -38,16 +38,16 @@ export default function Answer({
     
 
     switch(step) {
-        case 0:
+        case 1:
             return(
                 <HomeOrBusiness homeOrBusiness={homeOrBusiness} setHomeOrBusiness={setHomeOrBusiness}/>
             )
-        case 1:
+        case 2:
             return(
                 <SetSystemType cviOrIp={cviOrIp} setCviOrIp={setCviOrIp} />
                 
             )
-        case 2:
+        case 3:
             return(
                 <SetCameraLocation 
                     indoorSelected={indoorSelected}
@@ -57,7 +57,7 @@ export default function Answer({
                 />
                 
             )
-        case 3:
+        case 4:
             return(
                 <SetCameraCount 
                     cameras={cameras}
@@ -70,7 +70,7 @@ export default function Answer({
                     submitCameraName={submitCameraName}
                 />
             )
-        case 4:
+        case 5:
             return(
                 <section className="h-96 my-10">
                     <div className="text-xl">
@@ -84,11 +84,11 @@ export default function Answer({
                     </div>
                 </section>
             )
-        case 5:
+        case 6:
             return(
                 <CameraHousings />
             )
-        case 6:
+        case 7:
             return(
                 <SelectHousing
                     cameras={cameras}
@@ -97,23 +97,23 @@ export default function Answer({
                     outdoorSelected={outdoorSelected}
                 />
             )
-        case 7:
+        case 8:
             return(
                 <SelectViewingArea cameras={cameras} selectViewingArea={selectViewingArea} />
             )
-        case 8:
+        case 9:
             return(
                 <SelectCameraLens cameras={cameras} selectCameraLens={selectCameraLens}/>
             )
-        case 9:
+        case 10:
             return(
                 <SelectNightVision cameras={cameras} selectNightVision={selectNightVision} />
             )
-        case 10: 
+        case 11: 
             return(
                 <ChooseCameras cameras={cameras} />
             )
-        case 11: 
+        case 12: 
             return(
                 <ChooseVideoRecorder />
             )

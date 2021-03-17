@@ -5,40 +5,40 @@ export default function Question({ step }) {
 
     useEffect(() => {
         switch(step) {
-            case 0:
+            case 1:
                 setCurrentQuestion('Are you purchasing a surveillance system for a home or a business?');
                 break;
-            case 1:
+            case 2:
                 setCurrentQuestion('Choose your type of surveillance system')
                 break;
-            case 2: 
+            case 3: 
                 setCurrentQuestion('Where are you placing your cameras?');
                 break;
-            case 3:
+            case 4:
                 setCurrentQuestion('How many cameras do you need?');
                 break;
-            case 4:
+            case 5:
                 setCurrentQuestion('Choosing the right cameras');
                 break;
-            case 5:
+            case 6:
                 setCurrentQuestion('About Camera Housings');
                 break;
-            case 6:
+            case 7:
                 setCurrentQuestion('Select Camera Housing');
                 break;
-            case 7:
+            case 8:
                 setCurrentQuestion('Before Selecting a Camera Lens');
                 break;
-            case 8:
+            case 9:
                 setCurrentQuestion('Select Camera Lens');
                 break;
-            case 9:
+            case 10:
                 setCurrentQuestion('Night Vision Distance');    
                 break;
-            case 10:
+            case 11:
                 setCurrentQuestion('Choose your cameras');
                 break;
-            case 11:
+            case 12:
                 setCurrentQuestion('Choose a Video Recorder')
         }
     })

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import Actions from "../components/Actions";
 import Answer from "../components/Answer";
+import NavMenu from "../components/NavMenu";
 import Question from "../components/Question";
 import SelectCameraLens from "../components/steps/selectCameraLens";
 
 export default function Guide() {
-    const [ step, setStep ] = useState(0);
+    const [ step, setStep ] = useState(1);
     const [ cameras, setCameras ] = useState({outdoor: [], indoor: []});
     const [ homeOrBusiness, setHomeOrBusiness ] = useState('');
     const [ indoorSelected, setIndoorSelected ] = useState(false);
@@ -97,32 +98,40 @@ export default function Guide() {
 }
     
     return(
-        <main className="flex flex-row justify-center mt-14 ">
-            <div className="flex flex-col justify-center 2xl:w-6/12 xl:w-8/12 lg:w-10/12 md:w-11/12">
+        <main className="flex flex-row justify-center items-start mt-14">
+            <div className="flex flex-col justify-center 2xl:w-8/12 xl:w-9/12 lg:w-10/12 md:w-11/12">
                 <Question step={step} />
                 <hr className="mt-5"/>
-                <Answer 
-                    step={step}
-                    cameras={cameras} 
-                    homeOrBusiness={homeOrBusiness} 
-                    setHomeOrBusiness={setHomeOrBusiness} 
-                    indoorSelected={indoorSelected}
-                    outdoorSelected={outdoorSelected}
-                    setIndoorSelected={setIndoorSelected}
-                    setOutdoorSelected={setOutdoorSelected}
-                    incrementOutdoorCount={incrementOutdoorCount}
-                    incrementIndoorCount={incrementIndoorCount}
-                    decrementOutdoorCount={decrementOutdoorCount}
-                    decrementIndoorCount={decrementIndoorCount}
-                    submitCameraName={submitCameraName}
-                    cviOrIp={cviOrIp}
-                    setCviOrIp={setCviOrIp}
-                    selectHousing={selectHousing}
-                    selectViewingArea={selectViewingArea}
-                    selectCameraLens={selectCameraLens}
-                    selectNightVision={selectNightVision}
-                />
-                <Actions nextStep={nextStep} prevStep={prevStep} step={step} />
+                <div className="pb-44">
+                    <Answer 
+                        step={step}
+                        cameras={cameras} 
+                        homeOrBusiness={homeOrBusiness} 
+                        setHomeOrBusiness={setHomeOrBusiness} 
+                        indoorSelected={indoorSelected}
+                        outdoorSelected={outdoorSelected}
+                        setIndoorSelected={setIndoorSelected}
+                        setOutdoorSelected={setOutdoorSelected}
+                        incrementOutdoorCount={incrementOutdoorCount}
+                        incrementIndoorCount={incrementIndoorCount}
+                        decrementOutdoorCount={decrementOutdoorCount}
+                        decrementIndoorCount={decrementIndoorCount}
+                        submitCameraName={submitCameraName}
+                        cviOrIp={cviOrIp}
+                        setCviOrIp={setCviOrIp}
+                        selectHousing={selectHousing}
+                        selectViewingArea={selectViewingArea}
+                        selectCameraLens={selectCameraLens}
+                        selectNightVision={selectNightVision}
+                    />
+                </div>
+                <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">
+                    <div className="flex flex-col justify-center 2xl:w-8/12 xl:w-9/12 lg:w-10/12 md:w-11/12">
+                        <Actions nextStep={nextStep} prevStep={prevStep} step={step} />
+                        <NavMenu selectedStep={step} setStep={setStep}/>
+                    </div>
+                </div>
+                
             </div>
             
         </main>

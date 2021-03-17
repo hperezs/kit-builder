@@ -5,7 +5,7 @@ export default function SelectHousing({ cameras,  selectHousing, indoorSelected,
 
     return(
         <section className="flex flex-row justify-center">
-            <div className="relative my-6 border border-gray-300 rounded py-5 2xl:w-8/12">
+            <div className="relative my-6 border border-gray-300 rounded py-5 sm:w-full 2xl:w-8/12">
                 <p className="mt-3 mb-5 text-xl font-light text-center"><span className="text-green-700">&#8594;</span>  Click on each camera to make your selection</p>
                 {/* // Outdoor */}
                 <div className={"text-center " + (!outdoorSelected ? 'hidden' : '')}>
