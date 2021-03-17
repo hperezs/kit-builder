@@ -13,6 +13,7 @@ export default function SelectHousing({ cameras,  selectHousing, indoorSelected,
                     {cameras.outdoor.map((camera, index) => {
                         return(
                             <AddToCamera 
+                                camera={camera}
                                 housing={camera.housing} 
                                 index={index} 
                                 indoorOrOutdoor={'outdoor'} 
@@ -31,6 +32,7 @@ export default function SelectHousing({ cameras,  selectHousing, indoorSelected,
                     {cameras.indoor.map((camera, index) => {
                         return(
                             <AddToCamera 
+                                camera={camera}
                                 housing={camera.housing} 
                                 index={index} 
                                 indoorOrOutdoor={'indoor'} 

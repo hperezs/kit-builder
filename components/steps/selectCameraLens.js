@@ -31,7 +31,7 @@ export default function SelectCameraLens({ cameras, selectCameraLens }) {
                                 <div className="flex flex-col justify-start items-center flex-wrap mt-4">
                                     <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
                                         <Image src={`/images/${camera.housing}-style.png`} width={80} height={57}/>
-                                        <p className="mt-3">Camera {index + 1} </p>
+                                        <p className="mt-3">{camera.name} </p>
                                     </div>
                                     <div className="flex flex-col items-center">
                                         <p className="font-light mb-3">Viewing Area: {camera.viewingArea}</p>
@@ -57,7 +57,7 @@ export default function SelectCameraLens({ cameras, selectCameraLens }) {
                             <div className="flex flex-col justify-start items-center flex-wrap mt-4">
                                 <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
                                     <Image src={`/images/${camera.housing}-style.png`} width={80} height={57}/>
-                                    <p className="mt-3">Camera {index + 1} </p>
+                                    <p className="mt-3">{camera.name} </p>
                                 </div>
                                 <div className="flex flex-col items-center">
                                     <p className="font-light mb-3">Viewing Area: {camera.viewingArea}</p>

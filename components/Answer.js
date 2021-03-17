@@ -26,6 +26,7 @@ export default function Answer({
     incrementIndoorCount,
     decrementOutdoorCount,
     decrementIndoorCount,
+    submitCameraName,
     cviOrIp,
     setCviOrIp,
     selectHousing,
@@ -66,6 +67,7 @@ export default function Answer({
                     incrementIndoorCount={incrementIndoorCount}
                     decrementOutdoorCount={decrementOutdoorCount}
                     decrementIndoorCount={decrementIndoorCount}
+                    submitCameraName={submitCameraName}
                 />
             )
         case 4:

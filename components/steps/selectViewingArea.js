@@ -17,7 +17,7 @@ export default function SelectViewingArea({ cameras, selectViewingArea }) {
                             <div className="flex flex-row justify-start items-center flex-wrap mt-4">
                                 <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
                                     <Image src={`/images/${camera.housing}-style.png`} width={80} height={57}/>
-                                    <p className="mt-3">Camera {index + 1} </p>
+                                    <p className="mt-3">{camera.name} </p>
                                 </div>
                                 <ViewingAreaDropdown 
                                     indoorOrOutdoor={'outdoor'}
@@ -37,7 +37,7 @@ export default function SelectViewingArea({ cameras, selectViewingArea }) {
                             <div className="flex flex-row justify-start items-center flex-wrap mt-4">
                                 <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
                                     <Image src={`/images/${camera.housing}-style.png`} width={80} height={57}/>
-                                    <p className="mt-3">Camera {index + 1} </p>
+                                    <p className="mt-3">{camera.name} </p>
                                 </div>
                                 <ViewingAreaDropdown 
                                     indoorOrOutdoor={'indoor'}

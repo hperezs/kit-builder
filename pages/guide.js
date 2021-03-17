@@ -1,4 +1,3 @@
-import { faRunning } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import Actions from "../components/Actions";
 import Answer from "../components/Answer";
@@ -16,6 +15,7 @@ export default function Guide() {
     const [ cviOrIp, setCviOrIp ] = useState('');
     
     const default_camera = {
+        name: '',
         housing: '',
         viewingArea: '',
         cameraLens: '',
@@ -32,10 +32,12 @@ export default function Guide() {
     }
 
     const incrementOutdoorCount = () => {
-        setOutdoorCount(outdoorCount + 1);
         let temp_cameras = cameras;
-        temp_cameras.outdoor.push(default_camera);
+        let new_camera = default_camera;
+        new_camera.name = 'Camera ' + (outdoorCount + 1);
+        temp_cameras.outdoor.push(new_camera);
         setCameras(temp_cameras);
+        setOutdoorCount(outdoorCount + 1);
     }
 
     const decrementOutdoorCount = () => {
@@ -46,11 +48,12 @@ export default function Guide() {
     }
 
     const incrementIndoorCount = () => {
-        setIndoorCount(indoorCount + 1);
         let temp_cameras = cameras;
+        let new_camera = default_camera; 
+        new_camera.name = 'Camera ' + (indoorCount + 1);
         temp_cameras.indoor.push(default_camera);
-        console.log(temp_cameras);
         setCameras(temp_cameras);
+        setIndoorCount(indoorCount + 1);
     }
 
     const decrementIndoorCount = () => {
@@ -58,6 +61,13 @@ export default function Guide() {
         let temp_cameras = cameras;
         temp_cameras.indoor.pop();
         setCameras(temp_cameras);
+    }
+
+    const submitCameraName = (indoorOrOutdoor, cameraName, index) => {
+        let temp_cameras = cameras;
+        temp_cameras[indoorOrOutdoor][index].name = cameraName;
+        setCameras(temp_cameras);
+        console.log(temp_cameras);
     }
 
     const selectHousing = (indoorOrOutdoor, housingSelected, index) => {
@@ -84,7 +94,7 @@ export default function Guide() {
         console.log('selectNightVision args: ' + indoorOrOutdoor + nightVisionDist + index)
         temp_cameras[indoorOrOutdoor][index].nightVisionDist = nightVisionDist;
         setCameras(temp_cameras);
-    }
+}
     
     return(
         <main className="flex flex-col mt-14 px-20">
@@ -103,6 +113,7 @@ export default function Guide() {
                 incrementIndoorCount={incrementIndoorCount}
                 decrementOutdoorCount={decrementOutdoorCount}
                 decrementIndoorCount={decrementIndoorCount}
+                submitCameraName={submitCameraName}
                 cviOrIp={cviOrIp}
                 setCviOrIp={setCviOrIp}
                 selectHousing={selectHousing}
