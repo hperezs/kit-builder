@@ -20,7 +20,7 @@ export default function Guide() {
         viewingArea: '',
         cameraLens: '',
         nightVisionDist: '',
-        resolution: '',
+        resolution: ''
     }
 
     const nextStep = () => {
@@ -97,31 +97,34 @@ export default function Guide() {
 }
     
     return(
-        <main className="flex flex-col mt-14 px-20">
-            <Question step={step} />
-            <hr className="mt-5"/>
-            <Answer 
-                step={step}
-                cameras={cameras} 
-                homeOrBusiness={homeOrBusiness} 
-                setHomeOrBusiness={setHomeOrBusiness} 
-                indoorSelected={indoorSelected}
-                outdoorSelected={outdoorSelected}
-                setIndoorSelected={setIndoorSelected}
-                setOutdoorSelected={setOutdoorSelected}
-                incrementOutdoorCount={incrementOutdoorCount}
-                incrementIndoorCount={incrementIndoorCount}
-                decrementOutdoorCount={decrementOutdoorCount}
-                decrementIndoorCount={decrementIndoorCount}
-                submitCameraName={submitCameraName}
-                cviOrIp={cviOrIp}
-                setCviOrIp={setCviOrIp}
-                selectHousing={selectHousing}
-                selectViewingArea={selectViewingArea}
-                selectCameraLens={selectCameraLens}
-                selectNightVision={selectNightVision}
-            />
-            <Actions nextStep={nextStep} prevStep={prevStep} step={step} />
+        <main className="flex flex-row justify-center mt-14 ">
+            <div className="flex flex-col justify-center 2xl:w-6/12 xl:w-8/12 lg:w-10/12 md:w-11/12">
+                <Question step={step} />
+                <hr className="mt-5"/>
+                <Answer 
+                    step={step}
+                    cameras={cameras} 
+                    homeOrBusiness={homeOrBusiness} 
+                    setHomeOrBusiness={setHomeOrBusiness} 
+                    indoorSelected={indoorSelected}
+                    outdoorSelected={outdoorSelected}
+                    setIndoorSelected={setIndoorSelected}
+                    setOutdoorSelected={setOutdoorSelected}
+                    incrementOutdoorCount={incrementOutdoorCount}
+                    incrementIndoorCount={incrementIndoorCount}
+                    decrementOutdoorCount={decrementOutdoorCount}
+                    decrementIndoorCount={decrementIndoorCount}
+                    submitCameraName={submitCameraName}
+                    cviOrIp={cviOrIp}
+                    setCviOrIp={setCviOrIp}
+                    selectHousing={selectHousing}
+                    selectViewingArea={selectViewingArea}
+                    selectCameraLens={selectCameraLens}
+                    selectNightVision={selectNightVision}
+                />
+                <Actions nextStep={nextStep} prevStep={prevStep} step={step} />
+            </div>
+            
         </main>
     )
 }

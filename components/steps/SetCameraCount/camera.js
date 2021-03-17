@@ -23,6 +23,16 @@ export default function Camera({camera, index, indoorOrOutdoor, submitCameraName
         setIsEditing(false);
     }
 
+    const selectInputValue = event => {
+        event.target.select();
+    }
+
+    const listenForEnterKey = event => {
+        if(event.keyCode === 13) {
+            saveChanges();
+        }
+    }
+
     return (
         <div className="flex flex-row justify-center flex-wrap mt-4">
             <div className={card_styles}>
@@ -37,10 +47,13 @@ export default function Camera({camera, index, indoorOrOutdoor, submitCameraName
                     <div>
                         <input 
                             type="text" 
+                            value={cameraName}
                             onChange={handleNameChanges}
                             className="text-xs border border-gray-400 rounded mt-3 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50" 
                             placeholder="Name your camera"
                             autoFocus
+                            onFocus={selectInputValue}
+                            onKeyDown={listenForEnterKey}
                         />
                         <div className="flex flex-row justify-center mt-2">
                             <button 

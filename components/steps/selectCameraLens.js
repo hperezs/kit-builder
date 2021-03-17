@@ -5,15 +5,17 @@ export default function SelectCameraLens({ cameras, selectCameraLens }) {
 
     return(
         <section className="my-10">
-            <div className="p-5 border rounded mb-5 shadow-sm">
-                <p className="text-lg">Now that we know the viewing area for each camera, it's easy to choose a lens. We have already selected some of your camera lenses for you, based on the viewing distance you entered.</p>
-                
-                <br/>
-                
-                <p className="text-lg">We now just need you to select manual or motorized zoom for those cameras with a viewing area of 50-180 ft. <a className="mr-5 text-green-600 cursor-pointer hover:text-green-500">Click here to see the difference.</a></p>
+            <div className="flex flex-row justify-center">
+                <div className="p-5 border rounded mb-5 shadow-sm 2xl:w-8/12">
+                    <p className="text-lg">Now that we know the viewing area for each camera, it's easy to choose a lens. We have already selected some of your camera lenses for you, based on the viewing distance you entered.</p>
+                    
+                    <br/>
+                    
+                    <p className="text-lg">We now just need you to select manual or motorized zoom for those cameras with a viewing area of 50-180 ft. <a className="mr-5 text-green-600 cursor-pointer hover:text-green-500">Click here to see the difference.</a></p>
 
-                <div className="mt-7 text-right">
-                    <a className="mr-5 text-green-600 cursor-pointer hover:text-green-500">How are my camera lenses automatically chosen?</a>
+                    <div className="mt-7 text-right">
+                        <a className="mr-5 text-green-600 cursor-pointer hover:text-green-500">How are my camera lenses automatically chosen?</a>
+                    </div>
                 </div>
             </div>
 
