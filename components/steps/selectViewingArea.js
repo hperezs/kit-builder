@@ -4,13 +4,13 @@ import ViewingAreaDropdown from '../CameraLens/viewingAreaDropdown'
 export default function SelectViewingArea({ cameras, selectViewingArea }) {
 
     return(
-        <section className="my-10 border-b">
+        <section className="my-10">
             <p className="text-lg">To select a lens, first we need to know the length of the viewing area.</p>
             <p className="text-2xl font-light my-10"><span className="text-green-700">&#8594;</span> Select the <span className="text-green-600 font-normal">lenght of the viewing area</span> for each of your cameras.</p>
 
-            <div className="flex flex-row justify-center">
-                <div className="flex flex-row justify-between items-start 2xl:w-8/12">
-                    <div>
+            <div className="flex flex-row justify-center mt-20">
+                <div className="flex flex-row justify-between items-start sm:w-full md:w-11/12 lg:w-10/12 xl:w-9/12 2xl:w-8/12 ">
+                    <div className="border rounded p-5">
                         {/* Outdoor */}
                         <h3 className="border-b text-lg pb-3 text-center">Outdoor Cameras</h3>
                         {cameras.outdoor.map((camera, index) => {
@@ -30,7 +30,7 @@ export default function SelectViewingArea({ cameras, selectViewingArea }) {
                             )
                         })}
                     </div>
-                    <div>
+                    <div className="border rounded p-5">
                         {/* Indoor */}
                         <h3 className="border-b text-lg pb-3 text-center">Indoor Cameras</h3>
                         {cameras.indoor.map((camera, index) => {

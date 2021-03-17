@@ -14,7 +14,7 @@ export default function SelectNightVision({ cameras, selectNightVision }) {
             </p>
 
             <div className="flex flex-row justify-around items-start mt-10">
-                <div>
+                <div className="border rounded p-5">
                     {/* Outdoor */}
                     <h3 className="border-b text-lg pb-3 text-center">Outdoor Cameras</h3>
                     {cameras.outdoor.map((camera, index) => {
@@ -44,7 +44,7 @@ export default function SelectNightVision({ cameras, selectNightVision }) {
                     })}
                 </div>
                 
-                <div>
+                <div className="border rounded p-5">
                     {/* Indoor */}
                     <h3 className="border-b text-lg pb-3 text-center">Indoor Cameras</h3>
                     {cameras.indoor.map((camera, index) => {
