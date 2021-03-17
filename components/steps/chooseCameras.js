@@ -1,7 +1,5 @@
 import CameraList from "./ChooseCameras/cameraList";
 
-
-
 export default function ChooseCameras({ cameras }) {
 
     return(

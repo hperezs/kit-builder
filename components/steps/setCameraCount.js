@@ -1,7 +1,8 @@
 import { GrAdd } from 'react-icons/gr'
-import { BiCameraHome } from 'react-icons/bi'
 import { AiOutlineMinus } from 'react-icons/ai'
+import { BiEditAlt } from 'react-icons/bi'
 import Image from 'next/image'
+import Camera from './SetCameraCount/camera'
 
 export default function SetCameraCount({
     cameras, 
@@ -10,11 +11,19 @@ export default function SetCameraCount({
     incrementOutdoorCount, 
     incrementIndoorCount, 
     decrementOutdoorCount, 
-    decrementIndoorCount}) {
+    decrementIndoorCount,
+    submitCameraName
+    }) {
 
     return (
         <section className="my-10 ">
-            <p className="mb-10">You can always come back to this step and change the quantities.</p>
+            <p className="mb-10">
+                Add as many cameras as you need. You can always come back to this step if you want to change the amount of cameras.
+            </p>
+
+            <p className="my-10 font-light p-5 border border-green-50 rounded bg-green-50">
+                <span className="text-green-600 font-normal">Tip:</span> You can name each camera by clicking on the <BiEditAlt className="inline mb-1 text-lg" /> button.
+            </p>
 
             {/* Outdoor Cameras */}
             <div className={
@@ -61,15 +70,12 @@ export default function SetCameraCount({
                     : 
                         cameras.outdoor.map((camera, index) => {
                             return(
-                                <div className="flex flex-row justify-center flex-wrap mt-4">
-                                    <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
-                                    {
-                                        (camera.housing == '') ? <span className="text-2xl"><BiCameraHome /></span> :
-                                        <Image src={`/images/${camera.housing}-style.png`} width={80} height={57}/>
-                                    }
-                                        <p className="mt-3">Camera {index + 1} </p>
-                                    </div>
-                                </div>
+                                <Camera 
+                                    camera={camera} 
+                                    index={index} 
+                                    indoorOrOutdoor='outdoor'
+                                    submitCameraName={submitCameraName} 
+                                />
                             )})
                     )}
 
@@ -121,15 +127,12 @@ export default function SetCameraCount({
                     : 
                         cameras.indoor.map((camera, index) => {
                             return(
-                                <div className="flex flex-row justify-center flex-wrap mt-4">
-                                    <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
-                                    {
-                                        (camera.housing == '') ? <span className="text-2xl"><BiCameraHome /></span> :
-                                        <Image src={`/images/${camera.housing}-style.png`} width={80} height={57}/>
-                                    }
-                                        <p className="mt-3">Camera {index + 1} </p>
-                                    </div>
-                                </div>
+                                <Camera 
+                                    camera={camera} 
+                                    index={index} 
+                                    indoorOrOutdoor='indoor'
+                                    submitCameraName={submitCameraName}    
+                                />
                             )})
                     )}
                 </div> 

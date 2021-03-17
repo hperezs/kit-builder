@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { GrAdd } from 'react-icons/gr'
 import { useEffect } from 'react/cjs/react.development';
 
-export default function AddToCamera({indoorOrOutdoor, housing, index, selectHousing}) {
+export default function AddToCamera({camera, indoorOrOutdoor, housing, index, selectHousing}) {
     const [ displayPopover, setDisplayPopover ] = useState(false);
 
     // Wrapping the housing property inside the component's state to cause a re-render
@@ -24,7 +24,7 @@ export default function AddToCamera({indoorOrOutdoor, housing, index, selectHous
                 <span className="text-2xl"><GrAdd /></span> : 
                 <Image src={`/images/${housingStyle}-style.png`} width={80} height={57}/>}
 
-            <p className="mt-3">Camera {index + 1}</p>
+            <p className="mt-3">{camera.name}</p>
 
             <div className={(!displayPopover ? 'hidden' : popover_style + (indoorOrOutdoor == 'outdoor' ? ' w-72' : ' w-56' ) )}>
                 <div className="p-5 hover:shadow-lg border hover:border-green-400"
