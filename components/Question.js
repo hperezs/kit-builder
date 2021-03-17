@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
-export default function Question({ step }) {
+export default function Question({ currentStep }) {
     const [ currentQuestion, setCurrentQuestion ] = useState('');
 
     useEffect(() => {
-        switch(step) {
+        switch(currentStep) {
             case 1:
                 setCurrentQuestion('Are you purchasing a surveillance system for a home or a business?');
                 break;

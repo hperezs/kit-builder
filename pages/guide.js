@@ -3,10 +3,11 @@ import Actions from "../components/Actions";
 import Answer from "../components/Answer";
 import NavMenu from "../components/NavMenu";
 import Question from "../components/Question";
-import SelectCameraLens from "../components/steps/selectCameraLens";
+import { default_steps } from "../lib/steps";
 
 export default function Guide() {
-    const [ step, setStep ] = useState(1);
+    const [ steps, setSteps ] = useState(default_steps)
+    const [ currentStep, setStep ] = useState(1);
     const [ cameras, setCameras ] = useState({outdoor: [], indoor: []});
     const [ homeOrBusiness, setHomeOrBusiness ] = useState('');
     const [ indoorSelected, setIndoorSelected ] = useState(false);
@@ -25,11 +26,17 @@ export default function Guide() {
     }
 
     const nextStep = () => {
-        setStep(step + 1)
+        setStep(currentStep + 1)
     }
 
     const prevStep = () => {
-        setStep(step - 1)
+        setStep(currentStep - 1)
+    }
+
+    const enableStep = (step) => {
+        let temp_steps = steps;
+        temp_steps[step - 1].isDisabled = false;
+        setSteps(temp_steps);
     }
 
     const incrementOutdoorCount = () => {
@@ -100,11 +107,12 @@ export default function Guide() {
     return(
         <main className="flex flex-row justify-center items-start mt-14">
             <div className="flex flex-col justify-center 2xl:w-8/12 xl:w-9/12 lg:w-10/12 md:w-11/12">
-                <Question step={step} />
+                <Question currentStep={currentStep} />
                 <hr className="mt-5"/>
                 <div className="pb-44">
                     <Answer 
-                        step={step}
+                        currentStep={currentStep}
+                        enableStep={enableStep}
                         cameras={cameras} 
                         homeOrBusiness={homeOrBusiness} 
                         setHomeOrBusiness={setHomeOrBusiness} 
@@ -127,8 +135,8 @@ export default function Guide() {
                 </div>
                 <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">
                     <div className="flex flex-col justify-center 2xl:w-8/12 xl:w-9/12 lg:w-10/12 md:w-11/12">
-                        <Actions nextStep={nextStep} prevStep={prevStep} step={step} />
-                        <NavMenu selectedStep={step} setStep={setStep}/>
+                        <Actions nextStep={nextStep} prevStep={prevStep} currentStep={currentStep} />
+                        <NavMenu currentStep={currentStep} setStep={setStep} steps={steps}/>
                     </div>
                 </div>
                 

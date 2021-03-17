@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-export default function Actions({ nextStep, prevStep, step }) {
+export default function Actions({ nextStep, prevStep, currentStep }) {
 
     return(
         <section className="flex flex-row justify-center mb-10 w-full border-t pt-7 border-gray-300">
-            <span className={(step == 1) ? '' : 'hidden'}>
+            <span className={(currentStep == 1) ? '' : 'hidden'}>
                 <Link href="/">
                     <button 
                         className="text-lg text-gray-700 mx-6 border border-gray-300 rounded px-5 py-2 hover:bg-gray-100 focus:outline-none focus:ring"
@@ -14,7 +14,7 @@ export default function Actions({ nextStep, prevStep, step }) {
                 </Link>
             </span>
             
-            <span className={(step != 1) ? '' : 'hidden'}>
+            <span className={(currentStep != 1) ? '' : 'hidden'}>
                 <button 
                     className={"text-lg text-gray-700 mx-6 border border-gray-300 rounded px-5 py-2 hover:bg-gray-100 focus:outline-none focus:ring"}
                     onClick={prevStep}
