@@ -12,7 +12,8 @@ import ChooseCameras from './steps/chooseCameras'
 import ChooseVideoRecorder from './steps/chooseVideoRecorder'
 
 export default function Answer({
-    step,
+    currentStep,
+    enableStep,
     cameras,
     homeOrBusiness,
     setHomeOrBusiness, 
@@ -37,17 +38,19 @@ export default function Answer({
 
     
 
-    switch(step) {
+    switch(currentStep) {
         case 1:
+            enableStep(currentStep);
             return(
                 <HomeOrBusiness homeOrBusiness={homeOrBusiness} setHomeOrBusiness={setHomeOrBusiness}/>
             )
         case 2:
+            enableStep(currentStep);
             return(
                 <SetSystemType cviOrIp={cviOrIp} setCviOrIp={setCviOrIp} />
-                
             )
         case 3:
+            enableStep(currentStep);
             return(
                 <SetCameraLocation 
                     indoorSelected={indoorSelected}
@@ -58,6 +61,7 @@ export default function Answer({
                 
             )
         case 4:
+            enableStep(currentStep);
             return(
                 <SetCameraCount 
                     cameras={cameras}
@@ -71,6 +75,7 @@ export default function Answer({
                 />
             )
         case 5:
+            enableStep(currentStep);
             return(
                 <section className="h-96 my-10">
                     <div className="text-xl">
@@ -85,10 +90,12 @@ export default function Answer({
                 </section>
             )
         case 6:
+            enableStep(currentStep);
             return(
                 <CameraHousings />
             )
         case 7:
+            enableStep(currentStep);
             return(
                 <SelectHousing
                     cameras={cameras}
@@ -98,22 +105,27 @@ export default function Answer({
                 />
             )
         case 8:
+            enableStep(currentStep);
             return(
                 <SelectViewingArea cameras={cameras} selectViewingArea={selectViewingArea} />
             )
         case 9:
+            enableStep(currentStep);
             return(
                 <SelectCameraLens cameras={cameras} selectCameraLens={selectCameraLens}/>
             )
         case 10:
+            enableStep(currentStep);
             return(
                 <SelectNightVision cameras={cameras} selectNightVision={selectNightVision} />
             )
         case 11: 
+            enableStep(currentStep);
             return(
                 <ChooseCameras cameras={cameras} />
             )
         case 12: 
+            enableStep(currentStep);
             return(
                 <ChooseVideoRecorder />
             )

@@ -27,7 +27,7 @@ export default function SelectHousing({ cameras,  selectHousing, indoorSelected,
                 </div>
 
                 {/* Indoor */}
-                <div className={"text-center " + (!indoorSelected ? 'hidden' : '')}>
+                <div className={"text-center mt-5 " + (!indoorSelected ? 'hidden' : '')}>
                     <h3 className="text-lg">Indoor Cameras</h3>
                     <div className="flex flex-row justify-center flex-wrap mt-4">
                         {cameras.indoor.map((camera, index) => {
