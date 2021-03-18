@@ -10,46 +10,50 @@ export default function SelectViewingArea({ cameras, selectViewingArea }) {
 
             <div className="flex flex-row justify-center mt-20">
                 <div className="flex flex-row justify-between items-start sm:w-full md:w-11/12 lg:w-10/12 xl:w-9/12 2xl:w-8/12 ">
-                    <div className="border rounded p-5">
-                        {/* Outdoor */}
-                        <h3 className="border-b text-lg pb-3 text-center">Outdoor Cameras</h3>
-                        {cameras.outdoor.map((camera, index) => {
-                            return(
-                                <div className="flex flex-row justify-start items-center flex-wrap mt-4">
-                                    <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
-                                        <Image src={`/images/${camera.housing}-style.png`} width={80} height={57}/>
-                                        <p className="mt-3">{camera.name} </p>
+                    {/* Outdoor */}
+                    {cameras.outdoor.length != 0 && 
+                        <div className="border rounded p-5">
+                            <h3 className="border-b text-lg pb-3 text-center">Outdoor Cameras</h3>
+                            {cameras.outdoor.map((camera, index) => {
+                                return(
+                                    <div className="flex flex-row justify-start items-center flex-wrap mt-4">
+                                        <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
+                                            <Image src={`/images/${camera.housing}-style.png`} width={80} height={57}/>
+                                            <p className="mt-3">{camera.name} </p>
+                                        </div>
+                                        <ViewingAreaDropdown 
+                                            indoorOrOutdoor={'outdoor'}
+                                            camera={camera} 
+                                            index={index} 
+                                            selectViewingArea={selectViewingArea} 
+                                        />
                                     </div>
-                                    <ViewingAreaDropdown 
-                                        indoorOrOutdoor={'outdoor'}
-                                        camera={camera} 
-                                        index={index} 
-                                        selectViewingArea={selectViewingArea} 
-                                    />
-                                </div>
-                            )
-                        })}
-                    </div>
-                    <div className="border rounded p-5">
-                        {/* Indoor */}
-                        <h3 className="border-b text-lg pb-3 text-center">Indoor Cameras</h3>
-                        {cameras.indoor.map((camera, index) => {
-                            return(
-                                <div className="flex flex-row justify-start items-center flex-wrap mt-4">
-                                    <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
-                                        <Image src={`/images/${camera.housing}-style.png`} width={80} height={57}/>
-                                        <p className="mt-3">{camera.name} </p>
+                                )
+                            })}
+                        </div>
+                    }
+                    {/* Indoor */}
+                    {cameras.indoor.length != 0 &&
+                        <div className="border rounded p-5">
+                            <h3 className="border-b text-lg pb-3 text-center">Indoor Cameras</h3>
+                            {cameras.indoor.map((camera, index) => {
+                                return(
+                                    <div className="flex flex-row justify-start items-center flex-wrap mt-4">
+                                        <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
+                                            <Image src={`/images/${camera.housing}-style.png`} width={80} height={57}/>
+                                            <p className="mt-3">{camera.name} </p>
+                                        </div>
+                                        <ViewingAreaDropdown 
+                                            indoorOrOutdoor={'indoor'}
+                                            camera={camera} 
+                                            index={index} 
+                                            selectViewingArea={selectViewingArea} 
+                                        />
                                     </div>
-                                    <ViewingAreaDropdown 
-                                        indoorOrOutdoor={'indoor'}
-                                        camera={camera} 
-                                        index={index} 
-                                        selectViewingArea={selectViewingArea} 
-                                    />
-                                </div>
-                            )
-                        })}
-                    </div>
+                                )
+                            })}
+                        </div>
+                    }
                 </div>
   
             </div>

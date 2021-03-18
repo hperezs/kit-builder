@@ -10,10 +10,10 @@ export default function CameraLensDropdown({ indoorOrOutdoor, camera, index, sel
                 selectCameraLens(indoorOrOutdoor, '3.6mm fixed', index);
                 break;
             case '50-180 ft':
-                selectCameraLens(indoorOrOutdoor, '2.8mm-12mm manual', index);
+                selectCameraLens(indoorOrOutdoor, '2.8-12mm manual', index);
                 break;
             case '200-1000 ft':
-                selectCameraLens(indoorOrOutdoor, '4.94mm motorized', index);
+                selectCameraLens(indoorOrOutdoor, '4-84+mm motorized', index);
                 break;
         }
     }, [])
@@ -36,9 +36,9 @@ export default function CameraLensDropdown({ indoorOrOutdoor, camera, index, sel
                 className={classNames + (camera.viewingArea == '50-180 ft' ? 'border-green-400 cursor-pointer' : 'bg-gray-50 cursor-not-allowed')}
                 >
                 <option disabled={(camera.viewingArea != 'Under 50 ft' ? true : false)}>3.6mm fixed</option>
-                <option disabled={(camera.viewingArea != '50-180 ft' ? true : false)}>2.8mm-12mm manual</option>
-                <option disabled={(camera.viewingArea != '50-180 ft' ? true : false)}>2.8mm-12mm motorized</option>
-                <option disabled={(camera.viewingArea != '200-1000 ft' ? true : false)}>4.94mm motorized</option>
+                <option disabled={(camera.viewingArea != '50-180 ft' ? true : false)}>2.8-12mm manual</option>
+                <option disabled={(camera.viewingArea != '50-180 ft' ? true : false)}>2.8-12mm motorized</option>
+                <option disabled={(camera.viewingArea != '200-1000 ft' ? true : false)}>4-84+mm motorized</option>
             </select>
         </div>
         
