@@ -14,63 +14,67 @@ export default function SelectNightVision({ cameras, selectNightVision }) {
             </p>
 
             <div className="flex flex-row justify-around items-start mt-10">
-                <div className="border rounded p-5">
-                    {/* Outdoor */}
-                    <h3 className="border-b text-lg pb-3 text-center">Outdoor Cameras</h3>
-                    {cameras.outdoor.map((camera, index) => {
-                        return(
-                            <div>
-                                <div className="flex flex-col justify-start items-center flex-wrap mt-4">
-                                    <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
-                                        <Image src={`/images/${camera.housing}-style.png`} width={80} height={57}/>
-                                        <p className="mt-3">{camera.name} </p>
-                                    </div>
-                                    <div className="flex flex-col items-center">
-                                        <p className="font-light mb-1">Viewing Area: {camera.viewingArea}</p>
-                                        <p className="font-light mb-3">Camera Lens: {camera.cameraLens}</p>
-                                        <div className="w-full flex flex-row justify-center items-center">
-                                            <p className="mr-3">Night Vision:</p>
-                                            <NightVisionDropdown 
-                                                camera={camera} 
-                                                selectNightVision={selectNightVision}
-                                                indoorOrOutdoor={'outdoor'}
-                                                index={index}
-                                            />
+                {cameras.outdoor.length != 0 &&
+                    <div className="border rounded p-5">
+                        {/* Outdoor */}
+                        <h3 className="border-b text-lg pb-3 text-center">Outdoor Cameras</h3>
+                        {cameras.outdoor.map((camera, index) => {
+                            return(
+                                <div>
+                                    <div className="flex flex-col justify-start items-center flex-wrap mt-4">
+                                        <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
+                                            <Image src={`/images/${camera.housing}-style.png`} width={80} height={57}/>
+                                            <p className="mt-3">{camera.name} </p>
+                                        </div>
+                                        <div className="flex flex-col items-center">
+                                            <p className="font-light mb-1">Viewing Area: {camera.viewingArea}</p>
+                                            <p className="font-light mb-3">Camera Lens: {camera.cameraLens}</p>
+                                            <div className="w-full flex flex-row justify-center items-center">
+                                                <p className="mr-3">Night Vision:</p>
+                                                <NightVisionDropdown 
+                                                    camera={camera} 
+                                                    selectNightVision={selectNightVision}
+                                                    indoorOrOutdoor={'outdoor'}
+                                                    index={index}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        )
-                    })}
-                </div>
+                            )})}
+                    </div>
+                }
                 
-                <div className="border rounded p-5">
-                    {/* Indoor */}
-                    <h3 className="border-b text-lg pb-3 text-center">Indoor Cameras</h3>
-                    {cameras.indoor.map((camera, index) => {
-                        return(
-                            <div className="flex flex-col justify-start items-center flex-wrap mt-4">
-                                <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
-                                    <Image src={`/images/${camera.housing}-style.png`} width={80} height={57}/>
-                                    <p className="mt-3">{camera.name} </p>
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <p className="font-light mb-1">Viewing Area: {camera.viewingArea}</p>
-                                    <p className="font-light mb-3">Camera Lens: {camera.cameraLens}</p>
-                                    <div className="w-full flex flex-row justify-center items-center">
-                                        <p className="mr-3">Night Vision:</p>
-                                        <NightVisionDropdown 
-                                            camera={camera} 
-                                            selectNightVision={selectNightVision}
-                                            indoorOrOutdoor={'indoor'}
-                                            index={index}
-                                        />
+                {cameras.indoor.length != 0 &&
+                    <div className="border rounded p-5">
+                        {/* Indoor */}
+                        <h3 className="border-b text-lg pb-3 text-center">Indoor Cameras</h3>
+                        {cameras.indoor.map((camera, index) => {
+                            return(
+                                <div>
+                                    <div className="flex flex-col justify-start items-center flex-wrap mt-4">
+                                        <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
+                                            <Image src={`/images/${camera.housing}-style.png`} width={80} height={57}/>
+                                            <p className="mt-3">{camera.name} </p>
+                                        </div>
+                                        <div className="flex flex-col items-center">
+                                            <p className="font-light mb-1">Viewing Area: {camera.viewingArea}</p>
+                                            <p className="font-light mb-3">Camera Lens: {camera.cameraLens}</p>
+                                            <div className="w-full flex flex-row justify-center items-center">
+                                                <p className="mr-3">Night Vision:</p>
+                                                <NightVisionDropdown 
+                                                    camera={camera} 
+                                                    selectNightVision={selectNightVision}
+                                                    indoorOrOutdoor={'indoor'}
+                                                    index={index}
+                                                />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        )
-                    })}
-                </div>
+                            )})}
+                    </div>
+                }
             </div>
 
             <div className="mt-7 pb-7 text-right">
