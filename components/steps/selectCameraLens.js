@@ -23,7 +23,7 @@ export default function SelectCameraLens({ cameras, selectCameraLens }) {
                 <span className="text-green-700">&#8594;</span> Select <span className="text-green-600 font-normal">manual</span> or <span className="text-green-600 font-normal">motorized</span> zoom lens for  the remaining cameras.
             </p>
 
-            <div className="flex flex-row justify-around items-start mt-10">
+            <div className="flex flex-row justify-around items-center mt-10">
                 {cameras.outdoor.length != 0 &&
                     <div className="border rounded p-5">
                         {/* Outdoor */}
@@ -45,7 +45,6 @@ export default function SelectCameraLens({ cameras, selectCameraLens }) {
                                                 selectCameraLens={selectCameraLens}
                                             />
                                         </div>
-                                        
                                     </div>
                                 </div>
                             )
