@@ -10,8 +10,6 @@ export default function Guide() {
     const [ currentStep, setStep ] = useState(1);
     const [ cameras, setCameras ] = useState({outdoor: [], indoor: []});
     const [ homeOrBusiness, setHomeOrBusiness ] = useState('');
-    const [ indoorSelected, setIndoorSelected ] = useState(false);
-    const [ outdoorSelected, setOutdoorSelected ] = useState(false);
     const [ indoorCount, setIndoorCount ] = useState(0);
     const [ outdoorCount, setOutdoorCount ] = useState(0);
 
@@ -114,11 +112,7 @@ export default function Guide() {
                         enableStep={enableStep}
                         cameras={cameras} 
                         homeOrBusiness={homeOrBusiness} 
-                        setHomeOrBusiness={setHomeOrBusiness} 
-                        indoorSelected={indoorSelected}
-                        outdoorSelected={outdoorSelected}
-                        setIndoorSelected={setIndoorSelected}
-                        setOutdoorSelected={setOutdoorSelected}
+                        setHomeOrBusiness={setHomeOrBusiness}
                         incrementOutdoorCount={incrementOutdoorCount}
                         incrementIndoorCount={incrementIndoorCount}
                         decrementOutdoorCount={decrementOutdoorCount}

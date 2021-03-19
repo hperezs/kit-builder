@@ -6,8 +6,6 @@ import Camera from './SetCameraCount/camera'
 
 export default function SetCameraCount({
     cameras, 
-    indoorSelected, 
-    outdoorSelected, 
     incrementOutdoorCount, 
     incrementIndoorCount, 
     decrementOutdoorCount, 
@@ -26,11 +24,7 @@ export default function SetCameraCount({
             </p>
 
             {/* Outdoor Cameras */}
-            <div className={
-                "flex flex-row items-center mb-10 " + (
-                outdoorSelected ? '' : 'hidden'
-            )
-            }>
+            <div className={"flex flex-row items-center mb-10 "}>
                 <div className="flex flex-col w-2/12 items-center">
                     <span className="text-xl text-gray-700">Outdoors:</span>
                     <div className="flex flex-row justify-center mt-4 w-full" >
@@ -83,11 +77,7 @@ export default function SetCameraCount({
             </div>
 
             {/* Indoor Cameras */}
-            <div className={
-                "flex flex-row items-center " + (
-                indoorSelected ? '' : 'hidden'
-            )
-            }>
+            <div className={"flex flex-row items-center "}>
                 <div className="flex flex-col w-2/12 items-center">
                     <span className="text-xl text-gray-700">Indoors:</span>
                     <div className="flex flex-row justify-center mt-4 w-full" >

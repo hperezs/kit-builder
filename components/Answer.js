@@ -4,7 +4,7 @@ import CameraHousings from './steps/camera_housings'
 import SetCameraCount from './steps/setCameraCount'
 import SelectHousing from './steps/selectHousing'
 import SetCameraLocation from './steps/setCameraLocation'
-import SetSystemType from './steps/setSystemType'
+import SetSystemType from './unused/setSystemType'
 import SelectViewingArea from './steps/selectViewingArea'
 import SelectCameraLens from './steps/selectCameraLens'
 import SelectNightVision from './steps/selectNightVision'
@@ -19,10 +19,6 @@ export default function Answer({
     setHomeOrBusiness, 
     indoorSelected, 
     outdoorSelected, 
-    setIndoorSelected, 
-    setOutdoorSelected, 
-    indoorCount,
-    outdoorCount,
     incrementOutdoorCount,
     incrementIndoorCount,
     decrementOutdoorCount,
@@ -45,21 +41,8 @@ export default function Answer({
         case 2:
             enableStep(currentStep);
             return(
-                <SetCameraLocation 
-                    indoorSelected={indoorSelected}
-                    outdoorSelected={outdoorSelected}
-                    setIndoorSelected={setIndoorSelected}
-                    setOutdoorSelected={setOutdoorSelected}
-                />
-                
-            )
-        case 3:
-            enableStep(currentStep);
-            return(
                 <SetCameraCount 
                     cameras={cameras}
-                    indoorSelected={indoorSelected} 
-                    outdoorSelected={outdoorSelected} 
                     incrementOutdoorCount={incrementOutdoorCount}
                     incrementIndoorCount={incrementIndoorCount}
                     decrementOutdoorCount={decrementOutdoorCount}
@@ -67,7 +50,7 @@ export default function Answer({
                     submitCameraName={submitCameraName}
                 />
             )
-        case 4:
+        case 3:
             enableStep(currentStep);
             return(
                 <section className="h-96 my-10">
@@ -82,12 +65,12 @@ export default function Answer({
                     </div>
                 </section>
             )
-        case 5:
+        case 4:
             enableStep(currentStep);
             return(
                 <CameraHousings />
             )
-        case 6:
+        case 5:
             enableStep(currentStep);
             return(
                 <SelectHousing
@@ -97,27 +80,27 @@ export default function Answer({
                     outdoorSelected={outdoorSelected}
                 />
             )
-        case 7:
+        case 6:
             enableStep(currentStep);
             return(
                 <SelectViewingArea cameras={cameras} selectViewingArea={selectViewingArea} />
             )
-        case 8:
+        case 7:
             enableStep(currentStep);
             return(
                 <SelectCameraLens cameras={cameras} selectCameraLens={selectCameraLens}/>
             )
-        case 9:
+        case 8:
             enableStep(currentStep);
             return(
                 <SelectNightVision cameras={cameras} selectNightVision={selectNightVision} />
             )
-        case 10: 
+        case 9: 
             enableStep(currentStep);
             return(
                 <ChooseCameras cameras={cameras} />
             )
-        case 11: 
+        case 10: 
             enableStep(currentStep);
             return(
                 <ChooseVideoRecorder />
