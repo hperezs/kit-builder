@@ -50,8 +50,8 @@ export default function CameraLensDropdown({ indoorOrOutdoor, camera, index, sel
                 onChange={handleChange}
                 className={classNames}
                 >
-                <option disabled={(camera.viewingArea != '50-180 ft' ? true : false)}>manual zoom</option>
-                <option disabled={(camera.viewingArea != '50-180 ft' ? true : false)}>motorized zoom</option>
+                <option value={'2.8-12mm manual'} disabled={(camera.viewingArea != '50-180 ft' ? true : false)}>manual zoom</option>
+                <option value={'2.8-12mm motorized'} disabled={(camera.viewingArea != '50-180 ft' ? true : false)}>motorized zoom</option>
             </select>
         </div>
         

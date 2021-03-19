@@ -25,7 +25,8 @@ export default function Answer({
     selectHousing,
     selectViewingArea,
     selectCameraLens,
-    selectNightVision
+    selectNightVision,
+    allProducts
     }) {
 
     
@@ -81,7 +82,7 @@ export default function Answer({
         case 8: 
             enableStep(currentStep);
             return(
-                <ChooseCameras cameras={cameras} />
+                <ChooseCameras cameras={cameras} allProducts={allProducts} />
             )
         case 9: 
             enableStep(currentStep);
