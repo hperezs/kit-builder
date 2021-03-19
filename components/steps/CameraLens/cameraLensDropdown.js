@@ -5,16 +5,18 @@ export default function CameraLensDropdown({ indoorOrOutdoor, camera, index, sel
 
     //Select defaults
     useEffect(() => {
-        switch(camera.viewingArea) {
-            case 'Under 50 ft':
-                selectCameraLens(indoorOrOutdoor, '3.6mm fixed', index);
-                break;
-            case '50-180 ft':
-                selectCameraLens(indoorOrOutdoor, '2.8-12mm manual', index);
-                break;
-            case '200-1000 ft':
-                selectCameraLens(indoorOrOutdoor, '4-84+mm motorized', index);
-                break;
+        if(camera.cameraLens == '') {
+            switch(camera.viewingArea) {
+                case 'Under 50 ft':
+                    selectCameraLens(indoorOrOutdoor, '3.6mm fixed', index);
+                    break;
+                case '50-180 ft':
+                    selectCameraLens(indoorOrOutdoor, '2.8-12mm manual', index);
+                    break;
+                case '200-1000 ft':
+                    selectCameraLens(indoorOrOutdoor, '4-84+mm motorized', index);
+                    break;
+            }
         }
     }, [])
 
