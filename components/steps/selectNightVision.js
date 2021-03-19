@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import NightVisionDropdown from '../NightVisionDistance/nightVisionDropdown'
+import NightVisionDropdown from './NightVisionDistance/nightVisionDropdown'
 
 export default function SelectNightVision({ cameras, selectNightVision }) {
 

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import ViewingAreaDropdown from '../CameraLens/viewingAreaDropdown'
+import ViewingAreaDropdown from './CameraLens/viewingAreaDropdown'
 
 export default function SelectViewingArea({ cameras, selectViewingArea }) {
 

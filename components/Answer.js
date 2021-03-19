@@ -1,5 +1,5 @@
 import HomeOrBusiness from './steps/homeOrBusiness'
-import CameraHousings from './steps/camera_housings'
+import CameraHousings from './HowToChooseCameras/CameraHousing/cameraHousings'
 import SetCameraCount from './steps/setCameraCount'
 import SelectHousing from './steps/selectHousing'
 import SelectViewingArea from './steps/selectViewingArea'
@@ -7,6 +7,7 @@ import SelectCameraLens from './steps/selectCameraLens'
 import SelectNightVision from './steps/selectNightVision'
 import ChooseCameras from './steps/chooseCameras'
 import ChooseVideoRecorder from './steps/chooseVideoRecorder'
+import HowToChooseCameras from './steps/howToChooseCameras'
 
 export default function Answer({
     currentStep,
@@ -50,24 +51,9 @@ export default function Answer({
         case 3:
             enableStep(currentStep);
             return(
-                <section className="h-96 my-10">
-                    <div className="text-xl">
-                        <p>Before you choose your cameras, you should know your options. You'll need to consider the following core features when choosing each camera:</p>
-                        <ul className="mt-5 font-light">
-                            <li>- Camera Housing</li>
-                            <li>- Camera Lens</li>
-                            <li>- Camera Resolution</li>
-                            <li>- Night Vision distance</li>
-                        </ul>
-                    </div>
-                </section>
+                <HowToChooseCameras />
             )
         case 4:
-            enableStep(currentStep);
-            return(
-                <CameraHousings />
-            )
-        case 5:
             enableStep(currentStep);
             return(
                 <SelectHousing
@@ -77,27 +63,27 @@ export default function Answer({
                     outdoorSelected={outdoorSelected}
                 />
             )
-        case 6:
+        case 5:
             enableStep(currentStep);
             return(
                 <SelectViewingArea cameras={cameras} selectViewingArea={selectViewingArea} />
             )
-        case 7:
+        case 6:
             enableStep(currentStep);
             return(
                 <SelectCameraLens cameras={cameras} selectCameraLens={selectCameraLens}/>
             )
-        case 8:
+        case 7:
             enableStep(currentStep);
             return(
                 <SelectNightVision cameras={cameras} selectNightVision={selectNightVision} />
             )
-        case 9: 
+        case 8: 
             enableStep(currentStep);
             return(
                 <ChooseCameras cameras={cameras} />
             )
-        case 10: 
+        case 9: 
             enableStep(currentStep);
             return(
                 <ChooseVideoRecorder />

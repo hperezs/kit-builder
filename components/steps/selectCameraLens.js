@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import CameraLensDropdown from '../CameraLens/cameraLensDropdown'
+import CameraLensDropdown from './CameraLens/cameraLensDropdown'
 
 export default function SelectCameraLens({ cameras, selectCameraLens }) {
 

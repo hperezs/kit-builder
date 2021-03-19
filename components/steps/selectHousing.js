@@ -1,4 +1,4 @@
-import AddToCamera from '../CameraHousing/addToCamera';
+import AddToCamera from './CameraHousings/addToCamera';
 
 export default function SelectHousing({ cameras,  selectHousing }) {
 

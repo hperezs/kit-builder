@@ -12,27 +12,24 @@ export default function Question({ currentStep }) {
                 setCurrentQuestion('How many cameras do you need?');
                 break;
             case 3:
-                setCurrentQuestion('Choosing the right cameras');
+                setCurrentQuestion('How to Choose the Right Cameras');
                 break;
             case 4:
-                setCurrentQuestion('About Camera Housings');
-                break;
-            case 5:
                 setCurrentQuestion('Select Camera Housing');
                 break;
-            case 6:
+            case 5:
                 setCurrentQuestion('Before Selecting a Camera Lens');
                 break;
-            case 7:
+            case 6:
                 setCurrentQuestion('Select Camera Lens');
                 break;
-            case 8:
+            case 7:
                 setCurrentQuestion('Night Vision Distance');    
                 break;
-            case 9:
+            case 8:
                 setCurrentQuestion('Choose your cameras');
                 break;
-            case 10:
+            case 9:
                 setCurrentQuestion('Choose a Video Recorder')
         }
     })
