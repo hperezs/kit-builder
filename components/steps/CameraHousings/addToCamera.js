@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { GrAdd } from 'react-icons/gr'
-import { useEffect } from 'react/cjs/react.development';
 
 export default function AddToCamera({camera, indoorOrOutdoor, housing, index, selectHousing}) {
     const [ displayPopover, setDisplayPopover ] = useState(false);

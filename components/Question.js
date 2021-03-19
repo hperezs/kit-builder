@@ -12,7 +12,7 @@ export default function Question({ currentStep }) {
                 setCurrentQuestion('How many cameras do you need?');
                 break;
             case 3:
-                setCurrentQuestion('How to choose the right cameras');
+                setCurrentQuestion('How to Choose the Right Cameras');
                 break;
             case 4:
                 setCurrentQuestion('Select Camera Housing');
