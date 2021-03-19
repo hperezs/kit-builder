@@ -28,8 +28,6 @@ export default function Answer({
     decrementOutdoorCount,
     decrementIndoorCount,
     submitCameraName,
-    cviOrIp,
-    setCviOrIp,
     selectHousing,
     selectViewingArea,
     selectCameraLens,
@@ -47,11 +45,6 @@ export default function Answer({
         case 2:
             enableStep(currentStep);
             return(
-                <SetSystemType cviOrIp={cviOrIp} setCviOrIp={setCviOrIp} />
-            )
-        case 3:
-            enableStep(currentStep);
-            return(
                 <SetCameraLocation 
                     indoorSelected={indoorSelected}
                     outdoorSelected={outdoorSelected}
@@ -60,7 +53,7 @@ export default function Answer({
                 />
                 
             )
-        case 4:
+        case 3:
             enableStep(currentStep);
             return(
                 <SetCameraCount 
@@ -74,7 +67,7 @@ export default function Answer({
                     submitCameraName={submitCameraName}
                 />
             )
-        case 5:
+        case 4:
             enableStep(currentStep);
             return(
                 <section className="h-96 my-10">
@@ -89,12 +82,12 @@ export default function Answer({
                     </div>
                 </section>
             )
-        case 6:
+        case 5:
             enableStep(currentStep);
             return(
                 <CameraHousings />
             )
-        case 7:
+        case 6:
             enableStep(currentStep);
             return(
                 <SelectHousing
@@ -104,27 +97,27 @@ export default function Answer({
                     outdoorSelected={outdoorSelected}
                 />
             )
-        case 8:
+        case 7:
             enableStep(currentStep);
             return(
                 <SelectViewingArea cameras={cameras} selectViewingArea={selectViewingArea} />
             )
-        case 9:
+        case 8:
             enableStep(currentStep);
             return(
                 <SelectCameraLens cameras={cameras} selectCameraLens={selectCameraLens}/>
             )
-        case 10:
+        case 9:
             enableStep(currentStep);
             return(
                 <SelectNightVision cameras={cameras} selectNightVision={selectNightVision} />
             )
-        case 11: 
+        case 10: 
             enableStep(currentStep);
             return(
                 <ChooseCameras cameras={cameras} />
             )
-        case 12: 
+        case 11: 
             enableStep(currentStep);
             return(
                 <ChooseVideoRecorder />

@@ -14,8 +14,7 @@ export default function Guide() {
     const [ outdoorSelected, setOutdoorSelected ] = useState(false);
     const [ indoorCount, setIndoorCount ] = useState(0);
     const [ outdoorCount, setOutdoorCount ] = useState(0);
-    const [ cviOrIp, setCviOrIp ] = useState('');
-    
+
     const default_camera = {
         name: '',
         housing: '',
@@ -125,8 +124,6 @@ export default function Guide() {
                         decrementOutdoorCount={decrementOutdoorCount}
                         decrementIndoorCount={decrementIndoorCount}
                         submitCameraName={submitCameraName}
-                        cviOrIp={cviOrIp}
-                        setCviOrIp={setCviOrIp}
                         selectHousing={selectHousing}
                         selectViewingArea={selectViewingArea}
                         selectCameraLens={selectCameraLens}
