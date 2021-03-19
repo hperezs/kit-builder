@@ -18,7 +18,7 @@ export default function CameraLensDropdown({ indoorOrOutdoor, camera, index, sel
         }
     }, [])
 
-    const classNames = "block w-60 h-14 mt-1 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 ";
+    const classNames = "block h-14 mt-1 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 ";
 
     const handleChange = (event) => {
         let viewingArea = event.target.value;
@@ -26,21 +26,36 @@ export default function CameraLensDropdown({ indoorOrOutdoor, camera, index, sel
         selectCameraLens(indoorOrOutdoor, event.target.value, index);
     }
 
+    if(camera.viewingArea == 'Under 50 ft' || camera.viewingArea == '200-1000 ft') {
+        return (
+            <div>
+                <select
+                    disabled
+                    value={selectedValue}
+                    onChange={handleChange}
+                    className={classNames + 'w-60 ' + (camera.viewingArea == '50-180 ft' ? 'border-green-400 cursor-pointer' : 'bg-gray-50 cursor-not-allowed')}
+                    >
+                    <option>3.6mm fixed</option>
+                    <option>4-84+ mm motorized</option>
+                </select>
+            </div>
+        )
+    }
+
     return(
-        <div>
+        <div className="flex flex-row items-center">
+            <span className="mr-3">2.8-12mm</span>
             <select
-                disabled={(camera.viewingArea == 'Under 50 ft' || camera.viewingArea == '200-1000 ft' ? true : false)}
                 value={selectedValue}
                 onChange={handleChange}
-                placeholder="Select"
-                className={classNames + (camera.viewingArea == '50-180 ft' ? 'border-green-400 cursor-pointer' : 'bg-gray-50 cursor-not-allowed')}
+                className={classNames}
                 >
-                <option disabled={(camera.viewingArea != 'Under 50 ft' ? true : false)}>3.6mm fixed</option>
-                <option disabled={(camera.viewingArea != '50-180 ft' ? true : false)}>2.8-12mm manual</option>
-                <option disabled={(camera.viewingArea != '50-180 ft' ? true : false)}>2.8-12mm motorized</option>
-                <option disabled={(camera.viewingArea != '200-1000 ft' ? true : false)}>4-84+mm motorized</option>
+                <option disabled={(camera.viewingArea != '50-180 ft' ? true : false)}>manual zoom</option>
+                <option disabled={(camera.viewingArea != '50-180 ft' ? true : false)}>motorized zoom</option>
             </select>
         </div>
         
     )
+
+    
 }
