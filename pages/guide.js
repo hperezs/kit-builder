@@ -12,6 +12,17 @@ export default function Guide() {
     const [ homeOrBusiness, setHomeOrBusiness ] = useState('');
     const [ indoorCount, setIndoorCount ] = useState(0);
     const [ outdoorCount, setOutdoorCount ] = useState(0);
+    const [ allProducts, setAllProducts ] = useState([]);
+
+    useEffect(() => {
+        fetch('/api/getAllProducts')
+            .then(response => {
+                response.json().then(data => {
+                    console.log(data);
+                    setAllProducts(data);
+                })
+            })
+    }, [])
 
     const default_camera = {
         name: '',
@@ -122,6 +133,7 @@ export default function Guide() {
                         selectViewingArea={selectViewingArea}
                         selectCameraLens={selectCameraLens}
                         selectNightVision={selectNightVision}
+                        allProducts={allProducts}
                     />
                 </div>
                 <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">
