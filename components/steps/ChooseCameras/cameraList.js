@@ -29,11 +29,11 @@ export default function CameraList({cameras}) {
                                             if(camera.housing == 'bullet' && camera.cameraLens == '2.8-12mm manual') return(
                                                 camera.housing == product.housingStyle &&
                                                 product.cameraLens == '2.8-12mm manual'
-                                            )
+                                            )                                            
 
                                             if(camera.housing == 'bullet' && camera.cameraLens == '2.8-12mm motorized') return(
                                                 camera.housing == product.housingStyle &&
-                                                product.cameraLens.includes('2.8-12mm motorized')
+                                                product.cameraLens.includes('motorized')
                                             )
                     
                                             if(camera.housing == 'dome' && camera.cameraLens == '2.8-12mm motorized') return (

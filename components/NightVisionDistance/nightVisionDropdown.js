@@ -12,7 +12,7 @@ export default function NightVisionDropdown({ camera, selectNightVision, indoorO
             case '50-180 ft':
                 if(camera.housing == 'dome'){
                     selectNightVision(indoorOrOutdoor, '60ft+', index);
-                }else if (camera.housing == 'bullet' && camera.cameraLens == '2.8-12mm manual') {
+                } else if (camera.housing == 'bullet' && camera.viewingArea == '50-180 ft') {
                     selectNightVision(indoorOrOutdoor, '120ft+', index);
                 } else {
                     selectNightVision(indoorOrOutdoor, '70ft', index);
@@ -41,7 +41,7 @@ export default function NightVisionDropdown({ camera, selectNightVision, indoorO
         )
     }
 
-    if (camera.housing == 'bullet' && camera.cameraLens == '2.8-12mm manual'){
+    if (camera.housing == 'bullet' && camera.viewingArea == '50-180 ft'){
         return(
             <select disabled className={classNames + 'bg-gray-50 cursor-not-allowed'}>
                 <option>120ft+</option>
