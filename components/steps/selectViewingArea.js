@@ -9,14 +9,14 @@ export default function SelectViewingArea({ cameras, selectViewingArea }) {
             <p className="text-2xl font-light my-10"><span className="text-green-700">&#8594;</span> Select the <span className="text-green-600 font-normal">lenght of the viewing area</span> for each of your cameras.</p>
 
             <div className="flex flex-row justify-center mt-20">
-                <div className="flex flex-row justify-between items-start sm:w-full md:w-11/12 lg:w-10/12 xl:w-9/12 2xl:w-8/12 ">
+                <div className="flex flex-row justify-center items-start sm:w-full md:w-11/12 lg:w-10/12 xl:w-9/12 2xl:w-8/12 ">
                     {/* Outdoor */}
                     {cameras.outdoor.length != 0 && 
-                        <div className="border rounded p-5">
+                        <div className="border rounded p-5 mr-20">
                             <h3 className="border-b text-lg pb-3 text-center">Outdoor Cameras</h3>
                             {cameras.outdoor.map((camera, index) => {
                                 return(
-                                    <div className="flex flex-row justify-start items-center flex-wrap mt-4">
+                                    <div className="flex flex-col justify-center items-center px-7 mt-4">
                                         <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
                                             <Image src={`/images/${camera.housing}-style.png`} width={80} height={57}/>
                                             <p className="mt-3">{camera.name} </p>
@@ -34,11 +34,11 @@ export default function SelectViewingArea({ cameras, selectViewingArea }) {
                     }
                     {/* Indoor */}
                     {cameras.indoor.length != 0 &&
-                        <div className="border rounded p-5">
+                        <div className="border rounded p-5 ml-20">
                             <h3 className="border-b text-lg pb-3 text-center">Indoor Cameras</h3>
                             {cameras.indoor.map((camera, index) => {
                                 return(
-                                    <div className="flex flex-row justify-start items-center flex-wrap mt-4">
+                                    <div className="flex flex-col justify-center items-center px-7 mt-4">
                                         <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
                                             <Image src={`/images/${camera.housing}-style.png`} width={80} height={57}/>
                                             <p className="mt-3">{camera.name} </p>
