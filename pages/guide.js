@@ -34,11 +34,13 @@ export default function Guide() {
     }
 
     const nextStep = () => {
-        setStep(currentStep + 1)
+        setStep(currentStep + 1);
+        window.scrollTo(0, 0);
     }
 
     const prevStep = () => {
-        setStep(currentStep - 1)
+        setStep(currentStep - 1);
+        window.scrollTo(0, 0);
     }
 
     const enableStep = (step) => {
