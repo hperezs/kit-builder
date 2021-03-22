@@ -4,7 +4,7 @@ import { IoMdClose } from 'react-icons/io'
 import ViewingAreaDropdown from './CameraLens/viewingAreaDropdown' 
 import CameraLensDropdown from './CameraLens/cameraLensDropdown'
 import NightVisionDropdown from './NightVisionDistance/nightVisionDropdown'
-import RecommendedCameras from "./recommendedCameras"
+import RecommendedCameras from "./RecommendedCameras"
 import SelectHousing from "./CameraHousings/SelectHousing"
 
 export default function AddNewCamera({displayAddNewCamera , allProducts, selectNewCamera, isAddingNewCamera, setIsAddingNewCamera}) {
