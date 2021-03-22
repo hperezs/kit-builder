@@ -1,11 +1,11 @@
 import { useState } from "react"
 import { BiEditAlt, BiCheck } from 'react-icons/bi' 
 import { IoMdClose } from 'react-icons/io'
-import ViewingAreaDropdown from './CameraLens/viewingAreaDropdown' 
-import CameraLensDropdown from './CameraLens/cameraLensDropdown'
-import NightVisionDropdown from './NightVisionDistance/nightVisionDropdown'
+import ViewingAreaDropdown from './dropdowns/viewingAreaDropdown' 
+import CameraLensDropdown from './dropdowns/cameraLensDropdown'
+import NightVisionDropdown from './dropdowns/nightVisionDropdown'
 import RecommendedCameras from "./RecommendedCameras"
-import SelectHousing from "./CameraHousings/SelectHousing"
+import SelectHousing from "./SelectHousing"
 
 export default function AddNewCamera({displayAddNewCamera , allProducts, selectNewCamera, isAddingNewCamera, setIsAddingNewCamera}) {
     const [isEditingName, setIsEditingName] = useState(false);

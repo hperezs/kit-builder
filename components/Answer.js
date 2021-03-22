@@ -31,7 +31,7 @@ export default function Answer({
             return(
                 <ChooseCameras allProducts={allProducts} selectNewCamera={selectNewCamera} cameras={cameras}/>
             )
-        case 9: 
+        case 4: 
             enableStep(currentStep);
             return(
                 <ChooseVideoRecorder />
