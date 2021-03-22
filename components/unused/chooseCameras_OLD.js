@@ -1,4 +1,4 @@
-import CameraList from "./ChooseCameras/cameraList";
+import CameraList from "../steps/ChooseCameras/cameraList";
 
 export default function ChooseCameras({ cameras, allProducts }) {
 

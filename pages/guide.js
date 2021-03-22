@@ -8,10 +8,8 @@ import { default_steps } from "../lib/steps";
 export default function Guide() {
     const [ steps, setSteps ] = useState(default_steps)
     const [ currentStep, setStep ] = useState(1);
-    const [ cameras, setCameras ] = useState({outdoor: [], indoor: []});
+    const [ cameras, setCameras ] = useState([]);
     const [ homeOrBusiness, setHomeOrBusiness ] = useState('');
-    const [ indoorCount, setIndoorCount ] = useState(0);
-    const [ outdoorCount, setOutdoorCount ] = useState(0);
     const [ allProducts, setAllProducts ] = useState([]);
 
     useEffect(() => {
@@ -34,11 +32,13 @@ export default function Guide() {
     }
 
     const nextStep = () => {
-        setStep(currentStep + 1)
+        setStep(currentStep + 1);
+        window.scrollTo(0, 0);
     }
 
     const prevStep = () => {
-        setStep(currentStep - 1)
+        setStep(currentStep - 1);
+        window.scrollTo(0, 0);
     }
 
     const enableStep = (step) => {
@@ -47,70 +47,11 @@ export default function Guide() {
         setSteps(temp_steps);
     }
 
-    const incrementOutdoorCount = () => {
-        let temp_cameras = cameras;
-        let new_camera = default_camera;
-        new_camera.name = 'Camera ' + (outdoorCount + 1);
-        temp_cameras.outdoor.push(new_camera);
-        setCameras(temp_cameras);
-        setOutdoorCount(outdoorCount + 1);
+    const selectNewCamera = (camera) => {
+        let cameras_copy = cameras;
+        cameras_copy.push(camera);
+        setCameras(cameras_copy)
     }
-
-    const decrementOutdoorCount = () => {
-        setOutdoorCount(outdoorCount - 1);
-        let temp_cameras = cameras;
-        temp_cameras.outdoor.pop();
-        setCameras(temp_cameras);
-    }
-
-    const incrementIndoorCount = () => {
-        let temp_cameras = cameras;
-        let new_camera = default_camera; 
-        new_camera.name = 'Camera ' + (indoorCount + 1);
-        temp_cameras.indoor.push(default_camera);
-        setCameras(temp_cameras);
-        setIndoorCount(indoorCount + 1);
-    }
-
-    const decrementIndoorCount = () => {
-        setIndoorCount(indoorCount - 1);
-        let temp_cameras = cameras;
-        temp_cameras.indoor.pop();
-        setCameras(temp_cameras);
-    }
-
-    const submitCameraName = (indoorOrOutdoor, cameraName, index) => {
-        let temp_cameras = cameras;
-        temp_cameras[indoorOrOutdoor][index].name = cameraName;
-        setCameras(temp_cameras);
-        console.log(temp_cameras);
-    }
-
-    const selectHousing = (indoorOrOutdoor, housingSelected, index) => {
-        console.log('running selectHousing...');
-        let temp_cameras = cameras;
-        temp_cameras[indoorOrOutdoor][index].housing = housingSelected;
-        setCameras(temp_cameras);
-    }
-
-    const selectViewingArea = (indoorOrOutdoor, viewingArea, index) => {
-        let temp_cameras = cameras;
-        temp_cameras[indoorOrOutdoor][index].viewingArea = viewingArea;
-        setCameras(temp_cameras);
-    }
-
-    const selectCameraLens = (indoorOrOutdoor, cameraLens, index) => {
-        let temp_cameras = cameras;
-        temp_cameras[indoorOrOutdoor][index].cameraLens = cameraLens;
-        setCameras(temp_cameras);
-    }
-
-    const selectNightVision = (indoorOrOutdoor, nightVisionDist, index) => {
-        let temp_cameras = cameras;
-        console.log('selectNightVision args: ' + indoorOrOutdoor + nightVisionDist + index)
-        temp_cameras[indoorOrOutdoor][index].nightVisionDist = nightVisionDist;
-        setCameras(temp_cameras);
-}
     
     return(
         <main className="flex flex-row justify-center items-start mt-14">
@@ -124,27 +65,18 @@ export default function Guide() {
                         cameras={cameras} 
                         homeOrBusiness={homeOrBusiness} 
                         setHomeOrBusiness={setHomeOrBusiness}
-                        incrementOutdoorCount={incrementOutdoorCount}
-                        incrementIndoorCount={incrementIndoorCount}
-                        decrementOutdoorCount={decrementOutdoorCount}
-                        decrementIndoorCount={decrementIndoorCount}
-                        submitCameraName={submitCameraName}
-                        selectHousing={selectHousing}
-                        selectViewingArea={selectViewingArea}
-                        selectCameraLens={selectCameraLens}
-                        selectNightVision={selectNightVision}
                         allProducts={allProducts}
+                        selectNewCamera={selectNewCamera}
                     />
                 </div>
                 <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">
                     <div className="flex flex-col justify-center 2xl:w-8/12 xl:w-9/12 lg:w-10/12 md:w-11/12">
                         <Actions nextStep={nextStep} prevStep={prevStep} currentStep={currentStep} />
-                        <NavMenu currentStep={currentStep} setStep={setStep} steps={steps}/>
+                        {/* <NavMenu currentStep={currentStep} setStep={setStep} steps={steps}/> */}
                     </div>
                 </div>
                 
             </div>
-            
         </main>
     )
 }

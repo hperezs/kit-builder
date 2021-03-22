@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import EditCamera from './editCamera';
 
 export default function CameraList({cameras, allProducts}) {
     const [isLoading, setIsLoading] = useState(true);
@@ -112,7 +113,7 @@ export default function CameraList({cameras, allProducts}) {
                                                             <p className="font-light mb-1">Viewing Area: {cameraArray[0].viewingArea}</p>
                                                             <p className="font-light mb-1">Lens: {cameraArray[0].cameraLens}</p>
                                                             <p className="font-light mb-1">Night Vision: {cameraArray[0].nightVisionDist}</p>
-                                                            <button className={edit_styles}>Edit this camera</button>
+                                                            <EditCamera camera={cameraArray[0]}/>
                                                         </div>
                                                     </div>
                                                 </td>
