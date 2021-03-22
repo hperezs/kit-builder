@@ -44,7 +44,7 @@ export default function ChooseCameras({allProducts, selectNewCamera, cameras}) {
                                             </div>
                                         </div>
                                         <div className="flex flex-col items-center">
-                                            <p className="text-lg mb-3 border-b border-gray-500 px-3">{camera.cameraName}</p>
+                                        <p className={"text-lg mb-3 border-b border-gray-500 px-3 " + (camera.cameraName == '' ? 'hidden' : '')}>{camera.cameraName}</p>
                                             <p className="">{camera.sku} </p>
                                             <p className="font-light mb-1">Lens: {camera.cameraLens}</p>
                                             <p className="font-light mb-1">Night Vision: {camera.nightVision}</p>
