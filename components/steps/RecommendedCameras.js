@@ -20,7 +20,7 @@ export default function RecommendedCameras({allProducts, cameraHousing, cameraLe
             
                                     if(cameraHousing == 'dome' && cameraLens == '2.8-12mm motorized') return (
                                         cameraHousing == product.housingStyle &&
-                                        (cameraLens == product.cameraLens || product.cameraLens.includes('motorized'))
+                                        (cameraLens == product.cameraLens || product.cameraLens?.includes('motorized'))
                                     )
 
                                     if(cameraHousing == 'dome' && cameraLens == '2.8-12mm manual')return(
