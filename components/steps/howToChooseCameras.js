@@ -17,32 +17,33 @@ export default function HowToChooseCameras() {
             <div className="text-xl">
                 <p>Before you choose your cameras, spend some time looking at these key camera features. You'll need to consider them when choosing each camera.</p>
                 <br/> 
+                <div id="featureDescription"></div>
                 <p className="font-light rounded p-3 bg-green-50"><span className="text-green-700">&#8594;</span> When you are ready to move on, click <span className="text-green-600 font-normal">Next</span>.</p>
 
                 <div className="flex flex-row justify-evenly mt-10">
                     <a
-                        href="#cameraHousings"
+                        href="#featureDescription"
                         tabIndex={0}
                         onClick={e => setActiveFeature('cameraHousing')} 
                         className={feature_card_styles + (activeFeature == 'cameraHousing' ? active_card_styles : 'hover:bg-green-50 hover:shadow-lg hover:border-green-300')}>
                         <span className="text-5xl mb-5 mt-3 text-gray-700"><BsShieldShaded /></span>Camera Housing
                     </a>
                     <a  
-                        href="#cameraLenses"
+                        href="#featureDescription"
                         tabIndex={0}
                         onClick={e => setActiveFeature('cameraLens')} 
                         className={feature_card_styles + (activeFeature == 'cameraLens' ? active_card_styles : 'hover:bg-green-50 hover:shadow-lg hover:border-green-300')}>
                         <span className="text-5xl mb-5 mt-3 text-gray-700"><RiCameraLensFill /></span>Camera Lens
                     </a>
                     <a
-                        href="#nightVision"
+                        href="#featureDescription"
                         tabIndex={0}
                         onClick={e => setActiveFeature('nightVision')} 
                         className={feature_card_styles + (activeFeature == 'nightVision' ? active_card_styles : 'hover:bg-green-50 hover:shadow-lg hover:border-green-300')}>
                         <span className="text-5xl mb-5 mt-3 text-gray-700"><CgDarkMode /></span>Night Vision
                     </a>
                     <a  
-                        href="#resolution"
+                        href="#featureDescription"
                         tabIndex={0}
                         onClick={e => setActiveFeature('resolution')} 
                         className={feature_card_styles + (activeFeature == 'resolution' ? active_card_styles : 'hover:bg-green-50 hover:shadow-lg hover:border-green-300')}>

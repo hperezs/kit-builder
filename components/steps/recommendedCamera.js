@@ -14,7 +14,7 @@ export default function RecommendedCamera({camera, handleSelect}) {
 
     return(
         <div 
-            className="flex flex-col justify-start items-center flex-wrap my-10 mx-3 border rounded p-3 cursor-pointer hover:shadow-lg hover:border-green-300 ">
+            className="flex flex-col justify-start items-center flex-wrap my-10 mx-3 border rounded p-3 hover:shadow-lg hover:border-green-300 ">
             <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
                 <div className={"flex flex-row justify-center items-center " + (!isLoading ? 'hidden' : '')} style={{height: '86px', width: '120px'}}>
                     <ReactLoading type="spin" color="#a6e3b6" />
@@ -37,8 +37,10 @@ export default function RecommendedCamera({camera, handleSelect}) {
                 <p className="font-light mb-1">Night Vision: {camera.nightVision}</p>
                 <p className="font-light mb-1">Resolution: {camera.resolution}</p>
                 <p className={"font-light mb-1 " + (camera.hasAudio ? 'text-blue-600' : '')}>{camera.hasAudio ? 'Built-in Microphone' : ' No Audio'}</p>
+                <p className="font-bold mb-1 text-yellow-500"><span className="line-through">${camera.oldPrice}</span> Save Big!</p>
                 <p className="font-normal text-green-600">${camera.price?.$numberDecimal}</p>
                 <button className={addToCart_styles} onClick={e => handleSelect(camera)}>Select Camera</button>
+                <a href={backstreet_domain + camera.productLink} target="_blank" className="font-light text-green-600 hover:text-green-400">See more details</a>
             </div>
         </div>
     )
