@@ -87,7 +87,7 @@ export default function StepDescription({currentStep}) {
                         <div style={{height: '300px', width: '520px'}}> 
                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                 <Image
-                                    src={'/images/name-camera.png'}
+                                    src={'/images/add-camera-name.png'}
                                     layout="fill"
                                     objectFit="contain"
                                     quality={100}
@@ -106,7 +106,7 @@ export default function StepDescription({currentStep}) {
                         <div style={{height: '300px', width: '520px'}}> 
                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                 <Image
-                                    src={'/images/select-camera.png'}
+                                    src={'/images/recommended-cameras.png'}
                                     layout="fill"
                                     objectFit="contain"
                                     quality={100}
