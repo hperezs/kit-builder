@@ -14,7 +14,9 @@ export default function Answer({
     selectNewCamera,
     deleteCamera,
     selectedNVR,
-    selectNVR
+    selectNVR,
+    hasSeenInstructions,
+    setHasSeenInstructions
     }) {
 
     switch(currentStep) {
@@ -23,22 +25,21 @@ export default function Answer({
                 <HomeOrBusiness homeOrBusiness={homeOrBusiness} setHomeOrBusiness={setHomeOrBusiness}/>
             )
         case 2:
-            enableStep(currentStep);
             return(
                 <HowToChooseCameras />
             )
         case 3:
-            enableStep(currentStep);
             return(
                 <ChooseCameras 
                     allProducts={allProducts} 
                     selectNewCamera={selectNewCamera} 
                     cameras={cameras} 
                     deleteCamera={deleteCamera} 
+                    hasSeenInstructions={hasSeenInstructions}
+                    setHasSeenInstructions={setHasSeenInstructions}
                 />
             )
         case 4: 
-            enableStep(currentStep);
             return(
                 <ChooseVideoRecorder 
                     cameras={cameras} 
@@ -46,6 +47,10 @@ export default function Answer({
                     selectedNVR={selectedNVR} 
                     selectNVR={selectNVR}
                 />
+            )
+        case 5:
+            return(
+                <div>End of the line. Going to the next page will result in a crash.</div>
             )
     }    
 }
