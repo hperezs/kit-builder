@@ -1,6 +1,6 @@
 import HomeOrBusiness from './steps/homeOrBusiness'
 import ChooseCameras from './steps/ChooseCameras.js'
-import ChooseVideoRecorder from './steps/chooseVideoRecorder'
+import ChooseVideoRecorder from './steps/ChooseVideoRecorder'
 import HowToChooseCameras from './steps/howToChooseCameras'
 
 export default function Answer({
@@ -10,14 +10,15 @@ export default function Answer({
     homeOrBusiness,
     setHomeOrBusiness, 
     allProducts,
-    selectNewCamera
+    videoRecorders,
+    selectNewCamera,
+    deleteCamera,
+    selectedNVR,
+    selectNVR
     }) {
-
-    
 
     switch(currentStep) {
         case 1:
-            enableStep(currentStep);
             return(
                 <HomeOrBusiness homeOrBusiness={homeOrBusiness} setHomeOrBusiness={setHomeOrBusiness}/>
             )
@@ -29,12 +30,22 @@ export default function Answer({
         case 3:
             enableStep(currentStep);
             return(
-                <ChooseCameras allProducts={allProducts} selectNewCamera={selectNewCamera} cameras={cameras}/>
+                <ChooseCameras 
+                    allProducts={allProducts} 
+                    selectNewCamera={selectNewCamera} 
+                    cameras={cameras} 
+                    deleteCamera={deleteCamera} 
+                />
             )
         case 4: 
             enableStep(currentStep);
             return(
-                <ChooseVideoRecorder />
+                <ChooseVideoRecorder 
+                    cameras={cameras} 
+                    videoRecorders={videoRecorders} 
+                    selectedNVR={selectedNVR} 
+                    selectNVR={selectNVR}
+                />
             )
     }    
 }

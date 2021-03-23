@@ -9,8 +9,10 @@ export default function Guide() {
     const [ steps, setSteps ] = useState(default_steps)
     const [ currentStep, setStep ] = useState(1);
     const [ cameras, setCameras ] = useState([]);
+    const [ selectedNVR, setSelectedNVR ] = useState('');
     const [ homeOrBusiness, setHomeOrBusiness ] = useState('');
     const [ allProducts, setAllProducts ] = useState([]);
+    const [ videoRecorders, setAllVideoRecorders ] = useState([]);
 
     useEffect(() => {
         fetch('/api/getAllProducts')
@@ -18,6 +20,13 @@ export default function Guide() {
                 response.json().then(data => {
                     console.log(data);
                     setAllProducts(data);
+                })
+            })
+        fetch('/api/getVideoRecorders')
+            .then(response => {
+                response.json().then(data => {
+                    console.log(data);
+                    setAllVideoRecorders(data);
                 })
             })
     }, [])
@@ -52,6 +61,17 @@ export default function Guide() {
         cameras_copy.push(camera);
         setCameras(cameras_copy)
     }
+
+    const deleteCamera = index => {
+        let new_cameras = cameras;
+        new_cameras.splice(index, 1);
+        setCameras(new_cameras);
+        
+    }
+
+    const selectNVR = nvr => {
+        setSelectedNVR(nvr);
+    }
     
     return(
         <main className="flex flex-row justify-center items-start mt-14">
@@ -66,7 +86,11 @@ export default function Guide() {
                         homeOrBusiness={homeOrBusiness} 
                         setHomeOrBusiness={setHomeOrBusiness}
                         allProducts={allProducts}
+                        videoRecorders={videoRecorders}
                         selectNewCamera={selectNewCamera}
+                        deleteCamera={deleteCamera}
+                        selectedNVR={selectedNVR}
+                        selectNVR={selectNVR}
                     />
                 </div>
                 <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">

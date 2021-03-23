@@ -22,26 +22,26 @@ export default function SelectHousing({ cameraHousing, setCameraHousing}) {
         >
             {(housingStyle == '') ? 
                 <div className="flex flex-col justify-center items-center py-3"><GrAdd className="text-2xl mb-5" /><p>Click to select housing</p></div> : 
-                <Image src={`/images/${housingStyle}-style.png`} width={80} height={57}/>}
+                <Image loading="eager" src={`/images/${housingStyle}-style.png`} width={80} height={57}/>}
 
             <div className={(!displayPopover ? 'hidden' : popover_style )}>
-                <div className="p-5 hover:shadow-lg border hover:border-green-400"
+                <div className="p-3 hover:shadow-lg border hover:border-green-400"
                      onClick={e => submitHousing('dome')}
                 >
-                    <Image src={`/images/dome-style.png`} width={80} height={57}/>
-                    <p>Dome</p>
+                    <Image loading="eager" src={`/images/dome-style.png`} width={80} height={57}/>
+                    <p className="text-center mt-2">Dome</p>
                 </div>
-                <div className="p-5 hover:shadow-lg border hover:border-green-400"
+                <div className="p-3 hover:shadow-lg border hover:border-green-400"
                      onClick={e => submitHousing('bullet')}
                 >
-                    <Image src={`/images/bullet-style.png`} width={80} height={57}/>
-                    <p>Bullet</p>
+                    <Image loading="eager" src={`/images/bullet-style.png`} width={80} height={57}/>
+                    <p className="text-center mt-2">Bullet</p>
                 </div>
-                <div className="p-5 hover:shadow-lg border hover:border-green-400"
+                <div className="p-3 hover:shadow-lg border hover:border-green-400"
                      onClick={e => submitHousing('ptz')}
                 >
-                    <Image src={`/images/ptz-style.png`} width={80} height={57}/>
-                    <p>PTZ</p>
+                    <Image loading="eager" src={`/images/ptz-style.png`} width={80} height={57}/>
+                    <p className="text-center mt-2">PTZ</p>
                 </div>
             </div>
         </div>
