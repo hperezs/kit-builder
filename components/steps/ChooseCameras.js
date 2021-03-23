@@ -3,8 +3,9 @@ import AddNewCamera from "./AddNewCamera";
 import Image from 'next/image'
 import { backstreet_domain } from '../../lib/backstreet_domain'
 import {FaRegWindowClose} from 'react-icons/fa'
+import Instructions from "./instructions";
 
-export default function ChooseCameras({allProducts, selectNewCamera, cameras, deleteCamera}) {
+export default function ChooseCameras({allProducts, selectNewCamera, cameras, deleteCamera, hasSeenInstructions, setHasSeenInstructions}) {
     const [isAddingNewCamera, setIsAddingNewCamera] = useState(true);
     const [displayDeleteBtn, setDisplayDeleteBtn] = useState(false);
 
@@ -84,6 +85,8 @@ export default function ChooseCameras({allProducts, selectNewCamera, cameras, de
                     </div>
                 </section>
             }
+
+            <Instructions hasSeenInstructions={hasSeenInstructions} setHasSeenInstructions={setHasSeenInstructions} />
             
         </section>
     )

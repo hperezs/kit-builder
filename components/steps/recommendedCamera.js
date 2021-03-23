@@ -35,7 +35,7 @@ export default function RecommendedCamera({camera, handleSelect}) {
                 <p className="">{camera.sku} </p>
                 <p className="font-light mb-1">Lens: {camera.cameraLens}</p>
                 <p className="font-light mb-1">Night Vision: {camera.nightVision}</p>
-                <p className="font-light mb-1">Resolution: {camera.resolution}</p>
+                <p className={"font-light mb-1 " + (camera.resolution == '4K' ? 'text-yellow-600' : '')}>Resolution: {camera.resolution}</p>
                 <p className={"font-light mb-1 " + (camera.hasAudio ? 'text-blue-600' : '')}>{camera.hasAudio ? 'Built-in Microphone' : ' No Audio'}</p>
                 <p className="font-bold mb-1 text-yellow-500"><span className="line-through">${camera.oldPrice}</span> Save Big!</p>
                 <p className="font-normal text-green-600">${camera.price?.$numberDecimal}</p>

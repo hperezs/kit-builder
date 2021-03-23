@@ -1,4 +1,4 @@
-import NavStep from './steps/navStep';
+
 
 export default function NavMenu({currentStep, setStep, steps}) {
 

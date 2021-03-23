@@ -17,6 +17,9 @@ export default function Question({ currentStep }) {
             case 4:
                 setCurrentQuestion('Choose a Video Recorder')
                 break;
+            case 5:
+                setCurrentQuestion('In progress');
+                break;
         }
     })
     

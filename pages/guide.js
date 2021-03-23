@@ -13,6 +13,7 @@ export default function Guide() {
     const [ homeOrBusiness, setHomeOrBusiness ] = useState('');
     const [ allProducts, setAllProducts ] = useState([]);
     const [ videoRecorders, setAllVideoRecorders ] = useState([]);
+    const [ hasSeenInstructions, setHasSeenInstructions ] = useState(false);
 
     useEffect(() => {
         fetch('/api/getAllProducts')
@@ -91,6 +92,8 @@ export default function Guide() {
                         deleteCamera={deleteCamera}
                         selectedNVR={selectedNVR}
                         selectNVR={selectNVR}
+                        hasSeenInstructions={hasSeenInstructions}
+                        setHasSeenInstructions={setHasSeenInstructions}
                     />
                 </div>
                 <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">
