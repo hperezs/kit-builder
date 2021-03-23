@@ -24,7 +24,7 @@ export default function ChooseCameras({allProducts, selectNewCamera, cameras, de
     const editButton_styles = "px-3 py-1 uppercase font-bold border rounded bg-yellow-500 text-white text-sm mb-3 transition hover:bg-yellow-400 focus:outline-none focus:border-yellow-300 focus:ring focus:ring-yellow-200 focus:ring-opacity-500 ";
 
     return(
-        <section className="my-10">
+        <section className="my-10 relative">
             <button 
                 onClick={e => setIsAddingNewCamera(true)}
                 className={addCameraButton_styles + (isAddingNewCamera ? 'hidden' : '')}

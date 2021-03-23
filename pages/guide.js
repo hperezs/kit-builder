@@ -76,7 +76,7 @@ export default function Guide() {
     
     return(
         <main className="flex flex-row justify-center items-start mt-14">
-            <div className="flex flex-col justify-center 2xl:w-8/12 xl:w-9/12 lg:w-10/12 md:w-11/12">
+            <div className="flex flex-col justify-center 2xl:w-8/12 xl:w-10/12 lg:w-10/12 md:w-11/12">
                 <Question currentStep={currentStep} />
                 <hr className="mt-5"/>
                 <div className="pb-44">
