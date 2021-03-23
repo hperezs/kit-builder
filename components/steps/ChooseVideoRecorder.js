@@ -1,7 +1,7 @@
 import VideoRecorder from "./videoRecorder"
 import Image from 'next/image'
 import { backstreet_domain } from '../../lib/backstreet_domain'
-import { useEffect } from "react/cjs/react.development";
+import { useEffect } from "react";
 
 export default function ChooseVideoRecorder({cameras, videoRecorders, selectedNVR, selectNVR}) {
 
