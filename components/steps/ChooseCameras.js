@@ -20,20 +20,24 @@ export default function ChooseCameras({allProducts, selectNewCamera, cameras, de
         deleteCamera(index);
     }
 
-    const addCameraButton_styles = "ml-5 px-5 uppercase font-bold text-sm py-3 bg-green-500 text-white rounded hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
+    const addCameraButton_styles = "mr-5 px-5 uppercase font-bold text-sm py-3 bg-green-600 text-white rounded hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
     const editButton_styles = "px-3 py-1 uppercase font-bold border rounded bg-yellow-500 text-white text-sm mb-3 transition hover:bg-yellow-400 focus:outline-none focus:border-yellow-300 focus:ring focus:ring-yellow-200 focus:ring-opacity-500 ";
 
     return(
-        <section className="my-10">
-            <button 
-                onClick={e => setIsAddingNewCamera(true)}
-                className={addCameraButton_styles + (isAddingNewCamera ? 'hidden' : '')}
-            >
-                Add a camera
-            </button>
+        <section className="my-10 relative">
+            <div className="flex flex-row justify-center">
+                <button 
+                    onClick={e => setIsAddingNewCamera(true)}
+                    className={addCameraButton_styles + (isAddingNewCamera ? 'hidden' : '')}
+                >
+                    Add a camera
+                </button>
+
+                <Instructions hasSeenInstructions={hasSeenInstructions} setHasSeenInstructions={setHasSeenInstructions} />
+            </div>
+            
 
             <AddNewCamera displayAddNewCamera={true} allProducts={allProducts} selectNewCamera={selectNewCamera} isAddingNewCamera={isAddingNewCamera} setIsAddingNewCamera={setIsAddingNewCamera}/>
-
 
             {/* Camera List */}
             {cameras.length != 0 &&
@@ -85,8 +89,6 @@ export default function ChooseCameras({allProducts, selectNewCamera, cameras, de
                     </div>
                 </section>
             }
-
-            <Instructions hasSeenInstructions={hasSeenInstructions} setHasSeenInstructions={setHasSeenInstructions} />
             
         </section>
     )

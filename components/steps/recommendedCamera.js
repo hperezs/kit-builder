@@ -1,14 +1,30 @@
 import ReactLoading from 'react-loading'
 import Image from 'next/image'
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { backstreet_domain } from '../../lib/backstreet_domain'
 
 export default function RecommendedCamera({camera, handleSelect}) {
     const [isLoading, setIsLoading] = useState(true);
+    const [onLoadCount, setOnLoadCount] = useState(0);
+
+    const image = useRef();
 
     useEffect(() => {
         setIsLoading(true)
+        
     }, [camera])
+
+    const handleOnLoad = () => {
+        // Nextjs calls onLoad twice apparently, so I'm waiting for the second time to setIsLoading to true when it is actually done loading
+        console.log('On load ran for ' + camera.sku + ' count: ' + onLoadCount)
+        if(onLoadCount == 0) {
+            setOnLoadCount(onLoadCount + 1)
+        }
+        if(onLoadCount == 1) {
+            setIsLoading(false);
+            setOnLoadCount(0);
+        }
+    }
 
     const addToCart_styles = "px-3 py-1 border rounded bg-green-600 text-white text-sm mt-3 transition hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
 
@@ -22,6 +38,7 @@ export default function RecommendedCamera({camera, handleSelect}) {
                 <div style={(isLoading ? {height: '0px', width: '0px'} : {height: '86px', width: '120px'})}> 
                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                         <Image
+                            ref={image}
                             src={backstreet_domain + camera.imageLink}
                             layout="fill"
                             objectFit="contain"

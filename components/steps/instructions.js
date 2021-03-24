@@ -1,24 +1,48 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import StepsProgress from './stepsProgress'
 import StepDescription from './stepDescription'
 
 export default function Instructions({hasSeenInstructions, setHasSeenInstructions}) {
-    const [showModal, setShowModal] = useState(!hasSeenInstructions);
+    const [showModal, setShowModal] = useState(false);
     const [currentStep, setCurrentStep] = useState(1);
+
+    const node = useRef();
+
+    const handleClick = e => {
+      if(!node.current?.contains(e.target)){
+        finishInstructions();
+      }
+    }
+
+    useEffect(() => {
+      document.addEventListener("mousedown", handleClick);
+
+      return () => {
+        document.removeEventListener("mousedown", handleClick);
+      };
+    }, [])
 
     const finishInstructions = () => {
         setShowModal(false);
+        setCurrentStep(1);
         setHasSeenInstructions(true);
     }
 
     return (
       <>
+        <button 
+          onClick={e => setShowModal(true)}
+          className="uppercase bg-blue-600 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:bg-blue-400 hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150">
+          Help
+        </button>
          {showModal ? (
         <>
           <div
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
           >
-            <div style={{maxWidth: '570px'}} className="relative w-auto my-6 mx-auto">
+            <div
+              ref={node}
+              style={{maxWidth: '570px'}} className="relative w-auto my-6 mx-auto">
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
@@ -27,19 +51,19 @@ export default function Instructions({hasSeenInstructions, setHasSeenInstruction
                     Choosing cameras
                   </h3>
                   <button
-                    className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                    onClick={() => setShowModal(false)}
+                    className="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                    onClick={() => finishInstructions()}
                   >
-                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                    <span className="text-gray-900 h-6 w-6 text-2xl block outline-none focus:outline-none">
                       ×
                     </span>
                   </button>
                 </div>
                 {/*body*/}
-                <StepDescription currentStep={currentStep}/>
+                <StepDescription currentStep={currentStep} />
                 {/*footer*/}
                 <div className="flex flex-col border-t pt-3">
-                    <StepsProgress currentStep={currentStep} />
+                    <StepsProgress currentStep={currentStep} setCurrentStep={setCurrentStep}/>
                     <div className="flex items-center justify-center p-6 border-solid border-gray-200 rounded-b">
                         {currentStep != 1 &&
                             <button

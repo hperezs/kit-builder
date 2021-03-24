@@ -55,7 +55,7 @@ export default function ChooseVideoRecorder({cameras, videoRecorders, selectedNV
                                 <div style={{height: '86px', width: '120px'}}> 
                                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                         <Image
-                                            src={backstreet_domain + selectedNVR.imageLink}
+                                            src={'/images/nvr-hero.jpg'}
                                             layout="fill"
                                             objectFit="contain"
                                             quality={100}
