@@ -12,7 +12,7 @@ export default function SelectHousing({ cameraHousing, setCameraHousing}) {
         setCameraHousing(housing);
     }
 
-    const popover_style = "absolute w-72 -top-full z-50 bg-white border rounded border-gray-200 shadow-lg flex flex-row justify-around";
+    const popover_style = "absolute w-72 -top-full z-20 bg-white border rounded border-gray-200 shadow-lg flex flex-row justify-around";
     const base_style = "relative m-4 p-5 flex flex-col justify-center items-center rounded hover:shadow-md hover:border-green-300 cursor-pointer ";
 
     return(

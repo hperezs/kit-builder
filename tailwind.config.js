@@ -7,7 +7,7 @@ module.exports = {
       'md': '768px',
       'lg': '1280px',
       'xl': '1920px',
-      '2xl': '3072px'
+      '2xl': '2300px'
     },
     extend: {
       transitionProperty: {
