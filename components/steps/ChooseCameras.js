@@ -37,21 +37,27 @@ export default function ChooseCameras({allProducts, selectNewCamera, cameras, de
             </div>
             
 
-            <AddNewCamera displayAddNewCamera={true} allProducts={allProducts} selectNewCamera={selectNewCamera} isAddingNewCamera={isAddingNewCamera} setIsAddingNewCamera={setIsAddingNewCamera}/>
+            <AddNewCamera 
+                displayAddNewCamera={true} 
+                allProducts={allProducts} 
+                selectNewCamera={selectNewCamera} 
+                isAddingNewCamera={isAddingNewCamera} 
+                setIsAddingNewCamera={setIsAddingNewCamera}
+                lastIndex={cameras.length + 1}    
+            />
 
             {/* Camera List */}
             {cameras.length != 0 &&
                 <section className="mt-20 border rounded p-5">
                     <div className="flex flex-row justify-between border-b">
                         <span className="text-xl align-bottom">Your cameras</span>
-                        <button className={editButton_styles} onClick={e => setDisplayDeleteBtn(true)}>
-                            Edit
+                        <button className={editButton_styles} onClick={e => setDisplayDeleteBtn(!displayDeleteBtn)}>
+                            {(!displayDeleteBtn ? 'Edit' : 'Cancel')}
                         </button>
                     </div>
                     <div className="flex flex-row justify-start items-center">
                         {
                             cameras.map((camera, index) => {
-                                console.log(camera)
                                 return(
                                     <div 
                                         className="relative flex flex-col justify-start items-center flex-wrap my-10 mx-3 border rounded p-5 ">
@@ -68,7 +74,7 @@ export default function ChooseCameras({allProducts, selectNewCamera, cameras, de
                                             </div>
                                         </div>
                                         <div className="flex flex-col items-center">
-                                        <p className={"text-lg mb-3 border-b border-gray-500 px-3 " + (camera.cameraName == '' ? 'hidden' : '')}>{camera.cameraName}</p>
+                                        <p className={"text-lg mb-3 border-b border-gray-500 px-3 italic " + (camera.cameraName == '' ? 'hidden' : '')}>{camera.cameraName}</p>
                                             <p className="">{camera.sku} </p>
                                             <p className="font-light mb-1">Lens: {camera.cameraLens}</p>
                                             <p className="font-light mb-1">Night Vision: {camera.nightVision}</p>
