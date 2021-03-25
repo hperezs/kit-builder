@@ -3,6 +3,7 @@ import ChooseCameras from './steps/ChooseCameras.js'
 import ChooseVideoRecorder from './steps/ChooseVideoRecorder'
 import HowToChooseCameras from './steps/howToChooseCameras'
 import SelectCableType from './steps/SelectCableType'
+import ChooseCables from './steps/ChooseCables'
 
 export default function Answer({
     currentStep,
@@ -11,6 +12,8 @@ export default function Answer({
     homeOrBusiness,
     setHomeOrBusiness, 
     allProducts,
+    indoorCables,
+    outdoorCables,
     videoRecorders,
     selectNewCamera,
     deleteCamera,
@@ -19,7 +22,8 @@ export default function Answer({
     hasSeenInstructions,
     setHasSeenInstructions,
     cableType,
-    setCableType
+    setCableType,
+    selectCable
     }) {
 
     switch(currentStep) {
@@ -55,7 +59,17 @@ export default function Answer({
             return(
                 <SelectCableType cableType={cableType} setCableType={setCableType}/>
             )
-        case 6:
+        case 6: 
+            return(
+                <ChooseCables 
+                    cableType={cableType} 
+                    cameras={cameras} 
+                    indoorCables={indoorCables}
+                    outdoorCables={outdoorCables}  
+                    selectCable={selectCable}
+                />
+            )
+        case 7:
             return(
                 <div>Going to the next page will result in a crash.</div>
             )

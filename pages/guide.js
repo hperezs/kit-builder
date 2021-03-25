@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Actions from "../components/Actions";
 import Answer from "../components/Answer";
-import NavMenu from "../components/NavMenu";
 import Question from "../components/Question";
 import { default_steps } from "../lib/steps";
 
@@ -12,6 +11,8 @@ export default function Guide() {
     const [ selectedNVR, setSelectedNVR ] = useState('');
     const [ homeOrBusiness, setHomeOrBusiness ] = useState('');
     const [ allProducts, setAllProducts ] = useState([]);
+    const [ indoorCables, setIndoorCables ] = useState([]);
+    const [ outdoorCables, setOutdoorCablse ] = useState([]);
     const [ videoRecorders, setAllVideoRecorders ] = useState([]);
     const [ hasSeenInstructions, setHasSeenInstructions ] = useState(false);
     const [ cableType, setCableType ] = useState('');
@@ -31,24 +32,38 @@ export default function Guide() {
                     setAllVideoRecorders(data);
                 })
             })
-    }, [])
 
-    useEffect(() => {
-        const url = 'https://morning-anchorage-80357.herokuapp.com/https://staging3.entretek.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=cat6-%25'
-        fetch(url, {
+        // Get Cables from Magento API
+        const getIndoorCables_url = 'https://morning-anchorage-80357.herokuapp.com/https://staging3.entretek.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=cat6-%25'
+        fetch(getIndoorCables_url, {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer 13y20n0rg075ebk2pn27n8pos2qloh6y'
             }
         }).then(response => {
             response.json().then(data => {
-                console.log(data)
+                console.log(data.items);
+                setIndoorCables(data.items)
+            })
+        })
+
+        const getOutdoorCables_url = 'https://morning-anchorage-80357.herokuapp.com/https://staging3.entretek.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=db-cat6-%25'
+        fetch(getOutdoorCables_url, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer 13y20n0rg075ebk2pn27n8pos2qloh6y'
+            }
+        }).then(response => {
+            response.json().then(data => {
+                console.log(data.items);
+                setOutdoorCablse(data.items);
             })
         })
     }, [])
 
+
     const default_camera = {
-        name: '',
+        cameraName: '',
         housing: '',
         viewingArea: '',
         cameraLens: '',
@@ -88,6 +103,16 @@ export default function Guide() {
     const selectNVR = nvr => {
         setSelectedNVR(nvr);
     }
+
+    const selectCable = (cable, camera) => {
+        let index = cameras.find(element => camera.cameraName == element.cameraName);
+        let cameras_copy = cameras;
+        let modified_camera = camera;
+        modified_camera.cable = cable;
+        console.log(modified_camera);
+        cameras_copy[index] = modified_camera;
+        setCameras(cameras_copy);
+    }
     
     return(
         <main className="flex flex-row justify-center items-start mt-14">
@@ -102,6 +127,8 @@ export default function Guide() {
                         homeOrBusiness={homeOrBusiness} 
                         setHomeOrBusiness={setHomeOrBusiness}
                         allProducts={allProducts}
+                        indoorCables={indoorCables}
+                        outdoorCables={outdoorCables}
                         videoRecorders={videoRecorders}
                         selectNewCamera={selectNewCamera}
                         deleteCamera={deleteCamera}
@@ -111,6 +138,7 @@ export default function Guide() {
                         setHasSeenInstructions={setHasSeenInstructions}
                         cableType={cableType}
                         setCableType={setCableType}
+                        selectCable={selectCable}
                     />
                 </div>
                 <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">

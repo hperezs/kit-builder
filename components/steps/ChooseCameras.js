@@ -37,7 +37,14 @@ export default function ChooseCameras({allProducts, selectNewCamera, cameras, de
             </div>
             
 
-            <AddNewCamera displayAddNewCamera={true} allProducts={allProducts} selectNewCamera={selectNewCamera} isAddingNewCamera={isAddingNewCamera} setIsAddingNewCamera={setIsAddingNewCamera}/>
+            <AddNewCamera 
+                displayAddNewCamera={true} 
+                allProducts={allProducts} 
+                selectNewCamera={selectNewCamera} 
+                isAddingNewCamera={isAddingNewCamera} 
+                setIsAddingNewCamera={setIsAddingNewCamera}
+                lastIndex={cameras.length + 1}    
+            />
 
             {/* Camera List */}
             {cameras.length != 0 &&

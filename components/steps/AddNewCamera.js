@@ -7,7 +7,7 @@ import NightVisionDropdown from './dropdowns/nightVisionDropdown'
 import RecommendedCameras from "./RecommendedCameras"
 import SelectHousing from "./SelectHousing"
 
-export default function AddNewCamera({displayAddNewCamera , allProducts, selectNewCamera, isAddingNewCamera, setIsAddingNewCamera}) {
+export default function AddNewCamera({displayAddNewCamera , allProducts, selectNewCamera, isAddingNewCamera, setIsAddingNewCamera, lastIndex}) {
     const [isEditingName, setIsEditingName] = useState(false);
 
     const [cameraHousing, setCameraHousing] = useState('');
@@ -40,7 +40,7 @@ export default function AddNewCamera({displayAddNewCamera , allProducts, selectN
 
     const handleSelect = camera => {
         let new_camera = camera;
-        new_camera.cameraName = (cameraName != 'Camera Name' ? cameraName : null);
+        new_camera.cameraName = (cameraName != 'Camera Name' ? cameraName : 'Camera ' + lastIndex);
         setIsAddingNewCamera(false);
         selectNewCamera(new_camera);
 

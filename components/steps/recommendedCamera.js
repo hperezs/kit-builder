@@ -7,8 +7,6 @@ export default function RecommendedCamera({camera, handleSelect}) {
     const [isLoading, setIsLoading] = useState(true);
     const [onLoadCount, setOnLoadCount] = useState(0);
 
-    const image = useRef();
-
     useEffect(() => {
         setIsLoading(true)
         
@@ -26,7 +24,7 @@ export default function RecommendedCamera({camera, handleSelect}) {
         }
     }
 
-    const addToCart_styles = "px-3 py-1 border rounded bg-green-600 text-white text-sm mt-3 transition hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
+    const addToCart_styles = "px-3 py-1 border rounded bg-green-600 text-white text-sm uppercase tracking-wider font-semibold mt-3 transition hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
 
     return(
         <div 
@@ -38,7 +36,6 @@ export default function RecommendedCamera({camera, handleSelect}) {
                 <div style={(isLoading ? {height: '0px', width: '0px'} : {height: '86px', width: '120px'})}> 
                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                         <Image
-                            ref={image}
                             src={backstreet_domain + camera.imageLink}
                             layout="fill"
                             objectFit="contain"
@@ -56,7 +53,7 @@ export default function RecommendedCamera({camera, handleSelect}) {
                 <p className={"font-light mb-1 " + (camera.hasAudio ? 'text-blue-600' : '')}>{camera.hasAudio ? 'Built-in Microphone' : ' No Audio'}</p>
                 <p className="font-bold mb-1 text-yellow-500"><span className="line-through">${camera.oldPrice}</span> Save Big!</p>
                 <p className="font-normal text-green-600">${camera.price?.$numberDecimal}</p>
-                <button className={addToCart_styles} onClick={e => handleSelect(camera)}>Select Camera</button>
+                <button className={addToCart_styles} onClick={e => handleSelect(camera)}>Select</button>
                 <a href={backstreet_domain + camera.productLink} target="_blank" className="font-light text-green-600 hover:text-green-400">See more details</a>
             </div>
         </div>
