@@ -6,10 +6,10 @@ export default function Instructions({hasSeenInstructions, setHasSeenInstruction
     const [showModal, setShowModal] = useState(false);
     const [currentStep, setCurrentStep] = useState(1);
 
-    const node = useRef();
+    const modal = useRef();
 
     const handleClick = e => {
-      if(!node.current?.contains(e.target)){
+      if(!modal.current?.contains(e.target)){
         finishInstructions();
       }
     }
@@ -41,7 +41,7 @@ export default function Instructions({hasSeenInstructions, setHasSeenInstruction
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
           >
             <div
-              ref={node}
+              ref={modal}
               style={{maxWidth: '570px'}} className="relative w-auto my-6 mx-auto">
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
