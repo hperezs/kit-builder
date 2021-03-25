@@ -2,7 +2,6 @@ import { AiFillShop } from 'react-icons/ai'
 import { GiTinker } from 'react-icons/gi'
 import { BsPersonCheckFill } from 'react-icons/bs'
 import { useState } from 'react';
-import Animate from 'animate.css-react'
 
 export default function SelectCableType({cableType, setCableType}) {
     const [displayDetails, setDisplayDetails] = useState(false);
