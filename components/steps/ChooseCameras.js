@@ -55,7 +55,7 @@ export default function ChooseCameras({allProducts, selectNewCamera, cameras, de
                             {(!displayDeleteBtn ? 'Edit' : 'Cancel')}
                         </button>
                     </div>
-                    <div className="flex flex-row justify-start items-center">
+                    <div className="flex flex-row justify-start items-center flex-wrap">
                         {
                             cameras.map((camera, index) => {
                                 return(
