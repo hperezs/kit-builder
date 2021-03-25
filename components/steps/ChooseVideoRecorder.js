@@ -22,7 +22,7 @@ export default function ChooseVideoRecorder({cameras, videoRecorders, selectedNV
         recommendedChannelCount = 32;
     }
 
-    const card_styles = "relative flex flex-col justify-start items-center my-10 mx-3 rounded px-3 py-7 cursor-pointer hover:shadow-lg hover:border-green-300 "
+    const card_styles = "relative flex flex-col justify-start items-center my-10 mx-3 rounded px-3 py-7 border-gray-400 "
 
     return(
         <section className="my-10">

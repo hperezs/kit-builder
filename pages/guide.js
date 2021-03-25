@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Actions from "../components/Actions";
 import Answer from "../components/Answer";
+import Cart from "../components/Cart";
 import Question from "../components/Question";
 import { default_steps } from "../lib/steps";
 
@@ -115,8 +116,8 @@ export default function Guide() {
     }
     
     return(
-        <main className="flex flex-row justify-center items-start mt-14">
-            <div className="flex flex-col justify-center 2xl:w-8/12 xl:w-10/12 lg:w-10/12 md:w-11/12">
+        <main className="flex flex-row justify-center items-start mt-14 z-10">
+            <div className="relative flex flex-col justify-center 2xl:w-8/12 xl:w-10/12 lg:w-10/12 md:w-11/12">
                 <Question currentStep={currentStep} />
                 <hr className="mt-5"/>
                 <div className="pb-44">
@@ -147,7 +148,7 @@ export default function Guide() {
                         {/* <NavMenu currentStep={currentStep} setStep={setStep} steps={steps}/> */}
                     </div>
                 </div>
-                
+                <Cart cameras={cameras} selectedNVR={selectedNVR}/>
             </div>
         </main>
     )
