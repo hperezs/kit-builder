@@ -24,6 +24,5 @@ export default function HomeOrBusiness({homeOrBusiness, setHomeOrBusiness}) {
                 </span>
             </section>
         </div>
-        
     )
 }

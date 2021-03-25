@@ -12,13 +12,16 @@ export default function Question({ currentStep }) {
                 setCurrentQuestion('How to Choose the Right Cameras');
                 break;
             case 3:
-                setCurrentQuestion('Choose your cameras');
+                setCurrentQuestion('Choose Your Cameras');
                 break;
             case 4:
                 setCurrentQuestion('Choose a Video Recorder')
                 break;
             case 5:
-                setCurrentQuestion('In progress');
+                setCurrentQuestion('How do you want to choose your cables?');
+                break;
+            case 6:
+                setCurrentQuestion('In progress')
                 break;
         }
     })

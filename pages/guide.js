@@ -14,6 +14,7 @@ export default function Guide() {
     const [ allProducts, setAllProducts ] = useState([]);
     const [ videoRecorders, setAllVideoRecorders ] = useState([]);
     const [ hasSeenInstructions, setHasSeenInstructions ] = useState(false);
+    const [ cableType, setCableType ] = useState('');
 
     useEffect(() => {
         fetch('/api/getAllProducts')
@@ -30,6 +31,20 @@ export default function Guide() {
                     setAllVideoRecorders(data);
                 })
             })
+    }, [])
+
+    useEffect(() => {
+        const url = 'https://morning-anchorage-80357.herokuapp.com/https://staging3.entretek.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=cat6-%25'
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer 13y20n0rg075ebk2pn27n8pos2qloh6y'
+            }
+        }).then(response => {
+            response.json().then(data => {
+                console.log(data)
+            })
+        })
     }, [])
 
     const default_camera = {
@@ -94,6 +109,8 @@ export default function Guide() {
                         selectNVR={selectNVR}
                         hasSeenInstructions={hasSeenInstructions}
                         setHasSeenInstructions={setHasSeenInstructions}
+                        cableType={cableType}
+                        setCableType={setCableType}
                     />
                 </div>
                 <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">
