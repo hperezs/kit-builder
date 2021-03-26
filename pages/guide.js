@@ -20,7 +20,7 @@ export default function Guide() {
     const [ cableType, setCableType ] = useState('');
     const [ subtotal, setSubtotal ] = useState(0.00);
 
-    const bearerToken = '13y20n0rg075ebk2pn27n8pos2qloh6y';
+    const bearerToken = process.env.BEARER_TOKEN;
 
     useEffect(() => {
         fetch('/api/getAllProducts')
