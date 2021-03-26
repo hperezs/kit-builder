@@ -11,7 +11,11 @@ module.exports = {
     },
     extend: {
       transitionProperty: {
-        'flex': 'flex'
+        'width': 'width'
+      },
+      zIndex: {
+        '-10': '-10',
+        '-50': '-50',
       }
     },
   },

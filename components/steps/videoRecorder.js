@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react';
 import { backstreet_domain } from '../../lib/backstreet_domain'
 
-export default function VideoRecorder({nvr, selectNVR, isRecommended}) {
+export default function VideoRecorder({nvr, handleSelect, isRecommended}) {
     const [isLoading, setIsLoading] = useState(true);
 
     const selectButton_styles = "px-5 py-1 border rounded bg-green-600 text-white text-sm uppercase tracking-wider font-semibold mt-3 transition hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
@@ -36,7 +36,7 @@ export default function VideoRecorder({nvr, selectNVR, isRecommended}) {
                 <p className="font-light mb-1">Supports up to {nvr.channelCount} cameras</p>
                 <p className="font-bold mb-1 text-yellow-500"><span className="line-through">${nvr.oldPrice}</span> Save Big!</p>
                 <p className="font-normal text-green-600">${nvr.price.$numberDecimal}</p>
-                <button className={selectButton_styles} onClick={e => selectNVR(nvr)}>Select</button>
+                <button className={selectButton_styles} onClick={e => handleSelect(nvr)}>Select</button>
             </div>
         </div>
     )
