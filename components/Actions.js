@@ -6,7 +6,7 @@ export default function Actions({ nextStep, prevStep, currentStep }) {
             <span className={(currentStep == 1) ? '' : 'hidden'}>
                 <Link href="/">
                     <button 
-                        className="text-lg text-gray-700 mx-6 border border-gray-300 rounded px-5 py-2 hover:bg-gray-100 focus:outline-none focus:ring"
+                        className="text-lg text-gray-700 mx-6 border border-gray-300 rounded px-5 py-2 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-green-200 focus:ring-opacity-500"
                     >
                         Back
                     </button>
@@ -15,7 +15,7 @@ export default function Actions({ nextStep, prevStep, currentStep }) {
             
             <span className={(currentStep != 1) ? '' : 'hidden'}>
                 <button 
-                    className={"text-lg text-gray-700 mx-6 border border-gray-300 rounded px-5 py-2 hover:bg-gray-100 focus:outline-none focus:ring"}
+                    className={"text-lg text-gray-700 mx-6 border border-gray-300 rounded px-5 py-2 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-green-200 focus:ring-opacity-500"}
                     onClick={prevStep}
                 >
                     Back
@@ -23,7 +23,7 @@ export default function Actions({ nextStep, prevStep, currentStep }) {
             </span>
 
             <button 
-                className="text-lg text-white mx-6 border rounded border-green-400 bg-green-600 px-5 py-2 hover:bg-green-500 hover:text-white focus:outline-none focus:ring"
+                className="text-lg text-white mx-6 border rounded border-green-400 bg-green-600 px-5 py-2 hover:bg-green-500 hover:text-white focus:outline-none focus:ring focus:ring-green-200 focus:ring-opacity-500"
                 onClick={e=> nextStep()}
             >
                 Next

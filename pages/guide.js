@@ -17,6 +17,7 @@ export default function Guide() {
     const [ videoRecorders, setAllVideoRecorders ] = useState([]);
     const [ hasSeenInstructions, setHasSeenInstructions ] = useState(false);
     const [ cableType, setCableType ] = useState('');
+    const [ subtotal, setSubtotal ] = useState(0.00);
 
     useEffect(() => {
         fetch('/api/getAllProducts')
@@ -62,15 +63,26 @@ export default function Guide() {
         })
     }, [])
 
+    // Update subtotal when product selections change
+    useEffect(() => {
+        updateSubtotal();
 
-    const default_camera = {
-        cameraName: '',
-        housing: '',
-        viewingArea: '',
-        cameraLens: '',
-        nightVisionDist: '',
-        resolution: ''
+    }, [cameras, selectedNVR])
+
+    const updateSubtotal = () => {
+        let price_subtotal = 0.00;
+        // Add cameras and cables cost
+        cameras.forEach(camera => {
+            price_subtotal = price_subtotal + parseFloat(camera.price.$numberDecimal)
+        })
+
+        // Add NVR cost
+        if(selectedNVR != '') price_subtotal = price_subtotal + parseFloat(selectedNVR?.price.$numberDecimal);
+
+        setSubtotal(price_subtotal);
+        console.log('subtotal useEffect ran. Subtotal: ' + price_subtotal);
     }
+
 
     const nextStep = () => {
         setStep(currentStep + 1);
@@ -91,14 +103,14 @@ export default function Guide() {
     const selectNewCamera = (camera) => {
         let cameras_copy = cameras;
         cameras_copy.push(camera);
-        setCameras(cameras_copy)
+        setCameras(cameras_copy);
+        updateSubtotal();
     }
 
     const deleteCamera = index => {
         let new_cameras = cameras;
         new_cameras.splice(index, 1);
         setCameras(new_cameras);
-        
     }
 
     const selectNVR = nvr => {
@@ -116,7 +128,7 @@ export default function Guide() {
     }
     
     return(
-        <main className="flex flex-row justify-center items-start mt-14 z-10">
+        <main className="flex flex-row justify-center items-start mt-14 z-20">
             <div className="relative flex flex-col justify-center 2xl:w-8/12 xl:w-10/12 lg:w-10/12 md:w-11/12">
                 <Question currentStep={currentStep} />
                 <hr className="mt-5"/>
@@ -148,7 +160,7 @@ export default function Guide() {
                         {/* <NavMenu currentStep={currentStep} setStep={setStep} steps={steps}/> */}
                     </div>
                 </div>
-                <Cart cameras={cameras} selectedNVR={selectedNVR}/>
+                <Cart cameras={cameras} selectedNVR={selectedNVR} subtotal={subtotal}/>
             </div>
         </main>
     )
