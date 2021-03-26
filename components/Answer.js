@@ -17,6 +17,7 @@ export default function Answer({
     videoRecorders,
     selectNewCamera,
     deleteCamera,
+    updateCameraName,
     selectedNVR,
     selectNVR,
     hasSeenInstructions,
@@ -42,6 +43,7 @@ export default function Answer({
                     selectNewCamera={selectNewCamera} 
                     cameras={cameras} 
                     deleteCamera={deleteCamera} 
+                    updateCameraName={updateCameraName}
                     hasSeenInstructions={hasSeenInstructions}
                     setHasSeenInstructions={setHasSeenInstructions}
                 />

@@ -111,6 +111,13 @@ export default function Guide() {
         let new_cameras = cameras;
         new_cameras.splice(index, 1);
         setCameras(new_cameras);
+        updateSubtotal();
+    }
+
+    const updateCameraName = (index, camera) => {
+        let new_cameras = cameras;
+        new_cameras[index].cameraName = camera;
+        setCameras(new_cameras);
     }
 
     const selectNVR = nvr => {
@@ -145,6 +152,7 @@ export default function Guide() {
                         videoRecorders={videoRecorders}
                         selectNewCamera={selectNewCamera}
                         deleteCamera={deleteCamera}
+                        updateCameraName={updateCameraName}
                         selectedNVR={selectedNVR}
                         selectNVR={selectNVR}
                         hasSeenInstructions={hasSeenInstructions}

@@ -9,7 +9,6 @@ import SelectHousing from "./SelectHousing"
 
 export default function AddNewCamera({displayAddNewCamera , allProducts, selectNewCamera, isAddingNewCamera, setIsAddingNewCamera, lastIndex}) {
     const [isEditingName, setIsEditingName] = useState(false);
-
     const [cameraHousing, setCameraHousing] = useState('');
     const [cameraName, setCameraName] = useState('Camera Name');
     const [viewingArea, setViewingArea] = useState('');
