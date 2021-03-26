@@ -19,7 +19,7 @@ export default function CameraLensDropdown({ cameraLens, setCameraLens, viewingA
         }
     }, [viewingArea])
 
-    const classNames = "inline h-14 ml-2 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 ";
+    const classNames = "inline ml-2 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 ";
 
     const handleChange = (event) => {
         let viewingArea = event.target.value;

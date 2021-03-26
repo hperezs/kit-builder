@@ -35,7 +35,7 @@ export default function NightVisionDropdown({ viewingArea, cameraHousing, nightV
         setNightVisionDist(value);
     }
 
-    const classNames = "inline w-28 h-14 mt-1 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 ";
+    const classNames = "inline w-28 mt-1 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 ";
 
     if (cameraHousing == 'dome' && viewingArea == "50-180 ft"){
         return(
