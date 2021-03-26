@@ -57,7 +57,7 @@ export default function ChooseVideoRecorder({cameras, videoRecorders, selectedNV
                 <section id="#selectedNVR" className="flex flex-col items-center justify-center">
                     <div className="mt-10 px-20 py-5 border rounded flex flex-col items-center">
                         <p className="text-center text-2xl font-light">Your selected NVR:</p>
-                        <div className={card_styles + 'border'}>
+                        <div className={card_styles + 'border border-green-400'}>
                             <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
                                 <div style={{height: '86px', width: '120px'}}> 
                                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>

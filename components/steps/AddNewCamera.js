@@ -9,7 +9,6 @@ import SelectHousing from "./SelectHousing"
 
 export default function AddNewCamera({displayAddNewCamera , allProducts, selectNewCamera, isAddingNewCamera, setIsAddingNewCamera, lastIndex}) {
     const [isEditingName, setIsEditingName] = useState(false);
-
     const [cameraHousing, setCameraHousing] = useState('');
     const [cameraName, setCameraName] = useState('Camera Name');
     const [viewingArea, setViewingArea] = useState('');
@@ -91,11 +90,11 @@ export default function AddNewCamera({displayAddNewCamera , allProducts, selectN
             </div>
             {/* Inputs */}
             <div className="w-max flex flex-col justify-center ml-7 h-full p-4 border rounded">
-                <div className="mb-3 flex flex-row justify-between items-center">
+                <div className="mb-5 flex flex-row justify-between items-center">
                     <span>Viewing Area: </span>
                     <ViewingAreaDropdown viewingArea={viewingArea} setViewingArea={setViewingArea} cameraHousing={cameraHousing}/>
                 </div>
-                <div className="mb-3 flex flex-row justify-between items-center">
+                <div className="mb-5 flex flex-row justify-between items-center">
                     <span>Camera Lens:</span>
                     <CameraLensDropdown
                         cameraLens={cameraLens}

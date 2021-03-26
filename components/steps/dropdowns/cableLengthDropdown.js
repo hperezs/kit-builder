@@ -20,7 +20,7 @@ export default function CableLocationDropdown({setCableLength, indoorOrOutdoor})
         setSelectedValue(event.target.value);
     }
 
-    const style = "inline w-40 h-14 ml-3 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 ";
+    const style = "inline w-40 ml-3 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 ";
 
     if(indoorOrOutdoor == 'indoor')return(
         <select

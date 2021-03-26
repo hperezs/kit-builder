@@ -13,11 +13,14 @@ export default function Guide() {
     const [ homeOrBusiness, setHomeOrBusiness ] = useState('');
     const [ allProducts, setAllProducts ] = useState([]);
     const [ indoorCables, setIndoorCables ] = useState([]);
-    const [ outdoorCables, setOutdoorCablse ] = useState([]);
+    const [ outdoorCables, setOurdoorCables ] = useState([]);
+    const [ hardDrives, setHardDrives ] = useState([])
     const [ videoRecorders, setAllVideoRecorders ] = useState([]);
     const [ hasSeenInstructions, setHasSeenInstructions ] = useState(false);
     const [ cableType, setCableType ] = useState('');
     const [ subtotal, setSubtotal ] = useState(0.00);
+
+    const bearerToken = process.env.BEARER_TOKEN;
 
     useEffect(() => {
         fetch('/api/getAllProducts')
@@ -40,7 +43,7 @@ export default function Guide() {
         fetch(getIndoorCables_url, {
             method: 'GET',
             headers: {
-                'Authorization': 'Bearer 13y20n0rg075ebk2pn27n8pos2qloh6y'
+                'Authorization': 'Bearer ' + bearerToken
             }
         }).then(response => {
             response.json().then(data => {
@@ -53,14 +56,30 @@ export default function Guide() {
         fetch(getOutdoorCables_url, {
             method: 'GET',
             headers: {
-                'Authorization': 'Bearer 13y20n0rg075ebk2pn27n8pos2qloh6y'
+                'Authorization': 'Bearer ' + bearerToken
             }
         }).then(response => {
             response.json().then(data => {
                 console.log(data.items);
-                setOutdoorCablse(data.items);
+                setOurdoorCables(data.items);
             })
         })
+
+        // Get Hard Drives from Magento API
+        const getHardDrives_url = 'https://morning-anchorage-80357.herokuapp.com/https://staging3.entretek.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=%25T-HD'
+        fetch(getHardDrives_url, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + bearerToken
+            }
+        }).then(response => {
+            response.json().then(data => {
+                data.items.sort((a, b) => (a.price - b.price));
+                setHardDrives(data.items);
+                console.log(data.items);
+            })
+        })
+
     }, [])
 
     // Update subtotal when product selections change
@@ -111,6 +130,13 @@ export default function Guide() {
         let new_cameras = cameras;
         new_cameras.splice(index, 1);
         setCameras(new_cameras);
+        updateSubtotal();
+    }
+
+    const updateCameraName = (index, camera) => {
+        let new_cameras = cameras;
+        new_cameras[index].cameraName = camera;
+        setCameras(new_cameras);
     }
 
     const selectNVR = nvr => {
@@ -143,8 +169,10 @@ export default function Guide() {
                         indoorCables={indoorCables}
                         outdoorCables={outdoorCables}
                         videoRecorders={videoRecorders}
+                        hardDrives={hardDrives}
                         selectNewCamera={selectNewCamera}
                         deleteCamera={deleteCamera}
+                        updateCameraName={updateCameraName}
                         selectedNVR={selectedNVR}
                         selectNVR={selectNVR}
                         hasSeenInstructions={hasSeenInstructions}

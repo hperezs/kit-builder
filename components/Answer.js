@@ -4,6 +4,7 @@ import ChooseVideoRecorder from './steps/ChooseVideoRecorder'
 import HowToChooseCameras from './steps/howToChooseCameras'
 import SelectCableType from './steps/SelectCableType'
 import ChooseCables from './steps/ChooseCables'
+import ChooseHardDrive from './steps/ChooseHardDrive'
 
 export default function Answer({
     currentStep,
@@ -15,8 +16,10 @@ export default function Answer({
     indoorCables,
     outdoorCables,
     videoRecorders,
+    hardDrives,
     selectNewCamera,
     deleteCamera,
+    updateCameraName,
     selectedNVR,
     selectNVR,
     hasSeenInstructions,
@@ -42,6 +45,7 @@ export default function Answer({
                     selectNewCamera={selectNewCamera} 
                     cameras={cameras} 
                     deleteCamera={deleteCamera} 
+                    updateCameraName={updateCameraName}
                     hasSeenInstructions={hasSeenInstructions}
                     setHasSeenInstructions={setHasSeenInstructions}
                 />
@@ -70,6 +74,10 @@ export default function Answer({
                 />
             )
         case 7:
+            return(
+                <ChooseHardDrive hardDrives={hardDrives}/>
+            )
+        case 8:
             return(
                 <div>Going to the next page will result in a crash.</div>
             )
