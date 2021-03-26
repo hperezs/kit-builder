@@ -24,6 +24,9 @@ export default function Question({ currentStep }) {
                 setCurrentQuestion('Choose your cables');
                 break;
             case 7:
+                setCurrentQuestion('Choose a Hard Drive');
+                break;
+            case 8:
                 setCurrentQuestion('In progress')
                 break;
         }
