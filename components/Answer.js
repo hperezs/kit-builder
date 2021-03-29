@@ -26,7 +26,8 @@ export default function Answer({
     setHasSeenInstructions,
     cableType,
     setCableType,
-    selectCable
+    selectCable,
+    addHardDrive
     }) {
 
     switch(currentStep) {
@@ -61,9 +62,13 @@ export default function Answer({
             )
         case 5: 
             return(
+                <ChooseHardDrive hardDrives={hardDrives} cameras={cameras} addHardDrive={addHardDrive}/>
+            )
+        case 6:
+            return(
                 <SelectCableType cableType={cableType} setCableType={setCableType}/>
             )
-        case 6: 
+        case 7: 
             return(
                 <ChooseCables 
                     cableType={cableType} 
@@ -72,10 +77,6 @@ export default function Answer({
                     outdoorCables={outdoorCables}  
                     selectCable={selectCable}
                 />
-            )
-        case 7:
-            return(
-                <ChooseHardDrive hardDrives={hardDrives}/>
             )
         case 8:
             return(

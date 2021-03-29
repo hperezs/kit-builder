@@ -5,7 +5,7 @@ import { IoMdClose } from 'react-icons/io'
 import {FaRegWindowClose} from 'react-icons/fa'
 import Image from 'next/image'
 
-export default function Camera({camera, displayDeleteBtn, index, updateCameraName}) {
+export default function Camera({camera, displayDeleteBtn, index, updateCameraName, handleDelete}) {
     const [isEditingName, setIsEditingName] = useState(false);
     const [editedName, setEditedName] = useState(camera.cameraName);
 

@@ -18,13 +18,13 @@ export default function Question({ currentStep }) {
                 setCurrentQuestion('Choose a Video Recorder');
                 break;
             case 5:
-                setCurrentQuestion('How do you want to choose your cables?');
+                setCurrentQuestion('Choose your Hard Drive(s)');
                 break;
             case 6:
-                setCurrentQuestion('Choose your cables');
+                setCurrentQuestion('How do you want to choose your cables?');
                 break;
             case 7:
-                setCurrentQuestion('Choose a Hard Drive');
+                setCurrentQuestion('Choose your cables');
                 break;
             case 8:
                 setCurrentQuestion('In progress')

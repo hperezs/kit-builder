@@ -57,7 +57,14 @@ export default function ChooseCameras({allProducts, selectNewCamera, cameras, de
                         {
                             cameras.map((camera, index) => {
                                 return(
-                                    <Camera camera={camera} key={index} displayDeleteBtn={displayDeleteBtn} index={index} updateCameraName={updateCameraName}/>
+                                    <Camera 
+                                        camera={camera} 
+                                        key={index} 
+                                        displayDeleteBtn={displayDeleteBtn} 
+                                        index={index} 
+                                        updateCameraName={updateCameraName}
+                                        handleDelete={handleDelete}
+                                    />
                                 )
                             })
                         }
