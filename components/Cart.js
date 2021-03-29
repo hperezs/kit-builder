@@ -3,10 +3,28 @@ import {GrCart} from 'react-icons/gr'
 import Image from 'next/image'
 import { backstreet_domain } from '../lib/backstreet_domain'
 
-export default function Cart({cameras, selectedNVR, subtotal}) {
-  const [showCart, setShowCart] = useState(false);
-  
-  const cart = useRef();
+export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal}) {
+    const [showCart, setShowCart] = useState(false);
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        console.log('count use effect ran');
+        let new_count = 0;
+        cameras.forEach(camera => {
+            new_count++;
+            if(camera?.cable) new_count++
+        })
+
+        if(selectedNVR != '') new_count++;
+
+        selectedHardDrives.forEach(hardDrive => {
+            new_count++;
+        })
+
+        setCount(new_count);
+    }, [cameras, selectedNVR, selectedHardDrives])
+
+    const cart = useRef();
 
     const handleClick = e => {
       if(!cart.current?.contains(e.target)){
@@ -22,6 +40,8 @@ export default function Cart({cameras, selectedNVR, subtotal}) {
       };
     }, [])
 
+    const cardCount_style = {paddingTop: '1px', top: '-12px', right: '-6px', height: '24px', width: (count < 10 ? '24px' : '28px')};
+
     return (
         <>
             <button
@@ -29,11 +49,12 @@ export default function Cart({cameras, selectedNVR, subtotal}) {
                 type="button"
                 onClick={() => setShowCart(true)}
             >
-            <GrCart />
+                <GrCart />
+                {count != 0 && <div style={cardCount_style} className="absolute rounded-full shadow font-semibold bg-green-500 text-white text-sm">{count}</div>}
             </button>
             
 
-            <div ref={cart} className={"fixed top-0 right-0 z-50 transition-width ease-in-out duration-500 " + (showCart ? '2xl:w-4/12 xl:w-5/12 lg:w-5/12 md:w-7/12 sm:w-9/12' : 'w-0')}>
+            <div ref={cart} className={"fixed top-0 right-0 z-50 transition-width ease-in-out duration-500 " + (showCart ? '2xl:w-4/12 xl:w-5/12 lg:w-6/12 md:w-7/12 sm:w-9/12' : 'w-0')}>
                 {/*content*/}
                 <div className={"h-screen shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none " + (showCart ? '' : '')}>
                     {/*header*/}
@@ -54,10 +75,10 @@ export default function Cart({cameras, selectedNVR, subtotal}) {
                     <div className={"relative p-6 flex-auto overflow-y-auto" + (showCart ? '' : 'hidden')}>
                         <div className="flex flex-col">
                             {/* NVR and Hard Drive */}
-                            <div className="flex flex-row justify-evenly items-center mb-5">
+                            <div className="flex flex-row justify-start items-center mb-5">
                                 {/* NVR */}
                                 {selectedNVR != '' &&
-                                <div className={"flex flex-row py-4 px-5 border rounded w-8/12 " + (showCart ? 'flex-shrink-0' : 'hidden')}>
+                                <div className={"flex flex-row py-4 px-5 border rounded w-8/12 " + (showCart ? '' : 'hidden')}>
                                     <div className="m-3" style={{height: '86px', width: '120px'}}> 
                                         <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                             <Image
@@ -74,23 +95,27 @@ export default function Cart({cameras, selectedNVR, subtotal}) {
                                         <p className="font-normal text-green-600">${selectedNVR.price.$numberDecimal}</p>
                                     </div>
                                 </div>}
-                                {/* Hard Drive */}
-                                <div className="flex flex-row py-7 px-5 ml-3 border rounded w-4/12">
-                                    <div style={{height: '86px', width: '120px'}}> 
-                                        <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
-                                            <Image
-                                                src={'/images/hard_drive_hero.jpg'}
-                                                layout="fill"
-                                                objectFit="contain"
-                                                quality={100}
-                                            />
+                                {/* Hard Drive(s) */}
+                                {selectedHardDrives.length != 0 &&
+                                    selectedHardDrives.map((hardDrive, index) => (
+                                    <div className="flex flex-row py-7 px-5 ml-3 border rounded w-4/12">
+                                        <div style={{height: '86px', width: '100px'}}> 
+                                            <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                                <Image
+                                                    src={'/images/hard_drive_hero.jpg'}
+                                                    layout="fill"
+                                                    objectFit="contain"
+                                                    quality={100}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="ml-3 flex flex-col justify-center items-center">
+                                            <p className="mb-1">{hardDrive.sku}</p>
+                                            <p className="font-normal text-green-600">${hardDrive.price.toFixed(2)}</p>
                                         </div>
                                     </div>
-                                    <div className="ml-3 flex flex-col justify-center items-center">
-                                        <p className="mb-1">2T-HD</p>
-                                        <p className="font-normal text-green-600">$115.00</p>
-                                    </div>
-                                </div>
+                                    ))
+                                }
                             </div>
                             {/* Cameras and Cables */}
                             {cameras?.map((camera, index) => {

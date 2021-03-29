@@ -4,12 +4,15 @@ import Answer from "../components/Answer";
 import Cart from "../components/Cart";
 import Question from "../components/Question";
 import { default_steps } from "../lib/steps";
+import ReactNotification, { store } from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
 
 export default function Guide() {
     const [ steps, setSteps ] = useState(default_steps)
     const [ currentStep, setStep ] = useState(1);
     const [ cameras, setCameras ] = useState([]);
     const [ selectedNVR, setSelectedNVR ] = useState('');
+    const [ selectedHardDrives, setSelectedHardDrives ] = useState([]);
     const [ homeOrBusiness, setHomeOrBusiness ] = useState('');
     const [ allProducts, setAllProducts ] = useState([]);
     const [ indoorCables, setIndoorCables ] = useState([]);
@@ -93,10 +96,15 @@ export default function Guide() {
         // Add cameras and cables cost
         cameras.forEach(camera => {
             price_subtotal = price_subtotal + parseFloat(camera.price.$numberDecimal)
+            price_subtotal = price_subtotal + parseFloat((camera.cable?.price ? camera.cable.price : 0));
         })
 
         // Add NVR cost
         if(selectedNVR != '') price_subtotal = price_subtotal + parseFloat(selectedNVR?.price.$numberDecimal);
+
+        selectedHardDrives.forEach(hardDrive => {
+            price_subtotal = price_subtotal + parseFloat((hardDrive?.price ? hardDrive.price : 0));
+        })
 
         setSubtotal(price_subtotal);
         console.log('subtotal useEffect ran. Subtotal: ' + price_subtotal);
@@ -120,17 +128,20 @@ export default function Guide() {
     }
 
     const selectNewCamera = (camera) => {
-        let cameras_copy = cameras;
+        let cameras_copy = cameras.slice();
         cameras_copy.push(camera);
         setCameras(cameras_copy);
         updateSubtotal();
+        submitNotification('addedToCart', camera.sku);
     }
 
     const deleteCamera = index => {
+        let removedCamera = cameras[index];
         let new_cameras = cameras;
         new_cameras.splice(index, 1);
         setCameras(new_cameras);
         updateSubtotal();
+        submitNotification('deletedFromCart', removedCamera?.sku);
     }
 
     const updateCameraName = (index, camera) => {
@@ -141,55 +152,102 @@ export default function Guide() {
 
     const selectNVR = nvr => {
         setSelectedNVR(nvr);
+        submitNotification('addedToCart', nvr.sku);
     }
 
     const selectCable = (cable, camera) => {
         let index = cameras.find(element => camera.cameraName == element.cameraName);
-        let cameras_copy = cameras;
+        let cameras_copy = cameras.slice();
         let modified_camera = camera;
         modified_camera.cable = cable;
-        console.log(modified_camera);
         cameras_copy[index] = modified_camera;
         setCameras(cameras_copy);
+        updateSubtotal();
+    }
+
+    const addHardDrive = hardDrive => {
+        let new_selectedHardDrives = selectedHardDrives.slice();
+        new_selectedHardDrives.push(hardDrive);
+        setSelectedHardDrives(new_selectedHardDrives);
+        submitNotification('addedToCart', hardDrive.sku);
+        updateSubtotal();
     }
     
+    const submitNotification = (type, payload) => {
+        switch(type) {
+            case 'addedToCart':
+                store.addNotification({
+                    message: payload + " added to cart",
+                    type: "success",
+                    insert: "top",
+                    container: "top-center",
+                    animationIn: ["animate__animated", "animate__fadeIn"],
+                    animationOut: ["animate__animated", "animate__fadeOut"],
+                    dismiss: {
+                      duration: 5000,
+                      onScreen: true
+                    }
+                  });
+                  break;
+            case 'deletedFromCart':
+                store.addNotification({
+                    message: payload + " removed from cart",
+                    type: "danger",
+                    insert: "top",
+                    container: "top-center",
+                    animationIn: ["animate__animated", "animate__fadeIn"],
+                    animationOut: ["animate__animated", "animate__fadeOut"],
+                    dismiss: {
+                      duration: 5000,
+                      onScreen: true
+                    }
+                  });
+                break;
+        }
+    }
+
     return(
-        <main className="flex flex-row justify-center items-start mt-14 z-20">
-            <div className="relative flex flex-col justify-center 2xl:w-8/12 xl:w-10/12 lg:w-10/12 md:w-11/12">
-                <Question currentStep={currentStep} />
-                <hr className="mt-5"/>
-                <div className="pb-44">
-                    <Answer 
-                        currentStep={currentStep}
-                        enableStep={enableStep}
-                        cameras={cameras} 
-                        homeOrBusiness={homeOrBusiness} 
-                        setHomeOrBusiness={setHomeOrBusiness}
-                        allProducts={allProducts}
-                        indoorCables={indoorCables}
-                        outdoorCables={outdoorCables}
-                        videoRecorders={videoRecorders}
-                        hardDrives={hardDrives}
-                        selectNewCamera={selectNewCamera}
-                        deleteCamera={deleteCamera}
-                        updateCameraName={updateCameraName}
-                        selectedNVR={selectedNVR}
-                        selectNVR={selectNVR}
-                        hasSeenInstructions={hasSeenInstructions}
-                        setHasSeenInstructions={setHasSeenInstructions}
-                        cableType={cableType}
-                        setCableType={setCableType}
-                        selectCable={selectCable}
-                    />
-                </div>
-                <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">
-                    <div className="flex flex-col justify-center 2xl:w-8/12 xl:w-9/12 lg:w-10/12 md:w-11/12">
-                        <Actions nextStep={nextStep} prevStep={prevStep} currentStep={currentStep} />
-                        {/* <NavMenu currentStep={currentStep} setStep={setStep} steps={steps}/> */}
+        <div>
+            <ReactNotification />
+            <main className="flex flex-row justify-center items-start mt-14 z-20">
+                <div className="relative flex flex-col justify-center 2xl:w-8/12 xl:w-10/12 lg:w-10/12 md:w-11/12">
+                    <Question currentStep={currentStep} />
+                    <hr className="mt-5"/>
+                    <div className="pb-44">
+                        <Answer 
+                            currentStep={currentStep}
+                            enableStep={enableStep}
+                            cameras={cameras} 
+                            homeOrBusiness={homeOrBusiness} 
+                            setHomeOrBusiness={setHomeOrBusiness}
+                            allProducts={allProducts}
+                            indoorCables={indoorCables}
+                            outdoorCables={outdoorCables}
+                            videoRecorders={videoRecorders}
+                            hardDrives={hardDrives}
+                            selectNewCamera={selectNewCamera}
+                            deleteCamera={deleteCamera}
+                            updateCameraName={updateCameraName}
+                            selectedNVR={selectedNVR}
+                            selectNVR={selectNVR}
+                            hasSeenInstructions={hasSeenInstructions}
+                            setHasSeenInstructions={setHasSeenInstructions}
+                            cableType={cableType}
+                            setCableType={setCableType}
+                            selectCable={selectCable}
+                            addHardDrive={addHardDrive}
+                        />
                     </div>
+                    <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">
+                        <div className="flex flex-col justify-center 2xl:w-8/12 xl:w-9/12 lg:w-10/12 md:w-11/12">
+                            <Actions nextStep={nextStep} prevStep={prevStep} currentStep={currentStep} />
+                            {/* <NavMenu currentStep={currentStep} setStep={setStep} steps={steps}/> */}
+                        </div>
+                    </div>
+                    <Cart cameras={cameras} selectedNVR={selectedNVR} selectedHardDrives={selectedHardDrives} subtotal={subtotal}/>
                 </div>
-                <Cart cameras={cameras} selectedNVR={selectedNVR} subtotal={subtotal}/>
-            </div>
-        </main>
+            </main>
+        </div>
+        
     )
 }
