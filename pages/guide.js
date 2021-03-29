@@ -14,17 +14,19 @@ export default function Guide() {
     const [ selectedNVR, setSelectedNVR ] = useState('');
     const [ selectedHardDrives, setSelectedHardDrives ] = useState([]);
     const [ homeOrBusiness, setHomeOrBusiness ] = useState('');
+    const [ cablesType, setCablesType ] = useState('');
     const [ allProducts, setAllProducts ] = useState([]);
     const [ indoorCables, setIndoorCables ] = useState([]);
     const [ outdoorCables, setOurdoorCables ] = useState([]);
+    const [ selfMadeProducts, setSelfMadeProducts ] = useState([]);
     const [ hardDrives, setHardDrives ] = useState([])
     const [ videoRecorders, setAllVideoRecorders ] = useState([]);
     const [ hasSeenInstructions, setHasSeenInstructions ] = useState(false);
-    const [ cableType, setCableType ] = useState('');
     const [ subtotal, setSubtotal ] = useState(0.00);
 
     const bearerToken = process.env.BEARER_TOKEN;
 
+    // Fetch all necessary products
     useEffect(() => {
         fetch('/api/getAllProducts')
             .then(response => {
@@ -68,6 +70,19 @@ export default function Guide() {
             })
         })
 
+        const getSelfMadeCables_url = 'https://morning-anchorage-80357.herokuapp.com/https://staging3.entretek.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=%25CAT6-500&searchCriteria[filterGroups][0][filters][1][field]=sku&searchCriteria[filterGroups][0][filters][1][conditionType]=like&searchCriteria[filterGroups][0][filters][1][value]=%25CAT6-1000&searchCriteria[filterGroups][0][filters][2][field]=sku&searchCriteria[filterGroups][0][filters][2][value]=C208'
+        fetch(getSelfMadeCables_url, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + bearerToken
+            }
+        }).then(response => {
+            response.json().then(data => {
+                console.log(data.items);
+                setSelfMadeProducts(data.items);
+            })
+        })
+
         // Get Hard Drives from Magento API
         const getHardDrives_url = 'https://morning-anchorage-80357.herokuapp.com/https://staging3.entretek.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=%25T-HD'
         fetch(getHardDrives_url, {
@@ -88,8 +103,8 @@ export default function Guide() {
     // Update subtotal when product selections change
     useEffect(() => {
         updateSubtotal();
-
     }, [cameras, selectedNVR])
+
 
     const updateSubtotal = () => {
         let price_subtotal = 0.00;
@@ -172,6 +187,10 @@ export default function Guide() {
         submitNotification('addedToCart', hardDrive.sku);
         updateSubtotal();
     }
+
+    const selectCablesType = type => {
+        setCablesType(type);
+    }
     
     const submitNotification = (type, payload) => {
         switch(type) {
@@ -211,7 +230,7 @@ export default function Guide() {
             <ReactNotification />
             <main className="flex flex-row justify-center items-start mt-14 z-20">
                 <div className="relative flex flex-col justify-center 2xl:w-8/12 xl:w-10/12 lg:w-10/12 md:w-11/12">
-                    <Question currentStep={currentStep} />
+                    <Question currentStep={currentStep} cablesType={cablesType} />
                     <hr className="mt-5"/>
                     <div className="pb-44">
                         <Answer 
@@ -223,6 +242,7 @@ export default function Guide() {
                             allProducts={allProducts}
                             indoorCables={indoorCables}
                             outdoorCables={outdoorCables}
+                            selfMadeProducts={selfMadeProducts}
                             videoRecorders={videoRecorders}
                             hardDrives={hardDrives}
                             selectNewCamera={selectNewCamera}
@@ -232,8 +252,8 @@ export default function Guide() {
                             selectNVR={selectNVR}
                             hasSeenInstructions={hasSeenInstructions}
                             setHasSeenInstructions={setHasSeenInstructions}
-                            cableType={cableType}
-                            setCableType={setCableType}
+                            cablesType={cablesType}
+                            selectCablesType={selectCablesType}
                             selectCable={selectCable}
                             addHardDrive={addHardDrive}
                         />
