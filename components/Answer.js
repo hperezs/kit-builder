@@ -15,6 +15,7 @@ export default function Answer({
     allProducts,
     indoorCables,
     outdoorCables,
+    selfMadeProducts,
     videoRecorders,
     hardDrives,
     selectNewCamera,
@@ -24,12 +25,59 @@ export default function Answer({
     selectNVR,
     hasSeenInstructions,
     setHasSeenInstructions,
-    cableType,
-    setCableType,
+    cablesType,
+    selectCablesType,
     selectCable,
     addHardDrive
     }) {
 
+    // Skip choose cables step if user selected "I have my own"
+    if(cablesType == 'none'){
+        switch(currentStep) {
+            case 1:
+                return(
+                    <HomeOrBusiness homeOrBusiness={homeOrBusiness} setHomeOrBusiness={setHomeOrBusiness}/>
+                )
+            case 2:
+                return(
+                    <HowToChooseCameras />
+                )
+            case 3:
+                return(
+                    <ChooseCameras 
+                        allProducts={allProducts} 
+                        selectNewCamera={selectNewCamera} 
+                        cameras={cameras} 
+                        deleteCamera={deleteCamera} 
+                        updateCameraName={updateCameraName}
+                        hasSeenInstructions={hasSeenInstructions}
+                        setHasSeenInstructions={setHasSeenInstructions}
+                    />
+                )
+            case 4: 
+                return(
+                    <ChooseVideoRecorder 
+                        cameras={cameras} 
+                        videoRecorders={videoRecorders} 
+                        selectedNVR={selectedNVR} 
+                        selectNVR={selectNVR}
+                    />
+                )
+            case 5: 
+                return(
+                    <ChooseHardDrive hardDrives={hardDrives} cameras={cameras} addHardDrive={addHardDrive}/>
+                )
+            case 6:
+                return(
+                    <SelectCableType cablesType={cablesType} selectCablesType={selectCablesType}/>
+                )
+            case 7:
+                return(
+                    <div>Going to the next page will result in a crash.</div>
+                )
+        }    
+    }
+    
     switch(currentStep) {
         case 1:
             return(
@@ -66,15 +114,16 @@ export default function Answer({
             )
         case 6:
             return(
-                <SelectCableType cableType={cableType} setCableType={setCableType}/>
+                <SelectCableType cablesType={cablesType} selectCablesType={selectCablesType}/>
             )
         case 7: 
             return(
                 <ChooseCables 
-                    cableType={cableType} 
+                    cablesType={cablesType} 
                     cameras={cameras} 
                     indoorCables={indoorCables}
                     outdoorCables={outdoorCables}  
+                    selfMadeProducts={selfMadeProducts}
                     selectCable={selectCable}
                 />
             )

@@ -1,10 +1,35 @@
 import { useEffect, useState } from "react";
 
-export default function Question({ currentStep }) {
+export default function Question({ currentStep, cablesType }) {
     const [ currentQuestion, setCurrentQuestion ] = useState('');
 
     useEffect(() => {
-        switch(currentStep) {
+        // Skip choose cables question if user selected "I have my own"
+        if(cablesType == 'none'){
+            switch(currentStep) {
+                case 1:
+                    setCurrentQuestion('Are you purchasing a surveillance system for a home or a business?');
+                    break;
+                case 2:
+                    setCurrentQuestion('How to Choose the Right Cameras');
+                    break;
+                case 3:
+                    setCurrentQuestion('Choose Your Cameras');
+                    break;
+                case 4:
+                    setCurrentQuestion('Choose a Video Recorder');
+                    break;
+                case 5:
+                    setCurrentQuestion('Choose your Hard Drive(s)');
+                    break;
+                case 6:
+                    setCurrentQuestion('How do you want to choose your cables?');
+                    break;
+                case 7:
+                    setCurrentQuestion('In progress')
+                    break;
+            }
+        } else switch(currentStep) {
             case 1:
                 setCurrentQuestion('Are you purchasing a surveillance system for a home or a business?');
                 break;
