@@ -13,6 +13,7 @@ export default function Guide() {
     const [ cameras, setCameras ] = useState([]);
     const [ selectedNVR, setSelectedNVR ] = useState('');
     const [ selectedHardDrives, setSelectedHardDrives ] = useState([]);
+    const [ selectedSMProducts, setSelectedSMProducts ] = useState([]);
     const [ homeOrBusiness, setHomeOrBusiness ] = useState('');
     const [ cablesType, setCablesType ] = useState('');
     const [ allProducts, setAllProducts ] = useState([]);
@@ -23,6 +24,7 @@ export default function Guide() {
     const [ videoRecorders, setAllVideoRecorders ] = useState([]);
     const [ hasSeenInstructions, setHasSeenInstructions ] = useState(false);
     const [ subtotal, setSubtotal ] = useState(0.00);
+    
 
     const bearerToken = process.env.BEARER_TOKEN;
 
@@ -70,7 +72,7 @@ export default function Guide() {
             })
         })
 
-        const getSelfMadeCables_url = 'https://morning-anchorage-80357.herokuapp.com/https://staging3.entretek.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=%25CAT6-500&searchCriteria[filterGroups][0][filters][1][field]=sku&searchCriteria[filterGroups][0][filters][1][conditionType]=like&searchCriteria[filterGroups][0][filters][1][value]=%25CAT6-1000&searchCriteria[filterGroups][0][filters][2][field]=sku&searchCriteria[filterGroups][0][filters][2][value]=C208'
+        const getSelfMadeCables_url = 'https://morning-anchorage-80357.herokuapp.com/https://staging3.entretek.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=%25CAT6-500&searchCriteria[filterGroups][0][filters][1][field]=sku&searchCriteria[filterGroups][0][filters][1][conditionType]=like&searchCriteria[filterGroups][0][filters][1][value]=%25CAT6-1000&searchCriteria[filterGroups][0][filters][2][field]=sku&searchCriteria[filterGroups][0][filters][2][value]=C208&searchCriteria[filterGroups][0][filters][3][field]=sku&searchCriteria[filterGroups][0][filters][3][value]=VDV226-011-SEN';
         fetch(getSelfMadeCables_url, {
             method: 'GET',
             headers: {
@@ -103,7 +105,7 @@ export default function Guide() {
     // Update subtotal when product selections change
     useEffect(() => {
         updateSubtotal();
-    }, [cameras, selectedNVR])
+    }, [cameras, selectedNVR, selectedHardDrives, cablesType, selectedSMProducts])
 
 
     const updateSubtotal = () => {
@@ -120,6 +122,13 @@ export default function Guide() {
         selectedHardDrives.forEach(hardDrive => {
             price_subtotal = price_subtotal + parseFloat((hardDrive?.price ? hardDrive.price : 0));
         })
+
+        // Add self-made products costs
+        if(cablesType == 'self-made') {
+            selectedSMProducts.forEach(product => {
+                price_subtotal = price_subtotal + (product.price * product.quantity);
+            })
+        }
 
         setSubtotal(price_subtotal);
         console.log('subtotal useEffect ran. Subtotal: ' + price_subtotal);
@@ -146,16 +155,14 @@ export default function Guide() {
         let cameras_copy = cameras.slice();
         cameras_copy.push(camera);
         setCameras(cameras_copy);
-        updateSubtotal();
         submitNotification('addedToCart', camera.sku);
     }
 
     const deleteCamera = index => {
         let removedCamera = cameras[index];
-        let new_cameras = cameras;
+        let new_cameras = cameras.slice();
         new_cameras.splice(index, 1);
         setCameras(new_cameras);
-        updateSubtotal();
         submitNotification('deletedFromCart', removedCamera?.sku);
     }
 
@@ -177,7 +184,6 @@ export default function Guide() {
         modified_camera.cable = cable;
         cameras_copy[index] = modified_camera;
         setCameras(cameras_copy);
-        updateSubtotal();
     }
 
     const addHardDrive = hardDrive => {
@@ -185,11 +191,32 @@ export default function Guide() {
         new_selectedHardDrives.push(hardDrive);
         setSelectedHardDrives(new_selectedHardDrives);
         submitNotification('addedToCart', hardDrive.sku);
-        updateSubtotal();
     }
 
     const selectCablesType = type => {
         setCablesType(type);
+    }
+
+    const selectSMProducts = product => {        
+        // Check if product is already in cart to just increment qty
+        let isProductInCart = false; 
+        selectedSMProducts.forEach(item => {
+            if(item.sku == product.sku) isProductInCart = true;
+        })
+        if(isProductInCart){
+            let new_SMProducts = selectedSMProducts.map(item => {
+                if(item.sku == product.sku) {
+                    console.log('Adding quantities:' + item.quantity + ' and ' + product.quantity)
+                    item.quantity = item.quantity + product.quantity;
+                }
+                return item;
+            })
+            setSelectedSMProducts(new_SMProducts);
+        } else {
+            let new_SMProducts = selectedSMProducts.slice();
+            new_SMProducts.push(product);
+            setSelectedSMProducts(new_SMProducts);
+        }
     }
     
     const submitNotification = (type, payload) => {
@@ -256,6 +283,8 @@ export default function Guide() {
                             selectCablesType={selectCablesType}
                             selectCable={selectCable}
                             addHardDrive={addHardDrive}
+                            selectSMProducts={selectSMProducts}
+                            selectedSMProducts={selectedSMProducts}
                         />
                     </div>
                     <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">
@@ -264,7 +293,14 @@ export default function Guide() {
                             {/* <NavMenu currentStep={currentStep} setStep={setStep} steps={steps}/> */}
                         </div>
                     </div>
-                    <Cart cameras={cameras} selectedNVR={selectedNVR} selectedHardDrives={selectedHardDrives} subtotal={subtotal}/>
+                    <Cart 
+                        cameras={cameras} 
+                        selectedNVR={selectedNVR} 
+                        selectedHardDrives={selectedHardDrives} 
+                        subtotal={subtotal}
+                        selectedSMProducts={selectedSMProducts}
+                        cablesType={cablesType}
+                    />
                 </div>
             </main>
         </div>

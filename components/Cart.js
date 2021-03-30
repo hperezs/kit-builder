@@ -3,7 +3,7 @@ import {GrCart} from 'react-icons/gr'
 import Image from 'next/image'
 import { backstreet_domain } from '../lib/backstreet_domain'
 
-export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal}) {
+export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal, selectedSMProducts, cablesType}) {
     const [showCart, setShowCart] = useState(false);
     const [count, setCount] = useState(0);
 
@@ -21,8 +21,14 @@ export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal
             new_count++;
         })
 
+        if(cablesType == 'self-made') {
+            selectedSMProducts.forEach(product => {
+                new_count = new_count + product.quantity
+            })
+        }
+
         setCount(new_count);
-    }, [cameras, selectedNVR, selectedHardDrives])
+    }, [cameras, selectedNVR, selectedHardDrives, selectedSMProducts, cablesType])
 
     const cart = useRef();
 
@@ -170,7 +176,35 @@ export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal
                                     </div>
                                 )
                             })}
-                        </div>
+                            <div className="flex mt-10 flex-wrap">
+                            {/* Self-made cables and possibly other tools */}
+                            {cablesType == 'self-made' &&
+                            selectedSMProducts.map((product, index) => {
+                                return(
+                                    <div className="flex flex-col justify-start items-center mx-5 mb-3 rounded p-3 border" key={index}>
+                                        <div className="m-2 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
+                                            <div style={{height: '86px', width: '120px'}}> 
+                                                <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                                    <Image
+                                                        src={backstreet_domain + '/pub/media/catalog/product' + product.media_gallery_entries[0].file}
+                                                        layout="fill"
+                                                        objectFit="contain"
+                                                        quality={100}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-col items-center">
+                                            <p>{product.name}</p>
+                                            <p className="font-light">{product.sku} </p>
+                                            <p className="font-normal text-green-600">${product.price.toFixed(2)}</p>
+                                            <p>Qty: {product.quantity}</p>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                            </div>
+                        </div>  
                     </div>
                     {/*footer*/}
                     <div className={"flex items-center justify-center p-6 border-t " + (showCart ? '' : 'hidden')}>

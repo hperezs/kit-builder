@@ -28,7 +28,9 @@ export default function Answer({
     cablesType,
     selectCablesType,
     selectCable,
-    addHardDrive
+    addHardDrive,
+    selectSMProducts,
+    selectedSMProducts
     }) {
 
     // Skip choose cables step if user selected "I have my own"
@@ -125,6 +127,8 @@ export default function Answer({
                     outdoorCables={outdoorCables}  
                     selfMadeProducts={selfMadeProducts}
                     selectCable={selectCable}
+                    selectSMProducts={selectSMProducts}
+                    selectedSMProducts={selectedSMProducts}
                 />
             )
         case 8:

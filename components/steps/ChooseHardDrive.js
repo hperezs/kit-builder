@@ -144,7 +144,7 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive}){
             <p className="text-lg">The size of the recommended Hard Drive varies according to your recording set-up. Choose between the following options to find the Hard Drive that best suits your needs.</p>
 
             <div className="flex flex-row justify-center items-center mt-10 transition-all duration-300 ease">
-                <div style={{width: '380px'}} className="flex flex-col border rounded p-10 mr-10">
+                <div style={{width: '380px'}} className="flex flex-col border border-gray-300 rounded p-10 mr-10">
                     <div className="flex justify-center mb-10">
                         <div className="flex flex-col items-center justify-center p-7 border border-green-500 rounded">
                             <span className="text-xl">Required Storage Capacity</span>
