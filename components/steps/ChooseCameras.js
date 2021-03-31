@@ -3,7 +3,7 @@ import AddNewCamera from "./AddNewCamera";
 import Instructions from "./instructions";
 import Camera from "./Camera";
 
-export default function ChooseCameras({allProducts, selectNewCamera, cameras, deleteCamera, updateCameraName, hasSeenInstructions, setHasSeenInstructions}) {
+export default function ChooseCameras({allProducts, selectNewCamera, cameras, deleteCamera, updateCameraName}) {
     const [isAddingNewCamera, setIsAddingNewCamera] = useState(true);
     const [displayDeleteBtn, setDisplayDeleteBtn] = useState(false);
 
@@ -31,7 +31,7 @@ export default function ChooseCameras({allProducts, selectNewCamera, cameras, de
                     Add a camera
                 </button>
 
-                <Instructions hasSeenInstructions={hasSeenInstructions} setHasSeenInstructions={setHasSeenInstructions} />
+                <Instructions />
             </div>
             
 
@@ -55,7 +55,7 @@ export default function ChooseCameras({allProducts, selectNewCamera, cameras, de
                             {(!displayDeleteBtn ? 'Edit' : 'Cancel')}
                         </button>
                     </div>
-                    <div className="flex flex-row justify-start items-center flex-wrap bg-gray-100 p-5">
+                    <div className="flex flex-row justify-start items-center flex-wrap bg-gray-200 p-5">
                         {
                             cameras.map((camera, index) => {
                                 return(

@@ -23,12 +23,12 @@ export default function Answer({
     updateCameraName,
     selectedNVR,
     selectNVR,
-    hasSeenInstructions,
-    setHasSeenInstructions,
+    selectedHardDrives,
+    addHardDrive,
+    deleteHardDrive,
     cablesType,
     selectCablesType,
     selectCable,
-    addHardDrive,
     selectSMProducts,
     selectedSMProducts
     }) {
@@ -52,8 +52,6 @@ export default function Answer({
                         cameras={cameras} 
                         deleteCamera={deleteCamera} 
                         updateCameraName={updateCameraName}
-                        hasSeenInstructions={hasSeenInstructions}
-                        setHasSeenInstructions={setHasSeenInstructions}
                     />
                 )
             case 4: 
@@ -67,7 +65,13 @@ export default function Answer({
                 )
             case 5: 
                 return(
-                    <ChooseHardDrive hardDrives={hardDrives} cameras={cameras} addHardDrive={addHardDrive}/>
+                    <ChooseHardDrive 
+                        hardDrives={hardDrives} 
+                        cameras={cameras} 
+                        addHardDrive={addHardDrive} 
+                        selectedHardDrives={selectedHardDrives}
+                        deleteHardDrive={deleteHardDrive}
+                    />
                 )
             case 6:
                 return(
@@ -97,8 +101,6 @@ export default function Answer({
                     cameras={cameras} 
                     deleteCamera={deleteCamera} 
                     updateCameraName={updateCameraName}
-                    hasSeenInstructions={hasSeenInstructions}
-                    setHasSeenInstructions={setHasSeenInstructions}
                 />
             )
         case 4: 
@@ -112,7 +114,13 @@ export default function Answer({
             )
         case 5: 
             return(
-                <ChooseHardDrive hardDrives={hardDrives} cameras={cameras} addHardDrive={addHardDrive}/>
+                <ChooseHardDrive 
+                    hardDrives={hardDrives} 
+                    cameras={cameras} 
+                    addHardDrive={addHardDrive} 
+                    selectedHardDrives={selectedHardDrives}
+                    deleteHardDrive={deleteHardDrive}
+                />
             )
         case 6:
             return(

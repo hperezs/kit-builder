@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import StepsProgress from './stepsProgress'
 import StepDescription from './stepDescription'
 
-export default function Instructions({hasSeenInstructions, setHasSeenInstructions}) {
+export default function Instructions({}) {
     const [showModal, setShowModal] = useState(false);
     const [currentStep, setCurrentStep] = useState(1);
 
@@ -25,7 +25,6 @@ export default function Instructions({hasSeenInstructions, setHasSeenInstruction
     const finishInstructions = () => {
         setShowModal(false);
         setCurrentStep(1);
-        setHasSeenInstructions(true);
     }
 
     return (
