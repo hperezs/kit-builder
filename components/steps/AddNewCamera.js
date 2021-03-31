@@ -52,7 +52,7 @@ export default function AddNewCamera({displayAddNewCamera , allProducts, selectN
     }
 
     if(isAddingNewCamera) return(
-        <section className="border rounded p-10 my-10 flex flex-row justify-center items-center ease-linear transition-all duration-150 flex-wrap ">
+        <section className="border rounded p-10 my-10 flex flex-row justify-center xl:justify-start shadow items-center ease-linear transition-all duration-150 flex-wrap ">
             <div className="flex-shrink-0 min-w-min">
                 <SelectHousing cameraHousing={cameraHousing} setCameraHousing={setCameraHousing} />
                 {isEditingName ? 

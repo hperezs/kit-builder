@@ -6,7 +6,7 @@ export default function RecommendedHardDrive({hardDrive, additionalHD, recommend
 
     // If there is just one recommended HD
     if(additionalHD == '--') return(
-        <div className="flex flex-col items-center border rounded p-7">
+        <div className="flex flex-col items-center border rounded p-7 shadow">
             <span className="text-2xl font-light mb-5">Recommended Hard Drive</span>
 
             <div className="flex flex-col items-center justify-center">
@@ -38,7 +38,7 @@ export default function RecommendedHardDrive({hardDrive, additionalHD, recommend
     )
 
     return(
-        <div className="flex flex-col items-center border rounded p-7">
+        <div className="flex flex-col items-center border rounded p-7 shadow">
             <span className="text-2xl font-light mb-5">Recommended Hard Drives</span>
 
             <div className="flex flex-row items-center justify-center mt-4">

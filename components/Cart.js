@@ -3,7 +3,7 @@ import {GrCart} from 'react-icons/gr'
 import Image from 'next/image'
 import { backstreet_domain } from '../lib/backstreet_domain'
 
-export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal, selectedSMProducts, cablesType}) {
+export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal, selectedSMProducts, cablesType, goToCameras}) {
     const [showCart, setShowCart] = useState(false);
     const [count, setCount] = useState(0);
 
@@ -45,6 +45,11 @@ export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal
         document.removeEventListener("mousedown", handleClick);
       };
     }, [])
+
+    const seeMoreDetails = () => {
+        setShowCart(false);
+        goToCameras();
+    }
 
     const cardCount_style = {paddingTop: '1px', top: '-12px', right: '-6px', height: '24px', width: (count < 10 ? '24px' : '28px')};
 
@@ -144,7 +149,7 @@ export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal
                                             <div className="flex flex-col items-center">
                                                 <p className="text-lg mb-3 border-b border-gray-500 px-3 italic">{camera.cameraName}</p>
                                                 <p className="mb-1">{camera.sku} </p>
-                                                <a className="text-green-600 font-light cursor-pointer hover:text-green-500">See more details</a>
+                                                <a onClick={seeMoreDetails} className="text-green-600 font-light cursor-pointer hover:text-green-500">See more details</a>
                                             </div>
                                             <div className="flex flex-col items-center px-3 py-7 ml-5 rounded">
                                                 <p>Price:</p>
