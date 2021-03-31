@@ -6,11 +6,11 @@ export default function RecommendedHardDrive({hardDrive, additionalHD, recommend
 
     // If there is just one recommended HD
     if(additionalHD == '--') return(
-        <div className="flex flex-col items-center border rounded p-7 shadow">
-            <span className="text-2xl font-light mb-5">Recommended Hard Drive</span>
+        <div className="flex flex-col items-center border rounded shadow bg-gray-100">
+            <div className="text-2xl font-light w-full p-5 text-center bg-white border">Recommended Hard Drive</div>
 
             <div className="flex flex-col items-center justify-center">
-                <div className="m-4 p-6 flex flex-col justify-center items-center border rounded border-gray-300 ">
+                <div className="mx-10 mt-12 px-6 py-10 flex flex-col justify-center items-center border rounded border-gray-300 bg-white shadow-lg ">
                     <div style={{height: '186px', width: '220px'}}> 
                         <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                             <Image
@@ -24,13 +24,13 @@ export default function RecommendedHardDrive({hardDrive, additionalHD, recommend
                     <div className="flex flex-col items-center justify-center mt-5">
                             {
                                 recommendedHDMultiplier == 0 ? 
-                                    <p>{hardDrive.name}</p>
+                                    <p className="text-lg">{hardDrive.name}</p>
                                 :
-                                    <p>{hardDrive.name}<span className="text-green-600 text-lg">{' x' + recommendedHDMultiplier}</span></p>
+                                    <p>{hardDrive.name}<span className="text-green-600 text-xl">{' x' + recommendedHDMultiplier}</span></p>
                             
                             }
-                        <p className="font-light">{hardDrive.sku}</p>
-                        <p className="text-green-600">${hardDrive.price?.toFixed(2)}</p>
+                        <p className="font-light text-lg">{hardDrive.sku}</p>
+                        <p className="text-green-600 text-lg">${hardDrive.price?.toFixed(2)}</p>
                     </div>
                 </div>
             </div>

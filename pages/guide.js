@@ -193,6 +193,14 @@ export default function Guide() {
         submitNotification('addedToCart', hardDrive.sku);
     }
 
+    const deleteHardDrive = index => {
+        let removedHD = selectedHardDrives[index];
+        let new_HardDrives = selectedHardDrives.slice();
+        new_HardDrives.splice(index, 1);
+        setSelectedHardDrives(new_HardDrives);
+        submitNotification('deletedFromCart', removedHD?.sku);
+    }
+
     const selectCablesType = type => {
         setCablesType(type);
     }
@@ -233,29 +241,31 @@ export default function Guide() {
         switch(type) {
             case 'addedToCart':
                 store.addNotification({
-                    message: payload + " added to cart",
+                    title: 'Item added',
+                    message: payload + " has been added to cart",
                     type: "success",
                     insert: "top",
                     container: "top-center",
                     animationIn: ["animate__animated", "animate__fadeIn"],
                     animationOut: ["animate__animated", "animate__fadeOut"],
                     dismiss: {
-                      duration: 5000,
-                      onScreen: true
+                      duration: 4000,
+                      onScreen: false
                     }
                   });
                   break;
             case 'deletedFromCart':
                 store.addNotification({
-                    message: payload + " removed from cart",
+                    title: 'Item deleted',
+                    message: payload + " has been removed from cart",
                     type: "danger",
                     insert: "top",
                     container: "top-center",
                     animationIn: ["animate__animated", "animate__fadeIn"],
                     animationOut: ["animate__animated", "animate__fadeOut"],
                     dismiss: {
-                      duration: 5000,
-                      onScreen: true
+                      duration: 4000,
+                      onScreen: false
                     }
                   });
                 break;
@@ -291,12 +301,12 @@ export default function Guide() {
                             updateCameraName={updateCameraName}
                             selectedNVR={selectedNVR}
                             selectNVR={selectNVR}
-                            hasSeenInstructions={hasSeenInstructions}
-                            setHasSeenInstructions={setHasSeenInstructions}
+                            selectedHardDrives={selectedHardDrives}
+                            addHardDrive={addHardDrive}
+                            deleteHardDrive={deleteHardDrive}
                             cablesType={cablesType}
                             selectCablesType={selectCablesType}
                             selectCable={selectCable}
-                            addHardDrive={addHardDrive}
                             selectSMProducts={selectSMProducts}
                             selectedSMProducts={selectedSMProducts}
                         />

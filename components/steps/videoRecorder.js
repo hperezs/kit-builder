@@ -7,7 +7,7 @@ export default function VideoRecorder({nvr, handleSelect, isRecommended}) {
     const [isLoading, setIsLoading] = useState(true);
 
     const selectButton_styles = "px-5 py-1 border rounded bg-green-600 text-white text-sm uppercase tracking-wider font-semibold mt-3 transition hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
-    const card_styles = "relative flex flex-col justify-start items-center my-10 mx-3 rounded p-3 cursor-pointer bg-white shadow-xl hover:shadow-2xl hover:border-green-300 "
+    const card_styles = "relative flex flex-col justify-start items-center my-10 mx-3 rounded p-3 bg-white shadow-xl hover:border-green-300 "
     const recommended_styles = "border-2 border-green-300";
 
     return(
