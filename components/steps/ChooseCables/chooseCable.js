@@ -35,7 +35,7 @@ export default function ChooseCable({camera, indoorCables, outdoorCables, select
     const selected_card_styles = "flex flex-col justify-start items-center bg-white mb-3 border-green-400 rounded p-3 border "
 
     return(
-        <div className="flex flex-row justify-start items-center overflow-x-auto mb-10">
+        <div className="flex flex-row justify-start items-center mr-auto mb-10">
             <div className="flex flex-col justify-start items-center flex-wrap mx-3 border rounded p-5 ">
                 <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
                     <div style={{height: '86px', width: '120px'}}> 
@@ -115,7 +115,7 @@ export default function ChooseCable({camera, indoorCables, outdoorCables, select
             
 
             {!isChoosing &&
-            <div className="flex flex-col items-center justify-center ml-5 p-5">
+            <div transition-style="in:square:center" style={{width: '400px'}} className="flex flex-col items-center justify-center p-5">
                 <p className="font-light text-center text-lg mb-3">Your selection:</p> 
                     <div className={selected_card_styles}>
                         <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 bg-white ">

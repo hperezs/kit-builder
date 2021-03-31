@@ -9,7 +9,7 @@ import 'react-notifications-component/dist/theme.css'
 
 export default function Guide() {
     const [ steps, setSteps ] = useState(default_steps)
-    const [ currentStep, setStep ] = useState(1);
+    const [ currentStep, setCurrentStep ] = useState(1);
     const [ cameras, setCameras ] = useState([]);
     const [ selectedNVR, setSelectedNVR ] = useState('');
     const [ selectedHardDrives, setSelectedHardDrives ] = useState([]);
@@ -136,12 +136,12 @@ export default function Guide() {
 
 
     const nextStep = () => {
-        setStep(currentStep + 1);
+        setCurrentStep(currentStep + 1);
         window.scrollTo(0, 0);
     }
 
     const prevStep = () => {
-        setStep(currentStep - 1);
+        setCurrentStep(currentStep - 1);
         window.scrollTo(0, 0);
     }
 
@@ -197,20 +197,30 @@ export default function Guide() {
         setCablesType(type);
     }
 
-    const selectSMProducts = product => {        
+    const selectSMProducts = product => { 
+        // I can't figure out why refetching base products fixes the problem    
+        const getSelfMadeCables_url = 'https://morning-anchorage-80357.herokuapp.com/https://staging3.entretek.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=%25CAT6-500&searchCriteria[filterGroups][0][filters][1][field]=sku&searchCriteria[filterGroups][0][filters][1][conditionType]=like&searchCriteria[filterGroups][0][filters][1][value]=%25CAT6-1000&searchCriteria[filterGroups][0][filters][2][field]=sku&searchCriteria[filterGroups][0][filters][2][value]=C208&searchCriteria[filterGroups][0][filters][3][field]=sku&searchCriteria[filterGroups][0][filters][3][value]=VDV226-011-SEN';
+        fetch(getSelfMadeCables_url, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + bearerToken
+            }
+        }).then(response => {
+            response.json().then(data => {
+                console.log(data.items);
+                setSelfMadeProducts(data.items);
+            })
+        })
+        
         // Check if product is already in cart to just increment qty
         let isProductInCart = false; 
         selectedSMProducts.forEach(item => {
             if(item.sku == product.sku) isProductInCart = true;
         })
         if(isProductInCart){
-            let new_SMProducts = selectedSMProducts.map(item => {
-                if(item.sku == product.sku) {
-                    console.log('Adding quantities:' + item.quantity + ' and ' + product.quantity)
-                    item.quantity = item.quantity + product.quantity;
-                }
-                return item;
-            })
+            let new_SMProducts = selectedSMProducts.slice();
+            let index = new_SMProducts.findIndex(item => item.sku == product.sku);
+            new_SMProducts[index].quantity = new_SMProducts[index].quantity + product.quantity;
             setSelectedSMProducts(new_SMProducts);
         } else {
             let new_SMProducts = selectedSMProducts.slice();
@@ -250,6 +260,10 @@ export default function Guide() {
                   });
                 break;
         }
+    }
+
+    const goToCameras = () => {
+        setCurrentStep(3)
     }
 
     return(
@@ -300,6 +314,7 @@ export default function Guide() {
                         subtotal={subtotal}
                         selectedSMProducts={selectedSMProducts}
                         cablesType={cablesType}
+                        goToCameras={goToCameras}
                     />
                 </div>
             </main>

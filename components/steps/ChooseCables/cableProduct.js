@@ -10,7 +10,7 @@ export default function CableProduct({cable, handleSelect}) {
     const card_styles = "flex flex-col justify-start items-center my-14 mx-5 rounded p-3 border hover:shadow-lg hover:border-green-300 "
 
     return(
-        <div className={card_styles}>
+        <div transition-style="fade:in:fast" className={card_styles}>
             <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
                 <div className={"flex flex-row justify-center items-center " + (!isLoading ? 'hidden' : '')} style={{height: '86px', width: '120px'}}>
                     <ReactLoading type="spin" color="#a6e3b6" />

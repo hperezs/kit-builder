@@ -8,7 +8,7 @@ export default function ChooseCables({cablesType, cameras, indoorCables, outdoor
 
     if(cablesType == 'pre-made')return(
         <section className="my-10">
-            <div className="flex flex-col items-start">
+            <div className="flex flex-row items-start justify-start flex-wrap">
                 {cameras.length != 0 && 
                     cameras.map((camera, index) => {
                         return <ChooseCable camera={camera} key={index} indoorCables={indoorCables} outdoorCables={outdoorCables} selectCable={selectCable}/>

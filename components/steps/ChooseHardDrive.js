@@ -143,8 +143,9 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive}){
         <section className="my-10">
             <p className="text-lg">The size of the recommended Hard Drive varies according to your recording set-up. Choose between the following options to find the Hard Drive that best suits your needs.</p>
 
+            {/* Calculator */}
             <div className="flex flex-row justify-center items-center mt-10 transition-all duration-300 ease">
-                <div style={{width: '380px'}} className="flex flex-col border border-gray-300 rounded p-10 mr-10">
+                <div style={{width: '380px'}} className="flex flex-col border border-gray-300 rounded p-10 mr-10 shadow">
                     <div className="flex justify-center mb-10">
                         <div className="flex flex-col items-center justify-center p-7 border border-green-500 rounded">
                             <span className="text-xl">Required Storage Capacity</span>
@@ -226,13 +227,15 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive}){
             </div>
 
             <div className="flex justify-center mt-10">
-                <div className="flex flex-row justify-evenly items-center p-5 border rounded">
+                <div className="flex flex-row justify-evenly items-center p-5 border rounded bg-gray-100 shadow">
                     {hardDrives && 
                         hardDrives.map((hardDrive, index) => {
                             let isRecommended = (hardDrive.sku == recommendedHD.sku || hardDrive.sku == additionalHD.sku);
                             return(
                                 <div className="flex flex-col items-center justify-center ">
-                                    <div className={"m-4 p-6 flex flex-col justify-center items-center rounded " + (isRecommended ? 'border-2 border-green-300' : 'border border-gray-300')}>
+                                    <div
+                                        transition-style="fade:in" 
+                                        className={"m-4 p-6 flex flex-col justify-center bg-white shadow-xl items-center rounded " + (isRecommended ? 'border-2 border-green-300' : 'border border-gray-300')}>
                                         <div style={{height: '86px', width: '120px'}}> 
                                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                                 <Image
@@ -252,7 +255,6 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive}){
                                     </div>
                                 </div>
                             )
-                            
                         })
                     }
                 </div>

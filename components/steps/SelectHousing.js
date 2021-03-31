@@ -24,7 +24,7 @@ export default function SelectHousing({ cameraHousing, setCameraHousing}) {
                 <div className="flex flex-col justify-center items-center py-3"><GrAdd className="text-2xl mb-5" /><p>Click to select housing</p></div> : 
                 <Image loading="eager" src={`/images/${housingStyle}-style.png`} width={80} height={57}/>}
 
-            <div className={(!displayPopover ? 'hidden' : popover_style )}>
+            <div transition-style="in:wipe:up" className={(!displayPopover ? 'hidden' : popover_style )}>
                 <div className="p-3 hover:shadow-lg border hover:border-green-400"
                      onClick={e => submitHousing('dome')}
                 >

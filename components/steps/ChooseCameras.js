@@ -46,14 +46,16 @@ export default function ChooseCameras({allProducts, selectNewCamera, cameras, de
 
             {/* Camera List */}
             {cameras.length != 0 &&
-                <section className="mt-20 border rounded p-5">
-                    <div className="flex flex-row justify-between border-b">
+                <section 
+                    transition-style="in:wipe:right"
+                    className="mt-20 border rounded shadow">
+                    <div className="flex flex-row justify-between border-b bg-white pt-5 px-5">
                         <span className="text-xl align-bottom">Your cameras</span>
                         <button className={editButton_styles} onClick={e => setDisplayDeleteBtn(!displayDeleteBtn)}>
                             {(!displayDeleteBtn ? 'Edit' : 'Cancel')}
                         </button>
                     </div>
-                    <div className="flex flex-row justify-start items-center flex-wrap">
+                    <div className="flex flex-row justify-start items-center flex-wrap bg-gray-100 p-5">
                         {
                             cameras.map((camera, index) => {
                                 return(

@@ -9,8 +9,8 @@ export default function CableLocationDropdown({setCableLength, indoorOrOutdoor})
             setSelectedValue(50);
         };
         if(indoorOrOutdoor == 'indoor') {
-            setCableLength(25);
-            setSelectedValue(50);
+            setCableLength(75);
+            setSelectedValue(75);
         }
     }, [indoorOrOutdoor])
 

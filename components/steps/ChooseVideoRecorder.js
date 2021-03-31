@@ -35,7 +35,7 @@ export default function ChooseVideoRecorder({cameras, videoRecorders, selectedNV
             <p className="text-lg">Select your video recorder according to the number of cameras you are purchasing.</p>
 
             {isChoosing &&
-            <div className="mt-20 border rounded py-10">
+            <div className="mt-20 border rounded py-10 bg-gray-100">
                 <p className="text-center text-2xl font-light">You have selected <span className="text-green-600 font-normal">{cameras.length}</span> camera(s)</p>
                 <div className="mt-10 flex flex-row justify-center">
                     {videoRecorders.length != 0 &&
@@ -54,8 +54,8 @@ export default function ChooseVideoRecorder({cameras, videoRecorders, selectedNV
             </div>}
 
             {!isChoosing &&
-                <section id="#selectedNVR" className="flex flex-col items-center justify-center">
-                    <div className="mt-10 px-20 py-5 border rounded flex flex-col items-center">
+                <section transition-style="in:square:center" id="#selectedNVR" className="flex flex-col items-center justify-center">
+                    <div  className="mt-10 px-20 py-5 border border-gray-400 shadow-xl rounded flex flex-col items-center">
                         <p className="text-center text-2xl font-light">Your selected NVR:</p>
                         <div className={card_styles + 'border border-green-400'}>
                             <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">

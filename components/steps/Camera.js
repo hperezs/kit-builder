@@ -31,7 +31,8 @@ export default function Camera({camera, displayDeleteBtn, index, updateCameraNam
 
     return(
         <div 
-            className="relative flex flex-col justify-start items-center flex-wrap my-10 mx-3 border rounded p-5 ">
+            transition-style="fade:in"
+            className="relative flex flex-col justify-start items-center flex-wrap my-10 mx-3 border rounded p-5 bg-white shadow-xl ">
             <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
                 <div style={{height: '86px', width: '120px'}}> 
                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
