@@ -1,9 +1,7 @@
 import ChooseCable from "./ChooseCables/chooseCable"
 import SelfMadeProduct from "./ChooseCables/selfMadeProduct"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import SelectedSelfMadeProduct from "./ChooseCables/selectedSelfMadeProduct"
-import { useEffect } from "react/cjs/react.development";
-
 
 export default function ChooseCables({
     cablesType, 
