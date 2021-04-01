@@ -30,7 +30,9 @@ export default function Answer({
     selectCablesType,
     selectCable,
     selectSMProducts,
-    selectedSMProducts
+    selectedSMProducts,
+    deleteSMProduct,
+    updateSMProductQuantity
     }) {
 
     // Skip choose cables step if user selected "I have my own"
@@ -137,6 +139,10 @@ export default function Answer({
                     selectCable={selectCable}
                     selectSMProducts={selectSMProducts}
                     selectedSMProducts={selectedSMProducts}
+                    deleteCamera={deleteCamera} 
+                    updateCameraName={updateCameraName}
+                    deleteSMProduct={deleteSMProduct}
+                    updateSMProductQuantity={updateSMProductQuantity}
                 />
             )
         case 8:

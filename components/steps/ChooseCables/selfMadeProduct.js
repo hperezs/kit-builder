@@ -8,16 +8,16 @@ export default function SelfMadeProduct({product, selectSMProducts}) {
     const [quantity, setQuantity] = useState(1);
 
     const selectButton_styles = "px-5 py-1 border rounded bg-green-600 text-white text-sm uppercase tracking-wider font-semibold mt-3 transition hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
-    const card_styles = "flex flex-col justify-start items-center my-14 mx-5 rounded p-3 border hover:shadow-lg hover:border-green-300 "
+    const card_styles = "flex flex-col justify-start items-center my-14 mx-5 rounded p-3 border bg-white shadow hover:shadow-lg hover:border-green-300 "
 
     const handleSelect = product => {
         product.quantity = quantity;
-        console.log('Adding to cart ' + product.quantity + ' ' + product.name);
         selectSMProducts(product);
+        setQuantity(1);
     }
 
     return(
-        <div className={card_styles}>
+        <div transition-style="fade:in" className={card_styles}>
             <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
                 <div className={"flex flex-row justify-center items-center " + (!isLoading ? 'hidden' : '')} style={{height: '86px', width: '120px'}}>
                     <ReactLoading type="spin" color="#a6e3b6" />

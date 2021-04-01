@@ -98,3 +98,29 @@ input[type=number] {
 [transition-style="in:wipe:bottom-right"] {
   animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-in-bottom-right both;
 }
+
+@keyframes edit-grow {
+  from {
+    height: 443px;
+  }
+  to {
+    height: 456px;
+  }
+}
+
+.edit-grow {
+  animation: 0.5s edit-grow;
+}
+
+@keyframes square-out-bottom-right {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+  to {
+    clip-path: inset(100% 0 0 100%);
+  }
+}
+
+[transition-style="out:square:bottom-right"] {
+  animation: 1s cubic-bezier(.25, 1, .30, 1) square-out-bottom-right both;
+}

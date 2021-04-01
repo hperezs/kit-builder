@@ -2,12 +2,13 @@ import { useState } from 'react'
 import { backstreet_domain } from '../../lib/backstreet_domain'
 import { BiEditAlt, BiCheck } from 'react-icons/bi' 
 import { IoMdClose } from 'react-icons/io'
-import {FaRegWindowClose} from 'react-icons/fa'
+import {FaTrashAlt, FaEdit, FaCheckCircle} from 'react-icons/fa'
 import Image from 'next/image'
 
-export default function Camera({camera, displayDeleteBtn, index, updateCameraName, handleDelete}) {
-    const [isEditingName, setIsEditingName] = useState(false);
+export default function Camera({camera, index, updateCameraName, deleteCamera}) {
+    const [isEditing, setIsEditing] = useState(false);
     const [editedName, setEditedName] = useState(camera.cameraName);
+    const [isBeingDeleted, setIsBeingDeleted] = useState(false);
 
     const handleNameChanges = event => {
         setEditedName(event.target.value);
@@ -15,24 +16,33 @@ export default function Camera({camera, displayDeleteBtn, index, updateCameraNam
 
     const cancelChanges = () => {
         setEditedName(camera.cameraName);
-        setIsEditingName(false);
+        setIsEditing(false);
     }
 
     const saveChanges = () => {
-        updateCameraName(index, editedName)
+        updateCameraName(index, editedName);
+        setIsEditing(false);
     }
 
     const listenForEnterKey = event => {
         if(event.keyCode === 13) {
             saveChanges();
-            setIsEditingName(false);
+            setIsEditing(false);
         }
+    }
+
+    const handleDelete = index => {
+        setIsEditing(false);
+        setIsBeingDeleted(true);
+
+        // Wait for the animation to complete
+        setTimeout(() => {deleteCamera(index); setIsBeingDeleted(false)}, 400)
     }
 
     return(
         <div 
-            transition-style="fade:in"
-            className="relative flex flex-col justify-start items-center flex-wrap my-10 mx-3 border rounded p-5 bg-white shadow-xl ">
+            transition-style={isBeingDeleted ? "out:square:bottom-right" : "fade:in"}
+            className={"relative flex flex-col justify-start items-center my-10 mx-3 border rounded p-5 bg-white shadow-xl " + (isEditing ? 'edit-grow overflow-hidden' : '')}>
             <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
                 <div style={{height: '86px', width: '120px'}}> 
                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
@@ -46,7 +56,7 @@ export default function Camera({camera, displayDeleteBtn, index, updateCameraNam
                 </div>
             </div>
             <div className="flex flex-col items-center">
-            {isEditingName ? 
+            {isEditing ? 
                     <div className="flex flex-row justify-center">
                         <div>
                             <input 
@@ -59,16 +69,16 @@ export default function Camera({camera, displayDeleteBtn, index, updateCameraNam
                                 onFocus={e => e.target.select()}
                                 onKeyDown={listenForEnterKey}
                             />
-                            <div className="flex flex-row justify-center mt-2">
+                            <div className="flex flex-row justify-center my-3">
                                 <button 
                                     onClick={cancelChanges}
-                                    className="mx-2 p-1 bg-red-500 rounded text-white "
+                                    className="mx-2 p-1 bg-red-500 rounded text-white focus:outline-none focus:ring focus:ring-red-300 focus:ring-opacity-80"
                                 >
                                     <IoMdClose />
                                 </button>
                                 <button 
                                     onClick={saveChanges}
-                                    className="mx-2 p-1 bg-green-600 rounded text-white"
+                                    className="mx-2 p-1 bg-green-600 rounded text-white focus:outline-none focus:ring focus:ring-green-300 focus:ring-opacity-80"
                                 >
                                     <BiCheck />
                                 </button>
@@ -76,7 +86,7 @@ export default function Camera({camera, displayDeleteBtn, index, updateCameraNam
                         </div>
                     </div>
                 :
-                    <p className="text-lg mb-3 border-b border-gray-500 px-3 italic">{camera.cameraName} {displayDeleteBtn && <BiEditAlt onClick={e => setIsEditingName(true)} className="inline cursor-pointer text-lg mb-1 ml-2" />}</p>
+                    <p className="text-lg mb-3 border-b border-gray-500 px-3 italic">{camera.cameraName}</p>
             }
                 <p className="">{camera.sku} </p>
                 <p className="font-light mb-1">Lens: {camera.cameraLens}</p>
@@ -87,9 +97,15 @@ export default function Camera({camera, displayDeleteBtn, index, updateCameraNam
             </div>
             <span 
                 onClick={e => handleDelete(index)}
-                className={"absolute top-0 right-0 cursor-pointer p-2 " + (!displayDeleteBtn ? 'hidden' : '')}
+                className={"absolute bottom-0 right-0 cursor-pointer p-2 " + (!isEditing ? 'hidden' : '')}
             >
-                <FaRegWindowClose className="fill-current text-red-600 text-2xl hover:text-red-400"/>
+                <FaTrashAlt className="fill-current text-red-600 text-2xl hover:text-red-400"/>
+            </span>
+            <span 
+                onClick={e => setIsEditing(true)}
+                className={"absolute top-0 right-0 cursor-pointer p-2 " + (isEditing ? 'hidden' : '')}
+            >
+                <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
             </span>
         </div>
     )

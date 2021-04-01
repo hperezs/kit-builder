@@ -7,7 +7,7 @@ export default function RecommendedHardDrive({hardDrive, additionalHD, recommend
     // If there is just one recommended HD
     if(additionalHD == '--') return(
         <div className="flex flex-col items-center border rounded shadow bg-gray-100">
-            <div className="text-2xl font-light w-full p-5 text-center bg-white border">Recommended Hard Drive</div>
+            <div className="text-2xl font-light w-full p-5 text-center bg-white border">Recommended Hard Drive{recommendedHDMultiplier != 0 ? 's' : ''}</div>
 
             <div className="flex flex-col items-center justify-center">
                 <div className="mx-10 mt-12 px-6 py-10 flex flex-col justify-center items-center border rounded border-gray-300 bg-white shadow-lg ">
@@ -38,12 +38,12 @@ export default function RecommendedHardDrive({hardDrive, additionalHD, recommend
     )
 
     return(
-        <div className="flex flex-col items-center border rounded p-7 shadow">
-            <span className="text-2xl font-light mb-5">Recommended Hard Drives</span>
+        <div className="flex flex-col items-center border rounded shadow bg-gray-100">
+            <span className="text-2xl font-light w-full p-5 text-center bg-white border">Recommended Hard Drives</span>
 
-            <div className="flex flex-row items-center justify-center mt-4">
+            <div className="flex flex-row justify-center mt-20">
                 <div className="flex flex-col items-center justify-center">
-                    <div className="p-6 flex flex-col justify-center items-center border rounded border-gray-300 ">
+                    <div style={{width: '178px', height: '240px'}} className="p-6 ml-7 flex flex-col justify-center items-center border rounded border-gray-300 bg-white shadow-lg ">
                         <div style={{height: '94px', width: '110px'}}> 
                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                 <Image
@@ -68,10 +68,10 @@ export default function RecommendedHardDrive({hardDrive, additionalHD, recommend
                     </div>
                 </div>
 
-                <span className="text-4xl mx-4 ">+</span>
+                <span className="flex flex-col justify-center text-4xl mx-4 ">+</span>
 
-                <div className="flex flex-col items-center justify-center">
-                    <div className="p-6 flex flex-col justify-center items-center border rounded border-gray-300 ">
+                <div className="flex flex-col items-center justify-center flex-shrink-0">
+                    <div style={{width: '178px', height: '240px'}} className="p-6 mr-7 flex flex-col justify-center items-center border rounded border-gray-300 bg-white shadow-lg">
                         <div style={{height: '94px', width: '110px'}}> 
                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                 <Image
