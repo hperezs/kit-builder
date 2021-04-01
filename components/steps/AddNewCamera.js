@@ -71,13 +71,13 @@ export default function AddNewCamera({displayAddNewCamera , allProducts, selectN
                             <div className="flex flex-row justify-center mt-2">
                                 <button 
                                     onClick={cancelChanges}
-                                    className="mx-2 p-1 bg-red-500 rounded text-white "
+                                    className="mx-2 p-1 bg-red-500 rounded text-white focus:outline-none focus:ring focus:ring-red-300 focus:ring-opacity-80"
                                 >
                                     <IoMdClose />
                                 </button>
                                 <button 
                                     onClick={saveChanges}
-                                    className="mx-2 p-1 bg-green-600 rounded text-white"
+                                    className="mx-2 p-1 bg-green-600 rounded text-white focus:outline-none focus:ring focus:ring-green-300 focus:ring-opacity-80"
                                 >
                                     <BiCheck />
                                 </button>

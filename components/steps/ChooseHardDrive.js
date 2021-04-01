@@ -17,6 +17,7 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
     const [recommendedHDMultiplier, setRecommendedHDMultiplier] = useState(0);
     const [isChoosing, setIsChoosing] = useState(selectedHardDrives.length == 0);
     const [isEditing, setIsEditing] = useState(false);
+    const [shouldKeepEditing, setShouldKeepEditing] = useState(true);
 
     const FQA = 510;
     const KILOBYTE = 1000;
@@ -112,8 +113,18 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
     }, [requiredStorage])
 
     useEffect(() => {
-            document.getElementById('#yourHardDrives')?.scrollIntoView();
+            document.getElementById('yourHardDrives')?.scrollIntoView();
     }, [isChoosing])
+
+    useEffect(() => {
+        console.log(selectedHardDrives.length)
+        console.log(isEditing);
+        if(requiredStorage > 10 && selectedHardDrives.length < 2) {
+            setIsEditing(true);
+            console.log('should keep editing')
+        }
+        
+    }, [isEditing, isChoosing, requiredStorage])
 
     const input_styles = "inline ml-3 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 "
     const selectButton_styles = "px-5 py-1 border rounded bg-green-600 text-white text-sm uppercase tracking-wider font-semibold mt-3 transition hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
@@ -168,8 +179,8 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
         <section className="my-10">
             <p className="text-lg">The size of the recommended Hard Drive varies according to your recording set-up. Choose between the following options to find the Hard Drive that best suits your needs.</p>
 
-            {/* Calculator */}
-            <div className="flex flex-row justify-center mt-10 transition-all duration-300 ease">
+            <div className="flex flex-row justify-center flex-wrap mt-10 transition-all duration-300 ease">
+                {/* Calculator */}
                 <div style={{width: '380px'}} className="flex flex-col border border-gray-300 rounded p-10 mr-10 shadow">
                     <div className="flex justify-center mb-10">
                         <div className="flex flex-col items-center justify-center p-7 border border-gray-300 rounded">
@@ -247,13 +258,14 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
                 </div>
 
                 <RecommendedHardDrive hardDrive={recommendedHD} additionalHD={additionalHD} recommendedHDMultiplier={recommendedHDMultiplier}/> 
+
             </div>
 
             {isChoosing &&
                 <div className="flex justify-center mt-10">
                     <div
                         transition-style="in:wipe:right" 
-                        className="flex flex-row justify-evenly items-center p-5 border rounded bg-gray-200 shadow">
+                        className="flex flex-row justify-evenly items-center p-10 border rounded bg-gray-100 shadow">
                         {hardDrives && 
                             hardDrives.map((hardDrive, index) => {
                                 let isRecommended = (hardDrive.sku == recommendedHD.sku || hardDrive.sku == additionalHD.sku);
@@ -261,7 +273,7 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
                                     <div className="flex flex-col items-center justify-center " key={index}>
                                         <div
                                             transition-style="fade:in" 
-                                            className={"m-4 p-6 flex flex-col justify-center bg-white shadow-xl items-center rounded " + (isRecommended ? 'border-2 border-green-300' : 'border border-gray-300')}>
+                                            className={"relative m-4 p-6 flex flex-col justify-center bg-white shadow-xl items-center rounded " + (isRecommended ? 'border-2 border-green-300' : 'border border-gray-300')}>
                                             <div style={{height: '86px', width: '120px'}}> 
                                                 <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                                     <Image
@@ -276,8 +288,9 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
                                                 <p>{hardDrive.name}</p>
                                                 <p className="font-light">{hardDrive.sku}</p>
                                                 <p className="text-green-600">${hardDrive.price.toFixed(2)}</p>
-                                                <button onClick={e => addToCart(hardDrive)} className={selectButton_styles}>Add to cart</button>
+                                                <button onClick={e => {addToCart(hardDrive); setIsEditing(false)}} className={selectButton_styles}>Add to cart</button>
                                             </div>
+                                            {isRecommended  && <span className="font-light text-lg text-green-600 absolute" style={{top: '-35px'}}>Recommended</span>}
                                         </div>
                                     </div>
                                 )
@@ -288,9 +301,9 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
             }
 
             {(!isChoosing && selectedHardDrives.length != 0) && 
-                <div className="flex justify-center">
-                    <div id="yourHardDrives" transition-style="in:square:center" className="flex flex-col items-center mt-10 p-5 shadow border border-gray-300 rounded">
-                        <h4 className="font-light text-xl">Your Hard Drive(s):</h4>
+                <div className="flex justify-center ml-10">
+                    <div id="yourHardDrives" transition-style="in:square:center" className="flex flex-col justify-center items-center my-20 py-7 px-14 shadow border border-gray-300 rounded">
+                        <h4 className="font-light text-xl">Your Hard Drive{selectedHardDrives.length > 1 ? 's' : ''}:</h4>
                         <div className="flex justify-center">
                             {selectedHardDrives.map((hardDrive, index) => {
                                 return(
@@ -343,12 +356,13 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
                         {isEditing &&
                         <button 
                             onClick={e => setIsEditing(false)}
-                            className="uppercase text-sm tracking-wide font-semibold text-red-600 border border-red-600 my-2 px-3 py-2 rounded hover:text-white hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-500">
-                            Cancel
+                            className="uppercase text-sm tracking-wide font-semibold text-green-600 border border-green-600 my-2 px-3 py-2 rounded hover:text-white hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-200 focus:ring-opacity-500">
+                            Done
                         </button>}
                     </div>
                 </div>
             }
+           
         </section>
     )
 }

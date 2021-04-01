@@ -9,7 +9,7 @@ import FeatureDescription from '../HowToChooseCameras/featureDescription'
 export default function HowToChooseCameras() {
     const [activeFeature, setActiveFeature] = useState('')
 
-    const feature_card_styles = "flex flex-col justify-center w-56 items-center p-7 border rounded mx-5 cursor-pointer focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 ";
+    const feature_card_styles = "flex flex-col justify-center w-56 items-center p-7 border border-gray-400 rounded mx-5 cursor-pointer focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 ";
     const active_card_styles = "bg-green-200 shadow-lg";
 
     return(

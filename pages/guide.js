@@ -22,7 +22,6 @@ export default function Guide() {
     const [ selfMadeProducts, setSelfMadeProducts ] = useState([]);
     const [ hardDrives, setHardDrives ] = useState([])
     const [ videoRecorders, setAllVideoRecorders ] = useState([]);
-    const [ hasSeenInstructions, setHasSeenInstructions ] = useState(false);
     const [ subtotal, setSubtotal ] = useState(0.00);
     
 
@@ -203,6 +202,11 @@ export default function Guide() {
 
     const selectCablesType = type => {
         setCablesType(type);
+
+        if(selectedSMProducts.length != 0) {
+            submitNotification('cartUpdated');
+        }
+        
     }
 
     const selectSMProducts = product => { 
@@ -228,15 +232,33 @@ export default function Guide() {
         if(isProductInCart){
             let new_SMProducts = selectedSMProducts.slice();
             let index = new_SMProducts.findIndex(item => item.sku == product.sku);
-            new_SMProducts[index].quantity = new_SMProducts[index].quantity + product.quantity;
+            new_SMProducts[index].quantity = new_SMProducts[index].quantity + parseInt(product.quantity);
             setSelectedSMProducts(new_SMProducts);
         } else {
             let new_SMProducts = selectedSMProducts.slice();
             new_SMProducts.push(product);
             setSelectedSMProducts(new_SMProducts);
         }
+
+        if(product.quantity > 1) submitNotification('addedToCartMultiple', parseInt(product.quantity) + 'x ' + product.sku);
+        if(product.quantity == 1) submitNotification('addedToCart', product.sku);
     }
     
+    const deleteSMProduct = index => {
+        let removedSMProduct = selectedSMProducts[index];
+        let new_SMProducts = selectedSMProducts.slice();
+        new_SMProducts.splice(index, 1);
+        setSelectedSMProducts(new_SMProducts);
+        submitNotification('deletedFromCart', removedSMProduct?.sku);
+    }
+
+    const updateSMProductQuantity = (index, quantity) => {
+        let new_SMProducts = selectedSMProducts.slice();
+        new_SMProducts[index].quantity = quantity;
+        setSelectedSMProducts(new_SMProducts);
+        submitNotification('cartUpdated');
+    }
+
     const submitNotification = (type, payload) => {
         switch(type) {
             case 'addedToCart':
@@ -254,11 +276,41 @@ export default function Guide() {
                     }
                   });
                   break;
+            case 'addedToCartMultiple':
+            store.addNotification({
+                title: 'Items added',
+                message: payload + " were added to cart",
+                type: "success",
+                insert: "top",
+                container: "top-center",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                    duration: 4000,
+                    onScreen: false
+                }
+                });
+                break;
             case 'deletedFromCart':
                 store.addNotification({
                     title: 'Item deleted',
                     message: payload + " has been removed from cart",
                     type: "danger",
+                    insert: "top",
+                    container: "top-center",
+                    animationIn: ["animate__animated", "animate__fadeIn"],
+                    animationOut: ["animate__animated", "animate__fadeOut"],
+                    dismiss: {
+                      duration: 4000,
+                      onScreen: false
+                    }
+                  });
+                break;
+            case 'cartUpdated':
+                store.addNotification({
+                    title: 'Cart updated',
+                    message: "Your cart has been updated",
+                    type: "info",
                     insert: "top",
                     container: "top-center",
                     animationIn: ["animate__animated", "animate__fadeIn"],
@@ -309,6 +361,8 @@ export default function Guide() {
                             selectCable={selectCable}
                             selectSMProducts={selectSMProducts}
                             selectedSMProducts={selectedSMProducts}
+                            deleteSMProduct={deleteSMProduct}
+                            updateSMProductQuantity={updateSMProductQuantity}
                         />
                     </div>
                     <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">

@@ -12,7 +12,9 @@ export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal
         let new_count = 0;
         cameras.forEach(camera => {
             new_count++;
-            if(camera?.cable) new_count++
+            if(cablesType == 'pre-made'){
+                if(camera?.cable) new_count++
+            }
         })
 
         if(selectedNVR != '') new_count++;
@@ -23,7 +25,7 @@ export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal
 
         if(cablesType == 'self-made') {
             selectedSMProducts.forEach(product => {
-                new_count = new_count + product.quantity
+                new_count = new_count + parseInt(product.quantity)
             })
         }
 
@@ -157,7 +159,7 @@ export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal
                                             </div>
                                         </div>
                                         {/* Cable */}
-                                        {camera?.cable &&
+                                        {camera?.cable && cablesType == 'pre-made' &&
                                             <div className="flex flex-col items-center border rounded p-4 ml-3 w-4/12">
                                                 <div className="my-2 max-w-max flex flex-col justify-center items-center bg-white ">
                                                     <div style={{height: '56px', width: '56px'}}> 
@@ -214,7 +216,7 @@ export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal
                     {/*footer*/}
                     <div className={"flex items-center justify-center p-6 border-t " + (showCart ? '' : 'hidden')}>
                         <div className="text-2xl font-medium px-6 py-2">
-                            Subtotal: ${subtotal.toFixed(2)}
+                            Subtotal: {subtotal.toLocaleString('en-US', {style: 'currency', currency: 'USD'})}
                         </div>
                     </div>
                 </div>

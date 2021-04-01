@@ -35,7 +35,7 @@ export default function ChooseVideoRecorder({cameras, videoRecorders, selectedNV
             <p className="text-lg">Select your video recorder according to the number of cameras you are purchasing.</p>
 
             {isChoosing &&
-            <div className="mt-20 border rounded py-10 bg-gray-100">
+            <div transition-style="in:wipe:right" className="mt-20 border rounded py-10 bg-gray-100">
                 <p className="text-center text-2xl font-light">You have selected <span className="text-green-600 font-normal">{cameras.length}</span> camera(s)</p>
                 <div className="mt-10 flex flex-row justify-center">
                     {videoRecorders.length != 0 &&
