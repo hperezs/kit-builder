@@ -85,13 +85,13 @@ export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal
                         </button>
                     </div>
                     {/*body*/}
-                    <div className={"relative p-6 flex-auto overflow-y-auto" + (showCart ? '' : 'hidden')}>
+                    <div className={"relative p-6 flex-auto overflow-y-auto" }>
                         <div className="flex flex-col">
-                            {/* NVR and Hard Drive */}
-                            <div className="flex flex-row justify-start items-center mb-5">
+                            {/* NVR and Cable */}
+                            <div className="flex flex-row justify-start mb-5">
                                 {/* NVR */}
                                 {selectedNVR != '' &&
-                                <div className={"flex flex-row py-4 px-5 border rounded w-8/12 " + (showCart ? '' : 'hidden')}>
+                                <div className={"flex flex-row items-center py-4 px-5 border rounded w-8/12 flex-shrink-0 bg-white border-gray-300 shadow  " + (showCart ? '' : 'hidden')}>
                                     <div className="m-3" style={{height: '86px', width: '120px'}}> 
                                         <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                             <Image
@@ -108,34 +108,62 @@ export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal
                                         <p className="font-normal text-green-600">${selectedNVR.price.$numberDecimal}</p>
                                     </div>
                                 </div>}
-                                {/* Hard Drive(s) */}
-                                {selectedHardDrives.length != 0 &&
-                                    selectedHardDrives.map((hardDrive, index) => (
-                                    <div className="flex flex-row py-7 px-5 ml-3 border rounded w-4/12">
-                                        <div style={{height: '86px', width: '100px'}}> 
-                                            <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
-                                                <Image
-                                                    src={'/images/hard_drive_hero.jpg'}
-                                                    layout="fill"
-                                                    objectFit="contain"
-                                                    quality={100}
-                                                />
+                                {/* NVR's cable */}
+                                {selectedNVR?.cable && cablesType == 'pre-made' && 
+                                    <div className="flex flex-col items-center border rounded p-4 ml-3 w-4/12 bg-white border-gray-300 shadow">
+                                        <div className="my-2 max-w-max flex flex-col justify-center items-center bg-white">
+                                            <div style={{height: '56px', width: '56px'}}> 
+                                                <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                                    <Image
+                                                        src={backstreet_domain + selectedNVR.cable.imageLink}
+                                                        layout="fill"
+                                                        objectFit="contain"
+                                                        quality={100}
+                                                    />
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="ml-3 flex flex-col justify-center items-center">
-                                            <p className="mb-1">{hardDrive.sku}</p>
-                                            <p className="font-normal text-green-600">${hardDrive.price.toFixed(2)}</p>
+                                        <div className="flex flex-col items-center">
+                                            <p>{selectedNVR.cable.name}</p>
+                                            <p className="font-light">{selectedNVR.cable.sku} </p>
+                                            <p className="font-normal text-green-600">${selectedNVR.cable.price.toFixed(2)}</p>
                                         </div>
                                     </div>
-                                    ))
                                 }
+                            </div>
+                            {/* Hard Drive(s) */}
+                            <div className="flex flex-row justify-start mb-5">
+                                {selectedHardDrives.length != 0 &&
+                                        selectedHardDrives.map((hardDrive, index) => (
+                                            <div className="w-4/12 mr-3">
+                                                <div className="flex flex-row py-7 px-5 border rounded bg-white border-gray-300 shadow">
+                                                    <div style={{height: '86px', width: '100px'}}> 
+                                                        <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                                            <Image
+                                                                src={'/images/hard_drive_hero.jpg'}
+                                                                layout="fill"
+                                                                objectFit="contain"
+                                                                quality={100}
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div className="mx-1 flex flex-col justify-center items-center">
+                                                        <p className="mb-1 text-center">{hardDrive.name}</p>
+                                                        <p className="mb-1 font-light text-gray-600">{hardDrive.sku}</p>
+                                                        <p className="font-normal text-green-600">${hardDrive.price.toFixed(2)}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))
+                                    }
                             </div>
                             {/* Cameras and Cables */}
                             {cameras?.map((camera, index) => {
+                                console.log(camera);
                                 return(
-                                    <div className="flex flex-row items-center mb-5">
+                                    <div className="flex flex-row justify-start items-center mb-5">
                                         {/* Camera */}
-                                        <div className="flex flex-row px-5 py-4 items-center border rounded w-8/12 flex-shrink-0">
+                                        <div className="flex flex-row px-5 py-4 items-center border rounded w-8/12 flex-shrink-0 bg-white border-gray-300 shadow">
                                             <div className="m-2 p-5 flex flex-col justify-center items-center  border-gray-300 ">
                                                 <div style={{height: '86px', width: '120px'}}> 
                                                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
@@ -160,7 +188,7 @@ export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal
                                         </div>
                                         {/* Cable */}
                                         {camera?.cable && cablesType == 'pre-made' &&
-                                            <div className="flex flex-col items-center border rounded p-4 ml-3 w-4/12">
+                                            <div className="flex flex-col items-center border rounded p-4 ml-3 w-4/12 bg-white border-gray-300 shadow">
                                                 <div className="my-2 max-w-max flex flex-col justify-center items-center bg-white ">
                                                     <div style={{height: '56px', width: '56px'}}> 
                                                         <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
@@ -183,34 +211,40 @@ export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal
                                     </div>
                                 )
                             })}
-                            <div className="flex mt-10 flex-wrap">
                             {/* Self-made cables and possibly other tools */}
                             {cablesType == 'self-made' &&
-                            selectedSMProducts.map((product, index) => {
-                                return(
-                                    <div className="flex flex-col justify-start items-center mx-5 mb-3 rounded p-3 border" key={index}>
-                                        <div className="m-2 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
-                                            <div style={{height: '86px', width: '120px'}}> 
-                                                <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
-                                                    <Image
-                                                        src={backstreet_domain + '/pub/media/catalog/product' + product.media_gallery_entries[0].file}
-                                                        layout="fill"
-                                                        objectFit="contain"
-                                                        quality={100}
-                                                    />
+                            <div className="flex flex-wrap justify-start">
+                                {selectedSMProducts.map((product, index) => {
+                                    return(
+                                        <div style={{width: '525px'}} className={"flex flex-row justify-start items-center mb-5 rounded p-5 border bg-white border-gray-300 shadow "} key={index}>
+                                            <div className="m-2 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
+                                                <div style={{height: '66px', width: '100px'}}> 
+                                                    <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                                        <Image
+                                                            src={backstreet_domain + '/pub/media/catalog/product' + product.media_gallery_entries[0].file}
+                                                            layout="fill"
+                                                            objectFit="contain"
+                                                            quality={100}
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <div style={{width: '114px'}} className="flex flex-col items-center ml-5">
+                                                <p className="text-center">{product.name}</p>
+                                                <p className="font-normal text-green-600">${product.price.toFixed(2)}</p>
+                                            </div>
+                                            <div className="flex flex-col justify-center items-center ml-5">
+                                                <p>Quantity:</p>
+                                                <span>{product.quantity}</span>
+                                            </div>
+                                            <div className="flex flex-col justify-center items-center ml-5">
+                                                <p>Subtotal:</p>
+                                                <span className="text-green-600">${(product.quantity * product.price).toFixed(2)}</span>
+                                            </div>
                                         </div>
-                                        <div className="flex flex-col items-center">
-                                            <p>{product.name}</p>
-                                            <p className="font-light">{product.sku} </p>
-                                            <p className="font-normal text-green-600">${product.price.toFixed(2)}</p>
-                                            <p>Qty: {product.quantity}</p>
-                                        </div>
-                                    </div>
-                                )
-                            })}
+                                    )})}
                             </div>
+                            }
                         </div>  
                     </div>
                     {/*footer*/}

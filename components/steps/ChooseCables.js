@@ -6,6 +6,7 @@ import SelectedSelfMadeProduct from "./ChooseCables/selectedSelfMadeProduct"
 export default function ChooseCables({
     cablesType, 
     cameras, 
+    selectedNVR,
     indoorCables, 
     outdoorCables, 
     selfMadeProducts, 
@@ -20,18 +21,25 @@ export default function ChooseCables({
 
     const [isEditing, setIsEditing] = useState(false);
 
-    useEffect(() => {
-        setIsEditing(false);
-    }, [selectedSMProducts])
-
     if(cablesType == 'pre-made')return(
         <section className="my-10">
             <div className="flex flex-row items-start justify-start flex-wrap">
+                {selectedNVR != '' && 
+                    <ChooseCable 
+                        camera={null} 
+                        selectedNVR={selectedNVR}
+                        indoorCables={indoorCables} 
+                        outdoorCables={outdoorCables} 
+                        selectCable={selectCable}
+                    />
+                }
+
                 {cameras.length != 0 && 
                     cameras.map((camera, index) => {
                         return (
                             <ChooseCable 
                                 camera={camera} 
+                                selectedNVR={null}
                                 index={index} 
                                 key={index} 
                                 indoorCables={indoorCables} 
@@ -66,7 +74,6 @@ export default function ChooseCables({
                                         <SelectedSelfMadeProduct 
                                             product={product} 
                                             index={index} 
-                                            isEditing={isEditing} 
                                             deleteSMProduct={deleteSMProduct} 
                                             updateSMProductQuantity={updateSMProductQuantity}
                                             key={index} 
@@ -74,12 +81,6 @@ export default function ChooseCables({
                                     )
                                 })}
                         </div>
-                        {!isEditing &&
-                        <button 
-                            onClick={e => setIsEditing(true)}
-                            className="uppercase text-sm tracking-wide font-semibold text-yellow-600 border border-yellow-600 my-2 px-3 py-2 rounded hover:text-white hover:bg-yellow-600 focus:outline-none focus:ring focus:ring-yellow-200 focus:ring-opacity-500">
-                            Edit
-                        </button>}
                         {isEditing &&
                         <button 
                             onClick={e => setIsEditing(false)}

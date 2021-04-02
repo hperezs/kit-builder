@@ -5,6 +5,7 @@ import HowToChooseCameras from './steps/howToChooseCameras'
 import SelectCableType from './steps/SelectCableType'
 import ChooseCables from './steps/ChooseCables'
 import ChooseHardDrive from './steps/ChooseHardDrive'
+import SelectAddons from './steps/SelectAddons'
 
 export default function Answer({
     currentStep,
@@ -133,6 +134,7 @@ export default function Answer({
                 <ChooseCables 
                     cablesType={cablesType} 
                     cameras={cameras} 
+                    selectedNVR={selectedNVR}
                     indoorCables={indoorCables}
                     outdoorCables={outdoorCables}  
                     selfMadeProducts={selfMadeProducts}
@@ -147,7 +149,7 @@ export default function Answer({
             )
         case 8:
             return(
-                <div>Going to the next page will result in a crash.</div>
+                <SelectAddons />
             )
     }    
 }

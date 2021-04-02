@@ -26,7 +26,7 @@ export default function Question({ currentStep, cablesType }) {
                     setCurrentQuestion('How do you want to choose your cables?');
                     break;
                 case 7:
-                    setCurrentQuestion('In progress')
+                    setCurrentQuestion('Choose additional items')
                     break;
             }
         } else switch(currentStep) {
@@ -52,7 +52,7 @@ export default function Question({ currentStep, cablesType }) {
                 setCurrentQuestion('Choose your cables');
                 break;
             case 8:
-                setCurrentQuestion('In progress')
+                setCurrentQuestion('Choose additional items')
                 break;
         }
     })
