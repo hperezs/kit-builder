@@ -1,19 +1,19 @@
 import Image from 'next/image'
 import { backstreet_domain } from '../../../lib/backstreet_domain'
-import { FaTrashAlt } from 'react-icons/fa'
+import { FaTrashAlt, FaEdit } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 
-export default function SelectedSelfMadeProduct({product, index, deleteSMProduct, isEditing, updateSMProductQuantity}) {
+export default function SelectedSelfMadeProduct({product, index, deleteSMProduct, updateSMProductQuantity}) {
     const [quantity, setQuantity] = useState(parseInt(product.quantity))
+    const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
-        console.log('********************useEffect called')
         setQuantity(product.quantity);
     }, [product.quantity])
 
     return(
-        <div transition-style="fade:in" className="relative flex flex-col justify-start items-center mx-5 mb-3 rounded p-5 border border-gray-300 shadow">
-            <div className="m-2 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
+        <div transition-style="fade:in" className="relative flex flex-col justify-start items-center mx-5 mb-3 rounded px-5 pt-7 pb-10 border border-gray-300 shadow">
+            <div className="m-2 p-5 flex flex-col justify-center items-center border rounded border-gray-300">
                 <div style={{height: '86px', width: '120px'}}> 
                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                         <Image
@@ -57,16 +57,22 @@ export default function SelectedSelfMadeProduct({product, index, deleteSMProduct
                 }
                 {isEditing &&
                 <button 
-                    onClick={e => updateSMProductQuantity(index, quantity)}
+                    onClick={e => {updateSMProductQuantity(index, quantity); setIsEditing(false)}}
                     className="uppercase text-sm tracking-wide font-semibold text-green-600 border border-green-600 mt-4 px-3 py-2 rounded hover:text-white hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-200 focus:ring-opacity-500">
                     Update
                 </button>}
             </div>
             <span 
-                onClick={e => deleteSMProduct(index)} 
-                className={"absolute top-0 right-0 cursor-pointer p-2 " + (!isEditing ? 'hidden' : '')}
+                onClick={e => {deleteSMProduct(index); setIsEditing(false)}} 
+                className={"absolute bottom-0 right-0 cursor-pointer p-2 " + (!isEditing ? 'hidden' : '')}
             >
                 <FaTrashAlt className="fill-current text-red-600 text-xl hover:text-red-400"/>
+            </span>
+            <span 
+                onClick={e => setIsEditing(true)}
+                className={"absolute top-0 right-0 cursor-pointer p-2 " + (isEditing ? 'hidden' : '')}
+            >
+                <FaEdit className="fill-current text-yellow-600 text-xl hover:text-yellow-400"/>
             </span>
         </div>
     )

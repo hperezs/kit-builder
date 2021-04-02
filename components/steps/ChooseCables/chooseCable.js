@@ -7,12 +7,16 @@ import CableLocationDropdown from '../dropdowns/cableLocationDropdown'
 import CableColorDropdown from '../dropdowns/cableColorDropdown'
 import Camera from "../Camera"
 
-export default function ChooseCable({camera, index, indoorCables, outdoorCables, selectCable, deleteCamera, updateCameraName}) {
+export default function ChooseCable({camera, selectedNVR, index, indoorCables, outdoorCables, selectCable, deleteCamera, updateCameraName}) {
     const [cableLength, setCableLength] = useState(25);
     const [indoorOrOutdoor, setIndoorOrOutdoor] = useState('indoor');
     const [cableColor, setCableColor] = useState("White");
-    const [selectedCable, setSelectedCable] = useState(camera.cable);
-    const [isChoosing, setIsChoosing] = useState((!camera?.cable))
+    const [selectedCable, setSelectedCable] = useState(camera ? camera?.cable : selectedNVR?.cable);
+    const [isChoosing, setIsChoosing] = useState((!camera?.cable && !selectedNVR?.cable))
+
+    useEffect(() => {
+        console.log(selectedCable)
+    }, [selectedCable])
 
     useEffect(() => {
         if(cableLength == 1000) {
@@ -28,16 +32,38 @@ export default function ChooseCable({camera, index, indoorCables, outdoorCables,
             imageLink: '/pub/media/catalog/product' + cable.media_gallery_entries[0].file,
         }
 
-        selectCable(selectedCable, camera);
+        selectCable(selectedCable, camera, selectedNVR);
         setSelectedCable(selectedCable);
         setIsChoosing(false);
     }
 
-    const selected_card_styles = "flex flex-col justify-start items-center bg-white mb-3 border-green-400 rounded p-3 border "
+    const selected_card_styles = "flex flex-col justify-start items-center bg-white mb-3 border-green-400 rounded p-3 border shadow-lg"
 
     return(
-        <div className="flex flex-row justify-start items-center mr-auto mb-10 bg-gray-100 p-4">
-            <Camera camera={camera} key={index} index={index} deleteCamera={deleteCamera} updateCameraName={updateCameraName}/>
+        <div style={{height: '515px', width: '744px'}} className="flex flex-row justify-center items-center mr-auto mb-10 bg-gray-100 p-4">
+            {camera && <Camera camera={camera} key={index} index={index} deleteCamera={deleteCamera} updateCameraName={updateCameraName}/>}
+
+            {selectedNVR && 
+                <div className={'flex flex-col justify-start items-center mx-3 rounded px-3 py-7 border bg-white shadow-lg'}>
+                    <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
+                        <div style={{height: '86px', width: '120px'}}> 
+                            <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                <Image
+                                    src={'/images/nvr-hero.jpg'}
+                                    layout="fill"
+                                    objectFit="contain"
+                                    quality={100}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex flex-col items-center mb-3">
+                        <p className="">{selectedNVR.sku} </p>
+                        <p className="font-light mb-1">Supports up to {selectedNVR.channelCount} cameras</p>
+                        <p className="font-normal text-green-600">${selectedNVR.price.$numberDecimal}</p>
+                    </div>
+                </div>
+            }
 
             {isChoosing &&
                 <div className="flex flex-row">
@@ -94,7 +120,7 @@ export default function ChooseCable({camera, index, indoorCables, outdoorCables,
             
 
             {!isChoosing &&
-            <div transition-style="in:square:center" style={{width: '400px'}} className="flex flex-col items-center justify-center p-5">
+            <div transition-style="in:square:center" style={{width: '350px'}} className="flex flex-col items-center justify-center p-5">
                 <p className="font-light text-center text-lg mb-3">Your selection:</p> 
                     <div className={selected_card_styles}>
                         <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 bg-white ">

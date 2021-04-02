@@ -22,6 +22,8 @@ export default function Guide() {
     const [ selfMadeProducts, setSelfMadeProducts ] = useState([]);
     const [ hardDrives, setHardDrives ] = useState([])
     const [ videoRecorders, setAllVideoRecorders ] = useState([]);
+    const [ monitorProducts, setMonitorProducts ] = useState([]);
+    const [ powerInjectors, setPowerInjectors ] = useState([]);
     const [ subtotal, setSubtotal ] = useState(0.00);
     
 
@@ -99,6 +101,35 @@ export default function Guide() {
             })
         })
 
+        // Get Monitor products
+        const getMonitors_url = 'https://morning-anchorage-80357.herokuapp.com/https://staging3.entretek.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=MON%25&searchCriteria[filterGroups][0][filters][1][field]=sku&searchCriteria[filterGroups][0][filters][1][conditionType]=equals&searchCriteria[filterGroups][0][filters][1][value]=HDMI-Cable'
+        fetch(getMonitors_url, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + bearerToken
+            }
+        }).then(response => {
+            response.json().then(data => {
+                data.items.sort((a, b) => (a.price - b.price));
+                setMonitorProducts(data.items);
+                console.log(data.items);
+            })
+        })
+
+        // Get POE products
+        const getPOEs_url = 'https://morning-anchorage-80357.herokuapp.com/https://staging3.entretek.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=%25POE-1%25'
+        fetch(getPOEs_url, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + bearerToken
+            }
+        }).then(response => {
+            response.json().then(data => {
+                data.items.sort((a, b) => (a.price - b.price));
+                setPowerInjectors(data.items);
+                console.log(data.items);
+            })
+        })
     }, [])
 
     // Update subtotal when product selections change
@@ -117,6 +148,7 @@ export default function Guide() {
 
         // Add NVR cost
         if(selectedNVR != '') price_subtotal = price_subtotal + parseFloat(selectedNVR?.price.$numberDecimal);
+        if(selectedNVR?.cable) price_subtotal = price_subtotal + parseFloat(selectedNVR.cable.price);
 
         selectedHardDrives.forEach(hardDrive => {
             price_subtotal = price_subtotal + parseFloat((hardDrive?.price ? hardDrive.price : 0));
@@ -176,13 +208,21 @@ export default function Guide() {
         submitNotification('addedToCart', nvr.sku);
     }
 
-    const selectCable = (cable, camera) => {
-        let index = cameras.find(element => camera.cameraName == element.cameraName);
-        let cameras_copy = cameras.slice();
-        let modified_camera = camera;
-        modified_camera.cable = cable;
-        cameras_copy[index] = modified_camera;
-        setCameras(cameras_copy);
+    const selectCable = (cable, camera, nvr) => {
+        if(camera){
+            let index = cameras.find(element => camera.cameraName == element.cameraName);
+            let cameras_copy = cameras.slice();
+            let modified_camera = camera;
+            modified_camera.cable = cable;
+            cameras_copy[index] = modified_camera;
+            setCameras(cameras_copy);
+        }
+
+        if(nvr) {
+            nvr.cable = cable;
+           setSelectedNVR(nvr); 
+           updateSubtotal();
+        }
     }
 
     const addHardDrive = hardDrive => {
@@ -203,7 +243,7 @@ export default function Guide() {
     const selectCablesType = type => {
         setCablesType(type);
 
-        if(selectedSMProducts.length != 0) {
+        if(selectedSMProducts.length != 0 || cameras[0]?.cable) {
             submitNotification('cartUpdated');
         }
         

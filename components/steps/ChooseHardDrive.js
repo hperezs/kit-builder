@@ -2,8 +2,9 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react';
 import {backstreet_domain} from '../../lib/backstreet_domain'
 import RecommendedHardDrive from './recommendedHardDrive';
-import {FaRegWindowClose} from 'react-icons/fa'
+import {FaTrashAlt, FaCheck} from 'react-icons/fa'
 import {FiPlus} from 'react-icons/fi'
+import SelectedHardDrive from './ChooseHardDrive/selectedHardDrive';
 
 export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, selectedHardDrives, deleteHardDrive}){
     const [numberOfCameras, setNumberOfCameras] = useState(cameras.length);
@@ -17,7 +18,7 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
     const [recommendedHDMultiplier, setRecommendedHDMultiplier] = useState(0);
     const [isChoosing, setIsChoosing] = useState(selectedHardDrives.length == 0);
     const [isEditing, setIsEditing] = useState(false);
-    const [shouldKeepEditing, setShouldKeepEditing] = useState(true);
+    const [selectedHDStorage, setSelectedHDStorage] = useState(0);
 
     const FQA = 510;
     const KILOBYTE = 1000;
@@ -113,7 +114,7 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
     }, [requiredStorage])
 
     useEffect(() => {
-            document.getElementById('yourHardDrives')?.scrollIntoView();
+        document.getElementById('yourHardDrives')?.scrollIntoView();
     }, [isChoosing])
 
     useEffect(() => {
@@ -121,10 +122,18 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
         console.log(isEditing);
         if(requiredStorage > 10 && selectedHardDrives.length < 2) {
             setIsEditing(true);
-            console.log('should keep editing')
         }
-        
     }, [isEditing, isChoosing, requiredStorage])
+
+    useEffect(() => {
+        let totalStorage = 0;
+
+        selectedHardDrives.map(hardDrive => {
+            totalStorage = totalStorage + parseInt(hardDrive.sku.split('T')[0])
+        })
+
+       setSelectedHDStorage(totalStorage);
+    }, [selectedHardDrives])
 
     const input_styles = "inline ml-3 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 "
     const selectButton_styles = "px-5 py-1 border rounded bg-green-600 text-white text-sm uppercase tracking-wider font-semibold mt-3 transition hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
@@ -262,13 +271,13 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
             </div>
 
             {isChoosing &&
-                <div className="flex justify-center mt-10">
+                <div className="flex justify-center my-10">
                     <div
                         transition-style="in:wipe:right" 
                         className="flex flex-row justify-evenly items-center p-10 border rounded bg-gray-100 shadow">
                         {hardDrives && 
                             hardDrives.map((hardDrive, index) => {
-                                let isRecommended = (hardDrive.sku == recommendedHD.sku || hardDrive.sku == additionalHD.sku);
+                                let isRecommended = ((hardDrive.sku == recommendedHD.sku || hardDrive.sku == additionalHD.sku) && selectedHardDrives[0]?.sku != hardDrive.sku);
                                 return(
                                     <div className="flex flex-col items-center justify-center " key={index}>
                                         <div
@@ -301,39 +310,13 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
             }
 
             {(!isChoosing && selectedHardDrives.length != 0) && 
-                <div className="flex justify-center ml-10">
+                <div className="flex justify-center">
                     <div id="yourHardDrives" transition-style="in:square:center" className="flex flex-col justify-center items-center my-20 py-7 px-14 shadow border border-gray-300 rounded">
                         <h4 className="font-light text-xl">Your Hard Drive{selectedHardDrives.length > 1 ? 's' : ''}:</h4>
                         <div className="flex justify-center">
                             {selectedHardDrives.map((hardDrive, index) => {
                                 return(
-                                    <div className="flex flex-col items-center justify-center " key={index}>
-                                        <div
-                                            transition-style="fade:in" 
-                                            className="m-4 p-6 relative flex flex-col justify-center bg-white shadow-lg items-center rounded border border-gray-300">
-                                            <div style={{height: '86px', width: '120px'}}> 
-                                                <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
-                                                    <Image
-                                                        src={'/images/hard_drive_hero.jpg'}
-                                                        layout="fill"
-                                                        objectFit="contain"
-                                                        quality={100}
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="flex flex-col items-center justify-center mt-5">
-                                                <p>{hardDrive.name}</p>
-                                                <p className="font-light">{hardDrive.sku}</p>
-                                                <p className="text-green-600">${hardDrive.price.toFixed(2)}</p>
-                                            </div>
-                                            <span 
-                                                onClick={e => handleDelete(index)}
-                                                className={"absolute top-0 right-0 cursor-pointer p-2 " + (!isEditing ? 'hidden' : '') }
-                                            >
-                                                <FaRegWindowClose className="fill-current text-red-600 text-xl hover:text-red-400"/>
-                                            </span>
-                                        </div>
-                                    </div>
+                                    <SelectedHardDrive hardDrive={hardDrive} index={index} isEditing={isEditing} handleDelete={handleDelete}/>
                                 )
                             })}
                             {isEditing && 
@@ -353,12 +336,14 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
                             className="uppercase text-sm tracking-wide font-semibold text-green-600 border border-green-600 my-2 px-3 py-2 rounded hover:text-white hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-200 focus:ring-opacity-500">
                             Change
                         </button>}
-                        {isEditing &&
+                        {isEditing && !(requiredStorage > 10 && selectedHardDrives.length < 2)  &&
                         <button 
                             onClick={e => setIsEditing(false)}
                             className="uppercase text-sm tracking-wide font-semibold text-green-600 border border-green-600 my-2 px-3 py-2 rounded hover:text-white hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-200 focus:ring-opacity-500">
                             Done
                         </button>}
+                        {selectedHDStorage > requiredStorage && <span className="mt-2 text-green-600 bg-green-50 py-1 px-3">Storage requirement met  </span>}
+                        {selectedHDStorage < requiredStorage && <span className="mt-2 text-red-600 bg-red-50 py-1 px-3">Storage requirement not met yet </span>}
                     </div>
                 </div>
             }

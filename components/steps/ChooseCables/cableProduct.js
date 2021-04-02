@@ -7,7 +7,7 @@ export default function CableProduct({cable, handleSelect}) {
     const [isLoading, setIsLoading] = useState(true);
 
     const selectButton_styles = "px-5 py-1 border rounded bg-green-600 text-white text-sm uppercase tracking-wider font-semibold mt-3 transition hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
-    const card_styles = "flex flex-col justify-start items-center my-14 mx-5 rounded p-3 border hover:shadow-lg hover:border-green-300 bg-white shadow-xl "
+    const card_styles = "flex flex-col justify-start items-center my-14 mx-5 rounded p-3 border bg-white shadow-xl "
 
     return(
         <div transition-style="in:wipe:right:fast" className={card_styles}>

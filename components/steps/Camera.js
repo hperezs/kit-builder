@@ -42,7 +42,8 @@ export default function Camera({camera, index, updateCameraName, deleteCamera}) 
     return(
         <div 
             transition-style={isBeingDeleted ? "out:square:bottom-right" : "fade:in"}
-            className={"relative flex flex-col justify-start items-center my-10 mx-3 border rounded p-5 bg-white shadow-xl " + (isEditing ? 'edit-grow overflow-hidden' : '')}>
+            className={"relative flex flex-col justify-start items-center my-10 mx-3 border rounded p-5 bg-white shadow-xl " + (isEditing ? 'edit-grow overflow-hidden' : '')}
+        >
             <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
                 <div style={{height: '86px', width: '120px'}}> 
                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
@@ -72,7 +73,7 @@ export default function Camera({camera, index, updateCameraName, deleteCamera}) 
                             <div className="flex flex-row justify-center my-3">
                                 <button 
                                     onClick={cancelChanges}
-                                    className="mx-2 p-1 bg-red-500 rounded text-white focus:outline-none focus:ring focus:ring-red-300 focus:ring-opacity-80"
+                                    className="mx-2 p-1 bg-gray-400 rounded text-white focus:outline-none focus:ring focus:ring-green-300 focus:ring-opacity-80"
                                 >
                                     <IoMdClose />
                                 </button>
