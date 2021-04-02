@@ -52,7 +52,10 @@ export default function Question({ currentStep, cablesType }) {
                 setCurrentQuestion('Choose your cables');
                 break;
             case 8:
-                setCurrentQuestion('Choose additional items')
+                setCurrentQuestion('Choose additional items');
+                break;
+            case 9:
+                setCurrentQuestion('In progress');
                 break;
         }
     })

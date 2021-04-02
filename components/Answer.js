@@ -82,7 +82,11 @@ export default function Answer({
                 )
             case 7:
                 return(
-                    <div>Going to the next page will result in a crash.</div>
+                    <SelectAddons />
+                )
+            case 8:
+                return(
+                    <div>Going to the next step will result in a crash.</div>
                 )
         }    
     }
@@ -150,6 +154,10 @@ export default function Answer({
         case 8:
             return(
                 <SelectAddons />
+            )
+        case 9:
+            return(
+                <div>Going to the next step will result in a crash.</div>
             )
     }    
 }
