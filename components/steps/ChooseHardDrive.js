@@ -184,6 +184,15 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
         }
     }
 
+    const isSelected = (hardDrive) => {
+        let isSelected = false;
+        selectedHardDrives.forEach(selectedHD => {
+            if(selectedHD.sku == hardDrive.sku) isSelected = true;
+        })
+
+        return isSelected;
+    }
+
     return(
         <section className="my-10">
             <p className="text-lg">The size of the recommended Hard Drive varies according to your recording set-up. Choose between the following options to find the Hard Drive that best suits your needs.</p>
@@ -277,7 +286,7 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
                         className="flex flex-row justify-evenly items-center p-10 border rounded bg-gray-100 shadow">
                         {hardDrives && 
                             hardDrives.map((hardDrive, index) => {
-                                let isRecommended = ((hardDrive.sku == recommendedHD.sku || hardDrive.sku == additionalHD.sku) && selectedHardDrives[0]?.sku != hardDrive.sku);
+                                let isRecommended = ((hardDrive.sku == recommendedHD.sku || hardDrive.sku == additionalHD.sku) && !isSelected(hardDrive));
                                 return(
                                     <div className="flex flex-col items-center justify-center " key={index}>
                                         <div
@@ -311,7 +320,10 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
 
             {(!isChoosing && selectedHardDrives.length != 0) && 
                 <div className="flex justify-center">
-                    <div id="yourHardDrives" transition-style="in:square:center" className="flex flex-col justify-center items-center my-20 py-7 px-14 shadow border border-gray-300 rounded">
+                    <div 
+                        id="yourHardDrives" 
+                        transition-style="in:square:center" 
+                        className={"flex flex-col justify-center items-center my-20 py-7 px-14 shadow border rounded " + (selectedHDStorage > requiredStorage ? 'border-green-400' : 'border-yellow-400')}>
                         <h4 className="font-light text-xl">Your Hard Drive{selectedHardDrives.length > 1 ? 's' : ''}:</h4>
                         <div className="flex justify-center">
                             {selectedHardDrives.map((hardDrive, index) => {
@@ -342,8 +354,8 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
                             className="uppercase text-sm tracking-wide font-semibold text-green-600 border border-green-600 my-2 px-3 py-2 rounded hover:text-white hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-200 focus:ring-opacity-500">
                             Done
                         </button>}
-                        {selectedHDStorage > requiredStorage && <span className="mt-2 text-green-600 bg-green-50 py-1 px-3">Storage requirement met  </span>}
-                        {selectedHDStorage < requiredStorage && <span className="mt-2 text-red-600 bg-red-50 py-1 px-3">Storage requirement not met yet </span>}
+                        {selectedHDStorage > requiredStorage && <span className="mt-2 text-green-600 py-1 px-3">Storage requirement met  </span>}
+                        {selectedHDStorage < requiredStorage && <span className="mt-2 text-yellow-600 py-1 px-3">Storage requirement not met </span>}
                     </div>
                 </div>
             }

@@ -29,8 +29,7 @@ export default function RecommendedCameras({allProducts, cameraHousing, cameraLe
 
                                     if(cameraHousing == 'dome' && cameraLens == '3.6mm fixed') return(
                                         cameraHousing == product.housingStyle &&
-                                        cameraLens == product.cameraLens && 
-                                        product.nightVision == '60ft' || product.nightVision == '70ft'
+                                        cameraLens == product.cameraLens
                                     )
                                     
                                     if(cameraHousing == 'ptz') return (
@@ -45,10 +44,10 @@ export default function RecommendedCameras({allProducts, cameraHousing, cameraLe
                                     )
                                 })
         setRecommendedCameras(filteredProducts);
-    }, [cameraHousing, cameraLens, nightVisionDist])
+}, [cameraHousing, cameraLens, nightVisionDist])
 
     return(
-        <section className="flex flex-row items-center">
+        <section className="flex flex-row items-center flex-wrap">
             {recommendedCameras.length != 0 &&
                 recommendedCameras.map((camera, index) => {
                     return(

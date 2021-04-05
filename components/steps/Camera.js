@@ -42,7 +42,7 @@ export default function Camera({camera, index, updateCameraName, deleteCamera}) 
     return(
         <div 
             transition-style={isBeingDeleted ? "out:square:bottom-right" : "fade:in"}
-            className={"relative flex flex-col justify-start items-center my-10 mx-3 border rounded p-5 bg-white shadow-xl " + (isEditing ? 'edit-grow overflow-hidden' : '')}
+            className={"relative flex flex-col justify-start items-center my-7 mx-3 border rounded p-5 bg-white shadow-xl " + (isEditing ? 'edit-grow overflow-hidden' : '')}
         >
             <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
                 <div style={{height: '86px', width: '120px'}}> 

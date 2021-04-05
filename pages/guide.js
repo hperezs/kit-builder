@@ -23,7 +23,10 @@ export default function Guide() {
     const [ hardDrives, setHardDrives ] = useState([])
     const [ videoRecorders, setAllVideoRecorders ] = useState([]);
     const [ monitorProducts, setMonitorProducts ] = useState([]);
+    const [ mountProducts, setMountProducts ] = useState([]);
     const [ powerInjectors, setPowerInjectors ] = useState([]);
+    const [ selectedMonitorProducts, setSelectedMonitorProducts ] = useState([]);
+    const [ selectedMiscProducts, setSelectedMiscProducts ] = useState([]);
     const [ subtotal, setSubtotal ] = useState(0.00);
     
 
@@ -116,6 +119,20 @@ export default function Guide() {
             })
         })
 
+        // Get Mounts
+        const getMounts_url = 'https://morning-anchorage-80357.herokuapp.com/https://staging3.entretek.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=category_bullet_points&searchCriteria[filterGroups][0][filters][0][value]=%25Mounting %25for:%25&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][1][field]=name&searchCriteria[filterGroups][0][filters][1][value]=M5%25 Universal Mount&searchCriteria[filterGroups][0][filters][1][conditionType]=like'
+        fetch(getMounts_url, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + bearerToken
+            }
+        }).then(response => {
+            response.json().then(data => {
+                setMountProducts(data.items);
+                console.log(data.items);
+            })
+        })
+
         // Get POE products
         const getPOEs_url = 'https://morning-anchorage-80357.herokuapp.com/https://staging3.entretek.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=%25POE-1%25'
         fetch(getPOEs_url, {
@@ -140,10 +157,11 @@ export default function Guide() {
 
     const updateSubtotal = () => {
         let price_subtotal = 0.00;
-        // Add cameras and cables cost
+        // Add cameras, cables and mounts cost
         cameras.forEach(camera => {
             price_subtotal = price_subtotal + parseFloat(camera.price.$numberDecimal)
             price_subtotal = price_subtotal + parseFloat((camera.cable?.price ? camera.cable.price : 0));
+            price_subtotal = price_subtotal + parseFloat((camera.mount?.price ? camera.mount.price : 0));
         })
 
         // Add NVR cost
@@ -299,6 +317,48 @@ export default function Guide() {
         submitNotification('cartUpdated');
     }
 
+    const addMount = (index, mount) => {
+        let new_cameras = cameras.slice();
+        new_cameras[index].mount = mount;
+        setCameras(new_cameras);
+        submitNotification('addedToCart', mount.sku);
+    }
+
+    const deleteMount = (index) => {
+        let removedMount = cameras[index].mount;
+        let new_cameras = cameras.slice();
+        new_cameras[index].mount = null;
+        setCameras(new_cameras);
+        submitNotification('deletedFromCart', removedMount.sku);
+    }
+
+    const addMonitor = product => {
+        let new_monitors = selectedMonitorProducts.slice();
+        new_monitors.push(product);
+        setSelectedMonitorProducts(new_monitors);
+        submitNotification('addedToCart', product.sku);
+    }
+
+    const addHDMI = product => {
+        let hasBeenAdded = false
+        let new_monitors = selectedMonitorProducts.map(monitor => {
+            if(!monitor?.cable && !hasBeenAdded) {
+                hasBeenAdded = true;
+                monitor.cable = product;
+                return monitor;
+            }
+        })
+        if(hasBeenAdded){
+            setSelectedMonitorProducts(new_monitors);
+        } else {
+            let new_selectedMiscProducts = selectedMiscProducts.slice();
+            new_selectedMiscProducts.push(product);
+            setSelectedMiscProducts(new_selectedMiscProducts);
+        }
+
+        submitNotification('addedToCart', product.sku);
+    }
+
     const submitNotification = (type, payload) => {
         switch(type) {
             case 'addedToCart':
@@ -403,6 +463,13 @@ export default function Guide() {
                             selectedSMProducts={selectedSMProducts}
                             deleteSMProduct={deleteSMProduct}
                             updateSMProductQuantity={updateSMProductQuantity}
+                            monitorProducts={monitorProducts}
+                            mountProducts={mountProducts}
+                            powerInjectors={powerInjectors}
+                            addMonitor={addMonitor}
+                            addHDMI={addHDMI}
+                            addMount={addMount}
+                            deleteMount={deleteMount}
                         />
                     </div>
                     <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">
@@ -419,6 +486,7 @@ export default function Guide() {
                         selectedSMProducts={selectedSMProducts}
                         cablesType={cablesType}
                         goToCameras={goToCameras}
+                        selectedMonitorProducts={selectedMonitorProducts}
                     />
                 </div>
             </main>

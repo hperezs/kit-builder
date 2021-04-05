@@ -41,7 +41,7 @@ export default function RecommendedCamera({camera, handleSelect}) {
                             layout="fill"
                             objectFit="contain"
                             quality={100}
-                            onLoad={e => setIsLoading(false)}
+                            onLoad={e => setTimeout(() => {setIsLoading(false)}, Math.floor(Math.random() * 1000))}
                         />
                     </div>
                 </div>
