@@ -76,7 +76,7 @@ export default function NightVisionDropdown({ viewingArea, cameraHousing, nightV
             onChange={handleChange}
             className={classNames + (viewingArea == '50-180 ft' ? 'border-green-400 cursor-pointer' : 'bg-gray-50 cursor-not-allowed')}
             >
-            <option value="60ft" disabled={(viewingArea != 'Under 50 ft' ? true : false)}>60 ft</option>
+            <option value="60ft" disabled={(viewingArea != 'Under 50 ft' ? true : false)}>60ft+</option>
             <option value="70ft" disabled={(viewingArea != '50-180 ft' ? true : false)}>70 ft</option>
             <option value="90ft" disabled={(viewingArea != '50-180 ft' ? true : false)}>90 ft</option>
             <option value="120ft" disabled={(cameraHousing != 'bullet' ? true : false)}>120 ft</option>

@@ -33,7 +33,14 @@ export default function Answer({
     selectSMProducts,
     selectedSMProducts,
     deleteSMProduct,
-    updateSMProductQuantity
+    updateSMProductQuantity,
+    monitorProducts,
+    mountProducts,
+    powerInjectors,
+    addMonitor,
+    addHDMI,
+    addMount,
+    deleteMount
     }) {
 
     // Skip choose cables step if user selected "I have my own"
@@ -82,7 +89,16 @@ export default function Answer({
                 )
             case 7:
                 return(
-                    <SelectAddons />
+                    <SelectAddons 
+                        monitorProducts={monitorProducts}
+                        mountProducts={mountProducts}
+                        powerInjectors={powerInjectors}
+                        cameras={cameras}
+                        addMonitor={addMonitor}
+                        addHDMI={addHDMI}
+                        addMount={addMount}
+                        deleteMount={deleteMount}
+                    />
                 )
             case 8:
                 return(
@@ -153,7 +169,16 @@ export default function Answer({
             )
         case 8:
             return(
-                <SelectAddons />
+                <SelectAddons 
+                    monitorProducts={monitorProducts}
+                    mountProducts={mountProducts}
+                    powerInjectors={powerInjectors}
+                    cameras={cameras}
+                    addMonitor={addMonitor}
+                    addHDMI={addHDMI}
+                    addMount={addMount}
+                    deleteMount={deleteMount}
+                />
             )
         case 9:
             return(

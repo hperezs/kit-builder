@@ -46,7 +46,7 @@ export default function ChooseCameras({allProducts, selectNewCamera, cameras, de
                     <div className="flex flex-row justify-start border-b bg-white pt-5 px-5">
                         <span className="text-xl mb-5">Your cameras</span>
                     </div>
-                    <div className="flex flex-row justify-start items-center flex-wrap bg-gray-200 p-5">
+                    <div className="flex flex-row justify-start items-center flex-wrap p-5 bg-gray-200">
                         {
                             cameras.map((camera, index) => {
                                 return(

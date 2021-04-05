@@ -29,7 +29,7 @@ export default function SelfMadeProduct({product, selectSMProducts}) {
                             layout="fill"
                             objectFit="contain"
                             quality={100}
-                            onLoad={e => setIsLoading(false)}
+                            onLoad={e => setTimeout(() => {setIsLoading(false)}, Math.floor(Math.random() * 1000))}
                         />
                     </div>
                 </div>
@@ -47,7 +47,6 @@ export default function SelfMadeProduct({product, selectSMProducts}) {
                     </button>
                     <input 
                         type="number" 
-                        defaultValue={1} 
                         min={1} 
                         value={quantity} 
                         onChange={e => setQuantity(e.target.value)}
