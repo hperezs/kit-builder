@@ -40,7 +40,10 @@ export default function Answer({
     addMonitor,
     addHDMI,
     addMount,
-    deleteMount
+    deleteMount,
+    selectedMonitor,
+    deleteMonitor,
+    deleteHDMI
     }) {
 
     // Skip choose cables step if user selected "I have my own"
@@ -98,6 +101,9 @@ export default function Answer({
                         addHDMI={addHDMI}
                         addMount={addMount}
                         deleteMount={deleteMount}
+                        selectedMonitor={selectedMonitor}
+                        deleteMonitor={deleteMonitor}
+                        deleteHDMI={deleteHDMI}
                     />
                 )
             case 8:
@@ -178,6 +184,9 @@ export default function Answer({
                     addHDMI={addHDMI}
                     addMount={addMount}
                     deleteMount={deleteMount}
+                    selectedMonitor={selectedMonitor}
+                    deleteMonitor={deleteMonitor}
+                    deleteHDMI={deleteHDMI}
                 />
             )
         case 9:

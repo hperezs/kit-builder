@@ -12,9 +12,11 @@ export default function SelectAddons({
     addHDMI,
     addMonitor,
     addMount, 
-    deleteMount
+    deleteMount,
+    selectedMonitor,
+    deleteMonitor,
+    deleteHDMI
 }) {
-    const [displayDetails, setDisplayDetails] = useState(false);
     const [addonsType, setAddonsType] = useState('');
 
     const selected = 'bg-green-200 border-green-200 shadow-lg';
@@ -49,7 +51,16 @@ export default function SelectAddons({
                 </section>
             </div>
 
-            {addonsType == 'monitors' && <Monitors monitorProducts={monitorProducts} addMonitor={addMonitor} addHDMI={addHDMI} />}
+            {addonsType == 'monitors' && 
+                <Monitors 
+                    monitorProducts={monitorProducts} 
+                    addMonitor={addMonitor} 
+                    addHDMI={addHDMI} 
+                    selectedMonitor={selectedMonitor} 
+                    deleteMonitor={deleteMonitor} 
+                    deleteHDMI={deleteHDMI}
+                />
+            }
             {addonsType == 'mounts' && <Mounts mountProducts={mountProducts} cameras={cameras} addMount={addMount} deleteMount={deleteMount}/>}
             {addonsType == 'poe' && <PowerInjectors powerInjectors={powerInjectors}/>}
         </div>

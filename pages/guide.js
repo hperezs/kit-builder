@@ -25,7 +25,7 @@ export default function Guide() {
     const [ monitorProducts, setMonitorProducts ] = useState([]);
     const [ mountProducts, setMountProducts ] = useState([]);
     const [ powerInjectors, setPowerInjectors ] = useState([]);
-    const [ selectedMonitorProducts, setSelectedMonitorProducts ] = useState([]);
+    const [ selectedMonitor, setSelectedMonitor ] = useState('');
     const [ selectedMiscProducts, setSelectedMiscProducts ] = useState([]);
     const [ subtotal, setSubtotal ] = useState(0.00);
     
@@ -333,30 +333,36 @@ export default function Guide() {
     }
 
     const addMonitor = product => {
-        let new_monitors = selectedMonitorProducts.slice();
-        new_monitors.push(product);
-        setSelectedMonitorProducts(new_monitors);
+        setSelectedMonitor(product);
         submitNotification('addedToCart', product.sku);
     }
 
     const addHDMI = product => {
-        let hasBeenAdded = false
-        let new_monitors = selectedMonitorProducts.map(monitor => {
-            if(!monitor?.cable && !hasBeenAdded) {
-                hasBeenAdded = true;
-                monitor.cable = product;
-                return monitor;
-            }
-        })
-        if(hasBeenAdded){
-            setSelectedMonitorProducts(new_monitors);
+        if(!selectedMonitor?.cable) {
+            let new_monitor = selectedMonitor;
+            new_monitor.cable = product;
+            setSelectedMonitor(new_monitor)
         } else {
-            let new_selectedMiscProducts = selectedMiscProducts.slice();
+            new_selectedMiscProducts = selectedMiscProducts.slice();
             new_selectedMiscProducts.push(product);
             setSelectedMiscProducts(new_selectedMiscProducts);
         }
 
         submitNotification('addedToCart', product.sku);
+    }
+
+    const deleteMonitor = () => {
+        let removed_monitor = selectedMonitor;
+        setSelectedMonitor('');
+        submitNotification('deletedFromCart', removed_monitor.sku);
+    }
+
+    const deleteHDMI = () => {
+        let removed_cable = selectedMonitor.cable;
+        let new_monitor = selectedMonitor;
+        new_monitor.cable = null;
+        setSelectedMonitor(new_monitor);
+        submitNotification('deletedFromCart', removed_cable.sku);
     }
 
     const submitNotification = (type, payload) => {
@@ -470,6 +476,9 @@ export default function Guide() {
                             addHDMI={addHDMI}
                             addMount={addMount}
                             deleteMount={deleteMount}
+                            selectedMonitor={selectedMonitor}
+                            deleteHDMI={deleteHDMI}
+                            deleteMonitor={deleteMonitor}
                         />
                     </div>
                     <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">
@@ -486,7 +495,7 @@ export default function Guide() {
                         selectedSMProducts={selectedSMProducts}
                         cablesType={cablesType}
                         goToCameras={goToCameras}
-                        selectedMonitorProducts={selectedMonitorProducts}
+                        selectedMonitor={selectedMonitor}
                     />
                 </div>
             </main>
