@@ -37,6 +37,20 @@ export default function NightVisionDropdown({ viewingArea, cameraHousing, nightV
 
     const classNames = "inline w-28 mt-1 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 ";
 
+    if (cameraHousing == 'dome' && viewingArea == 'Under 50 ft') {
+        return (
+            <select
+                value={selectedValue}
+                onChange={handleChange}
+                className={classNames + 'border-green-400 cursor-pointer'}
+                >
+                <option value="60ft">60 ft</option>
+                <option value="70ft">70 ft</option>
+                <option value="90ft">90 ft</option>
+            </select>
+        )
+    }
+
     if (cameraHousing == 'dome' && viewingArea == "50-180 ft"){
         return(
             <select disabled className={classNames + 'bg-gray-50 cursor-not-allowed'}>

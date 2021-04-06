@@ -52,11 +52,11 @@ export default function AddNewCamera({displayAddNewCamera , allProducts, selectN
     }
 
     if(isAddingNewCamera) return(
-        <section className="border rounded p-10 my-10 flex flex-row justify-center shadow items-center ease-linear transition-all duration-150 flex-wrap ">
-            <div className="flex-shrink-0 min-w-min">
+        <section className="border rounded p-10 my-10 flex flex-row justify-start shadow items-center ease-linear transition-all duration-150 flex-wrap bg-gray-100 ">
+            <div style={{height: '440px'}} className="flex flex-col justify-center items-center px-5 border border-gray-300 mr-3 my-10 rounded flex-shrink-0 min-w-min shadox-xl bg-white">
                 <SelectHousing cameraHousing={cameraHousing} setCameraHousing={setCameraHousing} />
                 {isEditingName ? 
-                    <div className="flex flex-row justify-center">
+                    <div className="flex flex-row justify-center mb-4">
                         <div>
                             <input 
                                 type="text" 
@@ -85,31 +85,31 @@ export default function AddNewCamera({displayAddNewCamera , allProducts, selectN
                         </div>
                     </div>
                 :
-                    <p className="mt-3 text-center">{cameraName} <BiEditAlt onClick={e => setIsEditingName(true)} className="inline cursor-pointer text-lg mb-1 ml-2" /></p>    
+                    <p className="mb-4 text-center">{cameraName} <BiEditAlt onClick={e => setIsEditingName(true)} className="inline cursor-pointer text-lg mb-1 ml-2" /></p>    
                 }
-            </div>
-            {/* Inputs */}
-            <div className="w-max flex flex-col justify-center ml-7 h-full p-4 border rounded">
-                <div className="mb-5 flex flex-row justify-between items-center">
-                    <span>Viewing Area: </span>
-                    <ViewingAreaDropdown viewingArea={viewingArea} setViewingArea={setViewingArea} cameraHousing={cameraHousing}/>
-                </div>
-                <div className="mb-5 flex flex-row justify-between items-center">
-                    <span>Camera Lens:</span>
-                    <CameraLensDropdown
-                        cameraLens={cameraLens}
-                        setCameraLens={setCameraLens} 
-                        viewingArea={viewingArea} 
-                    />
-                </div>
-                <div className="flex flex-row justify-between items-center">
-                    <span>Night Vision:</span>
-                    <NightVisionDropdown 
-                        viewingArea={viewingArea} 
-                        cameraHousing={cameraHousing}
-                        nightVisionDist={nightVisionDist}
-                        setNightVisionDist={setNightVisionDist}
-                    />
+                {/* Inputs */}
+                <div className="w-max flex flex-col justify-center p-4 border rounded">
+                    <div className="mb-5 flex flex-row justify-between items-center">
+                        <span>Viewing Area: </span>
+                        <ViewingAreaDropdown viewingArea={viewingArea} setViewingArea={setViewingArea} cameraHousing={cameraHousing}/>
+                    </div>
+                    <div className="mb-5 flex flex-row justify-between items-center">
+                        <span>Camera Lens:</span>
+                        <CameraLensDropdown
+                            cameraLens={cameraLens}
+                            setCameraLens={setCameraLens} 
+                            viewingArea={viewingArea} 
+                        />
+                    </div>
+                    <div className="flex flex-row justify-between items-center">
+                        <span>Night Vision:</span>
+                        <NightVisionDropdown 
+                            viewingArea={viewingArea} 
+                            cameraHousing={cameraHousing}
+                            nightVisionDist={nightVisionDist}
+                            setNightVisionDist={setNightVisionDist}
+                        />
+                    </div>
                 </div>
             </div>
 
