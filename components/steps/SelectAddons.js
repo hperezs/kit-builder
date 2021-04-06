@@ -15,7 +15,10 @@ export default function SelectAddons({
     deleteMount,
     selectedMonitor,
     deleteMonitor,
-    deleteHDMI
+    deleteHDMI,
+    selectedPowerInjectors,
+    addPowerInjector,
+    deletePowerInjector
 }) {
     const [addonsType, setAddonsType] = useState('');
 
@@ -62,7 +65,14 @@ export default function SelectAddons({
                 />
             }
             {addonsType == 'mounts' && <Mounts mountProducts={mountProducts} cameras={cameras} addMount={addMount} deleteMount={deleteMount}/>}
-            {addonsType == 'poe' && <PowerInjectors powerInjectors={powerInjectors}/>}
+            {addonsType == 'poe' && 
+                <PowerInjectors 
+                    powerInjectors={powerInjectors} 
+                    selectedPowerInjectors={selectedPowerInjectors}
+                    addPowerInjector={addPowerInjector}
+                    deletePowerInjector={deletePowerInjector}
+                />
+            }
         </div>
     )
 }

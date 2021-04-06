@@ -3,12 +3,11 @@ import {GrCart} from 'react-icons/gr'
 import Image from 'next/image'
 import { backstreet_domain } from '../lib/backstreet_domain'
 
-export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal, selectedSMProducts, cablesType, goToCameras, selectedMonitor}) {
+export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal, selectedSMProducts, cablesType, goToCameras, selectedMonitor, selectedPowerInjectors}) {
     const [showCart, setShowCart] = useState(false);
     const [count, setCount] = useState(0);
 
     useEffect(() => {
-        console.log('count use effect ran');
         let new_count = 0;
         cameras.forEach(camera => {
             new_count++;
@@ -32,8 +31,17 @@ export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal
             })
         }
 
+        if(selectedMonitor != ''){
+            new_count++
+            if(selectedMonitor?.cable) new_count++;
+        }
+
+        selectedPowerInjectors.forEach(product => {
+            new_count = new_count + parseInt(product.quantity);
+        })
+
         setCount(new_count);
-    }, [cameras, selectedNVR, selectedHardDrives, selectedSMProducts, cablesType])
+    }, [cameras, selectedNVR, selectedHardDrives, selectedSMProducts, cablesType, selectedMonitor, selectedPowerInjectors])
 
     const cart = useRef();
 
@@ -211,7 +219,6 @@ export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal
                             }
                             {/* Cameras, Cables and Mount */}
                             {cameras?.map((camera, index) => {
-                                console.log(camera);
                                 return(
                                     <div className="flex flex-row justify-start items-center mb-3">
                                         {/* Camera */}
@@ -285,7 +292,7 @@ export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal
                                     </div>
                                 )
                             })}
-                            {/* Self-made cables and possibly other tools */}
+                            {/* Self-made cables */}
                             {cablesType == 'self-made' &&
                             <div className="flex flex-wrap justify-start">
                                 {selectedSMProducts.map((product, index) => {
@@ -321,6 +328,42 @@ export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal
                                         </div>
                                     )})}
                             </div>
+                            }
+                            {/* Power Injectors */}
+                            {selectedPowerInjectors.length != 0 && 
+                                selectedPowerInjectors.map((product, index) => {
+                                    return(
+                                        <div 
+                                            className={"flex flex-row justify-start items-center mb-3 rounded p-5 border bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-6/12' : 'w-8/12')} 
+                                            key={index}
+                                        >
+                                            <div className="m-2 p-3 flex flex-col justify-center items-center rounded border-gray-300 ">
+                                                <div style={{height: '66px', width: '100px'}}> 
+                                                    <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                                        <Image
+                                                            src={backstreet_domain + '/pub/media/catalog/product' + product.media_gallery_entries[0].file}
+                                                            layout="fill"
+                                                            objectFit="contain"
+                                                            quality={100}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style={{width: '114px'}} className="flex flex-col items-center ml-2">
+                                                <p className="text-center">{product.name}</p>
+                                                <p className="font-normal text-green-600">${product.price.toFixed(2)}</p>
+                                            </div>
+                                            <div className="flex flex-col justify-center items-center ml-7">
+                                                <p>Quantity:</p>
+                                                <span>{product.quantity}</span>
+                                            </div>
+                                            <div className="flex flex-col justify-center items-center ml-7">
+                                                <p>Subtotal:</p>
+                                                <span className="text-green-600">${(product.quantity * product.price).toFixed(2)}</span>
+                                            </div>
+                                        </div>
+                                    )
+                                })
                             }
                         </div>  
                     </div>

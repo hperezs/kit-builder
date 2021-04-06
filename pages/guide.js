@@ -26,7 +26,7 @@ export default function Guide() {
     const [ mountProducts, setMountProducts ] = useState([]);
     const [ powerInjectors, setPowerInjectors ] = useState([]);
     const [ selectedMonitor, setSelectedMonitor ] = useState('');
-    const [ selectedMiscProducts, setSelectedMiscProducts ] = useState([]);
+    const [ selectedPowerInjectors, setSelectedPowerInjectors ] = useState([]);
     const [ subtotal, setSubtotal ] = useState(0.00);
     
 
@@ -152,7 +152,7 @@ export default function Guide() {
     // Update subtotal when product selections change
     useEffect(() => {
         updateSubtotal();
-    }, [cameras, selectedNVR, selectedHardDrives, cablesType, selectedSMProducts])
+    }, [cameras, selectedNVR, selectedHardDrives, cablesType, selectedSMProducts, selectedPowerInjectors, selectedMonitor])
 
 
     const updateSubtotal = () => {
@@ -176,6 +176,22 @@ export default function Guide() {
         if(cablesType == 'self-made') {
             selectedSMProducts.forEach(product => {
                 price_subtotal = price_subtotal + (product.price * product.quantity);
+            })
+        }
+
+        // Add Monitor Costs
+        if(selectedMonitor != '') {
+            price_subtotal = price_subtotal + selectedMonitor.price;
+            if(selectedMonitor?.cable) {
+                price_subtotal = price_subtotal + selectedMonitor.cable.price;
+            }
+        }
+
+        // Add POE costs
+        if(selectedPowerInjectors.length != 0) {
+            selectedPowerInjectors.forEach(product => {
+                console.log(product);
+                price_subtotal = price_subtotal + parseFloat(product.price * product.quantity);
             })
         }
 
@@ -338,16 +354,9 @@ export default function Guide() {
     }
 
     const addHDMI = product => {
-        if(!selectedMonitor?.cable) {
-            let new_monitor = selectedMonitor;
-            new_monitor.cable = product;
-            setSelectedMonitor(new_monitor)
-        } else {
-            new_selectedMiscProducts = selectedMiscProducts.slice();
-            new_selectedMiscProducts.push(product);
-            setSelectedMiscProducts(new_selectedMiscProducts);
-        }
-
+        let new_monitor = selectedMonitor;
+        new_monitor.cable = product;
+        setSelectedMonitor(new_monitor)
         submitNotification('addedToCart', product.sku);
     }
 
@@ -363,6 +372,32 @@ export default function Guide() {
         new_monitor.cable = null;
         setSelectedMonitor(new_monitor);
         submitNotification('deletedFromCart', removed_cable.sku);
+    }
+
+    const addPowerInjector = (product) => {
+        let new_POEs = selectedPowerInjectors.slice();
+
+        let index = new_POEs.findIndex(poe => poe.sku == product.sku)
+        console.log(index);
+
+        if(index == -1){
+            product.quantity = 1;
+            new_POEs.push(product);
+            setSelectedPowerInjectors(new_POEs);
+        } else {
+            new_POEs[index].quantity = new_POEs[index].quantity + 1;
+            setSelectedPowerInjectors(new_POEs);
+        }
+
+        submitNotification('addedToCart', product.sku);
+    }
+
+    const deletePowerInjector = index => {
+        let deletedPOE = selectedPowerInjectors[index];
+        let new_POEs = selectedPowerInjectors.slice();
+        new_POEs.splice(index, 1);
+        setSelectedPowerInjectors(new_POEs);
+        submitNotification('deletedFromCart', deletedPOE.sku);
     }
 
     const submitNotification = (type, payload) => {
@@ -479,6 +514,9 @@ export default function Guide() {
                             selectedMonitor={selectedMonitor}
                             deleteHDMI={deleteHDMI}
                             deleteMonitor={deleteMonitor}
+                            selectedPowerInjectors={selectedPowerInjectors}
+                            addPowerInjector={addPowerInjector}
+                            deletePowerInjector={deletePowerInjector}
                         />
                     </div>
                     <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">
@@ -496,6 +534,7 @@ export default function Guide() {
                         cablesType={cablesType}
                         goToCameras={goToCameras}
                         selectedMonitor={selectedMonitor}
+                        selectedPowerInjectors={selectedPowerInjectors}
                     />
                 </div>
             </main>

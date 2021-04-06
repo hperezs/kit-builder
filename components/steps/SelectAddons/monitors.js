@@ -70,7 +70,7 @@ export default function Monitors({monitorProducts, addMonitor, addHDMI, selected
 
             {/* Selected Items */}
             {!isChoosing && 
-            <div transition-style="in:square:center" className="flex flex-col items-center mt-10 border rounded p-10">
+            <div transition-style="in:square:center" className="flex flex-col items-center mt-10 border border-gray-300 rounded p-10 shadow">
                 <h4 className="font-light text-xl">Your selection:</h4>
                 <div className="flex flex-row justify-center items-center">
                     {/* Selected Monitor */}
