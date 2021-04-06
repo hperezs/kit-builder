@@ -29,7 +29,8 @@ export default function RecommendedCameras({allProducts, cameraHousing, cameraLe
 
                                     if(cameraHousing == 'dome' && cameraLens == '3.6mm fixed') return(
                                         cameraHousing == product.housingStyle &&
-                                        cameraLens == product.cameraLens
+                                        cameraLens == product.cameraLens && 
+                                        nightVisionDist == product.nightVision
                                     )
                                     
                                     if(cameraHousing == 'ptz') return (
