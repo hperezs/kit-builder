@@ -40,7 +40,13 @@ export default function Answer({
     addMonitor,
     addHDMI,
     addMount,
-    deleteMount
+    deleteMount,
+    selectedMonitor,
+    deleteMonitor,
+    deleteHDMI,
+    selectedPowerInjectors,
+    addPowerInjector,
+    deletePowerInjector
     }) {
 
     // Skip choose cables step if user selected "I have my own"
@@ -98,6 +104,12 @@ export default function Answer({
                         addHDMI={addHDMI}
                         addMount={addMount}
                         deleteMount={deleteMount}
+                        selectedMonitor={selectedMonitor}
+                        deleteMonitor={deleteMonitor}
+                        deleteHDMI={deleteHDMI}
+                        selectedPowerInjectors={selectedPowerInjectors}
+                        addPowerInjector={addPowerInjector}
+                        deletePowerInjector={deletePowerInjector}
                     />
                 )
             case 8:
@@ -178,6 +190,12 @@ export default function Answer({
                     addHDMI={addHDMI}
                     addMount={addMount}
                     deleteMount={deleteMount}
+                    selectedMonitor={selectedMonitor}
+                    deleteMonitor={deleteMonitor}
+                    deleteHDMI={deleteHDMI}
+                    selectedPowerInjectors={selectedPowerInjectors}
+                    addPowerInjector={addPowerInjector}
+                    deletePowerInjector={deletePowerInjector}
                 />
             )
         case 9:
