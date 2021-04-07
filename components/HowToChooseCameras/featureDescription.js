@@ -7,20 +7,22 @@ import Resolution from "./resolution";
 export default function FeatureDescription({activeFeature}) {
 
     if (activeFeature != '') return(
-        <section className="w-full p-10 border border-gray-400 rounded mt-20 mb-72">
-            {activeFeature == 'cameraHousing' &&
-                <CameraHousings />
-            }
-            {activeFeature == 'cameraLens' &&
-                <CameraLenses />
-            }
-            {activeFeature == 'nightVision' &&
-                <NightVision />
-            }
-            {activeFeature == 'resolution' &&
-                <Resolution />
-            }
-        </section>
+        <div className="flex justify-center">
+            <section className="w-8/12 p-10 border border-gray-400 rounded mt-20 mb-72">
+                {activeFeature == 'cameraHousing' &&
+                    <CameraHousings />
+                }
+                {activeFeature == 'cameraLens' &&
+                    <CameraLenses />
+                }
+                {activeFeature == 'nightVision' &&
+                    <NightVision />
+                }
+                {activeFeature == 'resolution' &&
+                    <Resolution />
+                }
+            </section>
+        </div>
     )
     else return(<></>)
 }

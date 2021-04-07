@@ -6,6 +6,7 @@ import Question from "../components/Question";
 import { default_steps } from "../lib/steps";
 import ReactNotification, { store } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
+import Image from 'next/image'
 
 export default function Guide() {
     const [ steps, setSteps ] = useState(default_steps)
@@ -525,9 +526,19 @@ export default function Guide() {
                         />
                     </div>
                     <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">
-                        <div className="flex flex-col justify-center 2xl:w-8/12 xl:w-9/12 lg:w-10/12 md:w-11/12">
+                        <div className="flex relative flex-col justify-center 2xl:w-8/12 xl:w-9/12 lg:w-10/12 md:w-11/12">
                             <Actions nextStep={nextStep} prevStep={prevStep} currentStep={currentStep} />
                             {/* <NavMenu currentStep={currentStep} setStep={setStep} steps={steps}/> */}
+                            <div className="absolute top-0 left-0 mt-5" style={{height: '60px', width: '220px'}}> 
+                                <div style={{maxWidth: '100%', height: '100%'}}>
+                                    <Image
+                                        src='/images/BS_logo.png'
+                                        layout="fill"
+                                        objectFit="contain"
+                                        quality={100}
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <Cart 

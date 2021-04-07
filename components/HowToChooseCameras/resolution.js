@@ -6,14 +6,11 @@ export default function Resolution() {
         <section id="cameraLenses" className="my-10 pb-20">
             <h3 className="text-center my-10 text-3xl font-light">Resolution</h3>
             <div className="flex flex-row justify-center">
-                <div className="2xl:w-7/12">
+                <div className="w-7/12 2xl:w-7/12">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque vitae tempus quam pellentesque nec nam aliquam sem et. Nam at lectus urna duis convallis convallis tellus id.
+                        Select a camera that’s night vision range is no more than double the expected viewing distance. For example, if your desired viewing distance is 60-80 feet from the camera location, we would select a camera with a 120 foot night vision distance. If your desired viewing distance is 30 feet, we would not recommend a camera with night viewing distance stronger than 60 feet. 
                     </p>
                     <br/>
-                    <p>
-                        Egestas maecenas pharetra convallis posuere morbi leo urna. Massa id neque aliquam vestibulum morbi. Ullamcorper sit amet risus nullam eget felis eget nunc. Lacus vestibulum sed arcu non odio. Morbi non arcu risus quis varius quam quisque id diam. Diam ut venenatis tellus in metus vulputate eu scelerisque felis. Sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis. In est ante in nibh mauris cursus mattis. 
-                    </p>
                 </div>
             </div>
         </section>
