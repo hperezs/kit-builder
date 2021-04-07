@@ -349,6 +349,11 @@ export default function Guide() {
     }
 
     const addMonitor = product => {
+        // if there is a monitor with a cable, keep the cable
+        if(selectedMonitor?.cable){
+            product.cable = selectedMonitor.cable;
+        }
+
         setSelectedMonitor(product);
         submitNotification('addedToCart', product.sku);
     }
