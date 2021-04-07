@@ -20,14 +20,14 @@ export default function ChooseInstallation({homeOrBusiness, cameras}){
                 <div className="flex flex-col items-center mx-4 p-4">
                     <h2 className="text-2xl font-semibold border-b pb-2 px-4 border-gray-300 w-full text-center">{homeOrBusiness == 'home' ? 'Home' : 'Business'} Installation</h2>
                     <ul className="mt-3 mb-5 text-lg">
-                        <li><BsDot className="inline"/> Lorem ipsum</li>
-                        <li><BsDot className="inline"/> Consectetur adipiscing elit</li>
-                        <li><BsDot className="inline"/> Velit esse cillum</li>
-                        <li><BsDot className="inline"/> Sunt in culpa qui</li>
-                        <li><BsDot className="inline"/> Deserunt mollit anim id est</li>
+                        <li><BsDot className="inline"/> All Cameras</li>
+                        <li><BsDot className="inline"/> Video Recorder</li>
+                        <li><BsDot className="inline"/> Remote viewing</li>
+                        <li><BsDot className="inline"/> 1-Year Installation Warranty</li>
+                        <li><BsDot className="inline"/> 5-Year Equipment Warranty</li>
                     </ul>
 
-                    <div className="flex justify-between w-full mt-7 mb-2 px-2">
+                    <div className="flex justify-between w-full mt-7 mb-2 pb-3 px-2 border-b-2 border-dashed border-gray-700 border-opacity-80">
                         <span className="mr-5">Base fee</span>
                         <span>${baseFee.toFixed(2)}</span>
                     </div>
@@ -35,13 +35,13 @@ export default function ChooseInstallation({homeOrBusiness, cameras}){
                         <span className="mr-5">Installation fee per camera</span>
                         <span>$212.50</span>
                     </div>
-                    <div className="flex justify-between w-full px-2 pb-4 border-b ">
+                    <div className="flex justify-between w-full px-2 pb-2">
                         <span className="mr-5">Your cameras</span>
                         <span>x{cameras?.length}</span>
                     </div>
-                    <div className="flex justify-between w-full mb-2 px-2">
+                    <div className="flex justify-between w-full pt-3 border-t border-gray-400 mt-2 px-2">
                         <span className="mr-5 font-semibold">Subtotal</span>
-                        <span className="text-green-600">${subtotal.toFixed(2)}</span>
+                        <span className="text-green-600">{subtotal.toLocaleString('en-US', {style: 'currency', currency: 'USD'})}</span>
                     </div>
                     <button className={selectButton_styles}>Add to cart</button>
                 </div>

@@ -19,9 +19,9 @@ export default function CameraHousings() {
         <section id="cameraHousings" className="my-10 pb-20">
             <h3 className="text-center my-10 text-3xl font-light">Camera Housings</h3>
             <p className="ml-3 text-xl mb-14 text-center">There are 3 types of camera housings. Click on each one to see more information about them.</p>
-            <div className="flex flex-row justify-around items-center mt-5 mb-20 2xl:px-48">
+            <div className="flex flex-row justify-center items-center mt-5 mb-20">
                 <div 
-                    className={"p-5 text-center rounded border-black-200 " + (housingSelected == 'dome' ? selected : 'border hover:shadow-lg hover:border-green-200')}
+                    className={"p-5 text-center mx-10 rounded border-black-200 " + (housingSelected == 'dome' ? selected : 'border hover:shadow-lg hover:border-green-200')}
                     onClick={e => setHousingSelected('dome')}
                 >
                     <Image src="/images/dome-style.png"
@@ -31,7 +31,7 @@ export default function CameraHousings() {
                 </div>
 
                 <div 
-                    className={"p-5 text-center rounded border-black-200 " + (housingSelected == 'bullet' ? selected : 'border hover:shadow-lg hover:border-green-200')}
+                    className={"p-5 text-center mx-10 rounded border-black-200 " + (housingSelected == 'bullet' ? selected : 'border hover:shadow-lg hover:border-green-200')}
                     onClick={e => setHousingSelected('bullet')}
                 >
                     <Image src="/images/bullet-style.png"
@@ -42,7 +42,7 @@ export default function CameraHousings() {
                 </div>
 
                 <div 
-                    className={"p-5 text-center rounded border-black-200 " + (housingSelected == 'ptz' ? selected : 'border hover:shadow-lg hover:border-green-200')}
+                    className={"p-5 text-center mx-10 rounded border-black-200 " + (housingSelected == 'ptz' ? selected : 'border hover:shadow-lg hover:border-green-200')}
                     onClick={e => setHousingSelected('ptz')}
                 >
                     <Image src="/images/ptz-style.png"
