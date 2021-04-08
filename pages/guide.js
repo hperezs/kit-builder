@@ -601,7 +601,6 @@ export default function Guide() {
                         <div className="flex relative flex-col justify-center 2xl:w-8/12 xl:w-9/12 lg:w-10/12 md:w-11/12">
                             <ProgressBar currentStep={currentStep} />
                             <Actions nextStep={nextStep} prevStep={prevStep} currentStep={currentStep} canClickNext={canClickNext} setCanClickNext={setCanClickNext}/>
-                            {/* <NavMenu currentStep={currentStep} setStep={setStep} steps={steps}/> */}
                             <div className="absolute top-0 left-0 mt-5" style={{height: '60px', width: '220px'}}> 
                                 <div style={{maxWidth: '100%', height: '100%'}}>
                                     <Image
