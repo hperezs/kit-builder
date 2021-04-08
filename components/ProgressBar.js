@@ -1,16 +1,16 @@
 
 
-export default function ProgressBar({currentStep}) {
+export default function ProgressBar({progress}) {
 
     const containerStyles = {
-        height: '6px',
+        height: '5px',
         width: '100%',
         backgroundColor: "#e0e0de",
       }
     
       const fillerStyles = {
         height: '100%',
-        width: `${currentStep / 9 * 100}%`,
+        width: `${progress * 100}%`,
         backgroundColor: '#10B981',
         borderRadius: 'inherit',
         textAlign: 'right',

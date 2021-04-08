@@ -547,7 +547,7 @@ export default function Guide() {
     return(
         <div className="relative">
             <ReactNotification />
-            <ProgressBar currentStep={currentStep} />
+            <ProgressBar progress={(cablesType != 'none' ? currentStep / 10 : currentStep / 9)} />
             <main className="flex flex-row justify-center items-start mt-14 z-20">
                 <div className="relative flex flex-col justify-center 2xl:w-8/12 xl:w-10/12 lg:w-10/12 md:w-11/12">
                     <Question currentStep={currentStep} cablesType={cablesType} />
