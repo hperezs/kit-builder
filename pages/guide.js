@@ -29,8 +29,8 @@ export default function Guide() {
     const [ selectedMonitor, setSelectedMonitor ] = useState('');
     const [ selectedPowerInjectors, setSelectedPowerInjectors ] = useState([]);
     const [ subtotal, setSubtotal ] = useState(0.00);
-    const [ isInstallationSelected, setIsInstallationSelected ] = useState(false);
-    
+    const [ isInstallationSelected, setIsInstallationSelected ] = useState(null);
+    const [ canClickNext, setCanClickNext ] = useState(false);
 
     const bearerToken = process.env.BEARER_TOKEN;
 
@@ -160,6 +160,52 @@ export default function Guide() {
         updateSubtotal();
     }, [cameras, selectedNVR, selectedHardDrives, cablesType, selectedSMProducts, selectedPowerInjectors, selectedMonitor, isInstallationSelected])
 
+    // Allow user to click next when selections are made
+    useEffect(() => {
+        switch(currentStep) {
+            case 1:
+                setCanClickNext(homeOrBusiness);
+                break;
+            case 2:
+                setCanClickNext(true);
+                break;
+            case 3:
+                setCanClickNext(cameras.length != 0);
+                break;
+            case 4: 
+                setCanClickNext(selectedNVR);
+                break;
+            case 5:
+                setCanClickNext(selectedHardDrives.length != 0);
+                break;
+            case 6:
+                setCanClickNext(cablesType);
+                break;
+            case 7: 
+                if(cablesType == 'self-made') {
+                    setCanClickNext(selectedSMProducts.length != 0);
+                }
+                if(cablesType == 'pre-made') {
+                    let cables = 0;
+                    cameras.forEach(camera => {if(camera?.cable) cables++});
+                    setCanClickNext(cables + 1 == cameras.length + 1)
+                }
+                if(cablesType == 'none') {
+                    setCanClickNext(true);
+                }
+                break;
+            case 8:
+                if(cablesType != 'none') {
+                    setCanClickNext(true);
+                } else {
+                    setCanClickNext(isInstallationSelected != null)
+                }
+                break;
+            case 9:
+                if(cablesType != 'none') setCanClickNext(isInstallationSelected != null);
+
+        }
+    }, [currentStep, homeOrBusiness, cameras, selectedNVR, selectedHardDrives, cablesType, selectedSMProducts, selectedPowerInjectors, selectedMonitor, isInstallationSelected])
 
     const updateSubtotal = () => {
         let price_subtotal = 0.00;
@@ -551,7 +597,7 @@ export default function Guide() {
                     </div>
                     <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">
                         <div className="flex relative flex-col justify-center 2xl:w-8/12 xl:w-9/12 lg:w-10/12 md:w-11/12">
-                            <Actions nextStep={nextStep} prevStep={prevStep} currentStep={currentStep} />
+                            <Actions nextStep={nextStep} prevStep={prevStep} currentStep={currentStep} canClickNext={canClickNext} setCanClickNext={setCanClickNext}/>
                             {/* <NavMenu currentStep={currentStep} setStep={setStep} steps={steps}/> */}
                             <div className="absolute top-0 left-0 mt-5" style={{height: '60px', width: '220px'}}> 
                                 <div style={{maxWidth: '100%', height: '100%'}}>

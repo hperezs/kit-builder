@@ -2,7 +2,7 @@ import { useState } from 'react';
 import {BsDot} from 'react-icons/bs'
 
 export default function ChooseInstallation({homeOrBusiness, cameras, isInstallationSelected, addInstallation}){
-    const [ selfInstallationSelected, setSelfInstallationSelected ] = useState(false);
+    const [ selfInstallationSelected, setSelfInstallationSelected ] = useState(isInstallationSelected == false);
 
     const baseFee = (homeOrBusiness == 'home' ? 299 : 349);
     const subtotal = baseFee + (212.50 * cameras.length);
