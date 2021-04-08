@@ -109,7 +109,7 @@ input[type=number] {
 }
 
 .edit-grow {
-  animation: 0.5s edit-grow;
+  animation: 0.2s linear edit-grow;
 }
 
 @keyframes square-out-bottom-right {
