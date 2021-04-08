@@ -78,7 +78,7 @@ input[type=number] {
   }
 }
 
-[transition-style="fade:in"] {
+[transition-style="fade:in"], .fade-in {
   animation: 0.75s ease-in-out fade-in;
 }
 
@@ -123,4 +123,17 @@ input[type=number] {
 
 [transition-style="out:square:bottom-right"] {
   animation: 1s cubic-bezier(.25, 1, .30, 1) square-out-bottom-right both;
+}
+
+@keyframes faded-disable {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+[transition-style="faded-disable"] {
+  animation: 1s ease faded-disable;
 }

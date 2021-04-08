@@ -3,7 +3,19 @@ import {GrCart} from 'react-icons/gr'
 import Image from 'next/image'
 import { backstreet_domain } from '../lib/backstreet_domain'
 
-export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal, selectedSMProducts, cablesType, goToCameras, selectedMonitor, selectedPowerInjectors}) {
+export default function Cart({
+    cameras, 
+    selectedNVR, 
+    selectedHardDrives, 
+    subtotal, selectedSMProducts, 
+    cablesType, 
+    goToCameras, 
+    selectedMonitor, 
+    selectedPowerInjectors, 
+    isInstallationSelected,
+    homeOrBusiness,
+    goToInstallation
+}) {
     const [showCart, setShowCart] = useState(false);
     const [count, setCount] = useState(0);
 
@@ -40,8 +52,10 @@ export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal
             new_count = new_count + parseInt(product.quantity);
         })
 
+        if(isInstallationSelected) new_count++;
+
         setCount(new_count);
-    }, [cameras, selectedNVR, selectedHardDrives, selectedSMProducts, cablesType, selectedMonitor, selectedPowerInjectors])
+    }, [cameras, selectedNVR, selectedHardDrives, selectedSMProducts, cablesType, selectedMonitor, selectedPowerInjectors, isInstallationSelected])
 
     const cart = useRef();
 
@@ -364,6 +378,25 @@ export default function Cart({cameras, selectedNVR, selectedHardDrives, subtotal
                                         </div>
                                     )
                                 })
+                            }
+                            {/* Installation */}
+                            {isInstallationSelected && 
+                                <div className={"flex flex-row justify-start items-center mb-3 rounded p-5 border bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-6/12' : 'w-8/12')}>
+                                    <div className="m-2 p-3 flex flex-col justify-center items-center rounded border-gray-300 ">
+                                        <div className="bg-blue-100 rounded" style={{height: '66px', width: '100px'}}> 
+                                            <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col items-center ml-2">
+                                        <p className="text-center text-lg">{(homeOrBusiness == 'home' ? 'Home' : 'Business') + ' Installation'}</p>
+                                        <a onClick={e => {goToInstallation(); setShowCart(false)}} className="font-light text-green-700 cursor-pointer hover:text-green-500">See details</a>
+                                    </div>
+                                    <div style={{width: '114px'}} className="flex flex-col items-center ml-2">
+                                        <p className="font-normal ml-5 text-green-600">{((homeOrBusiness == 'home' ? 299 : 349) + (cameras.length * 212.50)).toLocaleString('en-US', {style: 'currency', currency: 'USD'})}</p>
+                                    </div>
+                                </div>
                             }
                         </div>  
                     </div>
