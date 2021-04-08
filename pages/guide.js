@@ -545,8 +545,9 @@ export default function Guide() {
     }
 
     return(
-        <div>
+        <div className="relative">
             <ReactNotification />
+            <ProgressBar currentStep={currentStep} />
             <main className="flex flex-row justify-center items-start mt-14 z-20">
                 <div className="relative flex flex-col justify-center 2xl:w-8/12 xl:w-10/12 lg:w-10/12 md:w-11/12">
                     <Question currentStep={currentStep} cablesType={cablesType} />
@@ -599,7 +600,6 @@ export default function Guide() {
 
                     <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">
                         <div className="flex relative flex-col justify-center 2xl:w-8/12 xl:w-9/12 lg:w-10/12 md:w-11/12">
-                            <ProgressBar currentStep={currentStep} />
                             <Actions nextStep={nextStep} prevStep={prevStep} currentStep={currentStep} canClickNext={canClickNext} setCanClickNext={setCanClickNext}/>
                             <div className="absolute top-0 left-0 mt-5" style={{height: '60px', width: '220px'}}> 
                                 <div style={{maxWidth: '100%', height: '100%'}}>

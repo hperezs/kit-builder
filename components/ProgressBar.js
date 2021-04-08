@@ -3,10 +3,9 @@
 export default function ProgressBar({currentStep}) {
 
     const containerStyles = {
-        height: '4px',
+        height: '6px',
         width: '100%',
         backgroundColor: "#e0e0de",
-        borderRadius: 100,
       }
     
       const fillerStyles = {
@@ -25,7 +24,7 @@ export default function ProgressBar({currentStep}) {
       }
     
       return (
-        <div style={containerStyles}>
+        <div style={containerStyles} className="fixed top-0 z-40">
           <div style={fillerStyles}>
             <span style={labelStyles}></span>
           </div>
