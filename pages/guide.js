@@ -7,6 +7,7 @@ import { default_steps } from "../lib/steps";
 import ReactNotification, { store } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 import Image from 'next/image'
+import ProgressBar from "../components/ProgressBar";
 
 export default function Guide() {
     const [ steps, setSteps ] = useState(default_steps)
@@ -464,9 +465,9 @@ export default function Guide() {
 
     const addInstallation = (installation) => {
         if(!installation && isInstallationSelected) submitNotification('deletedFromCart', 'Installation');
+        if(installation && !isInstallationSelected) submitNotification('addedToCart', `Installation`);
 
         setIsInstallationSelected(installation);
-        if(installation) submitNotification('addedToCart', `Installation`);
     }
 
     const submitNotification = (type, payload) => {
@@ -550,6 +551,7 @@ export default function Guide() {
                 <div className="relative flex flex-col justify-center 2xl:w-8/12 xl:w-10/12 lg:w-10/12 md:w-11/12">
                     <Question currentStep={currentStep} cablesType={cablesType} />
                     <hr className="mt-5"/>
+                    <ProgressBar currentStep={currentStep} />
                     <div className="pb-44">
                         <Answer 
                             currentStep={currentStep}
