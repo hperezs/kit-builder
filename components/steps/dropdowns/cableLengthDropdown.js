@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-export default function CableLocationDropdown({setCableLength, indoorOrOutdoor}) {
-    const [selectedValue, setSelectedValue] = useState(25)
+export default function CableLocationDropdown({setCableLength, indoorOrOutdoor, selectedNVR}) {
+    const [selectedValue, setSelectedValue] = useState(selectedNVR ? 5 : 25)
 
     useEffect(() => {
         if(indoorOrOutdoor == 'outdoor') {
@@ -9,8 +9,8 @@ export default function CableLocationDropdown({setCableLength, indoorOrOutdoor})
             setSelectedValue(50);
         };
         if(indoorOrOutdoor == 'indoor') {
-            setCableLength(75);
-            setSelectedValue(75);
+            setCableLength(selectedNVR ? 5 : 75);
+            setSelectedValue(selectedNVR ? 5 : 75);
         }
     }, [indoorOrOutdoor])
 
@@ -29,6 +29,7 @@ export default function CableLocationDropdown({setCableLength, indoorOrOutdoor})
             placeholder="Select"
             className={style + 'cursor-pointer'}
         >
+            {selectedNVR && <option value={5}>5 ft</option>}
             <option value={25}>25 ft</option>
             <option value={75}>75 ft</option>
             <option value={100}>100 ft</option>

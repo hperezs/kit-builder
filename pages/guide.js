@@ -7,6 +7,7 @@ import { default_steps } from "../lib/steps";
 import ReactNotification, { store } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 import Image from 'next/image'
+import ProgressBar from "../components/ProgressBar";
 
 export default function Guide() {
     const [ steps, setSteps ] = useState(default_steps)
@@ -464,9 +465,9 @@ export default function Guide() {
 
     const addInstallation = (installation) => {
         if(!installation && isInstallationSelected) submitNotification('deletedFromCart', 'Installation');
+        if(installation && !isInstallationSelected) submitNotification('addedToCart', `Installation`);
 
         setIsInstallationSelected(installation);
-        if(installation) submitNotification('addedToCart', `Installation`);
     }
 
     const submitNotification = (type, payload) => {
@@ -544,8 +545,9 @@ export default function Guide() {
     }
 
     return(
-        <div>
+        <div className="relative">
             <ReactNotification />
+            <ProgressBar progress={(cablesType != 'none' ? currentStep / 10 : currentStep / 9)} />
             <main className="flex flex-row justify-center items-start mt-14 z-20">
                 <div className="relative flex flex-col justify-center 2xl:w-8/12 xl:w-10/12 lg:w-10/12 md:w-11/12">
                     <Question currentStep={currentStep} cablesType={cablesType} />
@@ -595,10 +597,10 @@ export default function Guide() {
                             addInstallation={addInstallation}
                         />
                     </div>
-                    <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">
+
+                    <div className="fixed bottom-0 pb-10 left-0 w-screen flex flex-col items-center mt-10 bg-white">
                         <div className="flex relative flex-col justify-center 2xl:w-8/12 xl:w-9/12 lg:w-10/12 md:w-11/12">
                             <Actions nextStep={nextStep} prevStep={prevStep} currentStep={currentStep} canClickNext={canClickNext} setCanClickNext={setCanClickNext}/>
-                            {/* <NavMenu currentStep={currentStep} setStep={setStep} steps={steps}/> */}
                             <div className="absolute top-0 left-0 mt-5" style={{height: '60px', width: '220px'}}> 
                                 <div style={{maxWidth: '100%', height: '100%'}}>
                                     <Image
