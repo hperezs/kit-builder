@@ -598,7 +598,7 @@ export default function Guide() {
                         />
                     </div>
 
-                    <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">
+                    <div className="fixed bottom-0 pb-10 left-0 w-screen flex flex-col items-center mt-10 bg-white">
                         <div className="flex relative flex-col justify-center 2xl:w-8/12 xl:w-9/12 lg:w-10/12 md:w-11/12">
                             <Actions nextStep={nextStep} prevStep={prevStep} currentStep={currentStep} canClickNext={canClickNext} setCanClickNext={setCanClickNext}/>
                             <div className="absolute top-0 left-0 mt-5" style={{height: '60px', width: '220px'}}> 

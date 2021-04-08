@@ -40,7 +40,17 @@ export default function ChooseCable({camera, selectedNVR, index, indoorCables, o
     const selected_card_styles = "flex flex-col justify-start items-center bg-white mb-3 border-green-400 rounded p-3 border shadow-lg"
 
     return(
-        <div style={{height: '515px', width: '744px'}} className={"flex flex-row justify-center items-center mr-auto mb-10 bg-gray-100 p-4 border " + (camera?.cable || selectedNVR?.cable ? 'border-green-400' : ' border-yellow-300')}>
+        <div style={{height: '515px', width: '744px'}} className={"relative flex flex-row justify-center items-center mr-auto mb-10 bg-gray-100 p-4 " 
+            + (camera?.cable ? 'border border-green-400' : (selectedNVR ? '' : 'border-yellow-300 border-2 border-opacity-60'))}
+        >
+            {/* Optional note for NVR's */}
+            {selectedNVR && !selectedCable && 
+                <div className="absolute top-5 font-light text-center">
+                    <span className="block text-center text-lg">Optional</span>
+                    <span className="block text-center">If you would like to enable remote viewing, the NVR will need to be connected to the network.</span>
+                </div>
+            }
+
             {camera && <Camera camera={camera} key={index} index={index} deleteCamera={deleteCamera} updateCameraName={updateCameraName}/>}
 
             {selectedNVR && 
@@ -72,7 +82,7 @@ export default function ChooseCable({camera, selectedNVR, index, indoorCables, o
                         <CableLocationDropdown setCableLocation={setIndoorOrOutdoor} />
                         
                         <label className="mt-7 mb-3">Select cable length:</label>
-                        <CableLengthDropdown setCableLength={setCableLength} indoorOrOutdoor={indoorOrOutdoor}/>
+                        <CableLengthDropdown setCableLength={setCableLength} indoorOrOutdoor={indoorOrOutdoor} selectedNVR={selectedNVR}/>
 
                         {(indoorOrOutdoor == 'outdoor' && cableLength != 1000) && 
                             <div className="flex flex-col items-center mt-7">                
