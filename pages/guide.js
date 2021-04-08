@@ -370,7 +370,7 @@ export default function Guide() {
     }
 
     const addHDMI = product => {
-        let new_monitor = selectedMonitor;
+        let new_monitor = JSON.parse(JSON.stringify(selectedMonitor));
         new_monitor.cable = product;
         setSelectedMonitor(new_monitor)
         submitNotification('addedToCart', product.sku);
@@ -384,7 +384,7 @@ export default function Guide() {
 
     const deleteHDMI = () => {
         let removed_cable = selectedMonitor.cable;
-        let new_monitor = selectedMonitor;
+        let new_monitor = JSON.parse(JSON.stringify(selectedMonitor));
         new_monitor.cable = null;
         setSelectedMonitor(new_monitor);
         submitNotification('deletedFromCart', removed_cable.sku);
