@@ -47,7 +47,9 @@ export default function Answer({
     deleteHDMI,
     selectedPowerInjectors,
     addPowerInjector,
-    deletePowerInjector
+    deletePowerInjector,
+    isInstallationSelected,
+    addInstallation
     }) {
 
     // Skip choose cables step if user selected "I have my own"
@@ -115,7 +117,7 @@ export default function Answer({
                 )
             case 8:
                 return(
-                    <ChooseInstallation homeOrBusiness={homeOrBusiness} cameras={cameras}/>
+                    <ChooseInstallation homeOrBusiness={homeOrBusiness} cameras={cameras} isInstallationSelected={isInstallationSelected} addInstallation={addInstallation}/>
                 )
             case 9:
                 return(
@@ -205,7 +207,7 @@ export default function Answer({
             )
         case 9:
             return(
-                <ChooseInstallation homeOrBusiness={homeOrBusiness} cameras={cameras}/>
+                <ChooseInstallation homeOrBusiness={homeOrBusiness} cameras={cameras} isInstallationSelected={isInstallationSelected} addInstallation={addInstallation}/>
             )
         case 10:
             return(

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import {BsDot} from 'react-icons/bs'
 
-export default function ChooseInstallation({homeOrBusiness, cameras}){
+export default function ChooseInstallation({homeOrBusiness, cameras, isInstallationSelected, addInstallation}){
+    const [ selfInstallationSelected, setSelfInstallationSelected ] = useState(false);
 
     const baseFee = (homeOrBusiness == 'home' ? 299 : 349);
     const subtotal = baseFee + (212.50 * cameras.length);
@@ -11,7 +12,12 @@ export default function ChooseInstallation({homeOrBusiness, cameras}){
     return(
         <section className="my-20 flex flex-col justify-center items-center">
             {/* Installation item container */}
-            <div className="flex justify-evenly items-center border rounded p-10 shadow-lg w-10/12 lg:w-8/12 xl:w-6/12">
+            <div 
+                tabIndex={0}
+                onClick={e => {setSelfInstallationSelected(false); addInstallation(true)}}
+                className={"relative flex justify-evenly items-center rounded p-10 shadow-lg w-10/12 lg:w-8/12 xl:w-6/12 transition-all duration-300 ease outline-none focus:outline-none focus:ring focus:ring-green-200 focus:ring-opacity-500 " 
+                + (isInstallationSelected ? 'border-2 border-green-300 border-opacity-80 bg-green-50 bg-opacity-30 ' : 'border cursor-pointer hover:border-green-400 hover:shadow-xl')}
+            >
                 {/* Icon or graphic */}
                 <div style={{width: '250px', height: '250px'}} className="bg-blue-100 m-4 mb-20">
 
@@ -43,11 +49,20 @@ export default function ChooseInstallation({homeOrBusiness, cameras}){
                         <span className="mr-5 font-semibold">Subtotal</span>
                         <span className="text-green-600">{subtotal.toLocaleString('en-US', {style: 'currency', currency: 'USD'})}</span>
                     </div>
-                    <button className={selectButton_styles}>Add to cart</button>
+                    
                 </div>
+                
+                {selfInstallationSelected && <div transition-style="faded-disable" className="absolute w-full h-full bg-gray-100 opacity-50"></div>}
             </div>
 
-            <button className="mt-20 text-lg px-10 py-2 border rounded bg-gray-100 shadow hover:bg-gray-50 hover:border-green-300">I will install my system myself</button>
+            {/* Self-install option */}
+            <button 
+                className={"mt-20 text-lg px-10 py-2 border rounded shadow focus:outline-none transition-all duration-200 ease focus:ring focus:ring-green-200 focus:ring-opacity-500 " 
+                + (selfInstallationSelected ? 'bg-green-600 text-white' : 'bg-gray-100 hover:bg-gray-50 hover:border-gray-300')}
+                onClick={e => {setSelfInstallationSelected(true); addInstallation(false)}}
+            >
+                I will install my system myself
+            </button>
         </section>
     )
 }

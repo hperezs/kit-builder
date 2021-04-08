@@ -29,9 +29,14 @@ export default function Guide() {
     const [ selectedMonitor, setSelectedMonitor ] = useState('');
     const [ selectedPowerInjectors, setSelectedPowerInjectors ] = useState([]);
     const [ subtotal, setSubtotal ] = useState(0.00);
+    const [ isInstallationSelected, setIsInstallationSelected ] = useState(false);
     
 
     const bearerToken = process.env.BEARER_TOKEN;
+
+    useEffect(() => {
+        console.log(homeOrBusiness)
+    }, [homeOrBusiness, isInstallationSelected])
 
     // Fetch all necessary products
     useEffect(() => {
@@ -153,7 +158,7 @@ export default function Guide() {
     // Update subtotal when product selections change
     useEffect(() => {
         updateSubtotal();
-    }, [cameras, selectedNVR, selectedHardDrives, cablesType, selectedSMProducts, selectedPowerInjectors, selectedMonitor])
+    }, [cameras, selectedNVR, selectedHardDrives, cablesType, selectedSMProducts, selectedPowerInjectors, selectedMonitor, isInstallationSelected])
 
 
     const updateSubtotal = () => {
@@ -194,6 +199,11 @@ export default function Guide() {
                 console.log(product);
                 price_subtotal = price_subtotal + parseFloat(product.price * product.quantity);
             })
+        }
+
+        // Add Installation Costs
+        if(isInstallationSelected){
+            price_subtotal = price_subtotal + parseFloat((homeOrBusiness == 'home' ? 299 : 349) + (cameras.length * 212.50))
         }
 
         setSubtotal(price_subtotal);
@@ -406,6 +416,13 @@ export default function Guide() {
         submitNotification('deletedFromCart', deletedPOE.sku);
     }
 
+    const addInstallation = (installation) => {
+        if(!installation && isInstallationSelected) submitNotification('deletedFromCart', 'Installation');
+
+        setIsInstallationSelected(installation);
+        if(installation) submitNotification('addedToCart', `Installation`);
+    }
+
     const submitNotification = (type, payload) => {
         switch(type) {
             case 'addedToCart':
@@ -415,7 +432,7 @@ export default function Guide() {
                     type: "success",
                     insert: "top",
                     container: "top-center",
-                    animationIn: ["animate__animated", "animate__fadeIn"],
+                    animationIn: ["fade-in"],
                     animationOut: ["animate__animated", "animate__fadeOut"],
                     dismiss: {
                       duration: 4000,
@@ -430,7 +447,7 @@ export default function Guide() {
                 type: "success",
                 insert: "top",
                 container: "top-center",
-                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationIn: ["fade-in"],
                 animationOut: ["animate__animated", "animate__fadeOut"],
                 dismiss: {
                     duration: 4000,
@@ -445,7 +462,7 @@ export default function Guide() {
                     type: "danger",
                     insert: "top",
                     container: "top-center",
-                    animationIn: ["animate__animated", "animate__fadeIn"],
+                    animationIn: ["fade-in"],
                     animationOut: ["animate__animated", "animate__fadeOut"],
                     dismiss: {
                       duration: 4000,
@@ -460,7 +477,7 @@ export default function Guide() {
                     type: "info",
                     insert: "top",
                     container: "top-center",
-                    animationIn: ["animate__animated", "animate__fadeIn"],
+                    animationIn: ["fade-in"],
                     animationOut: ["animate__animated", "animate__fadeOut"],
                     dismiss: {
                       duration: 4000,
@@ -473,6 +490,11 @@ export default function Guide() {
 
     const goToCameras = () => {
         setCurrentStep(3)
+    }
+
+    const goToInstallation = () => {
+        if(cablesType == 'pre-made') setCurrentStep(9)
+        if(cablesType != 'pre-made') setCurrentStep(8)
     }
 
     return(
@@ -523,6 +545,8 @@ export default function Guide() {
                             selectedPowerInjectors={selectedPowerInjectors}
                             addPowerInjector={addPowerInjector}
                             deletePowerInjector={deletePowerInjector}
+                            isInstallationSelected={isInstallationSelected}
+                            addInstallation={addInstallation}
                         />
                     </div>
                     <div className="fixed bottom-0 pb-10 left-10 w-screen flex flex-col items-center mt-10 bg-white">
@@ -551,6 +575,9 @@ export default function Guide() {
                         goToCameras={goToCameras}
                         selectedMonitor={selectedMonitor}
                         selectedPowerInjectors={selectedPowerInjectors}
+                        isInstallationSelected={isInstallationSelected}
+                        homeOrBusiness={homeOrBusiness}
+                        goToInstallation={goToInstallation}
                     />
                 </div>
             </main>
