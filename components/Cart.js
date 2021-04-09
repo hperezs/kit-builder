@@ -3,6 +3,7 @@ import {GrCart} from 'react-icons/gr'
 import Image from 'next/image'
 import { backstreet_domain } from '../lib/backstreet_domain'
 import CameraInCart from "./steps/Cart/CameraInCart";
+import InstallationInCart from "./steps/Cart/InstallationInCart";
 
 export default function Cart({
     cameras, 
@@ -358,27 +359,7 @@ export default function Cart({
                             }
                             {/* Installation */}
                             {isInstallationSelected && 
-                                <div className={"flex flex-row justify-start items-center mb-3 rounded p-5 border bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-6/12' : 'w-8/12')}>
-                                    <div className="m-2 p-3 flex flex-col justify-center items-center rounded border-gray-300 ">
-                                        <div className="rounded" style={{height: '66px', width: '66px'}}> 
-                                            <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
-                                                <Image
-                                                    src='/images/installation.png'
-                                                    layout="fill"
-                                                    objectFit="contain"
-                                                    quality={100}
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="flex flex-col items-center ml-2">
-                                        <p className="text-center text-lg">{(homeOrBusiness == 'home' ? 'Home' : 'Business') + ' Installation'}</p>
-                                        <a onClick={e => {goToInstallation(); setShowCart(false)}} className="font-light text-green-700 cursor-pointer hover:text-green-500">See details</a>
-                                    </div>
-                                    <div style={{width: '114px'}} className="flex flex-col items-center ml-2">
-                                        <p className="font-normal ml-5 text-green-600">{((homeOrBusiness == 'home' ? 299 : 349) + (cameras.length * 212.50)).toLocaleString('en-US', {style: 'currency', currency: 'USD'})}</p>
-                                    </div>
-                                </div>
+                                <InstallationInCart homeOrBusiness={homeOrBusiness} cablesType={cablesType} cameras={cameras}/>
                             }
                             {/* Extra Hard Drives */}
                             {selectedHardDrives != 0 && 
