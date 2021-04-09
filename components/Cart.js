@@ -233,12 +233,12 @@ export default function Cart({
                             {/* Cameras, Cables and Mount */}
                             {cameras?.map((camera, index) => {
                                 return(
-                                    <div className="flex flex-row justify-start items-center mb-3">
+                                    <div className="flex flex-row justify-start mb-3">
                                         {/* Camera */}
                                         <CameraInCart camera={camera} index={index} cablesType={cablesType}/>
                                         {/* Cable */}
                                         {camera?.cable && cablesType == 'pre-made' &&
-                                            <div className="flex flex-col items-center border rounded p-4 ml-3 w-3/12 bg-white border-gray-300 shadow">
+                                            <div className="flex flex-col items-center justify-center border rounded p-4 ml-3 w-3/12 bg-white border-gray-300 shadow min-h-max">
                                                 <div className="my-2 max-w-max flex flex-col justify-center items-center bg-white ">
                                                     <div style={{height: '56px', width: '56px'}}> 
                                                         <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
@@ -260,7 +260,7 @@ export default function Cart({
                                         }
                                         {/* Mount */}
                                         {camera?.mount && 
-                                            <div className={"flex flex-col items-center border rounded p-4 ml-3 bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-3/12' : 'w-4/12')}>
+                                            <div className={"flex flex-col items-center justify-center border rounded p-4 ml-3 bg-white border-gray-300 shadow min-h-max " + (cablesType == 'pre-made' ? 'w-3/12' : 'w-4/12')}>
                                                 <div className="my-2 max-w-max flex flex-col justify-center items-center bg-white ">
                                                     <div style={{height: '56px', width: '56px'}}> 
                                                         <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
