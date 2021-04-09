@@ -1,5 +1,7 @@
 import Image from 'next/image'
 import { backstreet_domain } from '../../lib/backstreet_domain'
+import CameraInCart from './Cart/CameraInCart'
+import InstallationInCart from './Cart/InstallationInCart'
 
 export default function ReviewSystem({
     cameras, 
@@ -18,7 +20,7 @@ export default function ReviewSystem({
 
     return(
         <section className="mt-10">
-            <div className={"relative p-6 flex-auto overflow-y-auto " + (cablesType == 'pre-made' ? 'xl:w-10/12' : 'xl:w-9/12') }>
+            <div className={"relative p-6 flex-auto overflow-y-auto " + (cablesType == 'pre-made' ? 'lg:w-10/12 xl:w-9/12' : 'lg:w-10/12 xl:w-8/12') }>
                 <div className="flex flex-col">
                     {/* NVR and Cable */}
                     <div className="flex flex-row justify-start mb-3">
@@ -135,39 +137,12 @@ export default function ReviewSystem({
                     {/* Cameras, Cables and Mount */}
                     {cameras?.map((camera, index) => {
                         return(
-                            <div className="flex flex-row justify-start items-center mb-3">
+                            <div className="flex flex-row justify-start mb-3">
                                 {/* Camera */}
-                                <div className={"flex flex-row px-5 py-4 items-center border rounded flex-shrink-0 bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-6/12' : 'w-8/12')}>
-                                    <div className="m-2 p-5 flex flex-col justify-center items-center  border-gray-300 ">
-                                        <div style={{height: '86px', width: '120px'}}> 
-                                            <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
-                                                <Image
-                                                    src={backstreet_domain + camera.imageLink}
-                                                    layout="fill"
-                                                    objectFit="contain"
-                                                    quality={100}
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="flex flex-col items-center mx-5">
-                                        <p className="text-lg mb-3 border-b border-gray-500 px-3 italic">{camera.cameraName}</p>
-                                        <p className="mb-1">{camera.sku} </p>
-                                    </div>
-                                    <div className="flex flex-col items-center justify-center mx-5">
-                                        <p className="font-light mb-1">Lens: {camera.cameraLens}</p>
-                                        <p className="font-light mb-1">Night Vision: {camera.nightVision}</p>
-                                        <p className="font-light mb-1">Resolution: {camera.resolution}</p>
-                                        <p className={"font-light mb-1 " + (camera.hasAudio ? 'text-blue-600' : '')}>{camera.hasAudio ? 'Built-in Microphone' : ' No Audio'}</p>
-                                    </div>
-                                    <div className="flex flex-col items-center px-3 py-7 mx-5 rounded">
-                                        <p>Price:</p>
-                                        <span className="text-lg text-green-600">${camera.price?.$numberDecimal}</span>
-                                    </div>
-                                </div>
+                                <CameraInCart camera={camera} index={index} cablesType={cablesType}/>
                                 {/* Cable */}
                                 {camera?.cable && cablesType == 'pre-made' &&
-                                    <div className="flex flex-col items-center border rounded p-4 ml-3 w-3/12 bg-white border-gray-300 shadow">
+                                    <div className="flex flex-col items-center justify-center border rounded p-4 ml-3 w-3/12 bg-white border-gray-300 shadow min-h-max">
                                         <div className="my-2 max-w-max flex flex-col justify-center items-center bg-white ">
                                             <div style={{height: '56px', width: '56px'}}> 
                                                 <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
@@ -189,7 +164,7 @@ export default function ReviewSystem({
                                 }
                                 {/* Mount */}
                                 {camera?.mount && 
-                                    <div className={"flex flex-col items-center border rounded p-4 ml-3 bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-3/12' : 'w-4/12')}>
+                                    <div className={"flex flex-col items-center justify-center border rounded p-4 ml-3 bg-white border-gray-300 shadow min-h-max " + (cablesType == 'pre-made' ? 'w-3/12' : 'w-4/12')}>
                                         <div className="my-2 max-w-max flex flex-col justify-center items-center bg-white ">
                                             <div style={{height: '56px', width: '56px'}}> 
                                                 <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
@@ -287,27 +262,7 @@ export default function ReviewSystem({
                     }
                     {/* Installation */}
                     {isInstallationSelected && 
-                        <div className={"flex flex-row justify-start items-center mb-3 rounded p-5 border bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-6/12' : 'w-8/12')}>
-                            <div className="m-2 p-3 flex flex-col justify-center items-center rounded border-gray-300 ">
-                                <div className="rounded" style={{height: '66px', width: '66px'}}> 
-                                    <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
-                                        <Image
-                                            src='/images/installation.png'
-                                            layout="fill"
-                                            objectFit="contain"
-                                            quality={100}
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="flex flex-col items-center ml-2">
-                                <p className="text-center text-lg">{(homeOrBusiness == 'home' ? 'Home' : 'Business') + ' Installation'}</p>
-                                <a onClick={e => {goToInstallation()}} className="font-light text-green-700 cursor-pointer hover:text-green-500">See details</a>
-                            </div>
-                            <div style={{width: '114px'}} className="flex flex-col items-center ml-2">
-                                <p className="font-normal ml-5 text-green-600">{((homeOrBusiness == 'home' ? 299 : 349) + (cameras.length * 212.50)).toLocaleString('en-US', {style: 'currency', currency: 'USD'})}</p>
-                            </div>
-                        </div>
+                        <InstallationInCart homeOrBusiness={homeOrBusiness} cablesType={cablesType} cameras={cameras}/>
                     }
                     {/* Extra Hard Drives */}
                     {selectedHardDrives != 0 && 
