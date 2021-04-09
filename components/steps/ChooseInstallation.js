@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {BsDot} from 'react-icons/bs'
+import Image from 'next/image'
 
 export default function ChooseInstallation({homeOrBusiness, cameras, isInstallationSelected, addInstallation}){
     const [ selfInstallationSelected, setSelfInstallationSelected ] = useState(isInstallationSelected == false);
@@ -20,8 +21,15 @@ export default function ChooseInstallation({homeOrBusiness, cameras, isInstallat
                 + (isInstallationSelected ? 'border-2 border-green-300 border-opacity-80 bg-green-50 bg-opacity-30 ' : 'border cursor-pointer hover:border-green-400 hover:shadow-xl')}
             >
                 {/* Icon or graphic */}
-                <div style={{width: '250px', height: '250px'}} className="bg-blue-100 m-4 mb-20">
-
+                <div style={{width: '200px', height: '200px'}} className="m-4">
+                    <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                        <Image
+                            src='/images/installation.png'
+                            layout="fill"
+                            objectFit="contain"
+                            quality={100}
+                        />
+                    </div>
                 </div>
                 {/* Details */}
                 <div className="flex flex-col items-center mx-4 p-4">
@@ -67,8 +75,15 @@ export default function ChooseInstallation({homeOrBusiness, cameras, isInstallat
                 className={"relative flex flex-col items-center justify-evenly items-center rounded m-5 p-10 shadow-lg transition-all duration-300 ease border border-green-400 " }
             >
                 {/* Icon or graphic */}
-                <div style={{width: '200px', height: '200px'}} className="bg-blue-100 m-4">
-
+                <div style={{width: '200px', height: '200px'}} className="m-4">
+                    <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                        <Image
+                            src='/images/installation.png'
+                            layout="fill"
+                            objectFit="contain"
+                            quality={100}
+                        />
+                    </div>
                 </div>
                 {/* Details */}
                 <div className="flex flex-col items-center mx-4 p-4">

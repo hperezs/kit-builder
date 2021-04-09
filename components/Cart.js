@@ -381,9 +381,14 @@ export default function Cart({
                             {isInstallationSelected && 
                                 <div className={"flex flex-row justify-start items-center mb-3 rounded p-5 border bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-6/12' : 'w-8/12')}>
                                     <div className="m-2 p-3 flex flex-col justify-center items-center rounded border-gray-300 ">
-                                        <div className="bg-blue-100 rounded" style={{height: '66px', width: '100px'}}> 
+                                        <div className="rounded" style={{height: '66px', width: '66px'}}> 
                                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
-
+                                                <Image
+                                                    src='/images/installation.png'
+                                                    layout="fill"
+                                                    objectFit="contain"
+                                                    quality={100}
+                                                />
                                             </div>
                                         </div>
                                     </div>
