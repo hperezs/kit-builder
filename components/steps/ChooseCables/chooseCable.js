@@ -7,7 +7,7 @@ import CableLocationDropdown from '../dropdowns/cableLocationDropdown'
 import CableColorDropdown from '../dropdowns/cableColorDropdown'
 import Camera from "../Camera"
 
-export default function ChooseCable({camera, selectedNVR, index, indoorCables, outdoorCables, selectCable, deleteCamera, updateCameraName}) {
+export default function ChooseCable({camera, selectedNVR, index, indoorCables, outdoorCables, selectCable, deleteCable, deleteCamera, updateCameraName}) {
     const [cableLength, setCableLength] = useState(25);
     const [indoorOrOutdoor, setIndoorOrOutdoor] = useState('indoor');
     const [cableColor, setCableColor] = useState("White");
@@ -44,9 +44,9 @@ export default function ChooseCable({camera, selectedNVR, index, indoorCables, o
             + (camera?.cable ? 'border border-green-400' : (selectedNVR ? '' : 'border-yellow-300 border-2 border-opacity-60'))}
         >
             {/* Optional note for NVR's */}
-            {selectedNVR && !selectedCable && 
-                <div className="absolute top-5 font-light text-center">
-                    <span className="block text-center text-lg">Optional</span>
+            {selectedNVR && isChoosing && 
+                <div className="absolute bottom-10 font-light text-center">
+                    <span className="block text-center text-lg">*Optional</span>
                     <span className="block text-center">If you would like to enable remote viewing, the NVR will need to be connected to the network.</span>
                 </div>
             }
@@ -97,7 +97,7 @@ export default function ChooseCable({camera, selectedNVR, index, indoorCables, o
                             {indoorCables.map((cable) => {
                                 let length = cable.sku.split('-')[1]
                                 if(cableLength == length) return(
-                                    <CableProduct cable={cable} handleSelect={handleSelect}/>
+                                    <CableProduct cable={cable} handleSelect={handleSelect} displayNote={(selectedNVR)}/>
                                 )
                             })}
                         </div>
@@ -152,7 +152,7 @@ export default function ChooseCable({camera, selectedNVR, index, indoorCables, o
                         </div>
                     </div>
                 <button 
-                    onClick={e => setIsChoosing(true)}
+                    onClick={e => {setIsChoosing(true); deleteCable(camera, selectedNVR)}}
                     className="uppercase text-sm tracking-wide font-semibold text-green-600 border border-green-600 my-2 px-3 py-2 rounded hover:text-white hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-200 focus:ring-opacity-500">
                     Change
                 </button>

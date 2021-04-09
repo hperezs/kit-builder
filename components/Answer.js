@@ -32,6 +32,7 @@ export default function Answer({
     cablesType,
     selectCablesType,
     selectCable,
+    deleteCable,
     selectSMProducts,
     selectedSMProducts,
     deleteSMProduct,
@@ -181,6 +182,7 @@ export default function Answer({
                     outdoorCables={outdoorCables}  
                     selfMadeProducts={selfMadeProducts}
                     selectCable={selectCable}
+                    deleteCable={deleteCable}
                     selectSMProducts={selectSMProducts}
                     selectedSMProducts={selectedSMProducts}
                     deleteCamera={deleteCamera} 

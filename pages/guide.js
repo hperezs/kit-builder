@@ -32,6 +32,7 @@ export default function Guide() {
     const [ subtotal, setSubtotal ] = useState(0.00);
     const [ isInstallationSelected, setIsInstallationSelected ] = useState(null);
     const [ canClickNext, setCanClickNext ] = useState(false);
+    const [ isLastStep, setIsLastStep ] = useState(false);
 
     const bearerToken = process.env.BEARER_TOKEN;
 
@@ -304,18 +305,44 @@ export default function Guide() {
 
     const selectCable = (cable, camera, nvr) => {
         if(camera){
-            let index = cameras.find(element => camera.cameraName == element.cameraName);
+            let index = cameras.find(product => camera.cameraName == product.cameraName);
             let cameras_copy = cameras.slice();
             let modified_camera = camera;
             modified_camera.cable = cable;
             cameras_copy[index] = modified_camera;
             setCameras(cameras_copy);
+            submitNotification('addedToCart', cable.sku);
         }
 
         if(nvr) {
             nvr.cable = cable;
            setSelectedNVR(nvr); 
            updateSubtotal();
+           submitNotification('addedToCart', cable.sku);
+        }
+    }
+
+    const deleteCable = (camera, nvr) => {
+        if(camera) {
+            let index = cameras.find(product => camera.cameraName == product.cameraName);
+            let cameras_copy = cameras.slice();
+            let modified_camera = camera;
+            let deletedCable = modified_camera.cable;
+
+            modified_camera.cable = null;
+            cameras_copy[index] = modified_camera;
+            setCameras(cameras_copy);
+
+            submitNotification('deletedFromCart', deletedCable.sku);
+        }
+
+        if(nvr) {
+            let deletedCable = nvr.cable;
+            nvr.cable = null;
+            setSelectedNVR(nvr);
+            updateSubtotal();
+
+            submitNotification('deletedFromCart', deletedCable.sku);
         }
     }
 
@@ -593,6 +620,7 @@ export default function Guide() {
                             cablesType={cablesType}
                             selectCablesType={selectCablesType}
                             selectCable={selectCable}
+                            deleteCable={deleteCable}
                             selectSMProducts={selectSMProducts}
                             selectedSMProducts={selectedSMProducts}
                             deleteSMProduct={deleteSMProduct}

@@ -11,6 +11,7 @@ export default function ChooseCables({
     outdoorCables, 
     selfMadeProducts, 
     selectCable, 
+    deleteCable,
     selectSMProducts, 
     selectedSMProducts,
     deleteCamera,
@@ -31,6 +32,7 @@ export default function ChooseCables({
                         indoorCables={indoorCables} 
                         outdoorCables={outdoorCables} 
                         selectCable={selectCable}
+                        deleteCable={deleteCable}
                     />
                 }
 
@@ -45,6 +47,7 @@ export default function ChooseCables({
                                 indoorCables={indoorCables} 
                                 outdoorCables={outdoorCables} 
                                 selectCable={selectCable}
+                                deleteCable={deleteCable}
                                 deleteCamera={deleteCamera}
                                 updateCameraName={updateCameraName}
                             />

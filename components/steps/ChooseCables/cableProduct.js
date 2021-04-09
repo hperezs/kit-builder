@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react';
 import { backstreet_domain } from '../../../lib/backstreet_domain'
 
-export default function CableProduct({cable, handleSelect}) {
+export default function CableProduct({cable, handleSelect, displayNote}) {
     const [isLoading, setIsLoading] = useState(true);
 
     const selectButton_styles = "px-5 py-1 border rounded bg-green-600 text-white text-sm uppercase tracking-wider font-semibold mt-3 transition hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
@@ -28,7 +28,7 @@ export default function CableProduct({cable, handleSelect}) {
                 </div>
             </div>
             <div className="flex flex-col items-center">
-                <p>{cable.name}</p>
+                <p>{cable.name}{displayNote && '*'}</p>
                 <p className="font-light">{cable.sku} </p>
                 <p className="font-normal text-green-600">${cable.price.toFixed(2)}</p>
                 <button className={selectButton_styles} onClick={e => handleSelect(cable)}>Select</button>
