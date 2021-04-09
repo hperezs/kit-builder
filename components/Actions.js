@@ -21,7 +21,7 @@ export default function Actions({ nextStep, prevStep, currentStep, canClickNext 
                     Back
                 </button>
             </span>
-
+ 
             <button 
                 className={"text-lg text-white mx-6 border rounded px-5 py-2 transition-all duration-300 ease " 
                 + (canClickNext ? 'border-green-400 bg-green-600 hover:bg-green-500 hover:text-white focus:outline-none focus:ring focus:ring-green-200 focus:ring-opacity-500' 

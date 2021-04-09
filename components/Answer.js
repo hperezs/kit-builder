@@ -7,6 +7,7 @@ import ChooseCables from './steps/ChooseCables'
 import ChooseHardDrive from './steps/ChooseHardDrive'
 import SelectAddons from './steps/SelectAddons'
 import ChooseInstallation from './steps/ChooseInstallation'
+import ReviewSystem from './steps/ReviewSystem'
 
 export default function Answer({
     currentStep,
@@ -121,7 +122,9 @@ export default function Answer({
                 )
             case 9:
                 return(
-                    <div>Going to the next step will result in a crash.</div>
+                    <ReviewSystem 
+                
+                    />
                 )
         }    
     }
@@ -211,7 +214,9 @@ export default function Answer({
             )
         case 10:
             return(
-                <div>Going to the next step will result in a crash.</div>
+                <ReviewSystem 
+                
+                />
             )
     }    
 }
