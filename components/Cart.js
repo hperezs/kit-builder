@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import {GrCart} from 'react-icons/gr'
 import Image from 'next/image'
 import { backstreet_domain } from '../lib/backstreet_domain'
+import CameraInCart from "./steps/Cart/CameraInCart";
 
 export default function Cart({
     cameras, 
@@ -234,29 +235,7 @@ export default function Cart({
                                 return(
                                     <div className="flex flex-row justify-start items-center mb-3">
                                         {/* Camera */}
-                                        <div className={"flex flex-row px-5 py-4 items-center border rounded flex-shrink-0 bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-6/12' : 'w-8/12')}>
-                                            <div className="m-2 p-5 flex flex-col justify-center items-center  border-gray-300 ">
-                                                <div style={{height: '86px', width: '120px'}}> 
-                                                    <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
-                                                        <Image
-                                                            src={backstreet_domain + camera.imageLink}
-                                                            layout="fill"
-                                                            objectFit="contain"
-                                                            quality={100}
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="flex flex-col items-center">
-                                                <p className="text-lg mb-3 border-b border-gray-500 px-3 italic">{camera.cameraName}</p>
-                                                <p className="mb-1">{camera.sku} </p>
-                                                <a onClick={seeMoreDetails} className="text-green-600 font-light cursor-pointer hover:text-green-500">See more details</a>
-                                            </div>
-                                            <div className="flex flex-col items-center px-3 py-7 ml-5 rounded">
-                                                <p>Price:</p>
-                                                <span className="text-lg text-green-600">${camera.price?.$numberDecimal}</span>
-                                            </div>
-                                        </div>
+                                        <CameraInCart camera={camera} index={index} cablesType={cablesType}/>
                                         {/* Cable */}
                                         {camera?.cable && cablesType == 'pre-made' &&
                                             <div className="flex flex-col items-center border rounded p-4 ml-3 w-3/12 bg-white border-gray-300 shadow">
@@ -381,9 +360,14 @@ export default function Cart({
                             {isInstallationSelected && 
                                 <div className={"flex flex-row justify-start items-center mb-3 rounded p-5 border bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-6/12' : 'w-8/12')}>
                                     <div className="m-2 p-3 flex flex-col justify-center items-center rounded border-gray-300 ">
-                                        <div className="bg-blue-100 rounded" style={{height: '66px', width: '100px'}}> 
+                                        <div className="rounded" style={{height: '66px', width: '66px'}}> 
                                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
-
+                                                <Image
+                                                    src='/images/installation.png'
+                                                    layout="fill"
+                                                    objectFit="contain"
+                                                    quality={100}
+                                                />
                                             </div>
                                         </div>
                                     </div>

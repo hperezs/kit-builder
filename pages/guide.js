@@ -640,6 +640,9 @@ export default function Guide() {
                             deletePowerInjector={deletePowerInjector}
                             isInstallationSelected={isInstallationSelected}
                             addInstallation={addInstallation}
+                            subtotal={subtotal}
+                            goToCameras={goToCameras}
+                            goToInstallation={goToInstallation}
                         />
                     </div>
 

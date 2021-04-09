@@ -51,7 +51,10 @@ export default function Answer({
     addPowerInjector,
     deletePowerInjector,
     isInstallationSelected,
-    addInstallation
+    addInstallation,
+    subtotal,
+    goToCameras,
+    goToInstallation
     }) {
 
     // Skip choose cables step if user selected "I have my own"
@@ -124,7 +127,18 @@ export default function Answer({
             case 9:
                 return(
                     <ReviewSystem 
-                
+                        cameras={cameras} 
+                        selectedNVR={selectedNVR} 
+                        selectedHardDrives={selectedHardDrives} 
+                        subtotal={subtotal}
+                        selectedSMProducts={selectedSMProducts}
+                        cablesType={cablesType}
+                        goToCameras={goToCameras}
+                        selectedMonitor={selectedMonitor}
+                        selectedPowerInjectors={selectedPowerInjectors}
+                        isInstallationSelected={isInstallationSelected}
+                        homeOrBusiness={homeOrBusiness}
+                        goToInstallation={goToInstallation}
                     />
                 )
         }    
@@ -217,7 +231,18 @@ export default function Answer({
         case 10:
             return(
                 <ReviewSystem 
-                
+                    cameras={cameras} 
+                    selectedNVR={selectedNVR} 
+                    selectedHardDrives={selectedHardDrives} 
+                    subtotal={subtotal}
+                    selectedSMProducts={selectedSMProducts}
+                    cablesType={cablesType}
+                    goToCameras={goToCameras}
+                    selectedMonitor={selectedMonitor}
+                    selectedPowerInjectors={selectedPowerInjectors}
+                    isInstallationSelected={isInstallationSelected}
+                    homeOrBusiness={homeOrBusiness}
+                    goToInstallation={goToInstallation}
                 />
             )
     }    
