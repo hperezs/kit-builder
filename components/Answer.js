@@ -7,6 +7,7 @@ import ChooseCables from './steps/ChooseCables'
 import ChooseHardDrive from './steps/ChooseHardDrive'
 import SelectAddons from './steps/SelectAddons'
 import ChooseInstallation from './steps/ChooseInstallation'
+import ReviewSystem from './steps/ReviewSystem'
 
 export default function Answer({
     currentStep,
@@ -31,6 +32,7 @@ export default function Answer({
     cablesType,
     selectCablesType,
     selectCable,
+    deleteCable,
     selectSMProducts,
     selectedSMProducts,
     deleteSMProduct,
@@ -121,7 +123,9 @@ export default function Answer({
                 )
             case 9:
                 return(
-                    <div>Going to the next step will result in a crash.</div>
+                    <ReviewSystem 
+                
+                    />
                 )
         }    
     }
@@ -178,6 +182,7 @@ export default function Answer({
                     outdoorCables={outdoorCables}  
                     selfMadeProducts={selfMadeProducts}
                     selectCable={selectCable}
+                    deleteCable={deleteCable}
                     selectSMProducts={selectSMProducts}
                     selectedSMProducts={selectedSMProducts}
                     deleteCamera={deleteCamera} 
@@ -211,7 +216,9 @@ export default function Answer({
             )
         case 10:
             return(
-                <div>Going to the next step will result in a crash.</div>
+                <ReviewSystem 
+                
+                />
             )
     }    
 }

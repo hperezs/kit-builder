@@ -32,7 +32,7 @@ export default function Question({ currentStep, cablesType }) {
                     setCurrentQuestion('Installation')
                     break;
                 case 9:
-                    setCurrentQuestion('In progress')
+                    setCurrentQuestion('Review your system')
                     break;
             }
         } else switch(currentStep) {
@@ -64,7 +64,7 @@ export default function Question({ currentStep, cablesType }) {
                 setCurrentQuestion('Installation');
                 break;
             case 10: 
-                setCurrentQuestion('In Progress');
+                setCurrentQuestion('Review your system');
                 break;
         }
     })

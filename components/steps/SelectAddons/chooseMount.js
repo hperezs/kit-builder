@@ -58,11 +58,6 @@ export default function ChooseMount({camera, cameraIndex, mountProducts, addMoun
                             <FaTrashAlt className="fill-current text-red-600 text-2xl hover:text-red-400"/>
                         </span>
                     </div>
-                    <button 
-                        onClick={e => setIsChoosing(true)}
-                        className="uppercase text-sm tracking-wide font-semibold text-green-600 border border-green-600 my-2 px-3 py-2 rounded hover:text-white hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-200 focus:ring-opacity-500">
-                        Change
-                    </button>
                 </div>
             :
                 hasSpecialMount(camera) ? 
