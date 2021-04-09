@@ -279,6 +279,7 @@ export default function Guide() {
         cameras_copy.push(camera);
         setCameras(cameras_copy);
         submitNotification('addedToCart', camera.sku);
+        if(isInstallationSelected) submitNotification('installationUpdated');
     }
 
     const deleteCamera = index => {
@@ -287,6 +288,7 @@ export default function Guide() {
         new_cameras.splice(index, 1);
         setCameras(new_cameras);
         submitNotification('deletedFromCart', removedCamera?.sku);
+        if(isInstallationSelected) submitNotification('installationUpdated');
     }
 
     const updateCameraName = (index, camera) => {
@@ -531,6 +533,21 @@ export default function Guide() {
                       onScreen: false
                     }
                   });
+                break;
+            case 'installationUpdated':
+                store.addNotification({
+                    title: 'Cart Updated',
+                    message: 'Your installation fees have been updated',
+                    type: 'info',
+                    insert: 'top',
+                    container: 'top-center',
+                    animationIn: ['fade-in'],
+                    animationOut: ['animate__animated', 'animate__fadeOut'],
+                    dismiss: {
+                        duration: 4000,
+                        onScreen: false
+                    }
+                });
                 break;
         }
     }

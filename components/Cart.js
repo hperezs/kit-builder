@@ -164,25 +164,23 @@ export default function Cart({
                                 }
                                 {/* Hard Drive */}
                                 {selectedHardDrives.length != 0 &&
-                                    selectedHardDrives.map((hardDrive, index) => (
-                                            <div className={"flex flex-row py-7 px-5 ml-3 items-center border rounded bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-3/12' : 'w-4/12')}>
-                                                <div style={{height: '66px', width: '80px'}}> 
-                                                    <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
-                                                        <Image
-                                                            src={'/images/hard_drive_hero.jpg'}
-                                                            layout="fill"
-                                                            objectFit="contain"
-                                                            quality={100}
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div className="mx-1 flex flex-col justify-center items-center">
-                                                    <p className="mb-1 text-center">{hardDrive.name}</p>
-                                                    <p className="mb-1 font-light text-gray-600">{hardDrive.sku}</p>
-                                                    <p className="font-normal text-green-600">${hardDrive.price.toFixed(2)}</p>
-                                                </div>
+                                    <div className={"flex flex-row py-7 px-5 ml-3 items-center border rounded bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-3/12' : 'w-4/12')}>
+                                        <div style={{height: '66px', width: '80px'}}> 
+                                            <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                                <Image
+                                                    src={'/images/hard_drive_hero.jpg'}
+                                                    layout="fill"
+                                                    objectFit="contain"
+                                                    quality={100}
+                                                />
                                             </div>
-                                    ))
+                                        </div>
+                                        <div className="mx-1 flex flex-col justify-center items-center">
+                                            <p className="mb-1 text-center">{selectedHardDrives[0].name}</p>
+                                            <p className="mb-1 font-light text-gray-600">{selectedHardDrives[0].sku}</p>
+                                            <p className="font-normal text-green-600">${selectedHardDrives[0].price.toFixed(2)}</p>
+                                        </div>
+                                    </div>
                                 }
                             </div>
                             {/* Monitor(s) and HDMI(s) */}
@@ -396,6 +394,32 @@ export default function Cart({
                                     <div style={{width: '114px'}} className="flex flex-col items-center ml-2">
                                         <p className="font-normal ml-5 text-green-600">{((homeOrBusiness == 'home' ? 299 : 349) + (cameras.length * 212.50)).toLocaleString('en-US', {style: 'currency', currency: 'USD'})}</p>
                                     </div>
+                                </div>
+                            }
+                            {/* Extra Hard Drives */}
+                            {selectedHardDrives != 0 && 
+                                <div className="flex mb-3 flex-wrap">
+                                {selectedHardDrives.map((hardDrive, index) => {
+                                    if(index != 0) return(
+                                        <div className={"flex flex-row py-7 px-5 mr-3 items-center border rounded bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-3/12' : 'w-4/12')}>
+                                            <div style={{height: '66px', width: '80px'}}> 
+                                                <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                                    <Image
+                                                        src={'/images/hard_drive_hero.jpg'}
+                                                        layout="fill"
+                                                        objectFit="contain"
+                                                        quality={100}
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="mx-1 flex flex-col justify-center items-center">
+                                                <p className="mb-1 text-center">{hardDrive.name}</p>
+                                                <p className="mb-1 font-light text-gray-600">{hardDrive.sku}</p>
+                                                <p className="font-normal text-green-600">${hardDrive.price.toFixed(2)}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
                                 </div>
                             }
                         </div>  
