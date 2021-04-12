@@ -86,6 +86,10 @@ input[type=number] {
   animation: 0.50s ease-in-out fade-in;
 }
 
+[transition-style="fade:in:faster"] {
+  animation: 0.25s ease-in-out fade-in;
+}
+
 @keyframes wipe-in-bottom-right {
   from {
     clip-path: polygon(0 0, 0 0, 0 0, 0 50%);
