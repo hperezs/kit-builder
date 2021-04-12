@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import { useRef, useState, useEffect } from 'react';
+import {FaEdit} from 'react-icons/fa'
 
-export default function InstallationInCart({homeOrBusiness, cablesType, cameras}){
+export default function InstallationInCart({homeOrBusiness, cablesType, cameras, goToStep}){
     const [displayMoreDetails, setDisplayMoreDetails] = useState(false);
 
     const item = useRef();
@@ -81,6 +82,12 @@ export default function InstallationInCart({homeOrBusiness, cablesType, cameras}
                 <p>Price:</p>
                 <p className="font-normal text-green-600">{((homeOrBusiness == 'home' ? 299 : 349) + (cameras.length * 212.50)).toLocaleString('en-US', {style: 'currency', currency: 'USD'})}</p>
             </div>}
+            <span 
+                onClick={e => goToStep('installation')}
+                className={"absolute top-0 right-0 cursor-pointer m-2 "}
+            >
+                <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
+            </span>
         </div>
     )
 }

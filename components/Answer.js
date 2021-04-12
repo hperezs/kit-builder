@@ -53,8 +53,7 @@ export default function Answer({
     isInstallationSelected,
     addInstallation,
     subtotal,
-    goToCameras,
-    goToInstallation
+    goToStep
     }) {
 
     // Skip choose cables step if user selected "I have my own"
@@ -133,12 +132,11 @@ export default function Answer({
                         subtotal={subtotal}
                         selectedSMProducts={selectedSMProducts}
                         cablesType={cablesType}
-                        goToCameras={goToCameras}
                         selectedMonitor={selectedMonitor}
                         selectedPowerInjectors={selectedPowerInjectors}
                         isInstallationSelected={isInstallationSelected}
                         homeOrBusiness={homeOrBusiness}
-                        goToInstallation={goToInstallation}
+                        goToStep={goToStep}
                     />
                 )
         }    
@@ -237,12 +235,11 @@ export default function Answer({
                     subtotal={subtotal}
                     selectedSMProducts={selectedSMProducts}
                     cablesType={cablesType}
-                    goToCameras={goToCameras}
                     selectedMonitor={selectedMonitor}
                     selectedPowerInjectors={selectedPowerInjectors}
                     isInstallationSelected={isInstallationSelected}
                     homeOrBusiness={homeOrBusiness}
-                    goToInstallation={goToInstallation}
+                    goToStep={goToStep}
                 />
             )
     }    

@@ -16,8 +16,7 @@ export default function ChooseInstallation({homeOrBusiness, cameras, isInstallat
             {!isInstallationSelected && 
             <div 
                 transition-style="fade:in"
-                tabIndex={0}
-                className={"relative flex justify-evenly items-center rounded p-10 shadow-lg w-10/12 lg:w-8/12 xl:w-6/12 transition-all duration-300 ease outline-none focus:outline-none focus:ring focus:ring-green-200 focus:ring-opacity-500 " 
+                className={"relative flex justify-evenly items-center rounded p-10 shadow-lg w-10/12 lg:w-8/12 xl:w-6/12 transition-all duration-300 ease " 
                 + (isInstallationSelected ? 'border-2 border-green-300 border-opacity-80 bg-green-50 bg-opacity-30 ' : 'border cursor-pointer hover:border-green-400 hover:shadow-xl')}
             >
                 {/* Icon or graphic */}

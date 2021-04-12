@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Actions({ nextStep, prevStep, currentStep, canClickNext }) {
+export default function Actions({ nextStep, prevStep, currentStep, canClickNext, isLastStep }) {
     return(
         <section className="flex flex-row justify-center mb-10 w-full border-t pt-7 border-gray-300">
             <span className={(currentStep == 1) ? '' : 'hidden'}>
@@ -22,6 +22,7 @@ export default function Actions({ nextStep, prevStep, currentStep, canClickNext 
                 </button>
             </span>
  
+            {!isLastStep() && 
             <button 
                 className={"text-lg text-white mx-6 border rounded px-5 py-2 transition-all duration-300 ease " 
                 + (canClickNext ? 'border-green-400 bg-green-600 hover:bg-green-500 hover:text-white focus:outline-none focus:ring focus:ring-green-200 focus:ring-opacity-500' 
@@ -29,7 +30,15 @@ export default function Actions({ nextStep, prevStep, currentStep, canClickNext 
                 onClick={e=> {if(canClickNext) nextStep()}}
             >
                 Next
-            </button>
+            </button>}
+
+            {isLastStep() && 
+                <button 
+                    className={"text-lg text-white mx-6 border rounded px-5 py-2 transition-all duration-300 ease " 
+                        + 'border-green-400 bg-green-600 hover:bg-green-500 hover:text-white focus:outline-none focus:ring focus:ring-green-200 focus:ring-opacity-500'}
+                >
+                    Proceed to checkout
+                </button>}
         </section>
     )
 }

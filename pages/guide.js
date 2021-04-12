@@ -32,7 +32,6 @@ export default function Guide() {
     const [ subtotal, setSubtotal ] = useState(0.00);
     const [ isInstallationSelected, setIsInstallationSelected ] = useState(null);
     const [ canClickNext, setCanClickNext ] = useState(false);
-    const [ isLastStep, setIsLastStep ] = useState(false);
 
     const bearerToken = process.env.BEARER_TOKEN;
 
@@ -588,6 +587,41 @@ export default function Guide() {
         if(cablesType != 'pre-made') setCurrentStep(8)
     }
 
+    const goToStep = (step) => {
+        switch(step){
+            case 'cameras':
+                setCurrentStep(3);
+                break;
+            case 'NVR':
+                setCurrentStep(4);
+                break;
+            case 'hard drives':
+                setCurrentStep(5);
+                break;
+            case 'cables':
+                setCurrentStep(7);
+                break;
+            case 'addons':
+                if(cablesType == 'pre-made') setCurrentStep(8);
+                if(cablesType != 'pre-made') setCurrentStep(7);
+                break;
+            case 'installation':
+                if(cablesType == 'pre-made') setCurrentStep(9);
+                if(cablesType != 'pre-made') setCurrentStep(8);
+                break;
+        }
+    }
+
+    const isLastStep = () => {
+        if(cablesType == 'none'){
+            console.log('I am called')
+            return (currentStep == 9)
+        } else {
+            console.log('I am called')
+            return (currentStep == 10)
+        }
+    }
+
     return(
         <div className="relative">
             <ReactNotification />
@@ -641,14 +675,13 @@ export default function Guide() {
                             isInstallationSelected={isInstallationSelected}
                             addInstallation={addInstallation}
                             subtotal={subtotal}
-                            goToCameras={goToCameras}
-                            goToInstallation={goToInstallation}
+                            goToStep={goToStep}
                         />
                     </div>
 
                     <div className="fixed bottom-0 pb-10 left-0 w-screen flex flex-col items-center mt-10 bg-white">
                         <div className="flex relative flex-col justify-center 2xl:w-8/12 xl:w-9/12 lg:w-10/12 md:w-11/12">
-                            <Actions nextStep={nextStep} prevStep={prevStep} currentStep={currentStep} canClickNext={canClickNext} setCanClickNext={setCanClickNext}/>
+                            <Actions nextStep={nextStep} prevStep={prevStep} currentStep={currentStep} canClickNext={canClickNext} setCanClickNext={setCanClickNext} isLastStep={isLastStep}/>
                             <div className="absolute top-0 left-0 mt-5" style={{height: '60px', width: '220px'}}> 
                                 <div style={{maxWidth: '100%', height: '100%'}}>
                                     <Image
