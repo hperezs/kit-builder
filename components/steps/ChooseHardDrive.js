@@ -23,6 +23,23 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
     const FQA = 510;
     const KILOBYTE = 1000;
 
+    // Default resolution to selected cameras average resolution
+    useEffect(() => {
+        let resolution_count_4K = 0;
+        let resolution_count_3K = 0;
+
+        cameras.forEach(camera => {
+            if (camera.resolution == '4K') resolution_count_4K++;
+            if (camera.resolution == '3K') resolution_count_3K++;
+        })
+
+        if(resolution_count_4K > resolution_count_3K) {
+            setResolution(8294400);
+        } else {
+            setResolution(5038848);
+        }
+    }, [cameras])
+
     // Calculate the required storage
     useEffect(() => {
         let colorPixelSize = (resolution < 824400 ? 16 : 30)
