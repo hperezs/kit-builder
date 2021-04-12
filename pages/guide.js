@@ -623,7 +623,7 @@ export default function Guide() {
     }
 
     return(
-        <div className="relative">
+        <div transition-style="fade:in" className="relative">
             <ReactNotification />
             <ProgressBar progress={(cablesType != 'none' ? currentStep / 10 : currentStep / 9)} />
             <main className="flex flex-row justify-center items-start mt-14 z-20">
