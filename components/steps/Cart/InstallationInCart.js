@@ -4,6 +4,7 @@ import {FaEdit} from 'react-icons/fa'
 
 export default function InstallationInCart({homeOrBusiness, cablesType, cameras, goToStep}){
     const [displayMoreDetails, setDisplayMoreDetails] = useState(false);
+    const [displayEditButton, setDisplayEditButton] = useState(false);
 
     const item = useRef();
 
@@ -26,6 +27,8 @@ export default function InstallationInCart({homeOrBusiness, cablesType, cameras,
 
     return(
         <div
+            onMouseEnter={e => setDisplayEditButton(true)}
+            onMouseLeave={e => setDisplayEditButton(false)}
             ref={item}
             style={{height: (displayMoreDetails ? '300px' : '176px')}} 
             className={"relative flex flex-row justify-start items-center mb-3 rounded p-5 border bg-white border-gray-300 shadow overflow-hidden transition-all duration-500 ease " + (cablesType == 'pre-made' ? 'w-6/12' : 'w-8/12')}
@@ -82,12 +85,13 @@ export default function InstallationInCart({homeOrBusiness, cablesType, cameras,
                 <p>Price:</p>
                 <p className="font-normal text-green-600">{((homeOrBusiness == 'home' ? 299 : 349) + (cameras.length * 212.50)).toLocaleString('en-US', {style: 'currency', currency: 'USD'})}</p>
             </div>}
+           {displayEditButton && 
             <span 
                 onClick={e => goToStep('installation')}
                 className={"absolute top-0 right-0 cursor-pointer m-2 "}
             >
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
-            </span>
+            </span>}
         </div>
     )
 }

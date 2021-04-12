@@ -5,6 +5,7 @@ import {FaEdit} from 'react-icons/fa'
 
 export default function CameraInCart({camera, cablesType, goToStep}) {
     const [displayMoreDetails, setDisplayMoreDetails] = useState(false);
+    const [displayEditButton, setDisplayEditButton] = useState(false);
 
     const item = useRef();
 
@@ -24,6 +25,8 @@ export default function CameraInCart({camera, cablesType, goToStep}) {
 
     return(
         <div 
+            onMouseEnter={e => setDisplayEditButton(true)}
+            onMouseLeave={e => setDisplayEditButton(false)}
             ref={item} 
             style={{height: (displayMoreDetails ? '240px' : '176px')}}
             className={"relative flex flex-row px-5 py-4 items-center border rounded flex-shrink-0 bg-white border-gray-300 shadow transition-all duration-500 ease overflow-hidden " 
@@ -67,12 +70,14 @@ export default function CameraInCart({camera, cablesType, goToStep}) {
                 <p>Price:</p>
                 <span className="text-lg text-green-600">${camera.price?.$numberDecimal}</span>
             </div>
+            {displayEditButton &&
             <span 
+                transition-style="fade:in:faster"
                 onClick={e => goToStep('cameras')}
                 className={"absolute top-0 right-0 cursor-pointer m-2 "}
             >
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
-            </span>
+            </span>}
         </div>
     )
 }
