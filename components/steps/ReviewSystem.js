@@ -277,7 +277,7 @@ export default function ReviewSystem({
                         selectedPowerInjectors.map((product, index) => {
                             return(
                                 <div 
-                                    className={"flex flex-row justify-start items-center mb-3 rounded p-5 border bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-6/12' : 'w-8/12')} 
+                                    className={"relative flex flex-row justify-start items-center mb-3 rounded p-5 border bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-6/12' : 'w-8/12')} 
                                     key={index}
                                 >
                                     <div className="m-2 p-3 flex flex-col justify-center items-center rounded border-gray-300 ">
@@ -304,6 +304,12 @@ export default function ReviewSystem({
                                         <p>Subtotal:</p>
                                         <span className="text-green-600">${(product.quantity * product.price).toFixed(2)}</span>
                                     </div>
+                                    <span 
+                                        onClick={() => {setShowCart(false); goToStep('addons')}}
+                                        className={"absolute top-0 right-0 cursor-pointer m-2 "}
+                                    >
+                                        <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
+                                    </span>
                                 </div>
                             )
                         })

@@ -706,7 +706,7 @@ export default function Guide() {
                         selectedPowerInjectors={selectedPowerInjectors}
                         isInstallationSelected={isInstallationSelected}
                         homeOrBusiness={homeOrBusiness}
-                        goToInstallation={goToInstallation}
+                        goToStep={goToStep}
                     />
                 </div>
             </main>
