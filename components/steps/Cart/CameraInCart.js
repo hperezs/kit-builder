@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import { useRef, useState, useEffect } from 'react';
 import {backstreet_domain} from '../../../lib/backstreet_domain'
+import {FaEdit} from 'react-icons/fa'
 
-export default function CameraInCart({camera, cablesType}) {
+export default function CameraInCart({camera, cablesType, goToStep}) {
     const [displayMoreDetails, setDisplayMoreDetails] = useState(false);
 
     const item = useRef();
@@ -49,7 +50,7 @@ export default function CameraInCart({camera, cablesType}) {
             >
                 <p className="text-lg mb-3 border-b border-gray-500 px-3 italic">{camera.cameraName}</p>
                 <p className="mb-1">{camera.sku} </p>
-                {!displayMoreDetails && <a onClick={e => setDisplayMoreDetails(true)} className="text-green-600 font-light cursor-pointer hover:text-green-500">See more details</a>}
+                {!displayMoreDetails && <a onClick={e => setDisplayMoreDetails(true)} className="text-green-700 font-light cursor-pointer hover:text-green-500">See more details</a>}
                 {displayMoreDetails &&
                 <div className="text-center ">
                     <p className="font-light mb-1">Lens: {camera.cameraLens}</p>
@@ -66,6 +67,12 @@ export default function CameraInCart({camera, cablesType}) {
                 <p>Price:</p>
                 <span className="text-lg text-green-600">${camera.price?.$numberDecimal}</span>
             </div>
+            <span 
+                onClick={e => goToStep('cameras')}
+                className={"absolute top-0 right-0 cursor-pointer m-2 "}
+            >
+                <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
+            </span>
         </div>
     )
 }
