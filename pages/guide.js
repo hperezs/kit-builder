@@ -625,7 +625,7 @@ export default function Guide() {
     return(
         <div className="relative">
             {/* Animation layover */}
-            <div transition-style="in:wipe:right:green" className="fixed top-0 h-screen w-screen z-50 bg-green-600"></div>
+            <div className="fixed top-0 h-screen w-screen z-50 bg-green-600 in-wipe-right-green"></div>
             <ReactNotification />
             <ProgressBar progress={(cablesType != 'none' ? currentStep / 10 : currentStep / 9)} />
             <main className="flex flex-row justify-center items-start mt-14 z-20">
