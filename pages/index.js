@@ -10,27 +10,30 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
 
-            <main className="relative h-screen w-screen">
-                <div className="absolute z-10 top-0 left-0 welcome-page h-screen w-screen">
+            <main className="h-screen w-screen">
+                <div className="relative z-10 top-0 left-0 welcome-page h-screen w-screen">
 
                 </div>
-                <div className="absolute top-0 left-0 z-20 welcome-container flex flex-col items-center bg-white h-screen bg-opacity-95 p-10 w-6/12 xl:w-4/12">
-                    <div className="flex flex-col items-center " style={{width: '500px'}}>
-                        <h1 className="mt-20 mb-10 text-5xl">
-                            Welcome
-                        </h1>
-                        <p className="mt-5 text-xl">
-                            This tool will guide you through all the steps of picking each component of your camera system that best fits your needs
-                        </p>
-                        <div className="mt-14">
-                            <Link href="/guide">
-                                <a className="flex-none p-3 text-lg rounded border border-green-700 text-green-700 bg-gray-50 transition-colors hover:bg-green-600 hover:text-white">
-                                    Get started
-                                </a>
-                            </Link>
+                    <div className="absolute top-0 z-40 welcome-container flex flex-col items-center w-screen h-screen ">
+                        <div className="flex flex-col justify-end w-screen h-screen ">
+                            <div style={{height: '40vh', borderTopWidth: '5px'}} className="flex flex-col items-center justify-center bg-white bg-opacity-90 border-green-600">
+                                <h1 className="my-8 text-5xl">
+                                    Welcome
+                                </h1>
+                                <p className="my-8 text-2xl">
+                                    This tool will guide you through all the steps of picking each component of your camera system that best fits your needs
+                                </p>
+                                <div className="my-8">
+                                    <Link href="/guide">
+                                        <a className="py-3 px-10 bg-green-600 text-xl rounded text-white transition-colors duration-300 ease hover:bg-green-500">
+                                            Get started
+                                        </a>
+                                    </Link>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                </div>
             </main>
 
             {/* <footer className="flex items-center justify-center w-full h-24 border-t">
@@ -43,6 +46,7 @@ export default function Home() {
           Powered by{' '}
           <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
         </a>
-      </footer> */} </div>
+      </footer> */} 
+      </div>
     )
 }
