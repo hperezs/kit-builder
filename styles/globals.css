@@ -21,8 +21,6 @@ input[type=number] {
   background-image: url('../public/images/welcome-background.png');
   background-position: center;
   background-size: cover;
-  filter: blur(4px);
-  -webkit-filter: blur(4px);
 }
 
 .welcome-container {
