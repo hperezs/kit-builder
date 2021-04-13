@@ -17,6 +17,18 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+.welcome-page {
+  background-image: url('../public/images/welcome-background.png');
+  background-position: center;
+  background-size: cover;
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+}
+
+.welcome-container {
+  
+}
+
 @keyframes wipe-in-down {
   from {
     clip-path: inset(0 0 100% 0);

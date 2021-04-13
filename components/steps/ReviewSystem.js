@@ -8,6 +8,7 @@ import HDMIinCart from './Cart/HDMIinCart'
 import MountInCart from './Cart/MountInCart'
 import SelfMadeProductInCart from './Cart/SelfMadeProductInCart'
 import PowerInjectorInCart from './Cart/PowerInjectorInCart'
+import {FaEdit} from 'react-icons/fa'
 
 export default function ReviewSystem({
     cameras, 
@@ -22,9 +23,14 @@ export default function ReviewSystem({
     homeOrBusiness,
     goToStep
 }) {
-
+    
     return(
         <section className="mt-10">
+            <p className="font-light text-lg rounded p-3 bg-green-50 max-w-max">
+                <span className="text-green-700">&#8594;</span> 
+                You can change your selections by hovering the mouse over an item and clicking the <FaEdit className="fill-current text-yellow-600 inline mb-2 mx-1 text-2xl"/> button. 
+                This will take you back to the related step.
+            </p>
             <div className={"relative p-6 flex flex-col overflow-y-auto " + (cablesType == 'pre-made' ? 'lg:w-10/12 xl:w-9/12' : 'lg:w-9/12 xl:w-7/12') }>
                 <div className="flex flex-col">
                     {/* NVR and Cable */}
@@ -68,6 +74,10 @@ export default function ReviewSystem({
                             </div>
                         )
                     })}
+                    {/* Installation */}
+                    {isInstallationSelected && 
+                        <InstallationInCart homeOrBusiness={homeOrBusiness} cablesType={cablesType} cameras={cameras} goToStep={goToStep}/>
+                    }
                     {/* Self-made cables */}
                     {cablesType == 'self-made' &&
                     <div className="flex flex-wrap justify-start">
@@ -84,10 +94,6 @@ export default function ReviewSystem({
                                 <PowerInjectorInCart product={product} cablesType={cablesType} goToStep={goToStep} key={index}/>
                             )
                         })
-                    }
-                    {/* Installation */}
-                    {isInstallationSelected && 
-                        <InstallationInCart homeOrBusiness={homeOrBusiness} cablesType={cablesType} cameras={cameras} goToStep={goToStep}/>
                     }
                     {/* Extra Hard Drives */}
                     {selectedHardDrives != 0 && 

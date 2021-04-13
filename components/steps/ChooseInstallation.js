@@ -23,7 +23,7 @@ export default function ChooseInstallation({homeOrBusiness, cameras, isInstallat
                 <div style={{width: '200px', height: '200px'}} className="m-4">
                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                         <Image
-                            src='/images/installation.png'
+                            src={`/images/${homeOrBusiness}_installation.png`}
                             layout="fill"
                             objectFit="contain"
                             quality={100}
@@ -77,7 +77,7 @@ export default function ChooseInstallation({homeOrBusiness, cameras, isInstallat
                 <div style={{width: '200px', height: '200px'}} className="m-4">
                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                         <Image
-                            src='/images/installation.png'
+                            src={`/images/${homeOrBusiness}_installation.png`}
                             layout="fill"
                             objectFit="contain"
                             quality={100}
