@@ -166,6 +166,10 @@ export default function Cart({
                                     </div>
                                 )
                             })}
+                            {/* Installation */}
+                            {isInstallationSelected && 
+                                <InstallationInCart homeOrBusiness={homeOrBusiness} cablesType={cablesType} cameras={cameras} goToStep={() => {setShowCart(false); goToStep('installation')}}/>
+                            }
                             {/* Self-made cables */}
                             {cablesType == 'self-made' &&
                             <div className="flex flex-wrap justify-start">
@@ -182,10 +186,6 @@ export default function Cart({
                                         <PowerInjectorInCart product={product} cablesType={cablesType} goToStep={goToStep} key={index}/>
                                     )
                                 })
-                            }
-                            {/* Installation */}
-                            {isInstallationSelected && 
-                                <InstallationInCart homeOrBusiness={homeOrBusiness} cablesType={cablesType} cameras={cameras} goToStep={() => {setShowCart(false); goToStep('installation')}}/>
                             }
                             {/* Extra Hard Drives */}
                             {selectedHardDrives != 0 && 

@@ -31,7 +31,7 @@ export default function InstallationInCart({homeOrBusiness, cablesType, cameras,
             onMouseLeave={e => setDisplayEditButton(false)}
             ref={item}
             style={{height: (displayMoreDetails ? '300px' : '176px')}} 
-            className={"relative flex flex-row justify-start items-center mb-3 rounded p-5 border bg-white border-gray-300 shadow overflow-hidden transition-all duration-500 ease " + (cablesType == 'pre-made' ? 'w-6/12' : 'w-8/12')}
+            className={"relative flex flex-row justify-start items-center mb-3 rounded p-5 border bg-white border-gray-300 shadow overflow-hidden transition-all duration-500 ease " + (cablesType == 'pre-made' ? 'w-7/12' : 'w-9/12')}
         >
             <div 
                 style={{left: '6%', top: (displayMoreDetails ? '100px' : '40px')}}
@@ -40,7 +40,7 @@ export default function InstallationInCart({homeOrBusiness, cablesType, cameras,
                 <div className="rounded" style={{height: '86px', width: '120px'}}> 
                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                         <Image
-                            src='/images/installation.png'
+                            src={`/images/${homeOrBusiness}_installation.png`}
                             layout="fill"
                             objectFit="contain"
                             quality={100}
@@ -49,7 +49,7 @@ export default function InstallationInCart({homeOrBusiness, cablesType, cameras,
                 </div>
             </div>
             <div 
-                style={{left: (displayMoreDetails ? '35%' : '35%'), top: (displayMoreDetails ? '15%' : '30%')}}
+                style={{left: (displayMoreDetails ? '35%' : '27%'), top: (displayMoreDetails ? '15%' : '30%')}}
                 className={"absolute flex flex-col items-center transition-all duration-500 ease"}
             >
                 <p className="text-center text-lg">{(homeOrBusiness == 'home' ? 'Home' : 'Business') + ' Installation'}</p>
@@ -79,7 +79,7 @@ export default function InstallationInCart({homeOrBusiness, cablesType, cameras,
             </div>
             {!displayMoreDetails &&
             <div 
-                style={{right: '14%', padding: '15px 15px 0px 0px'}}
+                style={{right: '26%', padding: '15px 15px 0px 0px'}}
                 className={"absolute top-10 flex flex-col items-center rounded transition-all duration-500 ease"}
             >
                 <p>Price:</p>
