@@ -65,7 +65,7 @@ export default function ReviewSystem({
                                 <CameraInCart camera={camera} cablesType={cablesType} goToStep={goToStep}/>
                                 
                                 {camera?.cable && cablesType == 'pre-made' &&
-                                    <CableInCart cable={camera.cable} />
+                                    <CableInCart cable={camera.cable} goToStep={goToStep}/>
                                 }
 
                                 {camera?.mount && 
