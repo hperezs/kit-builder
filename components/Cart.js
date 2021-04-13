@@ -128,24 +128,24 @@ export default function Cart({
                             <div className="flex flex-row justify-start mb-3">
                                 {/* NVR */}
                                 {selectedNVR != '' &&
-                                    <VideoRecorderInCart selectedNVR={selectedNVR} cablesType={cablesType} goToStep={goToStep} />
+                                    <VideoRecorderInCart selectedNVR={selectedNVR} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('NVR')}} />
                                 }
                                 {/* NVR's cable */}
                                 {selectedNVR?.cable && cablesType == 'pre-made' && 
-                                    <CableInCart cable={selectedNVR.cable} goToStep={goToStep}/>
+                                    <CableInCart cable={selectedNVR.cable} goToStep={() => {setShowCart(false); goToStep('cables')}}/>
                                 }
                                 {/* Hard Drive */}
                                 {selectedHardDrives.length != 0 &&
-                                    <HardDriveInCart hardDrive={selectedHardDrives[0]} cablesType={cablesType} goToStep={goToStep} index={0}/>
+                                    <HardDriveInCart hardDrive={selectedHardDrives[0]} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('hard drives')}} index={0}/>
                                 }
                             </div>
                             {/* Monitor(s) and HDMI(s) */}
                             {selectedMonitor != '' &&
                                 <div className="flex flex-row justify-start mb-3">
-                                    <MonitorInCart selectedMonitor={selectedMonitor} cablesType={cablesType} goToStep={goToStep}/>
+                                    <MonitorInCart selectedMonitor={selectedMonitor} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('addons')}}/>
 
                                     {selectedMonitor?.cable && 
-                                        <HDMIinCart selectedMonitor={selectedMonitor} cablesType={cablesType} goToStep={goToStep}/>
+                                        <HDMIinCart selectedMonitor={selectedMonitor} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('addons')}}/>
                                     }
                                 </div>
                             }
@@ -157,11 +157,11 @@ export default function Cart({
                                         <CameraInCart camera={camera} index={index} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('cameras')}}/>
 
                                         {camera?.cable && cablesType == 'pre-made' &&
-                                            <CableInCart cable={camera.cable} />
+                                            <CableInCart cable={camera.cable} goToStep={() => {setShowCart(false); goToStep('cables')}}/>
                                         }
 
                                         {camera?.mount && 
-                                            <MountInCart camera={camera} cablesType={cablesType} goToStep={goToStep} />
+                                            <MountInCart camera={camera} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('addons')}} />
                                         }
                                     </div>
                                 )
@@ -175,7 +175,7 @@ export default function Cart({
                             <div className="flex flex-wrap justify-start">
                                 {selectedSMProducts.map((product, index) => {
                                     return(
-                                        <SelfMadeProductInCart product={product} cablesType={cablesType} goToStep={goToStep} key={index}/>
+                                        <SelfMadeProductInCart product={product} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('cables')}} key={index}/>
                                     )})}
                             </div>
                             }
@@ -183,7 +183,7 @@ export default function Cart({
                             {selectedPowerInjectors.length != 0 && 
                                 selectedPowerInjectors.map((product, index) => {
                                     return(
-                                        <PowerInjectorInCart product={product} cablesType={cablesType} goToStep={goToStep} key={index}/>
+                                        <PowerInjectorInCart product={product} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('addons')}} key={index}/>
                                     )
                                 })
                             }
@@ -192,7 +192,7 @@ export default function Cart({
                                 <div className="flex mb-3 flex-wrap">
                                 {selectedHardDrives.map((hardDrive, index) => {
                                     if(index != 0) return(
-                                        <HardDriveInCart hardDrive={hardDrive} cablesType={cablesType} goToStep={goToStep} key={index} index={index}/>
+                                        <HardDriveInCart hardDrive={hardDrive} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('hard drives')}} key={index} index={index}/>
                                     )
                                 })}
                                 </div>

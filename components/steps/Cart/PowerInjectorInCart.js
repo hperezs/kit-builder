@@ -39,7 +39,7 @@ export default function PowerInjectorInCart({product, cablesType, goToStep}) {
             {displayEditButton &&
             <span
                 transition-style="fade:in:faster"
-                onClick={() => {setShowCart(false); goToStep('addons')}}
+                onClick={() => goToStep('addons')}
                 className={"absolute top-0 right-0 cursor-pointer m-2 "}
             >
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
