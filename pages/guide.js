@@ -292,7 +292,7 @@ export default function Guide() {
     }
 
     const updateCameraName = (index, camera) => {
-        let new_cameras = cameras;
+        let new_cameras = cameras.slice();
         new_cameras[index].cameraName = camera;
         setCameras(new_cameras);
     }
