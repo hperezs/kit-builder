@@ -623,7 +623,11 @@ export default function Guide() {
     return(
         <div className="relative">
             {/* Animation layover */}
-            <div className="fixed top-0 h-screen w-screen z-50 bg-green-600 in-wipe-right-green"></div>
+            <div className="fixed top-0 h-screen w-screen z-50 bg-green-600 in-wipe-right-green">
+                <div className="relative h-screen w-screen">
+                    <img style={{top: '50%', right: '50%', transform: 'translate(50%, -50%)'}} className="absolute" src="/images/BS_logo_White.png" width={500} height={133.5} />
+                </div>
+            </div>
             <ReactNotification />
             <ProgressBar progress={(cablesType != 'none' ? currentStep / 10 : currentStep / 9)} />
             <main className="flex flex-row justify-center items-start mt-14 z-20">

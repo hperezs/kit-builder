@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import NextImage from 'next/image';
 import Link from 'next/link'
 import {useEffect} from 'react'
 
@@ -27,17 +28,21 @@ export default function Home() {
             </Head>
 
             <main className="h-screen w-screen">
-                <div id="animation-container" className="fixed top-0 h-screen w-screen z-50 bg-green-600 hidden"></div>
-
+                <div id="animation-container" className="fixed top-0 h-screen w-screen z-50 bg-green-600 hidden">
+                    <div className="relative h-screen w-screen">
+                        <img style={{top: '50%', right: '50%', transform: 'translate(50%, -50%)'}} className="absolute" src="/images/BS_logo_White.png" width={500} height={133.5} />
+                    </div>
+                </div>
+                
                 <div id="background-image" className="relative z-10 top-0 left-0 welcome-page welcome-page-loading h-screen w-screen transition-filter duration-1000 ease"></div>
                 
                 <div className="absolute top-0 z-40 welcome-container flex flex-col items-center w-screen h-screen ">
                     <div className="flex flex-col justify-end w-screen h-screen ">
-                        <div style={{height: '40vh', borderTopWidth: '5px'}} className="flex flex-col items-center justify-center bg-white bg-opacity-90 border-green-600">
+                        <div style={{minHeight: '40vh', borderTopWidth: '5px'}} className="flex flex-col items-center justify-center bg-white bg-opacity-90 border-green-600">
                             <h1 className="my-8 text-5xl">
                                 Welcome
                             </h1>
-                            <p className="my-8 text-2xl">
+                            <p className="my-8 text-2xl text-center w-7/12">
                                 We will guide you through all of the steps of picking each component for your surveillance system so that it best fits your needs
                             </p>
                             
