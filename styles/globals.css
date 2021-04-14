@@ -17,8 +17,15 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+.welcome-page-loading {
+  background-image: url('../public/images/low-res-placeholder.jpg');
+  background-position: bottom;
+  background-size: cover;
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+}
+
 .welcome-page {
-  background-image: url('../public/images/welcome-background.jpg');
   background-position: bottom;
   background-size: cover;
 }
