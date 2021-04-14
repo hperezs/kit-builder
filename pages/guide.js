@@ -614,10 +614,8 @@ export default function Guide() {
 
     const isLastStep = () => {
         if(cablesType == 'none'){
-            console.log('I am called')
             return (currentStep == 9)
         } else {
-            console.log('I am called')
             return (currentStep == 10)
         }
     }
