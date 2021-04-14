@@ -28,9 +28,9 @@ export default function Home() {
             </Head>
 
             <main className="h-screen w-screen">
-                <div id="animation-container" className="fixed top-0 h-screen w-screen z-50 bg-green-600 hidden">
+                <div id="animation-container" style={{backgroundColor: '#407033'}} className="fixed top-0 h-screen w-screen z-50 hidden">
                     <div style={{top: '50%', right: '50%', transform: 'translate(50%, -50%)'}} className="absolute" >
-                        <NextImage src="/images/BS_Logo_SilverWhite.png" width={375} height={100} priority={true}/>
+                        <NextImage src="/images/BS_Logo_White.png" width={375} height={100} priority={true}/>
                     </div>
                 </div>
                 
@@ -46,7 +46,7 @@ export default function Home() {
                                 We will guide you through all of the steps of picking each component for your surveillance system so that it best fits your needs
                             </p>
                             
-                            <a onClick={handleClick} className="py-3 px-10 bg-green-600 text-xl rounded text-white transition-colors duration-300 ease hover:bg-green-500 my-8 cursor-pointer">
+                            <a onClick={handleClick} className="py-3 px-10 bg-green-700 text-xl rounded text-white transition-colors duration-300 ease hover:bg-green-600 my-8 cursor-pointer">
                                 Get started
                             </a>
                             

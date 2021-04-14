@@ -11,7 +11,6 @@ export default function ProgressBar({progress}) {
       const fillerStyles = {
         height: '100%',
         width: `${progress * 100}%`,
-        backgroundColor: '#10B981',
         borderRadius: 'inherit',
         textAlign: 'right',
         transition: 'width 0.75s ease'
@@ -25,7 +24,7 @@ export default function ProgressBar({progress}) {
     
       return (
         <div style={containerStyles} className="fixed top-0 z-40">
-          <div style={fillerStyles}>
+          <div style={fillerStyles} className="bg-green-600">
             <span style={labelStyles}></span>
           </div>
         </div>

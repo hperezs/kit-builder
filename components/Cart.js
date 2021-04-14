@@ -17,7 +17,6 @@ export default function Cart({
     selectedHardDrives, 
     subtotal, selectedSMProducts, 
     cablesType, 
-    goToCameras, 
     selectedMonitor, 
     selectedPowerInjectors, 
     isInstallationSelected,
@@ -80,11 +79,6 @@ export default function Cart({
         document.removeEventListener("mousedown", handleClick);
       };
     }, [])
-
-    const seeMoreDetails = () => {
-        setShowCart(false);
-        goToCameras();
-    }
 
     const cardCount_style = {paddingTop: '1px', top: '-12px', right: '-6px', height: '24px', width: (count < 10 ? '24px' : '28px')};
 
