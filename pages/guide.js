@@ -10,27 +10,29 @@ import Image from 'next/image'
 import ProgressBar from "../components/ProgressBar";
 
 export default function Guide() {
-    const [ steps, setSteps ] = useState(default_steps)
-    const [ currentStep, setCurrentStep ] = useState(1);
-    const [ cameras, setCameras ] = useState([]);
-    const [ selectedNVR, setSelectedNVR ] = useState('');
-    const [ selectedHardDrives, setSelectedHardDrives ] = useState([]);
-    const [ selectedSMProducts, setSelectedSMProducts ] = useState([]);
-    const [ homeOrBusiness, setHomeOrBusiness ] = useState('');
-    const [ cablesType, setCablesType ] = useState('');
-    const [ allProducts, setAllProducts ] = useState([]);
+    // Product data
+    const [ allProducts, setAllProducts ] = useState([]); // These are cameras from MongoDB
+    const [ videoRecorders, setAllVideoRecorders ] = useState([]);
+    const [ hardDrives, setHardDrives ] = useState([])
     const [ indoorCables, setIndoorCables ] = useState([]);
     const [ outdoorCables, setOurdoorCables ] = useState([]);
     const [ selfMadeProducts, setSelfMadeProducts ] = useState([]);
-    const [ hardDrives, setHardDrives ] = useState([])
-    const [ videoRecorders, setAllVideoRecorders ] = useState([]);
     const [ monitorProducts, setMonitorProducts ] = useState([]);
     const [ mountProducts, setMountProducts ] = useState([]);
     const [ powerInjectors, setPowerInjectors ] = useState([]);
+
+    // App state
+    const [ currentStep, setCurrentStep ] = useState(1);
+    const [ homeOrBusiness, setHomeOrBusiness ] = useState('');
+    const [ cameras, setCameras ] = useState([]);
+    const [ selectedNVR, setSelectedNVR ] = useState('');
+    const [ selectedHardDrives, setSelectedHardDrives ] = useState([]);
+    const [ cablesType, setCablesType ] = useState('');
+    const [ selectedSMProducts, setSelectedSMProducts ] = useState([]);
     const [ selectedMonitor, setSelectedMonitor ] = useState('');
     const [ selectedPowerInjectors, setSelectedPowerInjectors ] = useState([]);
-    const [ subtotal, setSubtotal ] = useState(0.00);
     const [ isInstallationSelected, setIsInstallationSelected ] = useState(null);
+    const [ subtotal, setSubtotal ] = useState(0.00);
     const [ canClickNext, setCanClickNext ] = useState(false);
 
     const bearerToken = process.env.BEARER_TOKEN;
@@ -156,9 +158,23 @@ export default function Guide() {
         })
     }, [])
 
-    // Update subtotal when product selections change
+    // Get localStorage
+    useEffect(() => {
+        setHomeOrBusiness(localStorage.getItem('homeOrBusiness'));
+        setCameras(JSON.parse(localStorage.getItem('cameras')));
+        setSelectedNVR(JSON.parse(localStorage.getItem('selectedNVR')));
+        setSelectedHardDrives(JSON.parse(localStorage.getItem('selectedHardDrives')));
+        setCablesType(localStorage.getItem('cablesType'));
+        setSelectedSMProducts(JSON.parse(localStorage.getItem('selectedSMProducts')));
+        setSelectedMonitor(JSON.parse(localStorage.getItem('selectedMonitor')));
+        setSelectedPowerInjectors(JSON.parse(localStorage.getItem('selectedPowerInjectors')));
+        setIsInstallationSelected((localStorage.getItem('isInstallationSelected') == 'true'));
+    }, [])
+
+    // Update subtotal when product selections change and update LocalStorage
     useEffect(() => {
         updateSubtotal();
+        updateLocalStorage();
     }, [cameras, selectedNVR, selectedHardDrives, cablesType, selectedSMProducts, selectedPowerInjectors, selectedMonitor, isInstallationSelected])
 
     // Allow user to click next when selections are made
@@ -257,6 +273,17 @@ export default function Guide() {
         console.log('subtotal useEffect ran. Subtotal: ' + price_subtotal);
     }
 
+    const updateLocalStorage = () => {
+        localStorage.setItem('homeOrBusiness', homeOrBusiness);
+        localStorage.setItem('cameras', JSON.stringify(cameras));
+        localStorage.setItem('selectedNVR', JSON.stringify(selectedNVR));
+        localStorage.setItem('selectedHardDrives', JSON.stringify(selectedHardDrives));
+        localStorage.setItem('cablesType', cablesType);
+        localStorage.setItem('selectedSMProducts', JSON.stringify(selectedSMProducts));
+        localStorage.setItem('selectedMonitor', JSON.stringify(selectedMonitor));
+        localStorage.setItem('selectedPowerInjectors', JSON.stringify(selectedPowerInjectors));
+        localStorage.setItem('isInstallationSelected', (isInstallationSelected ? 'true' : 'false'));
+    }
 
     const nextStep = () => {
         setCurrentStep(currentStep + 1);
@@ -266,12 +293,6 @@ export default function Guide() {
     const prevStep = () => {
         setCurrentStep(currentStep - 1);
         window.scrollTo(0, 0);
-    }
-
-    const enableStep = (step) => {
-        let temp_steps = steps;
-        temp_steps[step - 1].isDisabled = false;
-        setSteps(temp_steps);
     }
 
     const selectNewCamera = (camera) => {
@@ -506,7 +527,7 @@ export default function Guide() {
                     message: payload + " has been added to cart",
                     type: "success",
                     insert: "top",
-                    container: "top-center",
+                    container: "top-right",
                     animationIn: ["fade-in"],
                     animationOut: ["animate__animated", "animate__fadeOut"],
                     dismiss: {
@@ -521,7 +542,7 @@ export default function Guide() {
                 message: payload + " were added to cart",
                 type: "success",
                 insert: "top",
-                container: "top-center",
+                container: "top-right",
                 animationIn: ["fade-in"],
                 animationOut: ["animate__animated", "animate__fadeOut"],
                 dismiss: {
@@ -536,7 +557,7 @@ export default function Guide() {
                     message: payload + " has been removed from cart",
                     type: "danger",
                     insert: "top",
-                    container: "top-center",
+                    container: "top-right",
                     animationIn: ["fade-in"],
                     animationOut: ["animate__animated", "animate__fadeOut"],
                     dismiss: {
@@ -551,7 +572,7 @@ export default function Guide() {
                     message: "Your cart has been updated",
                     type: "info",
                     insert: "top",
-                    container: "top-center",
+                    container: "top-right",
                     animationIn: ["fade-in"],
                     animationOut: ["animate__animated", "animate__fadeOut"],
                     dismiss: {
@@ -566,7 +587,7 @@ export default function Guide() {
                     message: 'Your installation fees have been updated',
                     type: 'info',
                     insert: 'top',
-                    container: 'top-center',
+                    container: 'top-right',
                     animationIn: ['fade-in'],
                     animationOut: ['animate__animated', 'animate__fadeOut'],
                     dismiss: {
@@ -576,15 +597,6 @@ export default function Guide() {
                 });
                 break;
         }
-    }
-
-    const goToCameras = () => {
-        setCurrentStep(3)
-    }
-
-    const goToInstallation = () => {
-        if(cablesType == 'pre-made') setCurrentStep(9)
-        if(cablesType != 'pre-made') setCurrentStep(8)
     }
 
     const goToStep = (step) => {
@@ -623,9 +635,9 @@ export default function Guide() {
     return(
         <div className="relative">
             {/* Animation layover */}
-            <div className="fixed top-0 h-screen w-screen z-50 bg-green-600 in-wipe-right-green">
+            <div className="fixed top-0 h-screen w-screen z-50 in-wipe-right-green" style={{backgroundColor: '#407033'}}>
                 <div style={{top: '50%', right: '50%', transform: 'translate(50%, -50%)'}} className="absolute" >
-                    <Image src="/images/BS_Logo_SilverWhite.png" width={375} height={100} priority={true}/>
+                    <Image src="/images/BS_Logo_White.png" width={375} height={100} priority={true}/>
                 </div>
             </div>
             <ReactNotification />
@@ -637,7 +649,6 @@ export default function Guide() {
                     <div className="pb-44">
                         <Answer 
                             currentStep={currentStep}
-                            enableStep={enableStep}
                             cameras={cameras} 
                             homeOrBusiness={homeOrBusiness} 
                             setHomeOrBusiness={setHomeOrBusiness}
@@ -705,7 +716,6 @@ export default function Guide() {
                         subtotal={subtotal}
                         selectedSMProducts={selectedSMProducts}
                         cablesType={cablesType}
-                        goToCameras={goToCameras}
                         selectedMonitor={selectedMonitor}
                         selectedPowerInjectors={selectedPowerInjectors}
                         isInstallationSelected={isInstallationSelected}

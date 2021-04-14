@@ -41,7 +41,7 @@ export default function ChooseCable({camera, selectedNVR, index, indoorCables, o
 
     return(
         <div style={{height: '515px', width: '744px'}} className={"relative flex flex-row justify-center items-center mr-auto mb-10 bg-gray-100 p-4 " 
-            + (camera?.cable ? 'border border-green-400' : (selectedNVR ? '' : 'border-yellow-300 border-2 border-opacity-60'))}
+            + (camera?.cable ? 'border border-green-400' : (selectedNVR ? '' : 'border-yellow-500 border-2 border-opacity-60'))}
         >
             {/* Optional note for NVR's */}
             {selectedNVR && isChoosing && 

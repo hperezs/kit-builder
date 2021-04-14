@@ -11,7 +11,6 @@ import ReviewSystem from './steps/ReviewSystem'
 
 export default function Answer({
     currentStep,
-    enableStep,
     cameras,
     homeOrBusiness,
     setHomeOrBusiness, 
