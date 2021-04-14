@@ -625,7 +625,7 @@ export default function Guide() {
             {/* Animation layover */}
             <div className="fixed top-0 h-screen w-screen z-50 bg-green-600 in-wipe-right-green">
                 <div style={{top: '50%', right: '50%', transform: 'translate(50%, -50%)'}} className="absolute" >
-                    <Image src="/images/BS_logo_White.png" width={500} height={133.5} />
+                    <Image src="/images/BS_Logo_White.png" width={500} height={133.5} priority={true}/>
                 </div>
             </div>
             <ReactNotification />
