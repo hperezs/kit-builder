@@ -11,7 +11,8 @@ module.exports = {
     },
     extend: {
       transitionProperty: {
-        'width': 'width'
+        'width': 'width',
+        'filter': 'filter'
       },
       zIndex: {
         '-10': '-10',

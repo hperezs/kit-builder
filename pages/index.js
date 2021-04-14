@@ -1,10 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import {useState, useEffect} from 'react'
+import {useEffect} from 'react'
 
 export default function Home() {
-    const [isLoading, setIsLoading] = useState(true);
-
     useEffect(() => {
         let backgroundImage = new Image();
         backgroundImage.onload = () => {
@@ -12,7 +10,7 @@ export default function Home() {
             document.getElementById('background-image').style.backgroundImage = 'url(' + backgroundImage.src + ')';
             document.getElementById('background-image').classList.remove('welcome-page-loading');
         }
-        backgroundImage.src = '../images/welcome-background.jpg';
+        backgroundImage.src = '../images/welcome-background.png';
     }, [])
     
     const handleClick = () => {
@@ -31,7 +29,7 @@ export default function Home() {
             <main className="h-screen w-screen">
                 <div id="animation-container" className="fixed top-0 h-screen w-screen z-50 bg-green-600 hidden"></div>
 
-                <div id="background-image" className="relative z-10 top-0 left-0 welcome-page welcome-page-loading h-screen w-screen"></div>
+                <div id="background-image" className="relative z-10 top-0 left-0 welcome-page welcome-page-loading h-screen w-screen transition-filter duration-1000 ease"></div>
                 
                 <div className="absolute top-0 z-40 welcome-container flex flex-col items-center w-screen h-screen ">
                     <div className="flex flex-col justify-end w-screen h-screen ">
