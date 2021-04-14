@@ -183,9 +183,9 @@ input[type=number] {
 }
 
 .in-wipe-right-green {
-  animation: 1.25s cubic-bezier(.41,0,.58,.99) wipe-in-right-green both;
+  animation: 1.25s cubic-bezier(.03,.02,.57,1) wipe-in-right-green both;
 }
 
 .out-wipe-right {
-  animation: 1.25s cubic-bezier(.03,.02,.57,1) wipe-in-right both;
+  animation: 1.25s cubic-bezier(.41,0,.58,.99) wipe-in-right both;
 }
