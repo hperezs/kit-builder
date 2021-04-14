@@ -24,6 +24,8 @@ export default function Home() {
         <div className="flex flex-col justify-center">
             <Head>
                 <title>CCTV Kit Builder</title>
+                <meta property="og:title" content="CCTV Kit Builder" key="title" />
+                <meta description="Build your own complete CCTV Kit, including cameras, video recorder, cables, hard drives, and other accessories. We guide you through the complexity of picking the right components of your system with short simple steps."/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
 
