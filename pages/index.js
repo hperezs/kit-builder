@@ -10,7 +10,7 @@ export default function Home() {
             document.getElementById('background-image').style.backgroundImage = 'url(' + backgroundImage.src + ')';
             document.getElementById('background-image').classList.remove('welcome-page-loading');
         }
-        backgroundImage.src = '../images/welcome-background.png';
+        backgroundImage.src = '../images/welcome-background.jpg';
     }, [])
     
     const handleClick = () => {
@@ -48,7 +48,6 @@ export default function Home() {
 
                             <Link href="/guide"><span className="-z-50 opacity-0" id='get-started-link'>get started link</span></Link>
                         </div>
-
                     </div>
                 </div>
             </main>
