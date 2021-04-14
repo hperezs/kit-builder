@@ -29,8 +29,8 @@ export default function Home() {
 
             <main className="h-screen w-screen">
                 <div id="animation-container" className="fixed top-0 h-screen w-screen z-50 bg-green-600 hidden">
-                    <div className="relative h-screen w-screen">
-                        <img style={{top: '50%', right: '50%', transform: 'translate(50%, -50%)'}} className="absolute" src="/images/BS_logo_White.png" width={500} height={133.5} />
+                    <div style={{top: '50%', right: '50%', transform: 'translate(50%, -50%)'}} className="absolute" >
+                        <NextImage src="/images/BS_logo_White.png" width={500} height={133.5} />
                     </div>
                 </div>
                 
