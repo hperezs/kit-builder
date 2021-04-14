@@ -30,7 +30,7 @@ export default function Home() {
             <main className="h-screen w-screen">
                 <div id="animation-container" className="fixed top-0 h-screen w-screen z-50 bg-green-600 hidden">
                     <div style={{top: '50%', right: '50%', transform: 'translate(50%, -50%)'}} className="absolute" >
-                        <NextImage src="/images/BS_Logo_White.png" width={500} height={133.5} priority={true}/>
+                        <NextImage src="/images/BS_Logo_SilverWhite.png" width={375} height={100} priority={true}/>
                     </div>
                 </div>
                 
