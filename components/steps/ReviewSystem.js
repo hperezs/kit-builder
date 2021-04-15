@@ -68,7 +68,7 @@ export default function ReviewSystem({
                                     <CableInCart cable={camera.cable} goToStep={goToStep}/>
                                 }
 
-                                {camera?.mount && 
+                                {
                                     <MountInCart camera={camera} cablesType={cablesType} goToStep={goToStep} />
                                 }
                             </div>

@@ -2,9 +2,28 @@ import Image from 'next/image'
 import { useRef, useState, useEffect } from 'react';
 import {backstreet_domain} from '../../../lib/backstreet_domain'
 import {FaEdit} from 'react-icons/fa'
+import {RiHardDriveLine} from 'react-icons/ri'
 
 export default function HardDriveInCart({hardDrive, cablesType, goToStep, index}) {
     const [displayEditButton, setDisplayEditButton] = useState(false);
+
+    if(!hardDrive) return(
+        <div 
+            className={"relative flex flex-col items-center justify-center border rounded py-7 ml-3 w-3/12 bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-3/12' : 'w-4/12')}
+        >
+            <div style={{height: '46px', width: '80px'}}> 
+                <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                    <Image
+                        src={'/images/hardDrive.png'}
+                        layout="fill"
+                        objectFit="contain"
+                        quality={100}
+                    />
+                </div>
+            </div>
+            <div className="font-light mt-5">No hard drive added yet</div>
+        </div>
+    )
 
     return(
         <div 

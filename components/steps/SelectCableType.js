@@ -1,5 +1,6 @@
 import { AiFillShop } from 'react-icons/ai'
 import { GiTinker } from 'react-icons/gi'
+import { FiCheckSquare } from 'react-icons/fi'
 import { BsPersonCheckFill } from 'react-icons/bs'
 import { useState } from 'react';
 
@@ -16,7 +17,7 @@ export default function SelectCableType({cablesType, selectCablesType}) {
                         + (cablesType == 'pre-made' ? selected : 'hover:shadow-lg hover:border-green-200 hover:bg-green-50')}
                         onClick={e => selectCablesType('pre-made')}
                         >
-                        <span className="text-6xl text-gray-700"><AiFillShop /></span>
+                        <span className="text-6xl text-gray-700"><FiCheckSquare /></span>
                         <h5 className="text-xl mt-4 font-light">Pre-made</h5>
                     </span>
 

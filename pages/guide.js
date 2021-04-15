@@ -169,6 +169,8 @@ export default function Guide() {
         setSelectedMonitor(JSON.parse(localStorage.getItem('selectedMonitor')));
         setSelectedPowerInjectors(JSON.parse(localStorage.getItem('selectedPowerInjectors')));
         setIsInstallationSelected((localStorage.getItem('isInstallationSelected') == 'true'));
+
+        if(JSON.parse(localStorage.getItem('cameras'))?.length != 0) submitNotification('welcomeBack');
     }, [])
 
     // Update subtotal when product selections change and update LocalStorage
@@ -595,6 +597,21 @@ export default function Guide() {
                         onScreen: false
                     }
                 });
+                break;
+            case 'welcomeBack':
+                store.addNotification({
+                    title: 'Welcome back!',
+                    message: "We have saved your previous selections for your convenience.",
+                    type: "info",
+                    insert: "top",
+                    container: "top-left",
+                    animationIn: ["fade-in"],
+                    animationOut: ["animate__animated", "animate__fadeOut"],
+                    dismiss: {
+                        duration: 4000,
+                        onScreen: false
+                    }
+                    });
                 break;
         }
     }
