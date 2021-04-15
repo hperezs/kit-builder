@@ -121,15 +121,15 @@ export default function Cart({
                             {/* NVR and Cable */}
                             <div className="flex flex-row justify-start mb-3">
                                 {/* NVR */}
-                                {selectedNVR != '' &&
+                                {
                                     <VideoRecorderInCart selectedNVR={selectedNVR} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('NVR')}} />
                                 }
                                 {/* NVR's cable */}
-                                {selectedNVR?.cable && cablesType == 'pre-made' && 
+                                {cablesType == 'pre-made' && cablesType != 'none' &&
                                     <CableInCart cable={selectedNVR.cable} goToStep={() => {setShowCart(false); goToStep('cables')}}/>
                                 }
                                 {/* Hard Drive */}
-                                {selectedHardDrives.length != 0 &&
+                                {
                                     <HardDriveInCart hardDrive={selectedHardDrives[0]} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('hard drives')}} index={0}/>
                                 }
                             </div>
@@ -150,11 +150,11 @@ export default function Cart({
 
                                         <CameraInCart camera={camera} index={index} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('cameras')}}/>
 
-                                        {camera?.cable && cablesType == 'pre-made' &&
-                                            <CableInCart cable={camera.cable} goToStep={() => {setShowCart(false); goToStep('cables')}}/>
+                                        {cablesType == 'pre-made' && cablesType != 'none' && 
+                                            <CableInCart cable={camera?.cable} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('cables')}}/>
                                         }
 
-                                        {camera?.mount && 
+                                        {
                                             <MountInCart camera={camera} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('addons')}} />
                                         }
                                     </div>

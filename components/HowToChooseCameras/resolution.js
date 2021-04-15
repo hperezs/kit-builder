@@ -8,7 +8,8 @@ export default function Resolution() {
             <div className="flex flex-row justify-center">
                 <div className="w-7/12 2xl:w-7/12">
                     <p>
-                        Select a camera that’s night vision range is no more than double the expected viewing distance. For example, if your desired viewing distance is 60-80 feet from the camera location, we would select a camera with a 120 foot night vision distance. If your desired viewing distance is 30 feet, we would not recommend a camera with night viewing distance stronger than 60 feet. 
+                        There have been many different resolution standards throughout the years. The latest that we recommend is 3K (5+ Megapixel) and 4K (8 Megapixel). 
+                        <br/> <br/>Often the right choice is a 3K camera for general medium range surveillance such as hallways or an office. The smaller resolution allows for smaller hard drives and 3K cameras cost less than 4K. However, if you want crisp and clear detail at distance with superior digital zoom, then you should go with 4K cameras. Keep in mind that you can mix 3K and 4K cameras on the same system.
                     </p>
                     <br/>
                 </div>

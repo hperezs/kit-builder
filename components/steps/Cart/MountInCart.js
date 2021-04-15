@@ -6,6 +6,24 @@ import { backstreet_domain } from '../../../lib/backstreet_domain'
 export default function MountInCart({camera, cablesType, goToStep}) {
     const [displayEditButton, setDisplayEditButton] = useState(false);
 
+    if(!camera?.mount) return(
+        <div 
+            className={"relative flex flex-col items-center justify-center border rounded p-3 ml-3 bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-3/12' : 'w-4/12')}
+        >
+            <div style={{height: '36px', width: '70px'}}> 
+                <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                    <Image
+                        src={'/images/mount.png'}
+                        layout="fill"
+                        objectFit="contain"
+                        quality={100}
+                    />
+                </div>
+            </div>
+            <div className="font-light mt-7">No mount added yet</div>
+        </div>
+    )
+
     return(
         <div 
             onMouseEnter={e => setDisplayEditButton(true)}

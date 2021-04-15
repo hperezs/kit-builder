@@ -2,9 +2,28 @@ import Image from 'next/image'
 import { useRef, useState, useEffect } from 'react';
 import {backstreet_domain} from '../../../lib/backstreet_domain'
 import {FaEdit} from 'react-icons/fa'
+import {VscDebugDisconnect} from 'react-icons/vsc'
 
 export default function CableInCart({cable, goToStep}) {
     const [displayEditButton, setDisplayEditButton] = useState(false);
+
+    if(!cable) return(
+        <div 
+            className={"relative flex flex-col items-center justify-center border rounded p-3 ml-3 w-3/12 bg-white border-gray-300 shadow"}
+        >
+            <div style={{height: '46px', width: '80px'}}> 
+                <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                    <Image
+                        src={'/images/ethernet.png'}
+                        layout="fill"
+                        objectFit="contain"
+                        quality={100}
+                    />
+                </div>
+            </div>
+            <div className="font-light mt-7">No cable added yet</div>
+        </div>
+    )
 
     return(
         <div 
