@@ -29,37 +29,61 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
 
-            <main className="h-screen w-screen">
-                <div id="animation-container" style={{backgroundColor: '#407033'}} className="fixed top-0 h-screen w-screen z-50 hidden">
+            <main className=" relative h-screen w-screen">
+                <div id="animation-container" style={{backgroundColor: '#438241'}} className="fixed top-0 z-50 h-screen w-screen hidden">
                     <div style={{top: '50%', right: '50%', transform: 'translate(50%, -50%)'}} className="absolute" >
                         <NextImage src="/images/BS_Logo_White.png" width={375} height={100} priority={true}/>
                     </div>
                 </div>
                 
-                <div id="background-image" className="relative z-10 top-0 left-0 welcome-page welcome-page-loading h-screen w-screen transition-filter duration-1000 ease"></div>
+                {/* Banner */}
+                <div style={{height: '40vh'}} id="background-image" className="welcome-page welcome-page-loading relative flex justify-start z-10 w-screen transition-filter duration-1000 ease"></div>
+                <div style={{width: '35%', height: '40vh'}} className="flex flex-col absolute top-0 left-0 items-center justify-center z-20 bg-green-700 bg-opacity-80">
+                    <h1 className="text-7xl uppercase font-semibold p-20 text-gray-100">CCTV Kit <br/> Builder</h1>
+                </div>
                 
-                <div className="absolute top-0 z-40 welcome-container flex flex-col items-center w-screen h-screen ">
-                    <div className="flex flex-col justify-end w-screen h-screen ">
-                        <div style={{minHeight: '40vh', borderTopWidth: '5px'}} className="flex flex-col items-center justify-center bg-white bg-opacity-90 border-green-600">
-                            <h1 className="my-8 text-5xl">
+                {/* Welcome section */}
+                <section className="mb-20 welcome-container flex flex-col items-center w-screen ">
+                    <div className="flex flex-col justify-end w-screen ">
+                        <div style={{borderTopWidth: '5px'}} className="flex flex-col items-center justify-start border-green-600">
+                            <h2 className="mb-8 mt-20 text-4xl">
                                 Welcome
-                            </h1>
-                            <p className="my-8 text-2xl text-center w-7/12">
-                                We will guide you through all of the steps of picking each component for your surveillance system so that it best fits your needs
+                            </h2>
+                            <p className="my-8 text-xl text-center w-7/12">
+                                We will guide you through all of the steps of choosing each component for your surveillance system so that it best fits your needs
                             </p>
-                            
-                            <a onClick={handleClick} className="py-3 px-10 bg-green-700 text-xl rounded text-white transition-colors duration-300 ease hover:bg-green-600 my-8 cursor-pointer">
+                            <a onClick={handleClick} className="py-3 px-10 text-white border bg-green-700 bg-opacity-90 text-xl rounded text-white transition-colors duration-300 ease hover:bg-green-500  my-8 cursor-pointer">
                                 Get started
                             </a>
-                            
-
                             <Link href="/guide"><span className="-z-50 opacity-0" id='get-started-link'>get started link</span></Link>
                         </div>
                     </div>
-                </div>
+                </section>
+                
+                {/* How it works section */}
+                <section className="mx-20 my-20 p-10 flex justify-center">
+                    <div style={{maxWidth: '600px'}} className="mt-10">
+                        <h3 className="text-3xl mb-8">How it works</h3>   
+                        <p className="text-lg">We have applied our years of expertise and simplified the complexity of building a surveillance system. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                    <div style={{height: '400px', width: '600px'}} className="ml-20 bg-green-50"></div>
+                </section>
+
+                {/*  */}
+                <section className="mx-20 my-20 p-10 flex justify-center">
+                    <div style={{height: '400px', width: '600px'}} className="mr-20 bg-green-50"></div>
+                    <div style={{maxWidth: '600px'}} className="mt-10">
+                        <h3 className="text-3xl mb-8">Lorem ipsum</h3>   
+                        <p className="text-lg">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    </div>
+                </section>
+
+                <section className="h-screen">
+
+                </section>
             </main>
 
-            {/* <footer className="flex items-center justify-center w-full h-24 border-t">
+        {/* <footer className="flex items-center justify-center w-full h-24 border-t">
         <a
           className="flex items-center justify-center"
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"

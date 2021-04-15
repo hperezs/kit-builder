@@ -635,7 +635,7 @@ export default function Guide() {
     return(
         <div className="relative">
             {/* Animation layover */}
-            <div className="fixed top-0 h-screen w-screen z-50 in-wipe-right-green" style={{backgroundColor: '#407033'}}>
+            <div className="fixed top-0 h-screen w-screen z-50 in-wipe-right-green" style={{backgroundColor: '#438241'}}>
                 <div style={{top: '50%', right: '50%', transform: 'translate(50%, -50%)'}} className="absolute" >
                     <Image src="/images/BS_Logo_White.png" width={375} height={100} priority={true}/>
                 </div>
