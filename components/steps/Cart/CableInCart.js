@@ -1,14 +1,16 @@
 import Image from 'next/image'
 import { useRef, useState, useEffect } from 'react';
 import {backstreet_domain} from '../../../lib/backstreet_domain'
-import {FaEdit} from 'react-icons/fa'
+import {FaEdit, FaTrashAlt} from 'react-icons/fa'
 import {VscDebugDisconnect} from 'react-icons/vsc'
 
-export default function CableInCart({cable, goToStep}) {
+export default function CableInCart({cable, goToStep, deleteCable, selectedNVR, camera, isReviewStep}) {
     const [displayEditButton, setDisplayEditButton] = useState(false);
 
     if(!cable) return(
         <div 
+            onMouseEnter={e => setDisplayEditButton(true)}
+            onMouseLeave={e => setDisplayEditButton(false)}
             className={"relative flex flex-col items-center justify-center border rounded p-3 ml-3 w-3/12 bg-white border-gray-300 shadow"}
         >
             <div style={{height: '46px', width: '80px'}}> 
@@ -22,6 +24,14 @@ export default function CableInCart({cable, goToStep}) {
                 </div>
             </div>
             <div className="font-light mt-7">No cable added yet</div>
+            {displayEditButton && isReviewStep && (selectedNVR || camera) && 
+            <span 
+                transition-style="fade:in:faster"
+                onClick={e => goToStep('cables')}
+                className={"absolute top-0 right-0 cursor-pointer m-2 "}
+            >
+                <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
+            </span>}
         </div>
     )
 
@@ -56,6 +66,14 @@ export default function CableInCart({cable, goToStep}) {
             >
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
             </span>}
+            {isReviewStep &&
+            <span 
+                onClick={e => deleteCable(camera, selectedNVR)}
+                className={"absolute bottom-0 right-0 cursor-pointer p-2 "}
+            >
+                <FaTrashAlt className="fill-current text-red-600 text-2xl hover:text-red-400"/>
+            </span>
+            }
         </div>
     )
 }

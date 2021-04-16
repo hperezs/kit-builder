@@ -1,13 +1,14 @@
 import Image from 'next/image'
 import {useState} from 'react';
-import {FaEdit} from 'react-icons/fa'
-import {FiHardDrive} from 'react-icons/fi'
+import {FaEdit, FaTrashAlt} from 'react-icons/fa'
 
-export default function VideoRecorderInCart({selectedNVR, cablesType, goToStep}) {
+export default function VideoRecorderInCart({selectedNVR, cablesType, goToStep, deleteNVR, isReviewStep = false}) {
     const [displayEditButton, setDisplayEditButton] = useState(false);
 
     if(!selectedNVR) return(
         <div 
+            onMouseEnter={e => setDisplayEditButton(true)}
+            onMouseLeave={e => setDisplayEditButton(false)}
             className={"relative flex flex-col items-center justify-center border rounded py-7 bg-white border-gray-300 shadow flex-shrink-0 " + (cablesType == 'pre-made' ? 'w-6/12' : 'w-8/12')}
         >
             <div style={{height: '50px', width: '100px'}}> 
@@ -21,6 +22,14 @@ export default function VideoRecorderInCart({selectedNVR, cablesType, goToStep})
                 </div>
             </div>
             <div className="font-light mt-3">No NVR added yet</div>
+            {displayEditButton && isReviewStep &&
+            <span 
+                transition-style="fade:in:faster"
+                onClick={e => goToStep('NVR')}
+                className={"absolute top-0 right-0 cursor-pointer m-2 "}
+            >
+                <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
+            </span>}
         </div>
     )
 
@@ -53,6 +62,13 @@ export default function VideoRecorderInCart({selectedNVR, cablesType, goToStep})
                 className={"absolute top-0 right-0 cursor-pointer m-2 "}
             >
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
+            </span>}
+            {isReviewStep &&
+            <span 
+                onClick={e => deleteNVR(selectedNVR)}
+                className={"absolute bottom-0 right-0 cursor-pointer p-2 "}
+            >
+                <FaTrashAlt className="fill-current text-red-600 text-2xl hover:text-red-400"/>
             </span>}
         </div>
     )

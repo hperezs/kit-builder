@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import { useRef, useState, useEffect } from 'react';
-import {FaEdit} from 'react-icons/fa'
+import {FaEdit, FaTrashAlt} from 'react-icons/fa'
 
-export default function InstallationInCart({homeOrBusiness, cablesType, cameras, goToStep}){
+export default function InstallationInCart({homeOrBusiness, cablesType, cameras, goToStep, deleteInstallation, isReviewStep}){
     const [displayMoreDetails, setDisplayMoreDetails] = useState(false);
     const [displayEditButton, setDisplayEditButton] = useState(false);
 
@@ -92,6 +92,14 @@ export default function InstallationInCart({homeOrBusiness, cablesType, cameras,
             >
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
             </span>}
+            {isReviewStep &&
+            <span 
+                onClick={e => deleteInstallation()}
+                className={"absolute bottom-0 right-0 cursor-pointer p-2 "}
+            >
+                <FaTrashAlt className="fill-current text-red-600 text-2xl hover:text-red-400"/>
+            </span>
+            }
         </div>
     )
 }

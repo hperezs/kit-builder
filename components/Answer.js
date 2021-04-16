@@ -25,6 +25,7 @@ export default function Answer({
     updateCameraName,
     selectedNVR,
     selectNVR,
+    deleteNVR,
     selectedHardDrives,
     addHardDrive,
     deleteHardDrive,
@@ -51,6 +52,7 @@ export default function Answer({
     deletePowerInjector,
     isInstallationSelected,
     addInstallation,
+    deleteInstallation,
     subtotal,
     goToStep
     }) {
@@ -136,6 +138,16 @@ export default function Answer({
                         isInstallationSelected={isInstallationSelected}
                         homeOrBusiness={homeOrBusiness}
                         goToStep={goToStep}
+                        deleteCamera={deleteCamera}
+                        deleteNVR={deleteNVR}
+                        deleteCable={deleteCable}
+                        deleteHardDrive={deleteHardDrive}
+                        deleteMonitor={deleteMonitor}
+                        deleteHDMI={deleteHDMI}
+                        deleteMount={deleteMount}
+                        deletePowerInjector={deletePowerInjector}
+                        deleteSMProduct={deleteSMProduct}
+                        deleteInstallation={deleteInstallation}
                     />
                 )
         }    
@@ -239,6 +251,16 @@ export default function Answer({
                     isInstallationSelected={isInstallationSelected}
                     homeOrBusiness={homeOrBusiness}
                     goToStep={goToStep}
+                    deleteCamera={deleteCamera}
+                    deleteNVR={deleteNVR}
+                    deleteCable={deleteCable}
+                    deleteHardDrive={deleteHardDrive}
+                    deleteMonitor={deleteMonitor}
+                    deleteHDMI={deleteHDMI}
+                    deleteMount={deleteMount}
+                    deletePowerInjector={deletePowerInjector}
+                    deleteSMProduct={deleteSMProduct}
+                    deleteInstallation={deleteInstallation}
                 />
             )
     }    

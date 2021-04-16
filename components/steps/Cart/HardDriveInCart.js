@@ -1,14 +1,16 @@
 import Image from 'next/image'
 import { useRef, useState, useEffect } from 'react';
 import {backstreet_domain} from '../../../lib/backstreet_domain'
-import {FaEdit} from 'react-icons/fa'
+import {FaEdit, FaTrashAlt} from 'react-icons/fa'
 import {RiHardDriveLine} from 'react-icons/ri'
 
-export default function HardDriveInCart({hardDrive, cablesType, goToStep, index}) {
+export default function HardDriveInCart({hardDrive, cablesType, goToStep, index, deleteHardDrive, isReviewStep}) {
     const [displayEditButton, setDisplayEditButton] = useState(false);
 
     if(!hardDrive) return(
         <div 
+            onMouseEnter={e => setDisplayEditButton(true)}
+            onMouseLeave={e => setDisplayEditButton(false)}
             className={"relative flex flex-col items-center justify-center border rounded py-7 ml-3 w-3/12 bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-3/12' : 'w-4/12')}
         >
             <div style={{height: '46px', width: '80px'}}> 
@@ -22,6 +24,14 @@ export default function HardDriveInCart({hardDrive, cablesType, goToStep, index}
                 </div>
             </div>
             <div className="font-light mt-5">No hard drive added yet</div>
+            {displayEditButton && isReviewStep && 
+            <span 
+                transition-style="fade:in:faster"
+                onClick={e => goToStep('hard drives')}
+                className={"absolute top-0 right-0 cursor-pointer m-2 "}
+            >
+                <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
+            </span>}
         </div>
     )
 
@@ -55,6 +65,14 @@ export default function HardDriveInCart({hardDrive, cablesType, goToStep, index}
             >
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
             </span>}
+            {isReviewStep &&
+            <span 
+                onClick={e => deleteHardDrive(index)}
+                className={"absolute bottom-0 right-0 cursor-pointer p-2 "}
+            >
+                <FaTrashAlt className="fill-current text-red-600 text-2xl hover:text-red-400"/>
+            </span>
+            }
         </div>
     )
 }

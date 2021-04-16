@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import {useState} from 'react';
-import {FaEdit} from 'react-icons/fa'
+import {FaEdit, FaTrashAlt} from 'react-icons/fa'
 import { backstreet_domain } from '../../../lib/backstreet_domain'
 
-export default function PowerInjectorInCart({product, cablesType, goToStep}) {
+export default function PowerInjectorInCart({product, cablesType, goToStep, deletePowerInjector, index}) {
     const [displayEditButton, setDisplayEditButton] = useState(false);
 
     return(
@@ -44,6 +44,12 @@ export default function PowerInjectorInCart({product, cablesType, goToStep}) {
             >
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
             </span>}
+            <span 
+                onClick={e => deletePowerInjector(index)}
+                className={"absolute bottom-0 right-0 cursor-pointer p-2 "}
+            >
+                <FaTrashAlt className="fill-current text-red-600 text-2xl hover:text-red-400"/>
+            </span>
         </div>
     )
 }

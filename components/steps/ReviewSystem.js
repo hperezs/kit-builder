@@ -21,7 +21,17 @@ export default function ReviewSystem({
     selectedPowerInjectors, 
     isInstallationSelected,
     homeOrBusiness,
-    goToStep
+    goToStep,
+    deleteCamera,
+    deleteNVR,
+    deleteCable,
+    deleteHardDrive,
+    deleteMonitor,
+    deleteHDMI,
+    deleteMount,
+    deletePowerInjector,
+    deleteSMProduct,
+    deleteInstallation
 }) {
     
     return(
@@ -36,25 +46,25 @@ export default function ReviewSystem({
                     {/* NVR and Cable */}
                     <div className="flex flex-row justify-start mb-3">
                         {/* NVR */}
-                        {selectedNVR &&
-                            <VideoRecorderInCart selectedNVR={selectedNVR} cablesType={cablesType} goToStep={goToStep} />
+                        {
+                            <VideoRecorderInCart selectedNVR={selectedNVR} cablesType={cablesType} goToStep={goToStep} deleteNVR={deleteNVR} isReviewStep={true} />
                         }
                         {/* NVR's cable */}
-                        {selectedNVR?.cable && cablesType == 'pre-made' && 
-                            <CableInCart cable={selectedNVR.cable} goToStep={goToStep}/>
+                        {cablesType == 'pre-made' && cablesType != 'none' &&
+                            <CableInCart cable={selectedNVR.cable} goToStep={goToStep} deleteCable={deleteCable} selectedNVR={selectedNVR} camera={null} isReviewStep={true}/>
                         }
                         {/* Hard Drive */}
-                        {selectedHardDrives.length != 0 &&
-                            <HardDriveInCart hardDrive={selectedHardDrives[0]} cablesType={cablesType} goToStep={goToStep} index={0}/>
+                        {
+                            <HardDriveInCart hardDrive={selectedHardDrives[0]} cablesType={cablesType} goToStep={goToStep} index={0} deleteHardDrive={deleteHardDrive} isReviewStep={true}/>
                         }
                     </div>
                     {/* Monitor(s) and HDMI(s) */}
                     {selectedMonitor != '' &&
                         <div className="flex flex-row justify-start mb-3">
-                            <MonitorInCart selectedMonitor={selectedMonitor} cablesType={cablesType} goToStep={goToStep}/>
+                            <MonitorInCart selectedMonitor={selectedMonitor} cablesType={cablesType} goToStep={goToStep} deleteMonitor={deleteMonitor} isReviewStep={true}/>
 
                             {selectedMonitor?.cable && 
-                                <HDMIinCart selectedMonitor={selectedMonitor} cablesType={cablesType} goToStep={goToStep}/>
+                                <HDMIinCart selectedMonitor={selectedMonitor} cablesType={cablesType} goToStep={goToStep} deleteHDMI={deleteHDMI} isReviewStep={true}/>
                             }
                         </div>
                     }
@@ -62,27 +72,27 @@ export default function ReviewSystem({
                     {cameras?.map((camera, index) => {
                         return(
                             <div className="flex flex-row justify-start mb-3" key={index}>
-                                <CameraInCart camera={camera} cablesType={cablesType} goToStep={goToStep}/>
+                                <CameraInCart camera={camera} cablesType={cablesType} goToStep={goToStep} deleteCamera={deleteCamera} index={index} isReviewStep={true}/>
                                 
-                                {camera?.cable && cablesType == 'pre-made' &&
-                                    <CableInCart cable={camera.cable} goToStep={goToStep}/>
+                                {cablesType == 'pre-made' && cablesType != 'none' &&
+                                    <CableInCart cable={camera.cable} goToStep={goToStep} deleteCable={deleteCable} deleteCable={deleteCable} selectedNVR={null} camera={camera} isReviewStep={true}/>
                                 }
 
                                 {
-                                    <MountInCart camera={camera} cablesType={cablesType} goToStep={goToStep} />
+                                    <MountInCart camera={camera} cablesType={cablesType} goToStep={goToStep} deleteMount={deleteMount} index={index} isReviewStep={true}/>
                                 }
                             </div>
                         )
                     })}
                     {/* Installation */}
                     {isInstallationSelected && 
-                        <InstallationInCart homeOrBusiness={homeOrBusiness} cablesType={cablesType} cameras={cameras} goToStep={goToStep}/>
+                        <InstallationInCart homeOrBusiness={homeOrBusiness} cablesType={cablesType} cameras={cameras} goToStep={goToStep} deleteInstallation={deleteInstallation} isReviewStep={true}/>
                     }
                     {/* Self-made cables */}
                     {cablesType == 'self-made' &&
                     <div className="flex flex-wrap justify-start">
                         {selectedSMProducts.map((product, index) => (
-                                <SelfMadeProductInCart product={product} cablesType={cablesType} goToStep={goToStep} key={index}/>
+                                <SelfMadeProductInCart product={product} cablesType={cablesType} goToStep={goToStep} key={index} deleteSMProduct={deleteSMProduct} isReviewStep={true}/>
                             ))
                         }
                     </div>
@@ -91,7 +101,7 @@ export default function ReviewSystem({
                     {selectedPowerInjectors.length != 0 && 
                         selectedPowerInjectors.map((product, index) => {
                             return(
-                                <PowerInjectorInCart product={product} cablesType={cablesType} goToStep={goToStep} key={index}/>
+                                <PowerInjectorInCart product={product} cablesType={cablesType} goToStep={goToStep} key={index} deletePowerInjector={deletePowerInjector} index={index} isReviewStep={true}/>
                             )
                         })
                     }
@@ -100,7 +110,7 @@ export default function ReviewSystem({
                         <div className="flex mb-3 flex-wrap">
                         {selectedHardDrives.map((hardDrive, index) => {
                             if(index != 0) return(
-                                <HardDriveInCart hardDrive={hardDrive} cablesType={cablesType} goToStep={goToStep} key={index} index={index}/>
+                                <HardDriveInCart hardDrive={hardDrive} cablesType={cablesType} goToStep={goToStep} key={index} index={index} deleteHardDrive={deleteHardDrive} isReviewStep={true}/>
                             )
                         })}
                         </div>
