@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Actions({ nextStep, prevStep, currentStep, canClickNext, isLastStep }) {
+export default function Actions({ nextStep, prevStep, currentStep, canClickNext, isLastStep, displayBackToReview, goToStep }) {
     return(
         <section className="flex flex-row items-center justify-center mb-10 w-full border-t pt-7 border-gray-300">
             <span className={(currentStep == 1) ? '' : 'hidden'}>
@@ -47,6 +47,13 @@ export default function Actions({ nextStep, prevStep, currentStep, canClickNext,
                     Proceed to checkout
                 </button>}
 
+                {displayBackToReview &&
+                <button
+                    onClick={e => goToStep('review')}
+                    className="absolute right-3 text-lg text-green-600 mx-6 border rounded px-5 py-2 transition-all duration-300 ease border-green-500 hover:bg-green-600 hover:text-white focus:outline-none focus:ring focus:ring-green-200 focus:ring-opacity-500" 
+                >
+                    Back to Review
+                </button>}
         </section>
     )
 }

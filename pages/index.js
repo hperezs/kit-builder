@@ -136,7 +136,7 @@ export default function Home() {
                                 <div className="text-xl font-light mt-7">Cables</div>
                             </div>
                             <div className="flex flex-col justify-center items-center">
-                                <div style={{height: '76px', width: '110px'}}> 
+                                <div className="p-3" style={{height: '76px', width: '110px'}}> 
                                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                         <NextImage
                                             src={'/images/mount.png'}

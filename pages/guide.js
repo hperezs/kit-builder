@@ -34,6 +34,7 @@ export default function Guide() {
     const [ isInstallationSelected, setIsInstallationSelected ] = useState(null);
     const [ subtotal, setSubtotal ] = useState(0.00);
     const [ canClickNext, setCanClickNext ] = useState(false);
+    const [ displayBackToReview, setDisplayBackToReview ] = useState(false);
 
     const bearerToken = process.env.BEARER_TOKEN;
 
@@ -177,6 +178,7 @@ export default function Guide() {
     useEffect(() => {
         updateSubtotal();
         updateLocalStorage();
+
     }, [cameras, selectedNVR, selectedHardDrives, cablesType, selectedSMProducts, selectedPowerInjectors, selectedMonitor, isInstallationSelected])
 
     // Allow user to click next when selections are made
@@ -225,6 +227,12 @@ export default function Guide() {
 
         }
     }, [currentStep, homeOrBusiness, cameras, selectedNVR, selectedHardDrives, cablesType, selectedSMProducts, selectedPowerInjectors, selectedMonitor, isInstallationSelected])
+
+    // Hide backToReview button if current step is review
+    useEffect(() => {
+        if(cablesType == 'pre-made' && currentStep == 10) setDisplayBackToReview(false);
+        if(cablesType != 'pre-made' && currentStep == 9) setDisplayBackToReview(false);
+    }, [currentStep, cablesType]);
 
     const updateSubtotal = () => {
         let price_subtotal = 0.00;
@@ -323,6 +331,11 @@ export default function Guide() {
     const selectNVR = nvr => {
         setSelectedNVR(nvr);
         submitNotification('addedToCart', nvr.sku);
+    }
+
+    const deleteNVR = nvr => {
+        setSelectedNVR('');
+        submitNotification('deletedFromCart', nvr.sku);
     }
 
     const selectCable = (cable, camera, nvr) => {
@@ -521,6 +534,11 @@ export default function Guide() {
         setIsInstallationSelected(installation);
     }
 
+    const deleteInstallation = () => {
+        setIsInstallationSelected(false);
+        submitNotification('deletedFromCart', 'Installation');
+    }
+
     const submitNotification = (type, payload) => {
         switch(type) {
             case 'addedToCart':
@@ -638,7 +656,14 @@ export default function Guide() {
                 if(cablesType == 'pre-made') setCurrentStep(9);
                 if(cablesType != 'pre-made') setCurrentStep(8);
                 break;
+            case 'review':
+                if(cablesType == 'pre-made') setCurrentStep(10);
+                if(cablesType != 'pre-made') setCurrentStep(9);
+                setDisplayBackToReview(false);
+                break;
         }
+
+        if(step != 'review') setDisplayBackToReview(true);
     }
 
     const isLastStep = () => {
@@ -657,7 +682,7 @@ export default function Guide() {
                     <Image src="/images/BS_Logo_White.png" width={375} height={100} priority={true}/>
                 </div>
             </div>
-            <ReactNotification />
+            <ReactNotification className="mt-20"/>
             <ProgressBar progress={(cablesType != 'none' ? currentStep / 10 : currentStep / 9)} />
             <main className="flex flex-row justify-center items-start mt-14 z-20">
                 <div className="relative flex flex-col justify-center 2xl:w-8/12 xl:w-10/12 lg:w-10/12 md:w-11/12">
@@ -680,6 +705,7 @@ export default function Guide() {
                             updateCameraName={updateCameraName}
                             selectedNVR={selectedNVR}
                             selectNVR={selectNVR}
+                            deleteNVR={deleteNVR}
                             selectedHardDrives={selectedHardDrives}
                             addHardDrive={addHardDrive}
                             deleteHardDrive={deleteHardDrive}
@@ -706,6 +732,7 @@ export default function Guide() {
                             deletePowerInjector={deletePowerInjector}
                             isInstallationSelected={isInstallationSelected}
                             addInstallation={addInstallation}
+                            deleteInstallation={deleteInstallation}
                             subtotal={subtotal}
                             goToStep={goToStep}
                         />
@@ -713,7 +740,16 @@ export default function Guide() {
 
                     <div className="fixed bottom-0 pb-10 left-0 w-screen flex flex-col items-center mt-10 bg-white">
                         <div className="flex relative flex-col justify-center 2xl:w-8/12 xl:w-9/12 lg:w-10/12 md:w-11/12">
-                            <Actions nextStep={nextStep} prevStep={prevStep} currentStep={currentStep} canClickNext={canClickNext} setCanClickNext={setCanClickNext} isLastStep={isLastStep}/>
+                            <Actions 
+                                nextStep={nextStep} 
+                                prevStep={prevStep} 
+                                currentStep={currentStep} 
+                                canClickNext={canClickNext} 
+                                setCanClickNext={setCanClickNext} 
+                                isLastStep={isLastStep}
+                                displayBackToReview={displayBackToReview}
+                                goToStep={goToStep}
+                            />
                             <div className="absolute top-0 left-0 mt-5" style={{height: '60px', width: '220px'}}> 
                                 <div style={{maxWidth: '100%', height: '100%'}}>
                                     <Image

@@ -1,13 +1,15 @@
 import Image from 'next/image'
 import {useState} from 'react';
-import {FaEdit} from 'react-icons/fa'
+import {FaEdit, FaTrashAlt} from 'react-icons/fa'
 import { backstreet_domain } from '../../../lib/backstreet_domain'
 
-export default function MountInCart({camera, cablesType, goToStep}) {
+export default function MountInCart({camera, cablesType, goToStep, deleteMount, index, isReviewStep}) {
     const [displayEditButton, setDisplayEditButton] = useState(false);
 
     if(!camera?.mount) return(
         <div 
+            onMouseEnter={e => setDisplayEditButton(true)}
+            onMouseLeave={e => setDisplayEditButton(false)}
             className={"relative flex flex-col items-center justify-center border rounded p-3 ml-3 bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-3/12' : 'w-4/12')}
         >
             <div style={{height: '36px', width: '70px'}}> 
@@ -21,6 +23,13 @@ export default function MountInCart({camera, cablesType, goToStep}) {
                 </div>
             </div>
             <div className="font-light mt-7">No mount added yet</div>
+            {displayEditButton && isReviewStep &&
+            <span 
+                onClick={e => goToStep('addons')}
+                className={"absolute top-0 right-0 cursor-pointer m-2 "}
+            >
+                <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
+            </span>}
         </div>
     )
 
@@ -54,6 +63,14 @@ export default function MountInCart({camera, cablesType, goToStep}) {
             >
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
             </span>}
+            {isReviewStep &&
+            <span 
+                onClick={e => deleteMount(index)}
+                className={"absolute bottom-0 right-0 cursor-pointer p-2 "}
+            >
+                <FaTrashAlt className="fill-current text-red-600 text-2xl hover:text-red-400"/>
+            </span>
+            }
         </div>
     )
 }
