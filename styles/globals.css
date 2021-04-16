@@ -26,24 +26,29 @@ input[type=number] {
 }
 
 .welcome-banner {
-  background-position: center;
+  background-position-y: 30%;
   background-size: cover;
-  height: 40vh;
+  height: 45vh;
+  overflow-x: hidden;
 }
 
 .page-title {
-  height: 40vh;
+  height: 45vh;
+}
+
+.welcome-container {
+  height: 55vh;
 }
 
 @media screen and (min-width: 1800px) {
   .page-title, .welcome-banner {
-    height: 50vh;
+    height: 60vh;
+  }
+  .welcome-container {
+    height: 40vh;
   }
 }
 
-.welcome-container {
-  height: 60vh;
-}
 
 /* Animations */
 @keyframes wipe-in-down {

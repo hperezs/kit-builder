@@ -657,8 +657,8 @@ export default function Guide() {
                 if(cablesType != 'pre-made') setCurrentStep(8);
                 break;
             case 'review':
-                if(cablesType == 'pre-made') setCurrentStep(10);
-                if(cablesType != 'pre-made') setCurrentStep(9);
+                if(cablesType != 'none') setCurrentStep(10);
+                if(cablesType == 'none') setCurrentStep(9);
                 setDisplayBackToReview(false);
                 break;
         }

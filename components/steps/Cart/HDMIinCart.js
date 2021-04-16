@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { useRef, useState, useEffect } from 'react';
 import {backstreet_domain} from '../../../lib/backstreet_domain'
 import {FaEdit, FaTrashAlt} from 'react-icons/fa'
+import DeleteModal from './DeleteModal';
 
 export default function HDMIinCart({selectedMonitor, cablesType, goToStep, deleteHDMI, isReviewStep}) {
     const [displayEditButton, setDisplayEditButton] = useState(false);
@@ -38,12 +39,7 @@ export default function HDMIinCart({selectedMonitor, cablesType, goToStep, delet
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
             </span>}
             {isReviewStep &&
-            <span 
-                onClick={e => deleteHDMI()}
-                className={"absolute bottom-0 right-0 cursor-pointer p-2 "}
-            >
-                <FaTrashAlt className="fill-current text-red-600 text-2xl hover:text-red-400"/>
-            </span>
+                <DeleteModal confirmDelete={deleteHDMI} />
             }
         </div>
     )

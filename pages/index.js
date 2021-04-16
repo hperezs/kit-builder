@@ -1,3 +1,4 @@
+import { bottom } from '@popperjs/core';
 import Head from 'next/head'
 import NextImage from 'next/image';
 import Link from 'next/link'
@@ -43,7 +44,7 @@ export default function Home() {
                 </div>
                 
                 {/* Welcome section */}
-                <section className="welcome-container flex flex-col items-center w-screen ">
+                <section className="welcome-container flex flex-col items-center w-screen border-b border-gray-300">
                     <div className="flex flex-col justify-end w-screen ">
                         <div style={{borderTopWidth: '5px'}} className="flex flex-col items-center justify-start border-green-600">
                             <h2 className="mb-8 mt-20 text-5xl">
@@ -52,7 +53,7 @@ export default function Home() {
                             <p style={{maxWidth: '900px'}} className="my-8 text-2xl text-center w-7/12">
                                 We will guide you through all of the steps of choosing each component for your surveillance system so that it best fits your needs
                             </p>
-                            <a onClick={handleClick} className="py-3 px-10 text-white border bg-green-700 bg-opacity-90 text-3xl rounded text-white transition-colors duration-300 ease hover:bg-green-500  my-8 cursor-pointer">
+                            <a style={{paddingBottom: '14px', paddingRight: '41px'}} onClick={handleClick} className="py-3 px-10 text-white border bg-green-700 bg-opacity-90 text-3xl rounded text-white text-center align-middle transition-colors duration-300 ease hover:bg-green-500 my-8 cursor-pointer">
                                 Get started
                             </a>
                             <Link href="/guide"><span className="-z-50 opacity-0" id='get-started-link'>get started link</span></Link>
@@ -61,7 +62,7 @@ export default function Home() {
                 </section>
                 
                 {/* How it works section */}
-                <section className="mx-20 mb-20 p-10 flex justify-center">
+                <section className="mx-20 my-40 p-10 flex justify-center">
                     <div style={{maxWidth: '600px'}} className="mt-10">
                         <h3 className="text-3xl mb-8">How it works</h3>   
                         <p className="text-xl">We have applied our years of expertise and simplified the complexity of building a surveillance system. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -82,8 +83,8 @@ export default function Home() {
                     <h3 className="text-center text-3xl mb-10">What's included</h3>
                     <p className="text-xl text-center">We make sure you don't miss any of the essentials components to cover all the requirements of your system.</p>
                     <div className="flex justify-center">
-                        <div className="flex justify-evenly mt-20 w-8/12 flex-wrap">
-                            <div className="flex flex-col justify-center items-center">
+                        <div className="flex justify-center mt-20 md:w-10/12 lg:w-8/12 xl:w-10/12 flex-wrap">
+                            <div className="flex flex-col justify-center items-center mx-7 my-4">
                                 <div style={{height: '76px', width: '110px'}}> 
                                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                         <NextImage
@@ -96,7 +97,7 @@ export default function Home() {
                                 </div>
                                 <div className="text-xl font-light mt-7">Cameras</div>
                             </div>
-                            <div className="flex flex-col justify-center items-center">
+                            <div className="flex flex-col justify-center items-center mx-7 my-4">
                                 <div style={{height: '76px', width: '110px'}}> 
                                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                         <NextImage
@@ -109,7 +110,7 @@ export default function Home() {
                                 </div>
                                 <div className="text-xl font-light mt-7">Video Recorder</div>
                             </div>
-                            <div className="flex flex-col justify-center items-center">
+                            <div className="flex flex-col justify-center items-center mx-7 my-4">
                                 <div style={{height: '76px', width: '110px'}}> 
                                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                         <NextImage
@@ -122,7 +123,7 @@ export default function Home() {
                                 </div>
                                 <div className="text-xl font-light mt-7">Hard Drive</div>
                             </div>
-                            <div className="flex flex-col justify-center items-center">
+                            <div className="flex flex-col justify-center items-center mx-7 my-4">
                                 <div style={{height: '76px', width: '110px'}}> 
                                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                         <NextImage
@@ -135,7 +136,7 @@ export default function Home() {
                                 </div>
                                 <div className="text-xl font-light mt-7">Cables</div>
                             </div>
-                            <div className="flex flex-col justify-center items-center">
+                            <div className="flex flex-col justify-center items-center mx-7 my-4">
                                 <div className="p-3" style={{height: '76px', width: '110px'}}> 
                                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                         <NextImage
@@ -148,7 +149,33 @@ export default function Home() {
                                 </div>
                                 <div className="text-xl font-light mt-7">Mounts</div>
                             </div>
-                            <div className="flex flex-col justify-center items-center">
+                            <div className="flex flex-col justify-center items-center mx-7 my-4">
+                                <div style={{height: '76px', width: '110px'}}> 
+                                    <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                        <NextImage
+                                            src={'/images/monitor.png'}
+                                            layout="fill"
+                                            objectFit="contain"
+                                            quality={100}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="text-xl font-light mt-7">Monitor</div>
+                            </div>
+                            <div className="flex flex-col justify-center items-center mx-7 my-4">
+                                <div style={{height: '76px', width: '110px'}}> 
+                                    <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                        <NextImage
+                                            src={'/images/poe.png'}
+                                            layout="fill"
+                                            objectFit="contain"
+                                            quality={100}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="text-xl font-light mt-7">Power Injectors</div>
+                            </div>
+                            <div className="flex flex-col justify-center items-center mx-7 my-4">
                                 <div style={{height: '76px', width: '110px'}}> 
                                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                         <NextImage
@@ -168,7 +195,7 @@ export default function Home() {
                 </section>
 
                 {/* Why backstreet? */}
-                <section className="mx-20 my-40 p-10 flex justify-center">
+                <section className="mx-20 mt-40 mb-20 p-10 flex justify-center">
                     <div style={{height: '400px', width: '600px'}} className="mr-20"> 
                         <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                             <NextImage
@@ -180,11 +207,61 @@ export default function Home() {
                         </div>
                     </div>
                     <div style={{maxWidth: '600px'}} className="mt-10">
-                        <h3 className="text-3xl mb-8">Lorem ipsum</h3>   
+                        <h3 className="text-3xl mb-8">Why purchase from Backstreet?</h3>   
                         <p className="text-xl">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                     </div>
                 </section>
 
+                <section className="mx-20 p-10 col items-center">
+                    <div className="flex justify-center items-center mb-10">
+                        <div style={{maxWidth: '600px'}}>
+                            <h5 className="text-2xl">30-Day Money Back Guarantee</h5>
+                            <p className="text-lg mt-5">Any item can be returned within 30 days from the date of delivery for a refund. If you need to change an item, we will be glad to exchange any item for another. If the equipment is just not right for you then we will provide a 100% refund once we receive the equipment and all materials back. </p>
+                        </div>
+                        <div style={{height: '225px', width: '280px'}} className="ml-20"> 
+                            <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                <NextImage
+                                    src={"/images/moneyback.png"}
+                                    layout="fill"
+                                    objectFit="contain"
+                                    quality={100}
+                                />
+                            </div>
+                        </div>
+                    </div>    
+                    <div className="flex justify-center items-center mb-10">
+                        <div style={{maxWidth: '600px'}}>
+                            <h5 className="text-2xl">Longest Warranty in the Industry</h5>
+                            <p className="text-lg mt-5">All equipment is covered under a complete 5 year warranty from the date of delivery. During this time all products are guaranteed against manufacturing and operational defects. In the event of such defects during this period, it is our responsibility to replace the defective item with an exact or comparable product.</p>
+                        </div>
+                        <div style={{height: '225px', width: '280px'}} className="ml-20"> 
+                            <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                <NextImage
+                                    src={"/images/5YearWarranty.png"}
+                                    layout="fill"
+                                    objectFit="contain"
+                                    quality={100}
+                                />
+                            </div>
+                        </div>
+                    </div> 
+                    <div className="flex justify-center items-center mb-10">
+                        <div style={{maxWidth: '600px'}}>
+                            <h5 className="text-2xl">USA Based - Unlimited Technical Support</h5>
+                            <p className="text-lg mt-5">We provide USA based, Free, Unlimited, Life-time Technical Support for all the equipment that we offer.</p>
+                        </div>
+                        <div style={{height: '225px', width: '280px'}} className="ml-20"> 
+                            <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                <NextImage
+                                    src={"/images/BasedInTheUSA.png"}
+                                    layout="fill"
+                                    objectFit="contain"
+                                    quality={100}
+                                />
+                            </div>
+                        </div>
+                    </div>                     
+                </section>
                 <section className="h-screen">
 
                 </section>
