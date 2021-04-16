@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
 
 html {
     scroll-behavior: smooth;
@@ -34,6 +35,7 @@ input[type=number] {
 
 .page-title {
   height: 45vh;
+  font-family: 'Josefin Sans', Arial, Helvetica, sans-serif;
 }
 
 .welcome-container {
