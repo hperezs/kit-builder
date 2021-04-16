@@ -2,8 +2,9 @@ import Image from 'next/image'
 import {useState} from 'react';
 import {FaEdit} from 'react-icons/fa'
 import { backstreet_domain } from '../../../lib/backstreet_domain'
+import DeleteModal from './DeleteModal';
 
-export default function SelfMadeProductInCart({product, cablesType, goToStep}) {
+export default function SelfMadeProductInCart({product, cablesType, goToStep, index, deleteSMProduct, isReviewStep}) {
     const [displayEditButton, setDisplayEditButton] = useState(false);
 
     return(
@@ -44,6 +45,9 @@ export default function SelfMadeProductInCart({product, cablesType, goToStep}) {
             >
                 <FaEdit className="fill-current text-yellow-600 text-xl hover:text-yellow-400"/>
             </span>}
+            {isReviewStep &&
+                <DeleteModal confirmDelete={() => deleteSMProduct(index)}/>
+            }
         </div>
     )
 }

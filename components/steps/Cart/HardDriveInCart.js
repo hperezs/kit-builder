@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from 'react';
 import {backstreet_domain} from '../../../lib/backstreet_domain'
 import {FaEdit, FaTrashAlt} from 'react-icons/fa'
 import {RiHardDriveLine} from 'react-icons/ri'
+import DeleteModal from './DeleteModal';
 
 export default function HardDriveInCart({hardDrive, cablesType, goToStep, index, deleteHardDrive, isReviewStep}) {
     const [displayEditButton, setDisplayEditButton] = useState(false);
@@ -66,12 +67,7 @@ export default function HardDriveInCart({hardDrive, cablesType, goToStep, index,
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
             </span>}
             {isReviewStep &&
-            <span 
-                onClick={e => deleteHardDrive(index)}
-                className={"absolute bottom-0 right-0 cursor-pointer p-2 "}
-            >
-                <FaTrashAlt className="fill-current text-red-600 text-xl hover:text-red-400"/>
-            </span>
+                <DeleteModal confirmDelete={() => {deleteHardDrive(index)}} />
             }
         </div>
     )

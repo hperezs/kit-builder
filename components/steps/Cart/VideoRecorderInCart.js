@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import {useState} from 'react';
 import {FaEdit, FaTrashAlt} from 'react-icons/fa'
+import DeleteModal from './DeleteModal';
 
 export default function VideoRecorderInCart({selectedNVR, cablesType, goToStep, deleteNVR, isReviewStep = false}) {
     const [displayEditButton, setDisplayEditButton] = useState(false);
@@ -64,12 +65,8 @@ export default function VideoRecorderInCart({selectedNVR, cablesType, goToStep, 
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
             </span>}
             {isReviewStep &&
-            <span 
-                onClick={e => deleteNVR(selectedNVR)}
-                className={"absolute bottom-0 right-0 cursor-pointer p-2 "}
-            >
-                <FaTrashAlt className="fill-current text-red-600 text-xl hover:text-red-400"/>
-            </span>}
+                <DeleteModal confirmDelete={() => deleteNVR(selectedNVR)}/>
+            }
         </div>
     )
 }

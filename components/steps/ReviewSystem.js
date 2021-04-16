@@ -92,7 +92,7 @@ export default function ReviewSystem({
                     {cablesType == 'self-made' &&
                     <div className="flex flex-wrap justify-start">
                         {selectedSMProducts.map((product, index) => (
-                                <SelfMadeProductInCart product={product} cablesType={cablesType} goToStep={goToStep} key={index} deleteSMProduct={deleteSMProduct} isReviewStep={true}/>
+                                <SelfMadeProductInCart product={product} cablesType={cablesType} goToStep={goToStep} index={index} deleteSMProduct={deleteSMProduct} isReviewStep={true}/>
                             ))
                         }
                     </div>
