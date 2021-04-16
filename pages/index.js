@@ -195,7 +195,7 @@ export default function Home() {
                 </section>
 
                 {/* Why backstreet? */}
-                <section className="mx-20 my-40 p-10 flex justify-center">
+                <section className="mx-20 mt-40 mb-20 p-10 flex justify-center">
                     <div style={{height: '400px', width: '600px'}} className="mr-20"> 
                         <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                             <NextImage
@@ -212,6 +212,56 @@ export default function Home() {
                     </div>
                 </section>
 
+                <section className="mx-20 p-10 col items-center">
+                    <div className="flex justify-center items-center mb-10">
+                        <div style={{maxWidth: '600px'}}>
+                            <h5 className="text-2xl">30-Day Money Back Guarantee</h5>
+                            <p className="text-lg mt-5">Any item can be returned within 30 days from the date of delivery for a refund. If you need to change an item, we will be glad to exchange any item for another. If the equipment is just not right for you then we will provide a 100% refund once we receive the equipment and all materials back. </p>
+                        </div>
+                        <div style={{height: '225px', width: '280px'}} className="ml-20"> 
+                            <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                <NextImage
+                                    src={"/images/moneyback.png"}
+                                    layout="fill"
+                                    objectFit="contain"
+                                    quality={100}
+                                />
+                            </div>
+                        </div>
+                    </div>    
+                    <div className="flex justify-center items-center mb-10">
+                        <div style={{maxWidth: '600px'}}>
+                            <h5 className="text-2xl">Longest Warranty in the Industry</h5>
+                            <p className="text-lg mt-5">All equipment is covered under a complete 5 year warranty from the date of delivery. During this time all products are guaranteed against manufacturing and operational defects. In the event of such defects during this period, it is our responsibility to replace the defective item with an exact or comparable product.</p>
+                        </div>
+                        <div style={{height: '225px', width: '280px'}} className="ml-20"> 
+                            <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                <NextImage
+                                    src={"/images/5YearWarranty.png"}
+                                    layout="fill"
+                                    objectFit="contain"
+                                    quality={100}
+                                />
+                            </div>
+                        </div>
+                    </div> 
+                    <div className="flex justify-center items-center mb-10">
+                        <div style={{maxWidth: '600px'}}>
+                            <h5 className="text-2xl">USA Based - Unlimited Technical Support</h5>
+                            <p className="text-lg mt-5">We provide USA based, Free, Unlimited, Life-time Technical Support for all the equipment that we offer.</p>
+                        </div>
+                        <div style={{height: '225px', width: '280px'}} className="ml-20"> 
+                            <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                <NextImage
+                                    src={"/images/BasedInTheUSA.png"}
+                                    layout="fill"
+                                    objectFit="contain"
+                                    quality={100}
+                                />
+                            </div>
+                        </div>
+                    </div>                     
+                </section>
                 <section className="h-screen">
 
                 </section>
