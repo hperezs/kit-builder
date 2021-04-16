@@ -68,7 +68,7 @@ export default function VideoRecorderInCart({selectedNVR, cablesType, goToStep, 
                 onClick={e => deleteNVR(selectedNVR)}
                 className={"absolute bottom-0 right-0 cursor-pointer p-2 "}
             >
-                <FaTrashAlt className="fill-current text-red-600 text-2xl hover:text-red-400"/>
+                <FaTrashAlt className="fill-current text-red-600 text-xl hover:text-red-400"/>
             </span>}
         </div>
     )

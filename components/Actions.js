@@ -50,7 +50,8 @@ export default function Actions({ nextStep, prevStep, currentStep, canClickNext,
                 {displayBackToReview &&
                 <button
                     onClick={e => goToStep('review')}
-                    className="absolute right-3 text-lg text-green-600 mx-6 border rounded px-5 py-2 transition-all duration-300 ease border-green-500 hover:bg-green-600 hover:text-white focus:outline-none focus:ring focus:ring-green-200 focus:ring-opacity-500" 
+                    style={{borderWidth: '1.5px'}}
+                    className="absolute right-3 text-lg text-green-600 mx-6 rounded px-5 py-2 transition-all duration-300 ease border-green-500 hover:bg-green-600 hover:text-white focus:outline-none focus:ring focus:ring-green-200 focus:ring-opacity-500" 
                 >
                     Back to Review
                 </button>}

@@ -71,7 +71,7 @@ export default function CableInCart({cable, goToStep, deleteCable, selectedNVR, 
                 onClick={e => deleteCable(camera, selectedNVR)}
                 className={"absolute bottom-0 right-0 cursor-pointer p-2 "}
             >
-                <FaTrashAlt className="fill-current text-red-600 text-2xl hover:text-red-400"/>
+                <FaTrashAlt className="fill-current text-red-600 text-xl hover:text-red-400"/>
             </span>
             }
         </div>

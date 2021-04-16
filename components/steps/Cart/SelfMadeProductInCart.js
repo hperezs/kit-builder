@@ -42,7 +42,7 @@ export default function SelfMadeProductInCart({product, cablesType, goToStep}) {
                 onClick={e => goToStep('cables')}
                 className={"absolute top-0 right-0 cursor-pointer m-2 "}
             >
-                <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
+                <FaEdit className="fill-current text-yellow-600 text-xl hover:text-yellow-400"/>
             </span>}
         </div>
     )
