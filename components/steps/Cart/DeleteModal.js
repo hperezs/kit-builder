@@ -14,6 +14,7 @@ export default function DeleteModal({confirmDelete}) {
         {showModal ? (
         <>
           <div
+            transition-style="fade:in"
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
           >
             <div className="relative w-auto my-6 mx-auto max-w-sm">
@@ -59,7 +60,7 @@ export default function DeleteModal({confirmDelete}) {
               </div>
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          <div className="opacity-25 fixed inset-0 z-40 bg-black animate-gray"></div>
         </>
       ) : null}
     </>
