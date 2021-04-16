@@ -6,6 +6,7 @@ import CameraLensDropdown from './dropdowns/cameraLensDropdown'
 import NightVisionDropdown from './dropdowns/nightVisionDropdown'
 import RecommendedCameras from "./RecommendedCameras"
 import SelectHousing from "./SelectHousing"
+import NightvisionRadio from "./dropdowns/nightVisionRadio"
 
 export default function AddNewCamera({displayAddNewCamera , allProducts, selectNewCamera, isAddingNewCamera, setIsAddingNewCamera, lastIndex}) {
     const [isEditingName, setIsEditingName] = useState(false);
@@ -101,6 +102,7 @@ export default function AddNewCamera({displayAddNewCamera , allProducts, selectN
                             viewingArea={viewingArea} 
                         />
                     </div>
+                    {!(viewingArea == 'Under 50 ft' && cameraHousing == 'dome') &&
                     <div className="flex flex-row justify-between items-center">
                         <span>Night Vision:</span>
                         <NightVisionDropdown 
@@ -109,7 +111,12 @@ export default function AddNewCamera({displayAddNewCamera , allProducts, selectN
                             nightVisionDist={nightVisionDist}
                             setNightVisionDist={setNightVisionDist}
                         />
-                    </div>
+                    </div>}
+                    {(viewingArea == 'Under 50 ft' && cameraHousing == 'dome') && 
+                    <div className="flex flex-row justify-between items-center">
+                        <span>Night Vision:</span>
+                        <NightvisionRadio setNightVisionDist={setNightVisionDist}/>
+                    </div>}
                 </div>
             </div>
 
