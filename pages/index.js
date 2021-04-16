@@ -62,7 +62,7 @@ export default function Home() {
                 </section>
                 
                 {/* How it works section */}
-                <section className="mx-20 my-40 p-10 flex justify-center">
+                <section className="mx-20 my-20 p-10 flex justify-center">
                     <div style={{maxWidth: '600px'}} className="mt-10">
                         <h3 className="text-3xl mb-8">How it works</h3>   
                         <p className="text-xl">We have applied our years of expertise and simplified the complexity of building a surveillance system. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -195,7 +195,7 @@ export default function Home() {
                 </section>
 
                 {/* Why backstreet? */}
-                <section className="mx-20 mt-40 mb-20 p-10 flex justify-center">
+                <section className="mx-20 mt-20 mb-10 p-10 flex justify-center">
                     <div style={{height: '400px', width: '600px'}} className="mr-20"> 
                         <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                             <NextImage
@@ -250,7 +250,7 @@ export default function Home() {
                             <h5 className="text-2xl">USA Based - Unlimited Technical Support</h5>
                             <p className="text-lg mt-5">We provide USA based, Free, Unlimited, Life-time Technical Support for all the equipment that we offer.</p>
                         </div>
-                        <div style={{height: '225px', width: '280px'}} className="ml-20"> 
+                        <div style={{height: '200px', width: '260px'}} className="ml-20"> 
                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                 <NextImage
                                     src={"/images/BasedInTheUSA.png"}

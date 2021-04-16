@@ -1,6 +1,4 @@
-import { useState } from "react"
-import { useEffect } from "react/cjs/react.development";
-
+import { useState, useEffect } from "react"
 
 export default function NightvisionRadio({setNightVisionDist}) {
     const [selectedValue, setSelectedValue] = useState('70ft');
