@@ -117,9 +117,13 @@ export default function ReviewSystem({
                     }
                 </div>
             </div>
-            <div className={"flex items-center justify-center mb-7 p-6 border-t "}>
+            <div className={"relative flex items-center justify-center mb-7 p-6 border-t "}>
                 <div className="text-2xl font-medium px-6 py-2">
                     Subtotal: {subtotal.toLocaleString('en-US', {style: 'currency', currency: 'USD'})}
+                </div>
+                <div className="absolute left-0 text-lg pl-10">
+                    <span>Promotional Code: </span>
+                    <input type="text" className="w-32 ml-3 rounded border-gray-400 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"/>
                 </div>
             </div>  
         </section>
