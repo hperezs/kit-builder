@@ -201,7 +201,7 @@ export default function Cart({
                     </div>
                 </div>
             </div>
-            <div className={"opacity-25 fixed inset-0 bg-black " + (showCart ? 'z-40' : 'hidden')}></div>
+            <div className={"opacity-25 fixed inset-0 bg-black animate-gray " + (showCart ? 'z-40' : 'hidden')}></div>
         </>
     );
 }

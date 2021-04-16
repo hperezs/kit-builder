@@ -214,3 +214,16 @@ input[type=number] {
   animation: 1.25s cubic-bezier(.41,0,.58,.99) wipe-in-right both;
   background-color: '#407033';
 }
+
+@keyframes animate-gray {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.25;
+  }
+}
+
+.animate-gray {
+  animation: 1.25s ease animate-gray;
+}
