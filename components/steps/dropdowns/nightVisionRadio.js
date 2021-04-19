@@ -17,7 +17,7 @@ export default function NightvisionRadio({setNightVisionDist}) {
                 className={radio_style} 
                 value="60ft" 
                 checked={selectedValue == '60ft'}
-                onClick={e => setSelectedValue(e.target.value)}
+                onChange={e => setSelectedValue(e.target.value)}
             />
             <label className="mr-4 cursor-pointer" onClick={e => setSelectedValue('60ft')}>60 ft</label>
 
@@ -27,7 +27,7 @@ export default function NightvisionRadio({setNightVisionDist}) {
                 className={radio_style} 
                 value="70ft" 
                 checked={selectedValue == '70ft'}
-                onClick={e => setSelectedValue(e.target.value)}
+                onChange={e => setSelectedValue(e.target.value)}
             />
             <label className="mr-4 cursor-pointer" onClick={e => setSelectedValue('70ft')}>70 ft</label>
 
@@ -37,7 +37,7 @@ export default function NightvisionRadio({setNightVisionDist}) {
                 className={radio_style} 
                 value="90ft" 
                 checked={selectedValue == '90ft'}
-                onClick={e => setSelectedValue(e.target.value)}
+                onChange={e => setSelectedValue(e.target.value)}
             />
             <label className="mr-4 cursor-pointer" onClick={e => setSelectedValue('90ft')}>90 ft</label>
         </div>

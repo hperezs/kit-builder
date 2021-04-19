@@ -178,6 +178,7 @@ export default function Guide() {
     useEffect(() => {
         updateSubtotal();
         updateLocalStorage();
+        console.log(cameras);
 
     }, [cameras, selectedNVR, selectedHardDrives, cablesType, selectedSMProducts, selectedPowerInjectors, selectedMonitor, isInstallationSelected])
 
@@ -280,7 +281,6 @@ export default function Guide() {
         }
 
         setSubtotal(price_subtotal);
-        console.log('subtotal useEffect ran. Subtotal: ' + price_subtotal);
     }
 
     const updateLocalStorage = () => {
@@ -322,9 +322,9 @@ export default function Guide() {
         if(isInstallationSelected) submitNotification('installationUpdated');
     }
 
-    const updateCameraName = (index, camera) => {
+    const updateCameraName = (index, cameraName) => {
         let new_cameras = cameras.slice();
-        new_cameras[index].cameraName = camera;
+        new_cameras[index].cameraName = cameraName;
         setCameras(new_cameras);
     }
 

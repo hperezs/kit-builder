@@ -59,7 +59,7 @@ export default function CableInCart({cable, goToStep, deleteCable, selectedNVR, 
                 <p className="font-light">{cable.sku} </p>
                 <p className="font-normal text-green-600">${cable.price.toFixed(2)}</p>
             </div>
-            {displayEditButton && 
+            {isReviewStep && displayEditButton && 
             <span 
                 transition-style="fade:in:faster"
                 onClick={e => goToStep('cables')}
@@ -68,7 +68,7 @@ export default function CableInCart({cable, goToStep, deleteCable, selectedNVR, 
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
             </span>}
             {isReviewStep && displayEditButton && 
-                <DeleteModal transition-style="fade:in:faster" confirmDelete={() => deleteCable(camera, selectedNVR)} />
+                <DeleteModal confirmDelete={() => deleteCable(camera, selectedNVR)} />
             }
         </div>
     )

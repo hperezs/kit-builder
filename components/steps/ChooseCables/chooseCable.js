@@ -15,10 +15,6 @@ export default function ChooseCable({camera, selectedNVR, index, indoorCables, o
     const [isChoosing, setIsChoosing] = useState((!camera?.cable && !selectedNVR?.cable))
 
     useEffect(() => {
-        console.log(selectedCable)
-    }, [selectedCable])
-
-    useEffect(() => {
         if(cableLength == 1000) {
             setCableColor("Black");
         }
@@ -94,10 +90,10 @@ export default function ChooseCable({camera, selectedNVR, index, indoorCables, o
                     
                     {(indoorCables.length != 0 && indoorOrOutdoor == 'indoor') &&
                         <div className="">
-                            {indoorCables.map((cable) => {
+                            {indoorCables.map((cable, index) => {
                                 let length = cable.sku.split('-')[1]
                                 if(cableLength == length) return(
-                                    <CableProduct cable={cable} handleSelect={handleSelect} displayNote={(selectedNVR)}/>
+                                    <CableProduct cable={cable} handleSelect={handleSelect} displayNote={(selectedNVR)} key={index}/>
                                 )
                             })}
                         </div>
@@ -105,7 +101,7 @@ export default function ChooseCable({camera, selectedNVR, index, indoorCables, o
 
                     {(outdoorCables.length != 0 && indoorOrOutdoor == 'outdoor') &&
                         <div className="flex flex-row justify-start">
-                            {outdoorCables.map((cable) => {
+                            {outdoorCables.map((cable, index) => {
                                 // White cables have W at the end of the sku so the W has to be cut off first
                                 if(cableColor == 'White') {
                                     if(cable.sku.split('').splice(-1)[0] == 'W'){
@@ -114,12 +110,12 @@ export default function ChooseCable({camera, selectedNVR, index, indoorCables, o
                                         sku_no_W.pop();
                                         let productLength = sku_no_W.join('').split('6-')[1];
                                         console.log(productLength)
-                                        if((cableLength == productLength)) return <CableProduct cable={cable} handleSelect={handleSelect}/>
+                                        if((cableLength == productLength)) return <CableProduct cable={cable} handleSelect={handleSelect} key={index}/>
                                     }
                                 } else {
                                     // Black cables are fine with this logic
                                     let productLength = cable.sku.split('6-')[1]
-                                    if(cableLength == productLength) return <CableProduct cable={cable} handleSelect={handleSelect}/>    
+                                    if(cableLength == productLength) return <CableProduct cable={cable} handleSelect={handleSelect} key={index}/>    
                                 }                        
                             })}
                         </div>

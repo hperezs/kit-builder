@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Noto+Sans+HK:wght@300;400&display=swap');
 
 html {
     scroll-behavior: smooth;
@@ -51,6 +51,9 @@ input[type=number] {
   }
 }
 
+footer {
+  font-family: 'Noto Sans HK', Arial, Helvetica, sans-serif;
+}
 
 /* Animations */
 @keyframes wipe-in-down {

@@ -135,8 +135,6 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
     }, [isChoosing])
 
     useEffect(() => {
-        console.log(selectedHardDrives.length)
-        console.log(isEditing);
         if(requiredStorage > 10 && selectedHardDrives.length < 2) {
             setIsEditing(true);
         }
@@ -345,7 +343,7 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
                         <div className="flex justify-center">
                             {selectedHardDrives.map((hardDrive, index) => {
                                 return(
-                                    <SelectedHardDrive hardDrive={hardDrive} index={index} isEditing={isEditing} handleDelete={handleDelete}/>
+                                    <SelectedHardDrive hardDrive={hardDrive} index={index} isEditing={isEditing} handleDelete={handleDelete} key={index}/>
                                 )
                             })}
                             {isEditing && 

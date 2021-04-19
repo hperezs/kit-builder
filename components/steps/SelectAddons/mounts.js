@@ -20,11 +20,11 @@ export default function Mounts({mountProducts, cameras, addMount, deleteMount}) 
                             mountProducts={mountProducts}
                             addMount={addMount}
                             deleteMount={deleteMount}
+                            key={cameraIndex}
                         />
                     ))
                 }
             </div>
         </section>
-        
     )
 }
