@@ -35,6 +35,7 @@ export default function Guide() {
     const [ subtotal, setSubtotal ] = useState(0.00);
     const [ canClickNext, setCanClickNext ] = useState(false);
     const [ displayBackToReview, setDisplayBackToReview ] = useState(false);
+    const [ hasReviewBeenVisited, setHasReviewBeenVisited ] = useState(false);
 
     const bearerToken = process.env.BEARER_TOKEN;
 
@@ -283,6 +284,10 @@ export default function Guide() {
         setSubtotal(price_subtotal);
     }
 
+    useEffect(() => {
+        if((cablesType != 'none' && currentStep == 10) || (cablesType == 'none' && currentStep == 9)) setHasReviewBeenVisited(true);
+    }, [currentStep, cablesType])
+
     const updateLocalStorage = () => {
         localStorage.setItem('homeOrBusiness', homeOrBusiness);
         localStorage.setItem('cameras', JSON.stringify(cameras));
@@ -311,6 +316,15 @@ export default function Guide() {
         setCameras(cameras_copy);
         submitNotification('addedToCart', camera.sku);
         if(isInstallationSelected) submitNotification('installationUpdated');
+
+        // Not sure why, but refetching data fixes the weird camera name bug
+        fetch('/api/getAllProducts')
+            .then(response => {
+                response.json().then(data => {
+                    console.log(data);
+                    setAllProducts(data);
+                })
+            })
     }
 
     const deleteCamera = index => {
@@ -663,7 +677,7 @@ export default function Guide() {
                 break;
         }
 
-        if(step != 'review') setDisplayBackToReview(true);
+        if(step != 'review' && hasReviewBeenVisited) setDisplayBackToReview(true);
     }
 
     const isLastStep = () => {

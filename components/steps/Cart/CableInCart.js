@@ -59,7 +59,7 @@ export default function CableInCart({cable, goToStep, deleteCable, selectedNVR, 
                 <p className="font-light">{cable.sku} </p>
                 <p className="font-normal text-green-600">${cable.price.toFixed(2)}</p>
             </div>
-            {isReviewStep && displayEditButton && 
+            {displayEditButton && 
             <span 
                 transition-style="fade:in:faster"
                 onClick={e => goToStep('cables')}
