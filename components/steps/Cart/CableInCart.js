@@ -67,7 +67,7 @@ export default function CableInCart({cable, goToStep, deleteCable, selectedNVR, 
             >
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
             </span>}
-            {isReviewStep && displayEditButton && 
+            {displayEditButton && 
                 <DeleteModal confirmDelete={() => deleteCable(camera, selectedNVR)} />
             }
         </div>

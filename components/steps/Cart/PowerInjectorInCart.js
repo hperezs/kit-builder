@@ -45,7 +45,7 @@ export default function PowerInjectorInCart({product, cablesType, goToStep, dele
             >
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
             </span>}
-            {isReviewStep && displayEditButton && 
+            {displayEditButton && 
                 <DeleteModal confirmDelete={() => {deletePowerInjector(index)}} />
             }
         </div>

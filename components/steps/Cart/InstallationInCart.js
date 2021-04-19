@@ -88,12 +88,13 @@ export default function InstallationInCart({homeOrBusiness, cablesType, cameras,
             </div>}
            {displayEditButton && 
             <span 
+                transition-style="fade:in:faster"   
                 onClick={e => goToStep('installation')}
                 className={"absolute top-0 right-0 cursor-pointer m-2 "}
             >
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
             </span>}
-            {isReviewStep && displayEditButton && 
+            {displayEditButton && 
                 <DeleteModal confirmDelete={deleteInstallation} />
             }
         </div>

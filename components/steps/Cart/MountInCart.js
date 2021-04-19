@@ -65,7 +65,7 @@ export default function MountInCart({camera, cablesType, goToStep, deleteMount, 
             >
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
             </span>}
-            {isReviewStep && displayEditButton && 
+            {displayEditButton && 
                 <DeleteModal confirmDelete={() => {deleteMount(index)}} />
             }
         </div>
