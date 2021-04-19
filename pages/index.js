@@ -63,9 +63,9 @@ export default function Home() {
                 
                 {/* How it works section */}
                 <section className="mx-20 my-20 p-10 flex justify-center">
-                    <div style={{maxWidth: '600px'}} className="mt-10">
+                    <div style={{maxWidth: '600px'}} className="">
                         <h3 className="text-3xl mb-8">How it works</h3>   
-                        <p className="text-xl">We have applied our years of expertise and simplified the complexity of building a surveillance system. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p className="text-xl">The experts at Backstreet Surveillance have applied their 30+ years of experience in the security industry and simplified the complex process of constructing the perfect video surveillance system. We have removed the hassle of researching and finding each individual component as this tool allows you to build your complete and ideal system in a matter of seconds based on our recommendations. <br/> <br/> When using this tool, you can rest assured that whatever you build will hold all of the components that are necessary for a high performance video surveillance system. Time to start building your dream CCTV system!</p>
                     </div>
                     <div style={{height: '400px', width: '600px'}} className="ml-20"> 
                         <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
