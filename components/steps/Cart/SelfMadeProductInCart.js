@@ -45,7 +45,7 @@ export default function SelfMadeProductInCart({product, cablesType, goToStep, in
             >
                 <FaEdit className="fill-current text-yellow-600 text-xl hover:text-yellow-400"/>
             </span>}
-            {isReviewStep &&
+            {isReviewStep && displayEditButton && 
                 <DeleteModal confirmDelete={() => deleteSMProduct(index)}/>
             }
         </div>

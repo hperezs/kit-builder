@@ -64,7 +64,7 @@ export default function VideoRecorderInCart({selectedNVR, cablesType, goToStep, 
             >
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
             </span>}
-            {isReviewStep &&
+            {isReviewStep && displayEditButton && 
                 <DeleteModal confirmDelete={() => deleteNVR(selectedNVR)}/>
             }
         </div>

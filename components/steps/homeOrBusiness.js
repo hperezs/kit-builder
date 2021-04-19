@@ -19,7 +19,7 @@ export default function HomeOrBusiness({homeOrBusiness, setHomeOrBusiness}) {
                     + (homeOrBusiness == 'business' ? selected : 'hover:shadow-lg hover:border-green-200 hover:bg-green-50')}
                     onClick={e => setHomeOrBusiness('business')}
                     >
-                    <span className="text-6xl text-gray-700"><HiOutlineOfficeBuilding /></span>
+                    <span className="text-6xl text-gray-700 ml-1"><HiOutlineOfficeBuilding /></span>
                     <h5 className="text-xl mt-4 font-light">Business</h5>
                 </span>
             </section>

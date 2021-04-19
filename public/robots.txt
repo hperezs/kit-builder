@@ -1,3 +1,5 @@
+Sitemap: https://cctvkitbuilder.com/sitemap.xml
+
 User-agent: *
 Allow: /*
 
