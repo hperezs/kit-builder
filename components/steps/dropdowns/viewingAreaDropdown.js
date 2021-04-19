@@ -7,8 +7,6 @@ export default function ViewingAreaDropdown({ viewingArea, setViewingArea, camer
 
     const style = "inline w-40 ml-3 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 ";
 
-    console.log(cameraHousing);
-
     // Select default values
     useEffect(() => {
         if(cameraHousing == 'ptz'){

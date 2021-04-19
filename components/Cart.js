@@ -146,7 +146,7 @@ export default function Cart({
                             {/* Cameras, Cables and Mount */}
                             {cameras?.map((camera, index) => {
                                 return(
-                                    <div className="flex flex-row justify-start mb-3">
+                                    <div className="flex flex-row justify-start mb-3" key={index}>
 
                                         <CameraInCart camera={camera} index={index} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('cameras')}}/>
 

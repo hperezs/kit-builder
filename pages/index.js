@@ -27,13 +27,13 @@ export default function Home() {
                 <title>CCTV Kit Builder</title>
                 <meta property="og:title" content="CCTV Kit Builder" key="title" />
                 <meta description="Build your own complete CCTV Kit, including cameras, video recorder, cables, hard drives, and other accessories. We guide you through the complexity of picking the right components of your system with short simple steps."/>
-                <link rel="icon" href="/favicon.ico"/>
+                <link rel="icon" href="/KitBuilderFavicon.png"/>
             </Head>
 
             <main className=" relative h-screen w-screen">
                 <div id="animation-container" style={{backgroundColor: '#438241'}} className="fixed top-0 z-50 h-screen w-screen hidden">
                     <div style={{top: '50%', right: '50%', transform: 'translate(50%, -50%)'}} className="absolute" >
-                        <NextImage src="/images/BS_Logo_White.png" width={375} height={100} priority={true}/>
+                        <NextImage src="/images/BS_Logo_White.png" width={375} height={100} priority={true} alt="backstreet-logo-white"/>
                     </div>
                 </div>
                 
@@ -44,7 +44,7 @@ export default function Home() {
                 </div>
                 
                 {/* Welcome section */}
-                <section className="welcome-container flex flex-col items-center w-screen border-b border-gray-300">
+                <section className="welcome-container flex flex-col items-center w-screen border-b border-gray-400">
                     <div className="flex flex-col justify-end w-screen ">
                         <div style={{borderTopWidth: '5px'}} className="flex flex-col items-center justify-start border-green-600">
                             <h2 className="mb-8 mt-14 text-5xl">
@@ -62,7 +62,7 @@ export default function Home() {
                 </section>
                 
                 {/* How it works section */}
-                <section className="mx-20 my-20 p-10 flex justify-center">
+                <section className="mx-20 my-14 p-10 flex justify-center">
                     <div style={{maxWidth: '600px'}} className="">
                         <h3 className="text-3xl mb-8">How it works</h3>   
                         <p className="text-xl">The experts at Backstreet Surveillance have applied their 30+ years of experience in the security industry and simplified the complex process of constructing the perfect video surveillance system. We have removed the hassle of researching and finding each individual component as this tool allows you to build your complete and ideal system in a matter of seconds based on our recommendations. <br/> <br/> When using this tool, you can rest assured that whatever you build will hold all of the components that are necessary for a high performance video surveillance system. Time to start building your dream CCTV system!</p>
@@ -79,7 +79,7 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section className="my-20 py-20 border-t border-b shadow border-gray-300">
+                <section className="my-14 py-20 border-t border-b border-gray-400">
                     <h3 className="text-center text-3xl mb-10">What's included</h3>
                     <p className="text-xl text-center">We make sure you don't miss any of the essentials components to cover all the requirements of your system.</p>
                     <div className="flex justify-center">
@@ -208,7 +208,7 @@ export default function Home() {
                     </div>
                     <div style={{maxWidth: '600px'}} className="mt-10">
                         <h3 className="text-3xl mb-8">Why purchase from Backstreet?</h3>   
-                        <p className="text-xl">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        <p className="text-xl">Backstreet is the affordable solution for easy to use professional surveillance equipment. We are an American owned company and all of our support representatives and facilities are located in the U.S. We only offer ultra high definition equipment and we back it with a 5 year warranty and free lifetime technical support. The Backstreet promise says it all: “We promise that you will not find a lower price for the same quality and support, anywhere.”</p>
                     </div>
                 </section>
 
@@ -262,22 +262,73 @@ export default function Home() {
                         </div>
                     </div>                     
                 </section>
-                <section className="h-screen">
-
-                </section>
+                <footer className="flex justify-between items-center justify-center w-full py-2 px-10 bg-green-800 bg-opacity-90 mt-10">
+                    {/* Icons */}
+                    <div className="flex justify-evenly">
+                        <a href="https://www.facebook.com/Backstreetsecure/" target="_blank" style={{height: '35px', width: '45px'}} className="mx-2 cursor-pointer"> 
+                            <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                <NextImage
+                                    src={"/images/social_media/facebook.png"}
+                                    layout="fill"
+                                    objectFit="contain"
+                                    quality={100}
+                                />
+                            </div>
+                        </a>
+                        <a href="https://www.instagram.com/backstreet_surveillance/" target="_blank" style={{height: '35px', width: '45px'}} className="mx-2 cursor-pointer"> 
+                            <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                <NextImage
+                                    src={"/images/social_media/instagram.png"}
+                                    layout="fill"
+                                    objectFit="contain"
+                                    quality={100}
+                                />
+                            </div>
+                        </a>
+                        <a href="https://twitter.com/backstreet_surv" target="_blank" style={{height: '35px', width: '45px'}} className="mx-2 cursor-pointer"> 
+                            <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                <NextImage
+                                    src={"/images/social_media/twitter.png"}
+                                    layout="fill"
+                                    objectFit="contain"
+                                    quality={100}
+                                />
+                            </div>
+                        </a>
+                        <a href="https://pinterest.com/backstreetcam" target="_blank" style={{height: '35px', width: '45px'}} className="mx-2 cursor-pointer"> 
+                            <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                <NextImage
+                                    src={"/images/social_media/pinterest.png"}
+                                    layout="fill"
+                                    objectFit="contain"
+                                    quality={100}
+                                />
+                            </div>
+                        </a>
+                    </div>
+                    {/* Link */}
+                    <div className="flex flex-col items-center justify-center">
+                        <a href="https://www.backstreet-surveillance.com" target="_blank" className="text-gray-100 tracking-wider text-2xl mt-2">Visit: www.Backstreet-Surveillance.com</a>
+                        <span className="tracking-wider text-sm font-light text-gray-200 my-1">Copyright © 2021 Backstreet Surveillance. All rights reserved.</span>
+                    </div>
+                    {/* Contact */}
+                    <div className="flex flex-col items-end text-gray-100 mr-10">
+                        <span className="text-2xl">
+                            <div style={{height: '20px', width: '30px'}} className="inline-block"> 
+                                <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                                    <NextImage
+                                        src={"/images/social_media/phone_icon.png"}
+                                        layout="fill"
+                                        objectFit="contain"
+                                        quality={100}
+                                    />
+                                </div>
+                            </div>800-431-3056
+                        </span>
+                        <span className="text-xl font-light">Support@BackstreetSurveillance.com</span>
+                    </div>
+                </footer>
             </main>
-
-        {/* <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
-      </footer> */} 
       </div>
     )
 }

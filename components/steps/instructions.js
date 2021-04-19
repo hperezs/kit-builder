@@ -67,7 +67,7 @@ export default function Instructions({}) {
                     <div className="flex items-center justify-center p-6 border-solid border-gray-200 rounded-b">
                         {currentStep != 1 &&
                             <button
-                                className="text-gray-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                className="text-gray-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 focus:ring focus:ring-green-300 focus:ring-opacity-80"
                                 type="button"
                                 onClick={() => setCurrentStep(currentStep - 1)}
                             >
@@ -75,7 +75,7 @@ export default function Instructions({}) {
                             </button>
                         }
                         <button
-                            className="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                            className="bg-green-600 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg hover:bg-green-500 outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 focus:ring focus:ring-green-300 focus:ring-opacity-80"
                             type="button"
                             onClick={() => (currentStep != 6 ? setCurrentStep(currentStep + 1) : finishInstructions())}
                         >
