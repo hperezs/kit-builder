@@ -47,7 +47,7 @@ export default function Home() {
                 <section className="welcome-container flex flex-col items-center w-screen border-b border-gray-300">
                     <div className="flex flex-col justify-end w-screen ">
                         <div style={{borderTopWidth: '5px'}} className="flex flex-col items-center justify-start border-green-600">
-                            <h2 className="mb-8 mt-20 text-5xl">
+                            <h2 className="mb-8 mt-14 text-5xl">
                                 Welcome
                             </h2>
                             <p style={{maxWidth: '900px'}} className="my-8 text-2xl text-center w-7/12">

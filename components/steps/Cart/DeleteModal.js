@@ -8,6 +8,7 @@ export default function DeleteModal({confirmDelete}) {
         <span 
             onClick={e => setShowModal(true)}
             className={"absolute bottom-0 right-0 cursor-pointer p-2 "}
+            transition-style="fade:in:faster" 
         >
             <FaTrashAlt className="fill-current text-red-600 text-xl hover:text-red-400"/>
         </span>

@@ -93,7 +93,7 @@ export default function InstallationInCart({homeOrBusiness, cablesType, cameras,
             >
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
             </span>}
-            {isReviewStep &&
+            {isReviewStep && displayEditButton && 
                 <DeleteModal confirmDelete={deleteInstallation} />
             }
         </div>
