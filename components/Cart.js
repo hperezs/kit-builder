@@ -21,7 +21,17 @@ export default function Cart({
     selectedPowerInjectors, 
     isInstallationSelected,
     homeOrBusiness,
-    goToStep
+    goToStep,
+    deleteCamera,
+    deleteNVR,
+    deleteCable,
+    deleteHardDrive,
+    deleteMonitor,
+    deleteHDMI,
+    deleteMount,
+    deletePowerInjector,
+    deleteSMProduct,
+    deleteInstallation
 }) {
     const [showCart, setShowCart] = useState(false);
     const [count, setCount] = useState(0);
@@ -122,24 +132,24 @@ export default function Cart({
                             <div className="flex flex-row justify-start mb-3">
                                 {/* NVR */}
                                 {
-                                    <VideoRecorderInCart selectedNVR={selectedNVR} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('NVR')}} />
+                                    <VideoRecorderInCart selectedNVR={selectedNVR} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('NVR')}} deleteNVR={deleteNVR} />
                                 }
                                 {/* NVR's cable */}
                                 {cablesType == 'pre-made' && cablesType != 'none' &&
-                                    <CableInCart cable={selectedNVR.cable} goToStep={() => {setShowCart(false); goToStep('cables')}}/>
+                                    <CableInCart cable={selectedNVR.cable} goToStep={() => {setShowCart(false); goToStep('cables')}} deleteCable={deleteCable} selectedNVR={selectedNVR} camera={null}/>
                                 }
                                 {/* Hard Drive */}
                                 {
-                                    <HardDriveInCart hardDrive={selectedHardDrives[0]} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('hard drives')}} index={0}/>
+                                    <HardDriveInCart hardDrive={selectedHardDrives[0]} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('hard drives')}} index={0} deleteHardDrive={deleteHardDrive}/>
                                 }
                             </div>
                             {/* Monitor(s) and HDMI(s) */}
                             {selectedMonitor != '' &&
                                 <div className="flex flex-row justify-start mb-3">
-                                    <MonitorInCart selectedMonitor={selectedMonitor} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('addons')}}/>
+                                    <MonitorInCart selectedMonitor={selectedMonitor} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('addons')}} deleteMonitor={deleteMonitor}/>
 
                                     {selectedMonitor?.cable && 
-                                        <HDMIinCart selectedMonitor={selectedMonitor} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('addons')}}/>
+                                        <HDMIinCart selectedMonitor={selectedMonitor} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('addons')}} deleteHDMI={deleteHDMI}/>
                                     }
                                 </div>
                             }
@@ -148,28 +158,28 @@ export default function Cart({
                                 return(
                                     <div className="flex flex-row justify-start mb-3" key={index}>
 
-                                        <CameraInCart camera={camera} index={index} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('cameras')}}/>
+                                        <CameraInCart camera={camera} index={index} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('cameras')}} deleteCamera={deleteCamera}/>
 
                                         {cablesType == 'pre-made' && cablesType != 'none' && 
-                                            <CableInCart cable={camera?.cable} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('cables')}}/>
+                                            <CableInCart cable={camera?.cable} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('cables')}} deleteCable={deleteCable} selectedNVR={null} camera={camera}/>
                                         }
 
                                         {
-                                            <MountInCart camera={camera} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('addons')}} />
+                                            <MountInCart camera={camera} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('addons')}} deleteMount={deleteMount} index={index}/>
                                         }
                                     </div>
                                 )
                             })}
                             {/* Installation */}
                             {isInstallationSelected && 
-                                <InstallationInCart homeOrBusiness={homeOrBusiness} cablesType={cablesType} cameras={cameras} goToStep={() => {setShowCart(false); goToStep('installation')}}/>
+                                <InstallationInCart homeOrBusiness={homeOrBusiness} cablesType={cablesType} cameras={cameras} goToStep={() => {setShowCart(false); goToStep('installation')}} deleteInstallation={deleteInstallation}/>
                             }
                             {/* Self-made cables */}
                             {cablesType == 'self-made' &&
                             <div className="flex flex-wrap justify-start">
                                 {selectedSMProducts.map((product, index) => {
                                     return(
-                                        <SelfMadeProductInCart product={product} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('cables')}} key={index}/>
+                                        <SelfMadeProductInCart product={product} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('cables')}} key={index} deleteSMProduct={deleteSMProduct}/>
                                     )})}
                             </div>
                             }
@@ -177,7 +187,7 @@ export default function Cart({
                             {selectedPowerInjectors.length != 0 && 
                                 selectedPowerInjectors.map((product, index) => {
                                     return(
-                                        <PowerInjectorInCart product={product} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('addons')}} key={index}/>
+                                        <PowerInjectorInCart product={product} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('addons')}} key={index} deletePowerInjector={deletePowerInjector} index={index}/>
                                     )
                                 })
                             }
@@ -186,7 +196,7 @@ export default function Cart({
                                 <div className="flex mb-3 flex-wrap">
                                 {selectedHardDrives.map((hardDrive, index) => {
                                     if(index != 0) return(
-                                        <HardDriveInCart hardDrive={hardDrive} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('hard drives')}} key={index} index={index}/>
+                                        <HardDriveInCart hardDrive={hardDrive} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('hard drives')}} key={index} index={index} deleteHardDrive={deleteHardDrive}/>
                                     )
                                 })}
                                 </div>

@@ -66,7 +66,7 @@ export default function HardDriveInCart({hardDrive, cablesType, goToStep, index,
             >
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
             </span>}
-            {isReviewStep && displayEditButton && 
+            {displayEditButton && 
                 <DeleteModal confirmDelete={() => {deleteHardDrive(index)}} />
             }
         </div>

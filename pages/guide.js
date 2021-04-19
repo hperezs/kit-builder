@@ -40,8 +40,8 @@ export default function Guide() {
     const bearerToken = process.env.BEARER_TOKEN;
 
     useEffect(() => {
-        console.log(homeOrBusiness)
-    }, [homeOrBusiness, isInstallationSelected])
+        if(isInstallationSelected) submitNotification('installationUpdated');
+    }, [homeOrBusiness])
 
     // Fetch all necessary products
     useEffect(() => {
@@ -788,6 +788,16 @@ export default function Guide() {
                         isInstallationSelected={isInstallationSelected}
                         homeOrBusiness={homeOrBusiness}
                         goToStep={goToStep}
+                        deleteCamera={deleteCamera}
+                        deleteNVR={deleteNVR}
+                        deleteHardDrive={deleteHardDrive}
+                        deleteCable={deleteCable}
+                        deleteSMProduct={deleteSMProduct}
+                        deleteMount={deleteMount}
+                        deleteHDMI={deleteHDMI}
+                        deleteMonitor={deleteMonitor}
+                        deletePowerInjector={deletePowerInjector}
+                        deleteInstallation={deleteInstallation}
                     />
                 </div>
             </main>

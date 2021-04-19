@@ -36,7 +36,7 @@ export default function MonitorInCart({selectedMonitor, cablesType, goToStep, de
             >
                 <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
             </span>}
-            {isReviewStep && displayEditButton && 
+            {displayEditButton && 
                 <DeleteModal confirmDelete={deleteMonitor} />
             }
         </div>
