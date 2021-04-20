@@ -239,7 +239,7 @@ export default function Guide() {
     const updateSubtotal = () => {
         let price_subtotal = 0.00;
         // Add cameras, cables and mounts cost
-        cameras.forEach(camera => {
+        cameras?.forEach(camera => {
             price_subtotal = price_subtotal + parseFloat(camera.price.$numberDecimal)
             price_subtotal = price_subtotal + parseFloat((camera.cable?.price ? camera.cable.price : 0));
             price_subtotal = price_subtotal + parseFloat((camera.mount?.price ? camera.mount.price : 0));
@@ -249,19 +249,19 @@ export default function Guide() {
         if(selectedNVR != '') price_subtotal = price_subtotal + parseFloat(selectedNVR?.price.$numberDecimal);
         if(selectedNVR?.cable) price_subtotal = price_subtotal + parseFloat(selectedNVR.cable.price);
 
-        selectedHardDrives.forEach(hardDrive => {
+        selectedHardDrives?.forEach(hardDrive => {
             price_subtotal = price_subtotal + parseFloat((hardDrive?.price ? hardDrive.price : 0));
         })
 
         // Add self-made products costs
         if(cablesType == 'self-made') {
-            selectedSMProducts.forEach(product => {
+            selectedSMProducts?.forEach(product => {
                 price_subtotal = price_subtotal + (product.price * product.quantity);
             })
         }
 
         // Add Monitor Costs
-        if(selectedMonitor != '') {
+        if(selectedMonitor) {
             price_subtotal = price_subtotal + selectedMonitor.price;
             if(selectedMonitor?.cable) {
                 price_subtotal = price_subtotal + selectedMonitor.cable.price;
@@ -269,8 +269,8 @@ export default function Guide() {
         }
 
         // Add POE costs
-        if(selectedPowerInjectors.length != 0) {
-            selectedPowerInjectors.forEach(product => {
+        if(selectedPowerInjectors?.length != 0) {
+            selectedPowerInjectors?.forEach(product => {
                 console.log(product);
                 price_subtotal = price_subtotal + parseFloat(product.price * product.quantity);
             })
