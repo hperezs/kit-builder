@@ -20,6 +20,8 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
     const [isEditing, setIsEditing] = useState(false);
     const [selectedHDStorage, setSelectedHDStorage] = useState(0);
 
+    const [displayScrollBox, setDisplayScrollBox] = useState(false);
+
     const FQA = 510;
     const KILOBYTE = 1000;
 
@@ -150,6 +152,25 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
        setSelectedHDStorage(totalStorage);
     }, [selectedHardDrives])
 
+    // If hard drive products are not visible display a message
+    useEffect(() => {
+        if(isChoosing){
+            var observer = new IntersectionObserver(entries => {
+                if(entries[0].isIntersecting) {
+                    setDisplayScrollBox(false)
+                } else {
+                    setDisplayScrollBox(true)
+                }
+            }, { threshold: [0.8]});
+
+            observer.observe(document.querySelector('#hardDrive-products'));
+        }
+    }, [])
+
+    useEffect(() => {
+        console.log(displayScrollBox);
+    }, [displayScrollBox])
+
     const input_styles = "inline ml-3 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 "
     const selectButton_styles = "px-5 py-1 border rounded bg-green-600 text-white text-sm uppercase tracking-wider font-semibold mt-3 transition hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
 
@@ -209,12 +230,12 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
     }
 
     return(
-        <section className="my-10">
+        <section className="relative my-10">
             <p className="text-lg">The size of the recommended Hard Drive varies according to your recording set-up. Choose between the following options to find the Hard Drive that best suits your needs.</p>
 
             <div className="flex flex-row justify-center flex-wrap mt-10 transition-all duration-300 ease">
                 {/* Calculator */}
-                <div style={{width: '380px'}} className="flex flex-col border border-gray-300 rounded p-10 mr-10 shadow">
+                <div id="calculator" style={{width: '380px'}} className="flex flex-col border border-gray-300 rounded p-10 mr-10 shadow">
                     <div className="flex justify-center mb-10">
                         <div className="flex flex-col items-center justify-center p-7 border border-gray-300 rounded">
                             <span className="text-xl">Required Storage Capacity</span>
@@ -294,9 +315,16 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
 
             </div>
 
+            {/* Scroll down message */}
+            {displayScrollBox && 
+            <div transition-style="fade:in:faster" className="absolute top-20 right-10 p-5 bg-green-600 text-white bg-opacity-80 rounded">
+                Scroll down to choose your Hard Drive
+            </div>}
+
             {isChoosing &&
                 <div className="flex justify-center my-10">
                     <div
+                        id="hardDrive-products"
                         transition-style="in:wipe:right" 
                         className="flex flex-row justify-evenly items-center p-10 border rounded bg-gray-100 shadow">
                         {hardDrives && 

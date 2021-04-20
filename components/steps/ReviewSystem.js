@@ -35,7 +35,7 @@ export default function ReviewSystem({
 }) {
     
     return(
-        <section className="mt-10">
+        <section className="relative mt-10">
             <p className="font-light text-lg rounded p-3 bg-green-50 max-w-max">
                 <span className="text-green-700">&#8594;</span> 
                 You can change your selections by hovering the mouse over an item and clicking the <FaEdit className="fill-current text-yellow-600 inline mb-2 mx-1 text-2xl"/> button. 
@@ -120,10 +120,6 @@ export default function ReviewSystem({
             <div className={"relative flex items-center justify-center mb-7 p-6 border-t "}>
                 <div className="text-2xl font-medium px-6 py-2">
                     Subtotal: {subtotal.toLocaleString('en-US', {style: 'currency', currency: 'USD'})}
-                </div>
-                <div className="absolute left-0 text-lg pl-10">
-                    <span>Promotional Code: </span>
-                    <input type="text" className="w-32 ml-3 rounded border-gray-400 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"/>
                 </div>
             </div>  
         </section>
