@@ -35,7 +35,7 @@ export default function ChooseCameras({allProducts, selectNewCamera, cameras, de
                 selectNewCamera={selectNewCamera} 
                 isAddingNewCamera={isAddingNewCamera} 
                 setIsAddingNewCamera={setIsAddingNewCamera}
-                lastIndex={cameras.length + 1}    
+                lastIndex={cameras?.length + 1} 
             />
 
             {/* Camera List */}

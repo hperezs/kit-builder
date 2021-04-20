@@ -47,11 +47,8 @@ export default function Home() {
                 <section className="welcome-container flex flex-col items-center w-screen border-b border-gray-400">
                     <div className="flex flex-col justify-end w-screen ">
                         <div style={{borderTopWidth: '5px'}} className="flex flex-col items-center justify-start border-green-600">
-                            <h2 className="mb-8 mt-14 text-5xl">
-                                Welcome
-                            </h2>
-                            <p style={{maxWidth: '900px'}} className="my-8 text-2xl text-center w-7/12">
-                                We will guide you through all of the steps of choosing each component for your surveillance system so that it best fits your needs
+                            <p style={{maxWidth: '900px'}} className="my-8 text-3xl text-center w-7/12 mt-16">
+                                Build your surveillance system in seconds. We guide you through choosing each component that best fits your needs.
                             </p>
                             <a style={{paddingBottom: '14px', paddingRight: '41px'}} onClick={handleClick} className="py-3 px-10 text-white border bg-green-700 bg-opacity-90 text-3xl rounded text-white text-center align-middle transition-colors duration-300 ease hover:bg-green-500 my-8 cursor-pointer">
                                 Get started
@@ -215,7 +212,7 @@ export default function Home() {
                 <section className="mx-20 p-10 col items-center">
                     <div className="flex justify-center items-center mb-10">
                         <div style={{maxWidth: '600px'}}>
-                            <h5 className="text-2xl">30-Day Money Back Guarantee</h5>
+                            <h5 className="text-2xl font-semibold">30-Day Money Back Guarantee</h5>
                             <p className="text-lg mt-5">Any item can be returned within 30 days from the date of delivery for a refund. If you need to change an item, we will be glad to exchange any item for another. If the equipment is just not right for you then we will provide a 100% refund once we receive the equipment and all materials back. </p>
                         </div>
                         <div style={{height: '225px', width: '280px'}} className="ml-20"> 
@@ -231,7 +228,7 @@ export default function Home() {
                     </div>    
                     <div className="flex justify-center items-center mb-10">
                         <div style={{maxWidth: '600px'}}>
-                            <h5 className="text-2xl">Longest Warranty in the Industry</h5>
+                            <h5 className="text-2xl font-semibold">Longest Warranty in the Industry</h5>
                             <p className="text-lg mt-5">All equipment is covered under a complete 5 year warranty from the date of delivery. During this time all products are guaranteed against manufacturing and operational defects. In the event of such defects during this period, it is our responsibility to replace the defective item with an exact or comparable product.</p>
                         </div>
                         <div style={{height: '225px', width: '280px'}} className="ml-20"> 
@@ -247,7 +244,7 @@ export default function Home() {
                     </div> 
                     <div className="flex justify-center items-center mb-10">
                         <div style={{maxWidth: '600px'}}>
-                            <h5 className="text-2xl">USA Based - Unlimited Technical Support</h5>
+                            <h5 className="text-2xl font-semibold">USA Based - Unlimited Technical Support</h5>
                             <p className="text-lg mt-5">We provide USA based, Free, Unlimited, Life-time Technical Support for all the equipment that we offer.</p>
                         </div>
                         <div style={{height: '200px', width: '260px'}} className="ml-20"> 
