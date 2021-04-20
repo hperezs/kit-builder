@@ -4,7 +4,7 @@ export default function Resolution() {
 
     return(
         <section id="cameraLenses" className="my-10 pb-20">
-            <h3 className="text-center my-10 text-3xl font-light">Resolution</h3>
+            <h3 className="text-center my-10 text-4xl font-light">Resolution</h3>
             <div className="flex flex-row justify-center">
                 <div className="w-7/12 2xl:w-7/12">
                     <p>
