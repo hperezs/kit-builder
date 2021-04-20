@@ -786,7 +786,7 @@ export default function Guide() {
                                 displayBackToReview={displayBackToReview}
                                 goToStep={goToStep}
                             />
-                            <div className="absolute top-0 left-0 mt-5" style={{height: '60px', width: '220px'}}> 
+                            <a href="https://backstreet-surveillance.com/" target="_blank" className="absolute top-0 left-0 mt-5" style={{height: '60px', width: '220px'}}> 
                                 <div style={{maxWidth: '100%', height: '100%'}}>
                                     <Image
                                         src='/images/BS_logo.png'
@@ -795,7 +795,7 @@ export default function Guide() {
                                         quality={100}
                                     />
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                     <Cart 

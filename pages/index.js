@@ -45,18 +45,29 @@ export default function Home() {
                 
                 {/* Welcome section */}
                 <section className="welcome-container flex flex-col items-center w-screen border-b border-gray-400">
-                    <div className="flex flex-col justify-end w-screen ">
+                    <div className="flex flex-col justify-center w-screen ">
                         <div style={{borderTopWidth: '5px'}} className="flex flex-col items-center justify-start border-green-600">
-                            <p style={{maxWidth: '900px'}} className="my-8 text-3xl text-center w-7/12 mt-16">
+                            <p style={{maxWidth: '900px'}} className="text-3xl text-center w-7/12 my-16">
                                 Build your surveillance system in seconds. We guide you through choosing each component that best fits your needs.
                             </p>
-                            <a style={{paddingBottom: '14px', paddingRight: '41px'}} onClick={handleClick} className="py-3 px-10 text-white border bg-green-700 bg-opacity-90 text-3xl rounded text-white text-center align-middle transition-colors duration-300 ease hover:bg-green-500 my-8 cursor-pointer">
+                            <a style={{paddingBottom: '14px', paddingRight: '41px'}} onClick={handleClick} className="py-3 px-10 text-white border bg-green-700 bg-opacity-90 text-3xl rounded text-white text-center align-middle transition-colors duration-300 ease hover:bg-green-500 my`-8 cursor-pointer">
                                 Get started
                             </a>
                             <Link href="/guide"><span className="-z-50 opacity-0" id='get-started-link'>get started link</span></Link>
                         </div>
                     </div>
                 </section>
+
+                <div style={{height: '500px', width: '100%'}} className="mt-16"> 
+                    <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                        <NextImage
+                            src={"/images/kitbuilder-banner.jpg"}
+                            layout="fill"
+                            objectFit="contain"
+                            quality={100}
+                        />
+                    </div>
+                </div>
                 
                 {/* How it works section */}
                 <section className="mx-20 my-14 p-10 flex justify-center">
@@ -67,7 +78,7 @@ export default function Home() {
                     <div style={{height: '400px', width: '600px'}} className="ml-20"> 
                         <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                             <NextImage
-                                src={"/images/kit-builder.png"}
+                                src={"/images/how-it-works.jpg"}
                                 layout="fill"
                                 objectFit="contain"
                                 quality={100}
