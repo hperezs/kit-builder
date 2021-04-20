@@ -17,7 +17,7 @@ export default function CameraHousings() {
 
     return (
         <section id="cameraHousings" className="my-10 pb-20">
-            <h3 className="text-center my-10 text-3xl font-light">Camera Housings</h3>
+            <h3 className="text-center my-10 text-4xl font-light">Camera Housings</h3>
             <p className="ml-3 text-xl mb-14 text-center">There are 3 types of camera housings. Click on each one to see more information about them.</p>
             <div className="flex flex-row justify-center items-center mt-5 mb-20">
                 <div 
