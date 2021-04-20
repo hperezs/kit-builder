@@ -38,7 +38,7 @@ export default function Cart({
 
     useEffect(() => {
         let new_count = 0;
-        cameras.forEach(camera => {
+        cameras?.forEach(camera => {
             new_count++;
             if(cablesType == 'pre-made'){
                 if(camera?.cable) new_count++
@@ -50,12 +50,12 @@ export default function Cart({
 
         if(selectedNVR?.cable) new_count++;
 
-        selectedHardDrives.forEach(hardDrive => {
+        selectedHardDrives?.forEach(hardDrive => {
             new_count++;
         })
 
         if(cablesType == 'self-made') {
-            selectedSMProducts.forEach(product => {
+            selectedSMProducts?.forEach(product => {
                 new_count = new_count + parseInt(product.quantity)
             })
         }
@@ -65,7 +65,7 @@ export default function Cart({
             if(selectedMonitor?.cable) new_count++;
         }
 
-        selectedPowerInjectors.forEach(product => {
+        selectedPowerInjectors?.forEach(product => {
             new_count = new_count + parseInt(product.quantity);
         })
 
@@ -140,11 +140,11 @@ export default function Cart({
                                 }
                                 {/* Hard Drive */}
                                 {
-                                    <HardDriveInCart hardDrive={selectedHardDrives[0]} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('hard drives')}} index={0} deleteHardDrive={deleteHardDrive}/>
+                                    <HardDriveInCart hardDrive={(selectedHardDrives?.length ? selectedHardDrives[0] : null)} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('hard drives')}} index={0} deleteHardDrive={deleteHardDrive}/>
                                 }
                             </div>
                             {/* Monitor(s) and HDMI(s) */}
-                            {selectedMonitor != '' &&
+                            {selectedMonitor &&
                                 <div className="flex flex-row justify-start mb-3">
                                     <MonitorInCart selectedMonitor={selectedMonitor} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('addons')}} deleteMonitor={deleteMonitor}/>
 
@@ -184,15 +184,15 @@ export default function Cart({
                             </div>
                             }
                             {/* Power Injectors */}
-                            {selectedPowerInjectors.length != 0 && 
-                                selectedPowerInjectors.map((product, index) => {
+                            {selectedPowerInjectors?.length != 0 && 
+                                selectedPowerInjectors?.map((product, index) => {
                                     return(
                                         <PowerInjectorInCart product={product} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('addons')}} key={index} deletePowerInjector={deletePowerInjector} index={index}/>
                                     )
                                 })
                             }
                             {/* Extra Hard Drives */}
-                            {selectedHardDrives != 0 && 
+                            {selectedHardDrives?.length && 
                                 <div className="flex mb-3 flex-wrap">
                                 {selectedHardDrives.map((hardDrive, index) => {
                                     if(index != 0) return(

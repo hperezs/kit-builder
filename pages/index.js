@@ -64,7 +64,7 @@ export default function Home() {
                 {/* How it works section */}
                 <section className="mx-20 my-14 p-10 flex justify-center">
                     <div style={{maxWidth: '600px'}} className="">
-                        <h3 className="text-3xl mb-8">How it works</h3>   
+                        <h3 className="text-3xl mb-8 font-semibold">How it works</h3>   
                         <p className="text-xl">The experts at Backstreet Surveillance have applied their 30+ years of experience in the security industry and simplified the complex process of constructing the perfect video surveillance system. We have removed the hassle of researching and finding each individual component as this tool allows you to build your complete and ideal system in a matter of seconds based on our recommendations. <br/> <br/> When using this tool, you can rest assured that whatever you build will hold all of the components that are necessary for a high performance video surveillance system. Time to start building your dream CCTV system!</p>
                     </div>
                     <div style={{height: '400px', width: '600px'}} className="ml-20"> 
@@ -80,7 +80,7 @@ export default function Home() {
                 </section>
 
                 <section className="my-14 py-20 border-t border-b border-gray-400">
-                    <h3 className="text-center text-3xl mb-10">What's included</h3>
+                    <h3 className="text-center text-3xl mb-10 font-semibold">What's included</h3>
                     <p className="text-xl text-center">We make sure you don't miss any of the essentials components to cover all the requirements of your system.</p>
                     <div className="flex justify-center">
                         <div className="flex justify-center mt-20 md:w-10/12 lg:w-8/12 xl:w-10/12 flex-wrap">
@@ -207,7 +207,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div style={{maxWidth: '600px'}} className="mt-10">
-                        <h3 className="text-3xl mb-8">Why purchase from Backstreet?</h3>   
+                        <h3 className="text-3xl font-semibold mb-8">Why purchase from Backstreet?</h3>   
                         <p className="text-xl">Backstreet is the affordable solution for easy to use professional surveillance equipment. We are an American owned company and all of our support representatives and facilities are located in the U.S. We only offer ultra high definition equipment and we back it with a 5 year warranty and free lifetime technical support. The Backstreet promise says it all: “We promise that you will not find a lower price for the same quality and support, anywhere.”</p>
                     </div>
                 </section>
