@@ -162,15 +162,15 @@ export default function Guide() {
 
     // Get localStorage
     useEffect(() => {
-        setHomeOrBusiness(localStorage.getItem('homeOrBusiness'));
-        setCameras(JSON.parse(localStorage.getItem('cameras')));
-        setSelectedNVR(JSON.parse(localStorage.getItem('selectedNVR')));
-        setSelectedHardDrives(JSON.parse(localStorage.getItem('selectedHardDrives')));
-        setCablesType(localStorage.getItem('cablesType'));
-        setSelectedSMProducts(JSON.parse(localStorage.getItem('selectedSMProducts')));
-        setSelectedMonitor(JSON.parse(localStorage.getItem('selectedMonitor')));
-        setSelectedPowerInjectors(JSON.parse(localStorage.getItem('selectedPowerInjectors')));
-        setIsInstallationSelected((localStorage.getItem('isInstallationSelected') == 'true'));
+        if(localStorage.getItem('homeOrBusiness')) setHomeOrBusiness(localStorage.getItem('homeOrBusiness'));
+        if(localStorage.getItem('cameras')) setCameras(JSON.parse(localStorage.getItem('cameras')));
+        if(localStorage.getItem('selectedNVR')) setSelectedNVR(JSON.parse(localStorage.getItem('selectedNVR')));
+        if(localStorage.getItem('selectedHardDrives')) setSelectedHardDrives(JSON.parse(localStorage.getItem('selectedHardDrives')));
+        if(localStorage.getItem('cablesType')) setCablesType(localStorage.getItem('cablesType'));
+        if(localStorage.getItem('selectedSMProducts')) setSelectedSMProducts(JSON.parse(localStorage.getItem('selectedSMProducts')));
+        if(localStorage.getItem('selectedMonitor')) setSelectedMonitor(JSON.parse(localStorage.getItem('selectedMonitor')));
+        if(localStorage.getItem('selectedPowerInjectors')) setSelectedPowerInjectors(JSON.parse(localStorage.getItem('selectedPowerInjectors')));
+        if(localStorage.getItem('isInstallationSelected')) setIsInstallationSelected((localStorage.getItem('isInstallationSelected') == 'true'));
 
         if(JSON.parse(localStorage.getItem('cameras'))?.length != 0) submitNotification('welcomeBack');
     }, [])
