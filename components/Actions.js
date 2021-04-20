@@ -1,4 +1,7 @@
 import Link from "next/link";
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+import 'tippy.js/themes/translucent.css';
 
 export default function Actions({ nextStep, prevStep, currentStep, canClickNext, isLastStep, displayBackToReview, goToStep }) {
     return(
@@ -32,22 +35,24 @@ export default function Actions({ nextStep, prevStep, currentStep, canClickNext,
                 Next
             </button>}
 
-            {isLastStep() && 
+            {/* {isLastStep() && 
                 <button 
                     className={"text-lg mx-6 border rounded px-7 py-4 transition-all duration-300 ease " 
                         + 'border-blue-700 text-blue-700 hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-200 focus:ring-opacity-500'}
                 >
                     Email me this quote
-                </button>}
+                </button>} */}
+
             {isLastStep() && 
                 <button 
                     className={"text-xl text-white mx-6 border rounded px-7 py-4 transition-all duration-300 ease " 
                         + 'border-green-400 bg-green-600 hover:bg-green-400 hover:text-white focus:outline-none focus:ring-4 focus:ring-green-300 focus:ring-opacity-500'}
                 >
                     Proceed to checkout
-                </button>}
+                </button>
+            }
 
-                {displayBackToReview &&
+            {displayBackToReview &&
                 <button
                     onClick={e => goToStep('review')}
                     style={{borderWidth: '1.5px'}}

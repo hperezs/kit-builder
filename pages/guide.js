@@ -286,6 +286,7 @@ export default function Guide() {
 
     useEffect(() => {
         if((cablesType != 'none' && currentStep == 10) || (cablesType == 'none' && currentStep == 9)) setHasReviewBeenVisited(true);
+        if((cablesType != 'none' && currentStep == 10) || (cablesType == 'none' && currentStep == 9)) submitNotification('goToCheckout');
     }, [currentStep, cablesType])
 
     const updateLocalStorage = () => {
@@ -645,6 +646,19 @@ export default function Guide() {
                     }
                     });
                 break;
+            case 'goToCheckout':
+                store.addNotification({
+                    title: 'Discounts',
+                    message: "Click 'proceed to checkout' to see discounts based on your selections",
+                    type: "info",
+                    insert: "top",
+                    container: "top-right",
+                    animationIn: ["fade-in"],
+                    animationOut: ["animate__animated", "animate__fadeOut"],
+                    dismiss: {
+                        duration: 8000,
+                    }
+                    });
         }
     }
 
