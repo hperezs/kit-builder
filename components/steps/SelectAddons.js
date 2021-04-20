@@ -23,7 +23,7 @@ export default function SelectAddons({
     const [addonsType, setAddonsType] = useState('');
     const [selectedMonitorCount, setSelectedMonitorCount] = useState(0);
     const [selectedMountsCount, setSelectedMountsCount] = useState(0);
-    const [selectedPowerInjectorsCount, setSelectedPowerInjectorsCount] = useState(0)
+    const [selectedPowerInjectorsCount, setSelectedPowerInjectorsCount] = useState(0);
 
     useEffect(() => {
         setSelectedMonitorCount(selectedMonitor?.cable ? 2 : 1);

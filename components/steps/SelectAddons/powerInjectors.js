@@ -3,9 +3,11 @@ import { useState, useEffect } from 'react';
 import ReactLoading from 'react-loading'
 import {backstreet_domain} from '../../../lib/backstreet_domain'
 import {FaTrashAlt} from 'react-icons/fa'
+import {GrClose} from 'react-icons/gr'
 
 export default function PowerInjectors({powerInjectors, selectedPowerInjectors, addPowerInjector, deletePowerInjector}) {
     const [isLoading, setIsLoading] = useState(true);
+    const [displayDetails, setDisplayDetails] = useState(false);
 
     useEffect(() => {
         document.getElementById('selectedPOE')?.scrollIntoView();
@@ -16,7 +18,17 @@ export default function PowerInjectors({powerInjectors, selectedPowerInjectors, 
 
     return(
         <section className="flex flex-col items-center">
-            <a className="block text-green-600 text-center cursor-pointer text-lg hover:text-green-500">What are Power Injectors used for?</a>
+            {!displayDetails && 
+            <a transition-style="fade:in:faster" onClick={e => setDisplayDetails(true)} className="block text-green-600 text-center cursor-pointer text-lg hover:text-green-500">
+                What are Power Injectors used for?
+            </a>}
+            
+            {displayDetails &&
+                <div transition-style="fade:in:faster" style={{maxWidth: '450px'}} className="relative p-10 border shadow-lg"> 
+                    <p><span className="text-green-600 font-semibold">Power injectors</span> are used to transmit power to the cameras when they will not be connected to the video recorder. A common use case is to connect the cameras to the network via a power injector.</p>
+                    <span className="absolute top-0 right-0 text-gray-500 mt-4 mr-4 cursor-pointer" onClick={e => setDisplayDetails(false)}><GrClose /></span>
+                </div>}
+
             <div transition-style="in:wipe:right" className="mt-10 border rounded p-10 bg-gray-100">
                 <div className="flex flex-row justify-center">
                     {powerInjectors.length != 0 &&

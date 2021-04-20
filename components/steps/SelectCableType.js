@@ -1,6 +1,7 @@
-import { AiFillShop } from 'react-icons/ai'
 import { GiTinker } from 'react-icons/gi'
+import { GrClose } from 'react-icons/gr'
 import { FiCheckSquare } from 'react-icons/fi'
+import { BsInfoCircle } from 'react-icons/bs'
 import { BsPersonCheckFill } from 'react-icons/bs'
 import { useState } from 'react';
 
@@ -38,19 +39,26 @@ export default function SelectCableType({cablesType, selectCablesType}) {
                     </span>
                 </section>
             </div>
-            <div className="mt-10">
+            {!displayDetails && 
+            <div transition-style="fade:in:faster" className="mt-10">
                 <a
                     onClick={e => setDisplayDetails(true)} 
-                    className=" text-lg text-green-600 cursor-pointer hover:text-green-500">What's the difference?</a>
-            </div>
+                    className=" text-lg text-green-600 cursor-pointer hover:text-green-500"
+                >
+                    What's the difference?
+                </a>
+            </div>}
+            
             {displayDetails &&
-                <ul className="w-4/12 mt-10">
-                    <li>Pre-made cables are ready to be used instantly.</li>
-                    <li>Self-made cables are put together by the customer, we provide the materials.</li>
-                    <li>Select "I have my own" if you already have cables you would like to use or you will provide your own.</li>
-                </ul>
+                <div transition-style="fade:in:faster" style={{maxWidth: '450px'}} className="relative p-10 mt-10 border shadow-lg"> 
+                    <ul className="">
+                        <li className="mb-2"><span className="text-green-600 font-semibold">Pre-made</span> cables are ready to be used instantly.</li>
+                        <li className="mb-2"><span className="text-green-600 font-semibold">Self-made</span> cables are put together by the customer, we provide the materials.</li>
+                        <li>Select <span className="text-green-600 font-semibold">I have my own</span> if you already have cables you would like to use or you will provide your own.</li>
+                    </ul>
+                    <span className="absolute top-0 right-0 text-gray-500 mt-4 mr-4 cursor-pointer" onClick={e => setDisplayDetails(false)}><GrClose /></span>
+                </div>
             }
-        
         </div>
     )
 }
