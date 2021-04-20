@@ -43,12 +43,21 @@ input[type=number] {
   min-height: 55vh;
 }
 
-@media screen and (min-width: 1800px) {
+@media screen and (min-width: 1400px) {
   .page-title, .welcome-banner {
     height: 60vh;
   }
   .welcome-container {
     min-height: 40vh;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .page-title, .welcome-banner {
+    height: 70vh;
+  }
+  .welcome-container {
+    min-height: 30vh;
   }
 }
 
