@@ -8,6 +8,7 @@ import ReactNotification, { store } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 import Image from 'next/image'
 import ProgressBar from "../components/ProgressBar";
+import Head from 'next/head'
 
 export default function Guide() {
     // Product data
@@ -704,6 +705,13 @@ export default function Guide() {
 
     return(
         <div className="relative">
+            <Head>
+                <title>CCTV Kit Builder</title>
+                <meta property="og:title" content="CCTV Kit Builder" key="title" />
+                <meta description="Build your own complete surveillance system in seconds."/>
+                <link rel="icon" href="/KitBuilderFavicon.png"/>
+            </Head>
+
             {/* Animation layover */}
             <div className="fixed top-0 h-screen w-screen z-50 in-wipe-right-green" style={{backgroundColor: '#438241'}}>
                 <div style={{top: '50%', right: '50%', transform: 'translate(50%, -50%)'}} className="absolute" >
