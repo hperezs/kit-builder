@@ -682,6 +682,19 @@ export default function Guide() {
                         duration: 8000,
                     }
                     });
+            case 'applicationRestarted':
+                store.addNotification({
+                    title: 'Application Restarted',
+                    message: 'Your selections were cleared successfully. You can begin building a new system.',
+                    type: "info",
+                    insert: "top",
+                    container: "top-right",
+                    animationIn: ["fade-in"],
+                    animationOut: ["animate__animated", "animate__fadeOut"],
+                    dismiss: {
+                        duration: 5000,
+                    }
+                    });
         }
     }
 
@@ -723,6 +736,25 @@ export default function Guide() {
         } else {
             return (currentStep == 10)
         }
+    }
+
+    const restartApp = () => {
+        setHasReviewBeenVisited(false);
+        setDisplayBackToReview(false);
+        setCanClickNext(false);
+        setSubtotal(0.00);
+        setIsInstallationSelected(null);
+        setSelectedPowerInjectors([]);
+        setSelectedMonitor('');
+        setSelectedSMProducts([]);
+        setCablesType('');
+        setSelectedHardDrives([]);
+        setSelectedNVR('');
+        setCameras([]);
+        setHomeOrBusiness('');
+        setCurrentStep(1);
+
+        submitNotification('applicationRestarted');
     }
 
     return(
@@ -807,17 +839,8 @@ export default function Guide() {
                                 isLastStep={isLastStep}
                                 displayBackToReview={displayBackToReview}
                                 goToStep={goToStep}
+                                subtotal={subtotal}
                             />
-                            <a href="https://backstreet-surveillance.com/" target="_blank" className="absolute top-0 left-0 mt-5" style={{height: '60px', width: '220px'}}> 
-                                <div style={{maxWidth: '100%', height: '100%'}}>
-                                    <Image
-                                        src='/images/BS_logo.png'
-                                        layout="fill"
-                                        objectFit="contain"
-                                        quality={100}
-                                    />
-                                </div>
-                            </a>
                         </div>
                     </div>
                     <Cart 
@@ -842,6 +865,7 @@ export default function Guide() {
                         deleteMonitor={deleteMonitor}
                         deletePowerInjector={deletePowerInjector}
                         deleteInstallation={deleteInstallation}
+                        restartApp={restartApp}
                     />
                 </div>
             </main>

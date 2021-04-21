@@ -2,10 +2,22 @@ import Link from "next/link";
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/themes/translucent.css';
+import Image from 'next/image'
 
-export default function Actions({ nextStep, prevStep, currentStep, canClickNext, isLastStep, displayBackToReview, goToStep }) {
+export default function Actions({ nextStep, prevStep, currentStep, canClickNext, isLastStep, displayBackToReview, goToStep, subtotal }) {
     return(
-        <section className="flex flex-row items-center justify-center mb-10 w-full border-t pt-7 border-gray-300">
+        <section className="flex flex-row items-center justify-center w-full border-t pt-7 border-gray-300">
+            <a href="https://backstreet-surveillance.com/" target="_blank" className={isLastStep() ? "relative" : 'absolute top-0 left-0 mt-5'} style={{height: '60px', width: '220px'}}> 
+                <div style={{maxWidth: '100%', height: '100%'}}>
+                    <Image
+                        src='/images/BS_logo.png'
+                        layout="fill"
+                        objectFit="contain"
+                        quality={100}
+                    />
+                </div>
+            </a>
+
             <span className={(currentStep == 1) ? '' : 'hidden'}>
                 <Link href="/">
                     <button 
@@ -15,6 +27,14 @@ export default function Actions({ nextStep, prevStep, currentStep, canClickNext,
                     </button>
                 </Link>
             </span>
+
+            {isLastStep() && 
+            <div className={"flex flex-col items-center justify-center mx-auto pl-36"}>
+                <div className="text-2xl font-medium">
+                    Subtotal: {subtotal.toLocaleString('en-US', {style: 'currency', currency: 'USD'})}*
+                </div>
+                <p className="font-light text-lg mt-2">*Does not include discounts</p>
+            </div> }
             
             <span className={(currentStep != 1) ? '' : 'hidden'}>
                 <button 
