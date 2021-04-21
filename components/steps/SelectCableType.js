@@ -57,8 +57,7 @@ export default function SelectCableType({cablesType, selectCablesType}) {
                         <li>Select <span className="text-green-600 font-semibold">I have my own</span> if you already have cables you would like to use or you will provide your own.</li>
                     </ul>
                     <span className="absolute top-0 right-0 text-gray-500 mt-4 mr-4 cursor-pointer" onClick={e => setDisplayDetails(false)}><GrClose /></span>
-                </div>
-            }
+                </div>}
         </div>
     )
 }
