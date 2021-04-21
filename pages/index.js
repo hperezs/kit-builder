@@ -270,7 +270,7 @@ export default function Home() {
                         </div>
                     </div>                     
                 </section>
-                <footer className="flex justify-between items-center justify-center w-full py-2 px-10 bg-green-800 bg-opacity-90 mt-10">
+                <footer style={{backgroundColor: '#494949'}} className="flex justify-between items-center justify-center w-full py-2 px-10 mt-10">
                     {/* Icons */}
                     <div className="flex justify-evenly">
                         <a href="https://www.facebook.com/Backstreetsecure/" target="_blank" style={{height: '35px', width: '45px'}} className="mx-2 cursor-pointer"> 
