@@ -53,13 +53,36 @@ export default function Guide() {
                     setAllProducts(data);
                 })
             })
-        fetch('/api/getVideoRecorders')
-            .then(response => {
-                response.json().then(data => {
-                    console.log(data);
-                    setAllVideoRecorders(data);
-                })
+        // fetch('/api/getVideoRecorders')
+        //     .then(response => {
+        //         response.json().then(data => {
+        //             console.log(data);
+        //             setAllVideoRecorders(data);
+        //         })
+        //     })
+
+        const getVideoRecorders_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][value]=%25NVR&searchCriteria[filterGroups][0][filters][0][conditionType]=like';
+        fetch(getVideoRecorders_url, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + bearerToken
+            }
+        }).then(response => {
+            response.json().then(data => {
+                console.log('******VIDEO RECORDERS *****');
+                // Transpose object scheme to match the rest of the app
+                let transposed = data.items.map(product => ({
+                    sku: product.sku,
+                    price: {$numberDecimal: parseFloat(product.price).toFixed(2)},
+                    oldPrice: product.custom_attributes.find(attribute => attribute.attribute_code == 'compare_price').value,
+                    channelCount: product.sku.split('PRO')[1].split('NVR')[0]
+                }));
+                // Sort by price
+                let sorted = transposed.sort((a, b) => a.price.$numberDecimal - b.price.$numberDecimal);
+                setAllVideoRecorders(sorted);
+                console.log(sorted);
             })
+        })
 
         // Get Cables from Magento API
         const getIndoorCables_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=cat6-%25'
