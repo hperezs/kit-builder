@@ -39,7 +39,7 @@ export default function Home() {
                 
                 {/* Banner */}
                 <div id="background-image" className="welcome-banner welcome-banner-loading relative flex justify-start z-10 w-screen transition-filter duration-1000 ease"></div>
-                <div style={{width: '35%', maxWidth: '850px'}} className="page-title flex flex-col absolute top-0 left-0 items-center justify-center z-20 bg-green-700 bg-opacity-80">
+                <div transition-style="in:wipe:right:delayed" style={{width: '35%', maxWidth: '850px'}} className="page-title flex flex-col absolute top-0 left-0 items-center justify-center z-20 bg-green-700 bg-opacity-80">
                     <h1 className="text-7xl uppercase font-semibold p-10 text-gray-100">CCTV Kit <br/> Builder</h1>
                 </div>
                 
@@ -78,7 +78,7 @@ export default function Home() {
                     <div style={{height: '400px', width: '600px'}} className="ml-20"> 
                         <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                             <NextImage
-                                src={"/images/how-it-works.jpg"}
+                                src={"/images/how-it-works.png"}
                                 layout="fill"
                                 objectFit="contain"
                                 quality={100}

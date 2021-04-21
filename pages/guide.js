@@ -287,7 +287,6 @@ export default function Guide() {
 
     useEffect(() => {
         if((cablesType != 'none' && currentStep == 10) || (cablesType == 'none' && currentStep == 9)) setHasReviewBeenVisited(true);
-        if((cablesType != 'none' && currentStep == 10) || (cablesType == 'none' && currentStep == 9)) submitNotification('goToCheckout');
     }, [currentStep, cablesType])
 
     const updateLocalStorage = () => {
