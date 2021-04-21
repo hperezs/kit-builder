@@ -123,11 +123,6 @@ export default function ReviewSystem({
                     }
                 </div>
             </div>
-            <div className={"relative flex items-center justify-center mb-7 p-6 border-t "}>
-                <div className="text-2xl font-medium px-6 py-2">
-                    Subtotal: {subtotal.toLocaleString('en-US', {style: 'currency', currency: 'USD'})}
-                </div>
-            </div>  
         </section>
     )
 }

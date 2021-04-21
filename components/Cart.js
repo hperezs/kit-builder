@@ -10,6 +10,7 @@ import HDMIinCart from "./steps/Cart/HDMIinCart";
 import MountInCart from "./steps/Cart/MountInCart";
 import SelfMadeProductInCart from "./steps/Cart/SelfMadeProductInCart";
 import PowerInjectorInCart from "./steps/Cart/PowerInjectorInCart";
+import ClearCart from "./steps/Cart/ClearCart";
 
 export default function Cart({
     cameras, 
@@ -31,7 +32,8 @@ export default function Cart({
     deleteMount,
     deletePowerInjector,
     deleteSMProduct,
-    deleteInstallation
+    deleteInstallation,
+    restartApp
 }) {
     const [showCart, setShowCart] = useState(false);
     const [count, setCount] = useState(0);
@@ -192,7 +194,7 @@ export default function Cart({
                                 })
                             }
                             {/* Extra Hard Drives */}
-                            {selectedHardDrives?.length && 
+                            {selectedHardDrives?.length > 1 && 
                                 <div className="flex mb-3 flex-wrap">
                                 {selectedHardDrives.map((hardDrive, index) => {
                                     if(index != 0) return(
@@ -204,10 +206,11 @@ export default function Cart({
                         </div>  
                     </div>
                     {/*footer*/}
-                    <div className={"flex items-center justify-center p-6 border-t " + (showCart ? '' : 'hidden')}>
+                    <div className={"relative flex items-center justify-center p-6 border-t " + (showCart ? '' : 'hidden')}>
                         <div className="text-2xl font-medium px-6 py-2">
                             Subtotal: {subtotal.toLocaleString('en-US', {style: 'currency', currency: 'USD'})}
                         </div>
+                        <ClearCart restartApp={restartApp} setShowCart={setShowCart}/>
                     </div>
                 </div>
             </div>

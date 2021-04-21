@@ -6,13 +6,6 @@ export default function DiscountsModal({confirmDelete}) {
   const [showModal, setShowModal] = React.useState(true);
   return (
     <>
-        <button 
-            onClick={e => setShowModal(true)}
-            className={"cursor-pointer p-4 text-green-600 border border-green-500 rounded hover:bg-green-600 hover:text-white transition-colors duration-400 ease focus:outline-none focus:ring focus:ring-green-200 focus:ring-opacity-60"}
-            transition-style="fade:in:faster" 
-        >
-            View Discounts
-        </button>
         {showModal ? (
         <>
           <div

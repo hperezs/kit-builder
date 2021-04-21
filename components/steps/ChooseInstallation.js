@@ -11,7 +11,7 @@ export default function ChooseInstallation({homeOrBusiness, cameras, isInstallat
     const selectButton_styles = "px-5 py-1 mt-10 border rounded bg-green-600 text-white text-sm uppercase tracking-wider font-semibold transition hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
 
     return(
-        <section className="my-20 flex flex-col justify-center items-center">
+        <section className="my-10 flex flex-col justify-center items-center">
             {/* Installation item container */}
             {!isInstallationSelected && 
             <div 
