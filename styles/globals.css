@@ -3,6 +3,7 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Noto+Sans+HK:wght@300;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
 
 html {
     scroll-behavior: smooth;
@@ -59,6 +60,12 @@ input[type=number] {
   .welcome-container {
     min-height: 30vh;
   }
+}
+
+.need-help {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.5rem;
+  line-height: 2.75rem;
 }
 
 footer {
