@@ -10,7 +10,7 @@ export default function VideoRecorderInCart({selectedNVR, cablesType, goToStep, 
         <div 
             onMouseEnter={e => setDisplayEditButton(true)}
             onMouseLeave={e => setDisplayEditButton(false)}
-            className={"relative flex flex-col items-center justify-center border rounded py-7 bg-white border-gray-300 shadow flex-shrink-0 " + (cablesType == 'pre-made' ? 'w-6/12' : 'w-8/12')}
+            className={"relative flex flex-col items-center justify-center border rounded py-7 bg-white border-gray-300 shadow flex-shrink-0 w-6/12"}
         >
             <div style={{height: '50px', width: '100px'}}> 
                 <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
@@ -38,8 +38,7 @@ export default function VideoRecorderInCart({selectedNVR, cablesType, goToStep, 
         <div 
             onMouseEnter={e => setDisplayEditButton(true)}
             onMouseLeave={e => setDisplayEditButton(false)}
-            className={"relative flex flex-row justify-start items-center py-4 px-5 border rounded flex-shrink-0  bg-white border-gray-300 shadow  " 
-            + (cablesType == 'pre-made' ? 'w-6/12' : 'w-8/12')}
+            className={"relative flex flex-row justify-start items-center py-4 px-5 border rounded flex-shrink-0  bg-white border-gray-300 shadow  w-6/12"}
         >
             <div className="m-3" style={{height: '86px', width: '120px'}}> 
                 <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>

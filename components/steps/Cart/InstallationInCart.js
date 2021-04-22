@@ -32,7 +32,7 @@ export default function InstallationInCart({homeOrBusiness, cablesType, cameras,
             onMouseLeave={e => setDisplayEditButton(false)}
             ref={item}
             style={{height: (displayMoreDetails ? '300px' : '176px')}} 
-            className={"relative flex flex-row justify-start items-center mb-3 rounded p-5 border bg-white border-gray-300 shadow overflow-hidden transition-all duration-500 ease " + (cablesType == 'pre-made' ? 'w-7/12' : 'w-9/12')}
+            className={"relative flex flex-row justify-start items-center mb-3 rounded p-5 border bg-white border-gray-300 shadow overflow-hidden transition-all duration-500 ease " + (isReviewStep ? '' : 'w-7/12')}
         >
             <div 
                 style={{left: '6%', top: (displayMoreDetails ? '100px' : '40px')}}
@@ -50,7 +50,7 @@ export default function InstallationInCart({homeOrBusiness, cablesType, cameras,
                 </div>
             </div>
             <div 
-                style={{left: (displayMoreDetails ? '35%' : '27%'), top: (displayMoreDetails ? '15%' : '30%')}}
+                style={{left: (displayMoreDetails ? '37%' : '30%'), top: (displayMoreDetails ? '15%' : '30%')}}
                 className={"absolute flex flex-col items-center transition-all duration-500 ease"}
             >
                 <p className="text-center text-lg">{(homeOrBusiness == 'home' ? 'Home' : 'Business') + ' Installation'}</p>

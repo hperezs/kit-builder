@@ -11,7 +11,7 @@ export default function PowerInjectorInCart({product, cablesType, goToStep, dele
         <div 
             onMouseEnter={e => setDisplayEditButton(true)}
             onMouseLeave={e => setDisplayEditButton(false)}
-            className={"relative flex flex-row justify-start items-center mb-3 rounded p-5 border bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-7/12' : 'w-9/12')} 
+            className={"relative flex flex-row justify-start items-center mb-3 rounded p-5 border bg-white border-gray-300 shadow " + (isReviewStep ? '' : 'w-7/12')} 
         >
             <div className="m-2 p-3 flex flex-col justify-center items-center rounded border-gray-300 ">
                 <div style={{height: '66px', width: '100px'}}> 
