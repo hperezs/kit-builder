@@ -270,9 +270,13 @@ export default function Home() {
                         </div>
                     </div>                     
                 </section>
-                <footer style={{backgroundColor: '#494949'}} className="flex justify-between items-center justify-center w-full py-2 px-10 mt-10">
+                <section className="flex flex-col items-center justify-center bg-green-700 text-gray-50 py-12">
+                    <h5 className="need-help tracking-wider ">Need Help Learning About Cameras?</h5>
+                    <a className="text-xl mt-5 cursor-pointer hover:text-green-100">View helpful links</a>
+                </section>
+                <footer style={{backgroundColor: '#494949'}} className="flex justify-between items-center justify-center w-full py-2 px-10">
                     {/* Icons */}
-                    <div className="flex justify-evenly">
+                    <div style={{width: '420px'}} className="flex justify-start">
                         <a href="https://www.facebook.com/Backstreetsecure/" target="_blank" style={{height: '35px', width: '45px'}} className="mx-2 cursor-pointer"> 
                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                 <NextImage
@@ -315,12 +319,12 @@ export default function Home() {
                         </a>
                     </div>
                     {/* Link */}
-                    <div className="flex flex-col items-center justify-center">
+                    <div style={{width: '420px'}} className="flex flex-col items-center justify-center ml-16">
                         <a href="https://www.backstreet-surveillance.com" target="_blank" className="text-gray-100 tracking-wider text-2xl mt-2">Visit: www.Backstreet-Surveillance.com</a>
                         <span className="tracking-wider text-sm font-light text-gray-200 my-1">Copyright © 2021 Backstreet Surveillance. All rights reserved.</span>
                     </div>
                     {/* Contact */}
-                    <div className="flex flex-col items-end text-gray-100 mr-10">
+                    <div style={{width: '420px'}} className="flex flex-col items-end text-gray-100 mr-10">
                         <span className="text-2xl">
                             <div style={{height: '20px', width: '30px'}} className="inline-block"> 
                                 <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
