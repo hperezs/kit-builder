@@ -68,7 +68,7 @@ export default function Actions({ nextStep, prevStep, currentStep, canClickNext,
                     className={"text-xl text-white mx-6 border rounded px-7 py-4 transition-all duration-300 ease " 
                         + 'border-green-400 bg-green-600 hover:bg-green-400 hover:text-white focus:outline-none focus:ring-4 focus:ring-green-300 focus:ring-opacity-500'}
                 >
-                    Proceed to checkout
+                    Proceed to Purchase / Quote
                 </button>
             }
 

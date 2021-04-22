@@ -24,7 +24,7 @@ export default function CableInCart({cable, goToStep, deleteCable, selectedNVR, 
                     />
                 </div>
             </div>
-            <div className="font-light mt-7">{cablesType == 'none' ? 'I have my own' : 'No cable added yet'}</div>
+            <div className="font-light mt-7">{cablesType == 'none' ? 'I have my own' : (cablesType == 'self-made' ? 'Self-made cable' : 'No cable added yet')}</div>
             {displayEditButton && isReviewStep && (selectedNVR || camera) && 
             <span 
                 transition-style="fade:in:faster"

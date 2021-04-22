@@ -39,7 +39,7 @@ export default function DiscountsModal({confirmDelete}) {
                         <div className="text-lg mt-7 text-center"><span className="text-green-600 text-2xl font-light mr-2">&#8594;</span>Head over to our checkout page to apply the discount</div>
 
                         <div className="p-4 border mt-7 shadow w-11/12 border-green-400 border-opacity-80">
-                          <span className="text-green-600 font-semibold mr-1">Note:</span> You can choose to have a quote with your selections sent to your email or place your order at checkout
+                          <span className="text-green-600 font-semibold mr-1">Note:</span> You can choose to send a quote of your selections to your email or finish placing your order
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@ export default function DiscountsModal({confirmDelete}) {
                     type="button"
                     onClick={() => {setShowModal(false)}}
                   >
-                    Proceed to checkout
+                    Proceed to purchase / quote
                   </button>
                 </div>
               </div>
