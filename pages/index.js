@@ -48,7 +48,7 @@ export default function Home() {
                     <div className="flex flex-col justify-center w-screen ">
                         <div style={{borderTopWidth: '5px'}} className="flex flex-col items-center justify-start border-green-600">
                             <p style={{maxWidth: '900px'}} className="text-3xl text-center w-7/12 my-16">
-                                Build your surveillance system in seconds. We guide you through choosing each component that best fits your needs.
+                                Build  your custom CCTV surveillance system in minutes, it's fun and FREE. Our Custom Kit Builder will guide you through each step, choosing the components that best fit your needs. No skill or previous knowledge about security cameras is needed.
                             </p>
                             <a style={{paddingBottom: '14px', paddingRight: '41px'}} onClick={handleClick} className="py-3 px-10 text-white border bg-green-700 bg-opacity-90 text-3xl rounded text-white text-center align-middle transition-colors duration-300 ease hover:bg-green-500 my`-8 cursor-pointer">
                                 Get started
@@ -73,7 +73,7 @@ export default function Home() {
                 <section className="mx-20 my-14 p-10 flex justify-center">
                     <div style={{maxWidth: '600px'}} className="">
                         <h3 className="text-3xl mb-8 font-semibold">How it works</h3>   
-                        <p className="text-xl">The experts at Backstreet Surveillance have applied their 30+ years of experience in the security industry and simplified the complex process of constructing the perfect video surveillance system. We have removed the hassle of researching and finding each individual component as this tool allows you to build your complete and ideal system in a matter of seconds based on our recommendations. <br/> <br/> When using this tool, you can rest assured that whatever you build will hold all of the components that are necessary for a high performance video surveillance system. Time to start building your dream CCTV system!</p>
+                        <p className="text-xl">The experts at Backstreet Surveillance have applied their 57+ years of experience and created this beginner-friendly CCTV design tool. The Custom Kit Builder simplifies the complex process of assembling the perfect video surveillance system.  <br/> <br/> We have removed the hassle of researching and finding each individual component. Our Kit Builder allows you to design your ideal system in a matter of minutes, then proceed to purchase or have a line item quote sent to your email, you choose.</p>
                     </div>
                     <div style={{height: '400px', width: '600px'}} className="ml-20"> 
                         <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
@@ -89,7 +89,7 @@ export default function Home() {
 
                 <section className="my-14 py-20 border-t border-b border-gray-400">
                     <h3 className="text-center text-3xl mb-10 font-semibold">What's included</h3>
-                    <p className="text-xl text-center">We make sure you don't miss any of the essentials components to cover all the requirements of your system.</p>
+                    <p className="text-xl text-center">We make sure you don't miss any of the essential components you'll need.</p>
                     <div className="flex justify-center">
                         <div className="flex justify-center mt-20 md:w-10/12 lg:w-8/12 xl:w-10/12 flex-wrap">
                             <div className="flex flex-col justify-center items-center mx-7 my-4">
