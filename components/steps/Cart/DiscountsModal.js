@@ -32,11 +32,15 @@ export default function DiscountsModal({confirmDelete}) {
                 {/*body*/}
                 <div style={{minHeight: '400px', maxWidth: '700px'}} className="relative p-6">
                     <div className="my-4 mx-3 text-xl flex flex-col items-center">
-                        <p className="text-xl mb-10">Big discounts at checkout! We have generated a discount based on your selections.</p>
+                        <p className="text-2xl mb-10">Your selections qualify for a discount!</p>
                         
                         <Image src="/images/discounts.jpg" width={600} height={300} />
 
                         <div className="text-lg mt-7 text-center"><span className="text-green-600 text-2xl font-light mr-2">&#8594;</span>Head over to our checkout page to apply the discount</div>
+
+                        <div className="p-4 border mt-7 shadow w-11/12 border-green-400 border-opacity-80">
+                          <span className="text-green-600 font-semibold mr-1">Note:</span> You can choose to have a quote with your selections sent to your email or place your order at checkout
+                        </div>
                     </div>
                 </div>
                 {/*footer*/}

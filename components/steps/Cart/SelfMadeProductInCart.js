@@ -11,7 +11,7 @@ export default function SelfMadeProductInCart({product, cablesType, goToStep, in
         <div 
             onMouseEnter={e => setDisplayEditButton(true)}
             onMouseLeave={e => setDisplayEditButton(false)}
-            className={"relative flex flex-row justify-start items-center mb-3 rounded p-5 border bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-7/12' : 'w-9/12')} 
+            className={"relative flex flex-row justify-start items-center mb-3 rounded p-5 border bg-white border-gray-300 shadow " + (isReviewStep ? 'w-full' : 'w-7/12')} 
         >
             <div className="m-2 p-3 flex flex-col justify-center items-center rounded border-gray-300 ">
                 <div style={{height: '66px', width: '100px'}}> 
@@ -25,15 +25,15 @@ export default function SelfMadeProductInCart({product, cablesType, goToStep, in
                     </div>
                 </div>
             </div>
-            <div style={{width: '114px'}} className="flex flex-col items-center mx-7">
+            <div style={{width: '114px'}} className="flex flex-col items-center mx-5">
                 <p className="text-center">{product.name}</p>
                 <p className="font-normal text-green-600">${product.price.toFixed(2)}</p>
             </div>
-            <div className="flex flex-col justify-center items-center mx-7">
+            <div className="flex flex-col justify-center items-center mx-5">
                 <p>Quantity:</p>
                 <span>{product.quantity}</span>
             </div>
-            <div className="flex flex-col justify-center items-center mx-7">
+            <div className="flex flex-col justify-center items-center mx-5">
                 <p>Subtotal:</p>
                 <span className="text-green-600">${(product.quantity * product.price).toFixed(2)}</span>
             </div>

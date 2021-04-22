@@ -5,10 +5,10 @@ import {FaEdit, FaTrashAlt} from 'react-icons/fa'
 import {VscDebugDisconnect} from 'react-icons/vsc'
 import DeleteModal from './DeleteModal';
 
-export default function CableInCart({cable, goToStep, deleteCable, selectedNVR, camera, isReviewStep}) {
+export default function CableInCart({cable, goToStep, deleteCable, selectedNVR, camera, isReviewStep, cablesType}) {
     const [displayEditButton, setDisplayEditButton] = useState(false);
 
-    if(!cable) return(
+    if(!cable || cablesType != 'pre-made') return(
         <div 
             onMouseEnter={e => setDisplayEditButton(true)}
             onMouseLeave={e => setDisplayEditButton(false)}
@@ -24,7 +24,7 @@ export default function CableInCart({cable, goToStep, deleteCable, selectedNVR, 
                     />
                 </div>
             </div>
-            <div className="font-light mt-7">No cable added yet</div>
+            <div className="font-light mt-7">{cablesType == 'none' ? 'I have my own' : 'No cable added yet'}</div>
             {displayEditButton && isReviewStep && (selectedNVR || camera) && 
             <span 
                 transition-style="fade:in:faster"

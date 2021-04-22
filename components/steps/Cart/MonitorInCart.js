@@ -11,7 +11,7 @@ export default function MonitorInCart({selectedMonitor, cablesType, goToStep, de
         <div 
             onMouseEnter={e => setDisplayEditButton(true)}
             onMouseLeave={e => setDisplayEditButton(false)}
-            className={"relative flex flex-row justify-start items-center py-4 px-5 border rounded flex-shrink-0 bg-white border-gray-300 shadow  " + (cablesType == 'pre-made' ? 'w-6/12' : 'w-8/12')}
+            className={"relative flex flex-row justify-start items-center py-4 px-5 border rounded flex-shrink-0 bg-white border-gray-300 shadow  w-6/12"}
         >
             <div className="m-3" style={{height: '86px', width: '120px'}}> 
                 <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>

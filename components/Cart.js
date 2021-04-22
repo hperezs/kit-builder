@@ -109,7 +109,7 @@ export default function Cart({
             <div 
                 ref={cart} 
                 className={"fixed top-0 right-0 z-50 transition-width ease-in-out duration-500 " + 
-                (showCart ? (cablesType == 'pre-made' ? '2xl:w-5/12 xl:w-7/12 lg:w-8/12 md:w-9/12 sm:w-10/12' : '2xl:w-4/12 xl:w-5/12 lg:w-6/12 md:w-8/12 sm:w-10/12') : 'w-0')}
+                (showCart ? '2xl:w-5/12 xl:w-7/12 lg:w-8/12 md:w-9/12 sm:w-10/12' : 'w-0')}
             >
                 {/*content*/}
                 <div className={"h-screen shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none " + (showCart ? '' : '')}>
@@ -137,8 +137,8 @@ export default function Cart({
                                     <VideoRecorderInCart selectedNVR={selectedNVR} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('NVR')}} deleteNVR={deleteNVR} />
                                 }
                                 {/* NVR's cable */}
-                                {cablesType == 'pre-made' && cablesType != 'none' &&
-                                    <CableInCart cable={selectedNVR.cable} goToStep={() => {setShowCart(false); goToStep('cables')}} deleteCable={deleteCable} selectedNVR={selectedNVR} camera={null}/>
+                                {
+                                    <CableInCart cable={selectedNVR.cable} goToStep={() => {setShowCart(false); goToStep('cables')}} deleteCable={deleteCable} selectedNVR={selectedNVR} camera={null} cablesType={cablesType}/>
                                 }
                                 {/* Hard Drive */}
                                 {
@@ -150,7 +150,7 @@ export default function Cart({
                                 <div className="flex flex-row justify-start mb-3">
                                     <MonitorInCart selectedMonitor={selectedMonitor} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('addons')}} deleteMonitor={deleteMonitor}/>
 
-                                    {selectedMonitor?.cable && 
+                                    {
                                         <HDMIinCart selectedMonitor={selectedMonitor} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('addons')}} deleteHDMI={deleteHDMI}/>
                                     }
                                 </div>
@@ -162,8 +162,8 @@ export default function Cart({
 
                                         <CameraInCart camera={camera} index={index} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('cameras')}} deleteCamera={deleteCamera}/>
 
-                                        {cablesType == 'pre-made' && cablesType != 'none' && 
-                                            <CableInCart cable={camera?.cable} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('cables')}} deleteCable={deleteCable} selectedNVR={null} camera={camera}/>
+                                        { 
+                                            <CableInCart cable={camera?.cable} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('cables')}} deleteCable={deleteCable} selectedNVR={null} camera={camera} cablesType={cablesType}/>
                                         }
 
                                         {

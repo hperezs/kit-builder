@@ -21,6 +21,7 @@ export default function Guide() {
     const [ monitorProducts, setMonitorProducts ] = useState([]);
     const [ mountProducts, setMountProducts ] = useState([]);
     const [ powerInjectors, setPowerInjectors ] = useState([]);
+    const [ freeProducts, setFreeProducts ] = useState([]);
 
     // App state
     const [ currentStep, setCurrentStep ] = useState(1);
@@ -93,6 +94,7 @@ export default function Guide() {
             }
         }).then(response => {
             response.json().then(data => {
+                console.log('****INDOOR CABLES****');
                 console.log(data.items);
                 setIndoorCables(data.items)
             })
@@ -106,6 +108,7 @@ export default function Guide() {
             }
         }).then(response => {
             response.json().then(data => {
+                console.log('****OUTDOOR CABLES****');
                 console.log(data.items);
                 setOurdoorCables(data.items);
             })
@@ -119,6 +122,7 @@ export default function Guide() {
             }
         }).then(response => {
             response.json().then(data => {
+                console.log('****SELFMADE****');
                 console.log(data.items);
                 setSelfMadeProducts(data.items);
             })
@@ -135,6 +139,7 @@ export default function Guide() {
             response.json().then(data => {
                 data.items.sort((a, b) => (a.price - b.price));
                 setHardDrives(data.items);
+                console.log('****HDDS****');
                 console.log(data.items);
             })
         })
@@ -150,6 +155,7 @@ export default function Guide() {
             response.json().then(data => {
                 data.items.sort((a, b) => (a.price - b.price));
                 setMonitorProducts(data.items);
+                console.log('****MONITORS****');
                 console.log(data.items);
             })
         })
@@ -164,6 +170,7 @@ export default function Guide() {
         }).then(response => {
             response.json().then(data => {
                 setMountProducts(data.items);
+                console.log('****MOUNTS****');
                 console.log(data.items);
             })
         })
@@ -178,7 +185,23 @@ export default function Guide() {
         }).then(response => {
             response.json().then(data => {
                 data.items.sort((a, b) => (a.price - b.price));
+                console.log('****POWER INJECTORS****');
                 setPowerInjectors(data.items);
+                console.log(data.items);
+            })
+        })
+
+        // Get Free products
+        const getFreeProducts_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=name&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=%25FREE - %25&searchCriteria[filterGroups][2][filters][0][field]=sku&searchCriteria[filterGroups][2][filters][0][conditionType]=neq&searchCriteria[filterGroups][2][filters][0][value]=FREE COAX STRIPPER&searchCriteria[filterGroups][3][filters][0][field]=sku&searchCriteria[filterGroups][3][filters][0][conditionType]=neq&searchCriteria[filterGroups][3][filters][0][value]=5-year -extended-warranty';
+        fetch(getFreeProducts_url, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + bearerToken
+            }
+        }).then(response => {
+            response.json().then(data => {
+                setFreeProducts(data.items);
+                console.log('****FREE PRODUCTS****');
                 console.log(data.items);
             })
         })
@@ -203,8 +226,6 @@ export default function Guide() {
     useEffect(() => {
         updateSubtotal();
         updateLocalStorage();
-        console.log(cameras);
-
     }, [cameras, selectedNVR, selectedHardDrives, cablesType, selectedSMProducts, selectedPowerInjectors, selectedMonitor, isInstallationSelected])
 
     // Allow user to click next when selections are made
@@ -710,7 +731,8 @@ export default function Guide() {
                 setCurrentStep(5);
                 break;
             case 'cables':
-                setCurrentStep(7);
+                if(cablesType == 'pre-made') setCurrentStep(7);
+                if(cablesType != 'pre-made') setCurrentStep(6);
                 break;
             case 'addons':
                 if(cablesType == 'pre-made') setCurrentStep(8);
@@ -825,6 +847,7 @@ export default function Guide() {
                             deleteInstallation={deleteInstallation}
                             subtotal={subtotal}
                             goToStep={goToStep}
+                            freeProducts={freeProducts}
                         />
                     </div>
 

@@ -30,8 +30,7 @@ export default function CameraInCart({camera, cablesType, goToStep, deleteCamera
             onMouseLeave={e => setDisplayEditButton(false)}
             ref={item} 
             style={{height: (displayMoreDetails ? '240px' : '176px')}}
-            className={"relative flex flex-row px-5 py-4 items-center border rounded flex-shrink-0 bg-white border-gray-300 shadow transition-all duration-500 ease overflow-hidden " 
-                + (cablesType == 'pre-made' ? 'w-6/12' : 'w-8/12')}
+            className={"relative flex flex-row px-5 py-4 items-center border rounded flex-shrink-0 bg-white border-gray-300 shadow transition-all duration-500 ease overflow-hidden w-6/12"}
         >
             <div  
                 style={{left: '6%'}}

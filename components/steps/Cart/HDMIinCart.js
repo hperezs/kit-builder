@@ -7,11 +7,29 @@ import DeleteModal from './DeleteModal';
 export default function HDMIinCart({selectedMonitor, cablesType, goToStep, deleteHDMI, isReviewStep}) {
     const [displayEditButton, setDisplayEditButton] = useState(false);
 
+    if(!selectedMonitor?.cable) return(
+        <div 
+            onMouseEnter={e => setDisplayEditButton(true)}
+            onMouseLeave={e => setDisplayEditButton(false)}
+            className={"relative flex flex-col items-center justify-center border rounded p-3 ml-3 bg-white border-gray-300 shadow w-6/12"}
+        >
+            <p className="font-light text-lg">No HDMI cable added yet</p>
+            {displayEditButton && 
+            <span 
+                transition-style="fade:in:faster"
+                onClick={e => goToStep('addons')}
+                className={"absolute top-0 right-0 cursor-pointer p-2 "}
+            >
+                <FaEdit className="fill-current text-yellow-600 text-2xl hover:text-yellow-400"/>
+            </span>}
+        </div>
+    )
+
     return(
         <div 
             onMouseEnter={e => setDisplayEditButton(true)}
             onMouseLeave={e => setDisplayEditButton(false)}
-            className={"relative flex flex-col items-center justify-center border rounded p-3 ml-3 bg-white border-gray-300 shadow " + (cablesType == 'pre-made' ? 'w-6/12' : 'w-4/12')}
+            className={"relative flex flex-col items-center justify-center border rounded p-3 ml-3 bg-white border-gray-300 shadow w-6/12"}
         >
             <div className="my-2 max-w-max flex flex-col justify-center items-center bg-white">
                 <div style={{height: '56px', width: '56px'}}> 
