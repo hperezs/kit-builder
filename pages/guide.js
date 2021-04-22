@@ -731,16 +731,16 @@ export default function Guide() {
                 setCurrentStep(5);
                 break;
             case 'cables':
-                if(cablesType == 'pre-made') setCurrentStep(7);
-                if(cablesType != 'pre-made') setCurrentStep(6);
+                if(cablesType == 'none') setCurrentStep(7);
+                if(cablesType != 'none') setCurrentStep(6);
                 break;
             case 'addons':
-                if(cablesType == 'pre-made') setCurrentStep(8);
-                if(cablesType != 'pre-made') setCurrentStep(7);
+                if(cablesType == 'none') setCurrentStep(8);
+                if(cablesType != 'none') setCurrentStep(7);
                 break;
             case 'installation':
-                if(cablesType == 'pre-made') setCurrentStep(9);
-                if(cablesType != 'pre-made') setCurrentStep(8);
+                if(cablesType == 'none') setCurrentStep(9);
+                if(cablesType != 'none') setCurrentStep(8);
                 break;
             case 'review':
                 if(cablesType != 'none') setCurrentStep(10);

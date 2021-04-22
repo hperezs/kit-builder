@@ -31,11 +31,11 @@ export default function InstallationInCart({homeOrBusiness, cablesType, cameras,
             onMouseEnter={e => setDisplayEditButton(true)}
             onMouseLeave={e => setDisplayEditButton(false)}
             ref={item}
-            style={{height: (displayMoreDetails ? '300px' : '176px')}} 
+            style={{height: (displayMoreDetails ? '300px' : '148px')}} 
             className={"relative flex flex-row justify-start items-center mb-3 rounded p-5 border bg-white border-gray-300 shadow overflow-hidden transition-all duration-500 ease " + (isReviewStep ? '' : 'w-7/12')}
         >
             <div 
-                style={{left: '6%', top: (displayMoreDetails ? '100px' : '40px')}}
+                style={{left: '6%', top: (displayMoreDetails ? '100px' : '30px')}}
                 className={"absolute flex flex-col justify-center items-center border-gray-300 transition-all duration-500 ease "}
             >
                 <div className="rounded" style={{height: '86px', width: '120px'}}> 
@@ -80,8 +80,8 @@ export default function InstallationInCart({homeOrBusiness, cablesType, cameras,
             </div>
             {!displayMoreDetails &&
             <div 
-                style={{right: '26%', padding: '15px 15px 0px 0px'}}
-                className={"absolute top-10 flex flex-col items-center rounded transition-all duration-500 ease"}
+                style={{right: '26%', top: '31%'}}
+                className={"absolute flex flex-col items-center rounded transition-all duration-500 ease"}
             >
                 <p>Price:</p>
                 <p className="font-normal text-green-600">{((homeOrBusiness == 'home' ? 299 : 349) + (cameras.length * 212.50)).toLocaleString('en-US', {style: 'currency', currency: 'USD'})}</p>
