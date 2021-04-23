@@ -59,7 +59,7 @@ export default function CameraInCart({camera, cablesType, goToStep, deleteCamera
                     <p className="font-light mb-1">Lens: {camera.cameraLens}</p>
                     <p className="font-light mb-1">Night Vision: {camera.nightVision}</p>
                     <p className="font-light mb-1">Resolution: {camera.resolution}</p>
-                    <p className={"font-light mb-1 " + (camera.hasAudio ? 'text-blue-600' : '')}>{camera.hasAudio ? 'Built-in Microphone' : ' No Audio'}</p>
+                    <p className={"font-light mb-1 " + (camera.audio != 'No Audio' ? 'text-blue-600' : '')}>{camera.audio}</p>
                 </div>
                 }
             </div>
@@ -68,7 +68,7 @@ export default function CameraInCart({camera, cablesType, goToStep, deleteCamera
                 className={"absolute top-10 flex flex-col items-center rounded transition-all duration-500 ease"}
             >
                 <p>Price:</p>
-                <span className="text-lg text-green-600">${camera.price?.$numberDecimal}</span>
+                <span className="text-lg text-green-600">${parseFloat(camera.price?.$numberDecimal).toFixed(2)}</span>
             </div>
             {displayEditButton &&
             <span 

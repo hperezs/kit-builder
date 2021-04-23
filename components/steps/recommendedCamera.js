@@ -9,7 +9,7 @@ export default function RecommendedCamera({camera, handleSelect}) {
 
     useEffect(() => {
         setIsLoading(true)
-        
+        console.log(camera);
     }, [camera])
 
     const handleOnLoad = () => {
@@ -51,9 +51,9 @@ export default function RecommendedCamera({camera, handleSelect}) {
                 <p className="font-light mb-1">Lens: {camera.cameraLens}</p>
                 <p className="font-light mb-1">Night Vision: {camera.nightVision}</p>
                 <p className={"font-light mb-1 " + (camera.resolution == '4K' ? 'text-yellow-600' : '')}>Resolution: {camera.resolution}</p>
-                <p className={"font-light mb-1 " + (camera.hasAudio ? 'text-blue-600' : '')}>{camera.hasAudio ? 'Built-in Microphone' : ' No Audio'}</p>
-                <p className="font-bold mb-1 text-yellow-500"><span className="line-through">${camera.oldPrice}</span> Save Big!</p>
-                <p className="font-normal text-green-600">${camera.price?.$numberDecimal}</p>
+                <p className={"font-light mb-1 " + (camera.audio != 'No Audio' ? 'text-blue-600' : '')}>{camera.audio}</p>
+                <p className="font-bold mb-1 text-yellow-500"><span className="line-through">${camera.comparePrice}</span> Save Big!</p>
+                <p className="font-normal text-green-600">${parseFloat(camera.price?.$numberDecimal).toFixed(2)}</p>
                 <button className={addToCart_styles} onClick={e => handleSelect(camera)}>Select</button>
                 <a href={backstreet_domain + camera.productLink} target="_blank" className="font-light text-green-600 hover:text-green-400">See more details</a>
             </div>
