@@ -15,6 +15,26 @@ export default function Home() {
         backgroundImage.src = '../images/welcome-background.jpg';
     }, [])
     
+    useEffect(() => {
+        fetch('https://morning-anchorage-80357.herokuapp.com/http://gd.geobytes.com/GetCityDetails').then(response => {
+            response.json().then(data => {
+                console.log(data);
+                let userLog = {
+                    ipAddress: data.geobytesipaddress,
+                    country: data.geobytescountry,
+                    state: data.geobytesregion,
+                    city: data.geobytescity
+                }
+                fetch('/api/logUserTraffic', {
+                    method: "POST",
+                    body: JSON.stringify(userLog)
+                }).then(response => {
+                    console.log(response);
+                }).catch(error => console.log(error))
+            })
+        });
+    }, [])
+
     const handleClick = () => {
         document.getElementById('animation-container').classList.remove('hidden');
         document.getElementById('animation-container').addEventListener('animationend', () => {document.getElementById('get-started-link').click()});

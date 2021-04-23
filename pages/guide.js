@@ -756,10 +756,7 @@ export default function Guide() {
                     container: "top-center",
                     animationIn: ["fade-in"],
                     animationOut: ["animate__animated", "animate__fadeOut"],
-                    dismiss: {
-                        duration: 5000,
-                    }
-                    });
+                });
         }
     }
 
