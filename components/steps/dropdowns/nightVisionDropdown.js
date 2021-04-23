@@ -70,15 +70,12 @@ export default function NightVisionDropdown({ viewingArea, cameraHousing, nightV
     if (cameraHousing == 'ptz') {
         return (
             <select
+                disabled
                 value={selectedValue}
                 onChange={handleChange}
-                className={classNames + 'border-green-400 cursor-pointer'}
+                className={classNames + 'bg-gray-50 cursor-not-allowed'}
                 >
-                <option value="150ft">150 ft</option>
-                <option value="300ft">300 ft</option>
-                <option value="360ft">360 ft</option>
-                <option value="400ft">400 ft</option>
-                <option value="450ft">450 ft</option>
+                <option>300+ ft</option>
             </select>
         )
     }

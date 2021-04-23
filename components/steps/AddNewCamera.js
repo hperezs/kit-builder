@@ -7,6 +7,7 @@ import NightVisionDropdown from './dropdowns/nightVisionDropdown'
 import RecommendedCameras from "./RecommendedCameras"
 import SelectHousing from "./SelectHousing"
 import NightvisionRadio from "./dropdowns/nightVisionRadio"
+import ResolutionRadio from "./dropdowns/resolutionRadio"
 
 export default function AddNewCamera({displayAddNewCamera , allProducts, selectNewCamera, isAddingNewCamera, setIsAddingNewCamera, lastIndex}) {
     const [isEditingName, setIsEditingName] = useState(false);
@@ -15,6 +16,7 @@ export default function AddNewCamera({displayAddNewCamera , allProducts, selectN
     const [viewingArea, setViewingArea] = useState('');
     const [cameraLens, setCameraLens] = useState('');
     const [nightVisionDist, setNightVisionDist] = useState('');
+    const [resolution, setResolution] = useState('');
 
     const handleNameChanges = event => {
         setCameraName(event.target.value);
@@ -94,28 +96,19 @@ export default function AddNewCamera({displayAddNewCamera , allProducts, selectN
                         <span>Viewing Area: </span>
                         <ViewingAreaDropdown viewingArea={viewingArea} setViewingArea={setViewingArea} cameraHousing={cameraHousing}/>
                     </div>
-                    <div className="mb-5 flex flex-row justify-between items-center">
+                    <div className="flex flex-row justify-between items-center">
                         <span>Camera Lens:</span>
                         <CameraLensDropdown
                             cameraLens={cameraLens}
                             setCameraLens={setCameraLens} 
                             viewingArea={viewingArea} 
+                            cameraHousing={cameraHousing}
                         />
                     </div>
-                    {!(viewingArea == 'Under 50 ft' && cameraHousing == 'dome') &&
-                    <div className="flex flex-row justify-between items-center">
-                        <span>Night Vision:</span>
-                        <NightVisionDropdown 
-                            viewingArea={viewingArea} 
-                            cameraHousing={cameraHousing}
-                            nightVisionDist={nightVisionDist}
-                            setNightVisionDist={setNightVisionDist}
-                        />
-                    </div>}
-                    {(viewingArea == 'Under 50 ft' && cameraHousing == 'dome') && 
-                    <div className="flex flex-row justify-between items-center">
-                        <span>Night Vision:</span>
-                        <NightvisionRadio setNightVisionDist={setNightVisionDist}/>
+                    {(cameraLens == '3.6mm fixed' && cameraHousing == 'dome') && 
+                    <div className="mt-5 flex flex-row justify-between items-center">
+                        <span>Resolution:</span>
+                        <ResolutionRadio setResolution={setResolution} />
                     </div>}
                 </div>
             </div>
@@ -128,6 +121,7 @@ export default function AddNewCamera({displayAddNewCamera , allProducts, selectN
                     cameraLens={cameraLens}
                     nightVisionDist={nightVisionDist}
                     handleSelect={handleSelect}
+                    resolution={resolution}
                 />
             </div>
         </section>

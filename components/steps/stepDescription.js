@@ -37,7 +37,7 @@ export default function StepDescription({currentStep}) {
                                 />
                             </div>
                         </div>
-                        <p className="mt-2 font-light text-gray-600">Note: PTZ cameras should have a viewing area of 200-1000 ft. It will automatically selected.</p>
+                        <p className="mt-2 font-light text-gray-600">You do not need to do this for PTZ cameras.</p>
                     </div>
                 </div>
             )
@@ -45,7 +45,7 @@ export default function StepDescription({currentStep}) {
             return(
                 <div className="relative p-6 flex-auto">
                     <div className="my-4 text-lg leading-relaxed">
-                        <p>When selecting a camera with a viewing area of 50-180 ft, select <span className="text-green-600">manual</span> or <span className="text-green-600">motorized zoom</span>. </p>
+                        <p>Select a <span className="text-green-600">camera lens</span>. If you need help selecting a lens, you can go back to the previous step to review the differences between each lens.</p>
                         <div style={{height: '300px', width: '520px'}}> 
                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                 <Image
@@ -56,7 +56,7 @@ export default function StepDescription({currentStep}) {
                                 />
                             </div>
                         </div>
-                        <p className="mt-2 font-light text-gray-600">Cameras with viewing areas of Under 50 ft or 200-1000 ft will have their camera lens automatically selected.</p>
+                        <p className="mt-2 font-light text-gray-600">You do not need to do this for PTZ cameras.</p>
                     </div>
                 </div>
             )

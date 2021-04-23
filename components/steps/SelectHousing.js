@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { GrAdd } from 'react-icons/gr'
 
 export default function SelectHousing({ cameraHousing, setCameraHousing}) {
@@ -12,13 +12,33 @@ export default function SelectHousing({ cameraHousing, setCameraHousing}) {
         setCameraHousing(housing);
     }
 
+    useEffect(() => {
+        setDisplayPopover(false);
+    }, [cameraHousing])
+
+    const button = useRef();
+
+    const handleClick = e => {
+        if(!button.current?.contains(e.target)){
+            setDisplayPopover(false);
+        } else setDisplayPopover(!displayPopover);
+      }
+  
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClick);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClick);
+        };
+    }, [])
+
     const popover_style = "absolute w-72 -top-full z-20 bg-white border rounded border-gray-200 shadow-lg flex flex-row justify-around";
     const base_style = "relative mb-3 p-5 flex flex-col justify-center items-center rounded hover:shadow-md hover:border-green-300 cursor-pointer ";
 
     return(
-        <div 
+        <div
+            ref={button}
             className={base_style + (cameraHousing == '' ? 'border-2 border-green-300' : 'border')}
-            onClick={e => setDisplayPopover(!displayPopover)}
         >
             {(housingStyle == '') ? 
                 <div className="flex flex-col justify-center items-center py-3"><GrAdd className="text-2xl mb-5" /><p>Click to select housing</p></div> : 

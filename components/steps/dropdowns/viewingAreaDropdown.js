@@ -15,8 +15,8 @@ export default function ViewingAreaDropdown({ viewingArea, setViewingArea, camer
         } 
 
         if(cameraHousing != 'ptz') {
-            setSelectedValue('Under 50 ft')
-            setViewingArea('Under 50 ft');
+            setSelectedValue('Under 60 ft')
+            setViewingArea('Under 60 ft');
         }
     }, [cameraHousing])
 
@@ -33,8 +33,8 @@ export default function ViewingAreaDropdown({ viewingArea, setViewingArea, camer
             placeholder="Select"
             className={style + (isDisabled ? 'cursor-not-allowed' : 'cursor-pointer')}
             >
-            <option disabled={isDisabled}>Under 50 ft</option>
-            <option disabled={isDisabled}>50-180 ft</option>
+            <option disabled={isDisabled}>Under 60 ft</option>
+            <option disabled={isDisabled}>Up to 180 ft</option>
             <option disabled={!isDisabled}>200-1000 ft</option>
         </select>
     )

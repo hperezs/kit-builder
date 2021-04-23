@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react'
 
-export default function CameraLensDropdown({ cameraLens, setCameraLens, viewingArea }) {
+export default function CameraLensDropdown({ cameraLens, setCameraLens, viewingArea, cameraHousing }) {
     const [ selectedValue, setSelectedValue ] = useState(cameraLens);
 
     //Select defaults
     useEffect(() => {
         switch(viewingArea) {
-            case 'Under 50 ft':
+            case 'Under 60 ft':
                 setCameraLens('3.6mm fixed');
+                setSelectedValue('3.6mm fixed');
                 break;
-            case '50-180 ft':
+            case 'Up to 180 ft':
                 setSelectedValue('2.8-12mm manual')
                 setCameraLens('2.8-12mm manual');
                 break;
@@ -19,7 +20,7 @@ export default function CameraLensDropdown({ cameraLens, setCameraLens, viewingA
         }
     }, [viewingArea])
 
-    const classNames = "inline ml-2 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 ";
+    const classNames = "inline ml-3 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 ";
 
     const handleChange = (event) => {
         let viewingArea = event.target.value;
@@ -27,15 +28,35 @@ export default function CameraLensDropdown({ cameraLens, setCameraLens, viewingA
         setCameraLens(event.target.value);
     }
 
-    if(viewingArea == 'Under 50 ft') {
+    if(viewingArea == 'Under 60 ft') {
         return (
             <div>
                 <select
-                    disabled
-                    value='3.6mm fixed'
-                    className={classNames + 'bg-gray-50 cursor-not-allowed'}
-                    >
+                    disabled={cameraHousing == ''}
+                    value={selectedValue}
+                    style={{textAlignLast: 'center'}}
+                    onChange={handleChange}
+                    className={classNames + (cameraHousing == '' ? 'cursor-not-allowed' : '')}
+                >
                     <option>3.6mm fixed</option>
+                    <option>2.8-12mm manual</option>
+                    <option>2.8-12mm motorized</option>
+                </select>
+            </div>
+        )
+    }
+
+    if(viewingArea == 'Up to 180 ft') {
+        return (
+            <div>
+                <select
+                    value={selectedValue}
+                    style={{textAlignLast: 'center'}}
+                    onChange={handleChange}
+                    className={classNames + ''}
+                >
+                    <option>2.8-12mm manual</option>
+                    <option>2.8-12mm motorized</option>
                 </select>
             </div>
         )

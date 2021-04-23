@@ -62,6 +62,9 @@ export default function Guide() {
                 console.log(camera_products);
                 setAllProducts(camera_products)
             })
+        }).catch(error => {
+            submitNotification('networkError');
+            console.log(error);
         })
 
         const getVideoRecorders_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][value]=%25NVR&searchCriteria[filterGroups][0][filters][0][conditionType]=like';
@@ -85,6 +88,8 @@ export default function Guide() {
                 setAllVideoRecorders(sorted);
                 console.log(sorted);
             })
+        }).catch(error => {
+            console.log(error);
         })
 
         // Get Cables from Magento API
@@ -100,6 +105,8 @@ export default function Guide() {
                 console.log(data.items);
                 setIndoorCables(data.items)
             })
+        }).catch(error => {
+            console.log(error);
         })
 
         const getOutdoorCables_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=db-cat6-%25'
@@ -114,6 +121,8 @@ export default function Guide() {
                 console.log(data.items);
                 setOurdoorCables(data.items);
             })
+        }).catch(error => {
+            console.log(error);
         })
 
         const getSelfMadeCables_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=%25CAT6-500&searchCriteria[filterGroups][0][filters][1][field]=sku&searchCriteria[filterGroups][0][filters][1][conditionType]=like&searchCriteria[filterGroups][0][filters][1][value]=%25CAT6-1000&searchCriteria[filterGroups][0][filters][2][field]=sku&searchCriteria[filterGroups][0][filters][2][value]=C208&searchCriteria[filterGroups][0][filters][3][field]=sku&searchCriteria[filterGroups][0][filters][3][value]=VDV226-011-SEN';
@@ -128,6 +137,8 @@ export default function Guide() {
                 console.log(data.items);
                 setSelfMadeProducts(data.items);
             })
+        }).catch(error => {
+            console.log(error);
         })
 
         // Get Hard Drives from Magento API
@@ -144,6 +155,8 @@ export default function Guide() {
                 console.log('****HDDS****');
                 console.log(data.items);
             })
+        }).catch(error => {
+            console.log(error);
         })
 
         // Get Monitor products
@@ -160,6 +173,8 @@ export default function Guide() {
                 console.log('****MONITORS****');
                 console.log(data.items);
             })
+        }).catch(error => {
+            console.log(error);
         })
 
         // Get Mounts
@@ -175,6 +190,8 @@ export default function Guide() {
                 console.log('****MOUNTS****');
                 console.log(data.items);
             })
+        }).catch(error => {
+            console.log(error);
         })
 
         // Get POE products
@@ -191,6 +208,8 @@ export default function Guide() {
                 setPowerInjectors(data.items);
                 console.log(data.items);
             })
+        }).catch(error => {
+            console.log(error);
         })
 
         // Get Free products
@@ -206,6 +225,8 @@ export default function Guide() {
                 console.log('****FREE PRODUCTS****');
                 console.log(data.items);
             })
+        }).catch(error => {
+            console.log(error);
         })
     }, [])
 
@@ -720,6 +741,19 @@ export default function Guide() {
                     type: "info",
                     insert: "top",
                     container: "top-right",
+                    animationIn: ["fade-in"],
+                    animationOut: ["animate__animated", "animate__fadeOut"],
+                    dismiss: {
+                        duration: 5000,
+                    }
+                    });
+            case 'networkError':
+                store.addNotification({
+                    title: 'Network Error',
+                    message: 'We apologize, our servers are currently going through maintenance. Please try again later.',
+                    type: "warning",
+                    insert: "top",
+                    container: "top-center",
                     animationIn: ["fade-in"],
                     animationOut: ["animate__animated", "animate__fadeOut"],
                     dismiss: {
