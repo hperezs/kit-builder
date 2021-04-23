@@ -9,6 +9,7 @@ import 'react-notifications-component/dist/theme.css'
 import Image from 'next/image'
 import ProgressBar from "../components/ProgressBar";
 import Head from 'next/head'
+import {CompileCameras} from '../lib/helpers'
 
 export default function Guide() {
     // Product data
@@ -47,20 +48,21 @@ export default function Guide() {
 
     // Fetch all necessary products
     useEffect(() => {
-        fetch('/api/getAllProducts')
-            .then(response => {
-                response.json().then(data => {
-                    console.log(data);
-                    setAllProducts(data);
-                })
+        const getAllCameras_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=housing_style&searchCriteria[filterGroups][0][filters][0][conditionType]=eq&searchCriteria[filterGroups][0][filters][0][value]=5521&searchCriteria[filterGroups][0][filters][1][field]=housing_style&searchCriteria[filterGroups][0][filters][1][conditionType]=eq&searchCriteria[filterGroups][0][filters][1][value]=5522&searchCriteria[filterGroups][0][filters][2][field]=housing_style&searchCriteria[filterGroups][0][filters][2][conditionType]=eq&searchCriteria[filterGroups][0][filters][2][value]=5523';
+        fetch(getAllCameras_url, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + bearerToken
+            }
+        }).then(response => {
+            response.json().then(data => {
+                console.log('****Magento Cameras****');
+                let camera_products = CompileCameras(data.items);
+                camera_products.sort((a, b) => a.price.$numberDecimal - b.price.$numberDecimal);
+                console.log(camera_products);
+                setAllProducts(camera_products)
             })
-        // fetch('/api/getVideoRecorders')
-        //     .then(response => {
-        //         response.json().then(data => {
-        //             console.log(data);
-        //             setAllVideoRecorders(data);
-        //         })
-        //     })
+        })
 
         const getVideoRecorders_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][value]=%25NVR&searchCriteria[filterGroups][0][filters][0][conditionType]=like';
         fetch(getVideoRecorders_url, {
@@ -71,15 +73,15 @@ export default function Guide() {
         }).then(response => {
             response.json().then(data => {
                 console.log('******VIDEO RECORDERS *****');
-                // Transpose object scheme to match the rest of the app
-                let transposed = data.items.map(product => ({
+                // Compile object scheme to match the rest of the app
+                let compiled = data.items.map(product => ({
                     sku: product.sku,
                     price: {$numberDecimal: parseFloat(product.price).toFixed(2)},
                     oldPrice: product.custom_attributes.find(attribute => attribute.attribute_code == 'compare_price').value,
                     channelCount: product.sku.split('PRO')[1].split('NVR')[0]
                 }));
                 // Sort by price
-                let sorted = transposed.sort((a, b) => a.price.$numberDecimal - b.price.$numberDecimal);
+                let sorted = compiled.sort((a, b) => a.price.$numberDecimal - b.price.$numberDecimal);
                 setAllVideoRecorders(sorted);
                 console.log(sorted);
             })
@@ -363,13 +365,21 @@ export default function Guide() {
         if(isInstallationSelected) submitNotification('installationUpdated');
 
         // Not sure why, but refetching data fixes the weird camera name bug
-        fetch('/api/getAllProducts')
-            .then(response => {
-                response.json().then(data => {
-                    console.log(data);
-                    setAllProducts(data);
-                })
+        const getAllCameras_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=housing_style&searchCriteria[filterGroups][0][filters][0][conditionType]=eq&searchCriteria[filterGroups][0][filters][0][value]=5521&searchCriteria[filterGroups][0][filters][1][field]=housing_style&searchCriteria[filterGroups][0][filters][1][conditionType]=eq&searchCriteria[filterGroups][0][filters][1][value]=5522&searchCriteria[filterGroups][0][filters][2][field]=housing_style&searchCriteria[filterGroups][0][filters][2][conditionType]=eq&searchCriteria[filterGroups][0][filters][2][value]=5523';
+        fetch(getAllCameras_url, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + bearerToken
+            }
+        }).then(response => {
+            response.json().then(data => {
+                console.log('****Magento Cameras****');
+                let camera_products = CompileCameras(data.items);
+                camera_products.sort((a, b) => a.price.$numberDecimal - b.price.$numberDecimal);
+                console.log(camera_products);
+                setAllProducts(camera_products)
             })
+        })
     }
 
     const deleteCamera = index => {

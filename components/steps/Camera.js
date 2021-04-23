@@ -93,8 +93,8 @@ export default function Camera({camera, index, updateCameraName, deleteCamera}) 
                 <p className="font-light mb-1">Lens: {camera.cameraLens}</p>
                 <p className="font-light mb-1">Night Vision: {camera.nightVision}</p>
                 <p className="font-light mb-1">Resolution: {camera.resolution}</p>
-                <p className={"font-light mb-1 " + (camera.hasAudio ? 'text-blue-600' : '')}>{camera.hasAudio ? 'Built-in Microphone' : ' No Audio'}</p>
-                <p className="font-normal text-green-600">${camera.price?.$numberDecimal}</p>
+                <p className={"font-light mb-1 " + (camera.audio != 'No Audio' ? 'text-blue-600' : '')}>{camera.audio}</p>
+                <p className="font-normal text-green-600">${parseFloat(camera.price?.$numberDecimal).toFixed(2)}</p>
             </div>
             <span 
                 onClick={e => handleDelete(index)}
