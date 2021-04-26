@@ -27,7 +27,10 @@ export default async function logUserTraffic(req, res) {
     // Create / Update user record
     let userLog = {
         ...JSON.parse(body.userLog), 
-        visitCount: 1
+        visitCount: 1,
+        hasStarted: false,
+        hasReachedReview: false,
+        proceededToCart: false,
     };
 
     let cursor = await client
@@ -40,12 +43,17 @@ export default async function logUserTraffic(req, res) {
     if (searchedLog.length) {
         console.log('Record found:');
         console.log(searchedLog);
+
         let newVisitCount = searchedLog[0].visitCount + 1;
-        console.log(newVisitCount);
-        let result = await client.db('traffic').collection('user-records')
-        .updateOne({"ipAddress": userLog.ipAddress}, { $set: {...userLog, visitCount: newVisitCount} });
-        console.log('User log successfully edited')
-        res.status(200).send('logged');
+        
+        let result = await client
+            .db('traffic')
+            .collection('user-records')
+            .updateOne({"ipAddress": userLog.ipAddress}, { $set: {visitCount: newVisitCount} });
+        
+            console.log('User log successfully edited')
+        
+            res.status(200).send('logged');
     } else {
         console.log("No record found.");
         const result = await client

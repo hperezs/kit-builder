@@ -23,6 +23,9 @@ export default function Guide() {
     const [ mountProducts, setMountProducts ] = useState([]);
     const [ powerInjectors, setPowerInjectors ] = useState([]);
     const [ freeProducts, setFreeProducts ] = useState([]);
+    
+    // For Analytics
+    const [ ipAddress, setIpAddress ] = useState('');
 
     // App state
     const [ currentStep, setCurrentStep ] = useState(1);
@@ -42,9 +45,22 @@ export default function Guide() {
 
     const bearerToken = process.env.BEARER_TOKEN;
 
+    // ANALYTICS: Record that user started app
     useEffect(() => {
-        if(isInstallationSelected) submitNotification('installationUpdated');
-    }, [homeOrBusiness])
+        fetch('https://morning-anchorage-80357.herokuapp.com/http://api.ipify.org/?format=json').then(response => {
+            response.json().then(data => {
+                setIpAddress(data.ip);
+                fetch('/api/updateRecord?step=start&ipAddress=' + data.ip);
+            })
+        })
+    }, [])
+
+    // ANALYTICS: Record that user reached review step
+    useEffect(() => {
+        if((currentStep == 10 && cablesType != none) || (currentStep == 9 && cablesType == 'none')){
+            fetch('/api/updateRecord?step=review&ipAddress=' + ipAddress);
+        }
+    }, [currentStep])
 
     // Fetch all necessary products
     useEffect(() => {
@@ -302,6 +318,10 @@ export default function Guide() {
         if(cablesType == 'pre-made' && currentStep == 10) setDisplayBackToReview(false);
         if(cablesType != 'pre-made' && currentStep == 9) setDisplayBackToReview(false);
     }, [currentStep, cablesType]);
+
+    useEffect(() => {
+        if(isInstallationSelected) submitNotification('installationUpdated');
+    }, [homeOrBusiness])
 
     const updateSubtotal = () => {
         let price_subtotal = 0.00;
