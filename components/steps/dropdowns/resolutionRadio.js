@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 
 export default function ResolutionRadio({setResolution}) {
-    const [selectedValue, setSelectedValue] = useState('3K');
+    const [selectedValue, setSelectedValue] = useState('4K');
 
     useEffect(() => {
         setResolution(selectedValue);

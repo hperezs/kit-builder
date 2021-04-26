@@ -12,7 +12,7 @@ export default function DiscountsModal({confirmDelete}) {
             transition-style="fade:in:faster"
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
           >
-            <div className="relative w-auto my-6 mx-auto">
+            <div className="relative w-auto mb-12 mx-auto">
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
@@ -31,14 +31,14 @@ export default function DiscountsModal({confirmDelete}) {
                 </div>
                 {/*body*/}
                 <div style={{minHeight: '400px', maxWidth: '700px'}} className="relative p-6">
-                    <div className="my-4 mx-3 text-xl flex flex-col items-center">
-                        <p className="text-2xl mb-10">Your selections qualify for a discount!</p>
+                    <div className="mx-3 text-xl flex flex-col items-center">
+                        <p className="text-2xl mb-7">Your selections qualify for a discount!</p>
                         
                         <Image src="/images/discounts.jpg" width={600} height={300} />
 
-                        <div className="text-lg mt-7 text-center"><span className="text-green-600 text-2xl font-light mr-2">&#8594;</span>Head over to our checkout page to apply the discount</div>
+                        <div className="text-lg mt-5 text-center"><span className="text-green-600 text-2xl font-light mr-2">&#8594;</span>Head over to our checkout page to apply the discount</div>
 
-                        <div className="p-4 border mt-7 shadow w-11/12 border-green-400 border-opacity-80">
+                        <div className="p-4 border mt-5 shadow w-11/12 border-green-400 border-opacity-80">
                           <span className="text-green-600 font-semibold mr-1">Note:</span> You can choose to send a quote of your selections to your email or finish placing your order
                         </div>
                     </div>

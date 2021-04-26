@@ -77,9 +77,9 @@ export default function Instructions({}) {
                         <button
                             className="bg-green-600 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg hover:bg-green-500 outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 focus:ring focus:ring-green-300 focus:ring-opacity-80"
                             type="button"
-                            onClick={() => (currentStep != 6 ? setCurrentStep(currentStep + 1) : finishInstructions())}
+                            onClick={() => (currentStep != 5 ? setCurrentStep(currentStep + 1) : finishInstructions())}
                         >
-                            {(currentStep == 6 ? 'Finish' : 'Next')}
+                            {(currentStep == 5 ? 'Finish' : 'Next')}
                         </button>
                     </div>
                 </div>

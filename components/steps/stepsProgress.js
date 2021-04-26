@@ -2,7 +2,7 @@ import {BsDot} from 'react-icons/bs'
 
 export default function StepsProgress({currentStep, setCurrentStep}) {
 
-    const steps = [1, 2, 3, 4, 5, 6]
+    const steps = [1, 2, 3, 4, 5]
 
     return(
         <div className="flex flex-row justify-evenly px-16">
