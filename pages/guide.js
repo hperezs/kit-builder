@@ -843,7 +843,7 @@ export default function Guide() {
     return(
         <div className="relative">
             <Head>
-                <title>CCTV Kit Builder</title>
+                <title>Surveillance System Kit Builder</title>
                 <meta property="og:title" content="CCTV Kit Builder" key="title" />
                 <meta description="Build your own complete surveillance system in seconds."/>
                 <link rel="icon" href="/KitBuilderFavicon.png"/>
