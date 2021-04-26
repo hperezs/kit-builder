@@ -17,7 +17,7 @@ export default function Home() {
     }, [])
     
     useEffect(() => {
-        fetch('http://api.ipify.org/?format=json').then(response => {
+        fetch('https://morning-anchorage-80357.herokuapp.com/http://api.ipify.org/?format=json').then(response => {
             response.json().then(data => {
                 console.log(data);
                 const getlocation_url = 'https://api.ipregistry.co/' + data.ip + '?key=' + access_key;
