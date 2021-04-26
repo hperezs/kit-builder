@@ -56,22 +56,22 @@ export default function Home() {
         <div className="flex flex-col justify-center">
             <Head>
                 <title>Surveillance System Kit Builder</title>
-                <meta name="title" content="Surveillance System Kit Builder"/>
-                <meta name="description" content="Build your own complete CCTV Kit, including cameras, video recorder, cables, hard drives, and other accessories. We guide you through the complexity of picking the right components of your system with short simple steps."/>
+                <meta name="title" content="Build the Perfect Surveillance System"/>
+                <meta name="description" content="Build your own complete CCTV Kit, including cameras, video recorder, cables, hard drives, and other accessories in minutes. We guide you through the complexity of picking the right components of your system with short simple steps."/>
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website"/>
                 <meta property="og:url" content="https://www.cctvkitbuilder.com/"/>
-                <meta property="og:title" content="Surveillance System Kit Builder"/>
-                <meta property="og:description" content="Build your own complete CCTV Kit, including cameras, video recorder, cables, hard drives, and other accessories. We guide you through the complexity of picking the right components of your system with short simple steps."/>
-                <meta property="og:image" content="/images/meta-data-picture.PNG"/>
+                <meta property="og:title" content="Build the Perfect Surveillance System"/>
+                <meta property="og:description" content="Build your own complete CCTV Kit, including cameras, video recorder, cables, hard drives, and other accessories in minutes. We guide you through the complexity of picking the right components of your system with short simple steps."/>
+                <meta property="og:image" content="https://www.cctvkitbuilder.com/images/meta-data-picture.PNG"/>
 
                 {/* Twitter */}
                 <meta property="twitter:card" content="summary_large_image"/>
                 <meta property="twitter:url" content="https://www.cctvkitbuilder.com/"/>
-                <meta property="twitter:title" content="Surveillance System Kit Builder"/>
-                <meta property="twitter:description" content="Build your own complete CCTV Kit, including cameras, video recorder, cables, hard drives, and other accessories. We guide you through the complexity of picking the right components of your system with short simple steps."/>
-                <meta property="twitter:image" content="/images/meta-data-picture.PNG"/>
+                <meta property="twitter:title" content="Build the Perfect Surveillance System"/>
+                <meta property="twitter:description" content="Build your own complete CCTV Kit, including cameras, video recorder, cables, hard drives, and other accessories in minutes. We guide you through the complexity of picking the right components of your system with short simple steps."/>
+                <meta property="twitter:image" content="https://www.cctvkitbuilder.com/images/meta-data-picture.PNG"/>
                 <link rel="icon" href="/KitBuilderFavicon.png"/>
             </Head>
 
