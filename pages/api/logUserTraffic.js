@@ -10,10 +10,11 @@ export default async function logUserTraffic(req, res) {
     
     // Log visit
     const currentDate = new Date();
+    let body = JSON.parse(req.body);
 
     let visitLog = {
-        ...JSON.parse(req.body),
-        timestamp: currentDate.getTime()
+        ...JSON.parse(body.userLog),
+        timestamp: body.timeOfVisit,
     }
 
     const result = await client
@@ -25,7 +26,7 @@ export default async function logUserTraffic(req, res) {
 
     // Create / Update user record
     let userLog = {
-        ...JSON.parse(req.body), 
+        ...JSON.parse(body.userLog), 
         visitCount: 1
     };
 

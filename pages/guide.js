@@ -63,7 +63,6 @@ export default function Guide() {
                 setAllProducts(camera_products)
             })
         }).catch(error => {
-            submitNotification('networkError');
             console.log(error);
         })
 
@@ -418,6 +417,17 @@ export default function Guide() {
         setCameras(new_cameras);
     }
 
+    const duplicateCamera = (camera, count, lastIndex) => {
+        let cameras_copy = cameras.slice();
+
+        for(let i = 0; i != count; i++) {
+            camera.cameraName = camera.sku;
+            cameras_copy.push(camera);
+        }
+
+        setCameras(cameras_copy);
+    }
+
     const selectNVR = nvr => {
         setSelectedNVR(nvr);
         submitNotification('addedToCart', nvr.sku);
@@ -747,16 +757,6 @@ export default function Guide() {
                         duration: 5000,
                     }
                     });
-            case 'networkError':
-                store.addNotification({
-                    title: 'Network Error',
-                    message: 'We apologize, our servers are currently going through maintenance. Please try again later.',
-                    type: "warning",
-                    insert: "top",
-                    container: "top-center",
-                    animationIn: ["fade-in"],
-                    animationOut: ["animate__animated", "animate__fadeOut"],
-                });
         }
     }
 
@@ -772,16 +772,16 @@ export default function Guide() {
                 setCurrentStep(5);
                 break;
             case 'cables':
-                if(cablesType == 'none') setCurrentStep(7);
-                if(cablesType != 'none') setCurrentStep(6);
+                if(cablesType != 'none') setCurrentStep(7);
+                if(cablesType == 'none') setCurrentStep(6);
                 break;
             case 'addons':
-                if(cablesType == 'none') setCurrentStep(8);
-                if(cablesType != 'none') setCurrentStep(7);
+                if(cablesType != 'none') setCurrentStep(8);
+                if(cablesType == 'none') setCurrentStep(7);
                 break;
             case 'installation':
-                if(cablesType == 'none') setCurrentStep(9);
-                if(cablesType != 'none') setCurrentStep(8);
+                if(cablesType != 'none') setCurrentStep(9);
+                if(cablesType == 'none') setCurrentStep(8);
                 break;
             case 'review':
                 if(cablesType != 'none') setCurrentStep(10);
@@ -856,6 +856,7 @@ export default function Guide() {
                             selectNewCamera={selectNewCamera}
                             deleteCamera={deleteCamera}
                             updateCameraName={updateCameraName}
+                            duplicateCamera={duplicateCamera}
                             selectedNVR={selectedNVR}
                             selectNVR={selectNVR}
                             deleteNVR={deleteNVR}

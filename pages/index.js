@@ -1,10 +1,11 @@
-import { bottom } from '@popperjs/core';
 import Head from 'next/head'
 import NextImage from 'next/image';
 import Link from 'next/link'
 import {useEffect} from 'react'
 
 export default function Home() {
+    const access_key = process.env.IPREGISTRY_KEY;
+    console.log(access_key);
     useEffect(() => {
         let backgroundImage = new Image();
         backgroundImage.onload = () => {
@@ -16,21 +17,31 @@ export default function Home() {
     }, [])
     
     useEffect(() => {
-        fetch('https://morning-anchorage-80357.herokuapp.com/http://gd.geobytes.com/GetCityDetails').then(response => {
+        fetch('http://api.ipify.org/?format=json').then(response => {
             response.json().then(data => {
                 console.log(data);
-                let userLog = {
-                    ipAddress: data.geobytesipaddress,
-                    country: data.geobytescountry,
-                    state: data.geobytesregion,
-                    city: data.geobytescity
-                }
-                fetch('/api/logUserTraffic', {
-                    method: "POST",
-                    body: JSON.stringify(userLog)
-                }).then(response => {
-                    console.log(response);
-                }).catch(error => console.log(error))
+                const getlocation_url = 'https://api.ipregistry.co/' + data.ip + '?key=' + access_key;
+                fetch(getlocation_url).then(response => {
+                    response.json().then(locationData => {
+                        console.log(locationData)
+                        let userLog = {
+                            ipAddress: data.ip,
+                            country: locationData.location.country.name,
+                            state: locationData.location.region.name,
+                            city: locationData.location.city,
+                        }
+                        fetch('/api/logUserTraffic', {
+                            method: "POST",
+                            body: JSON.stringify({
+                                userLog: JSON.stringify(userLog),
+                                timeOfVisit: locationData.time_zone.current_time,
+                            })
+                        }).then(response => {
+                            console.log(response);
+                        }).catch(error => console.log(error))
+                    });
+                })
+
             })
         });
     }, [])
