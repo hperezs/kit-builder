@@ -57,7 +57,7 @@ export default function Guide() {
 
     // ANALYTICS: Record that user reached review step
     useEffect(() => {
-        if((currentStep == 10 && cablesType != none) || (currentStep == 9 && cablesType == 'none')){
+        if((currentStep == 10 && cablesType != 'none') || (currentStep == 9 && cablesType == 'none')){
             fetch('/api/updateRecord?step=review&ipAddress=' + ipAddress);
         }
     }, [currentStep])
