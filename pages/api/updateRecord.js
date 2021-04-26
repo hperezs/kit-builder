@@ -1,7 +1,7 @@
 import {MongoClient} from 'mongodb'
 
 export default async function UpdateRecord(req, res) {
-    const uri = "mongodb+srv://jacob:backstreetdev@kit-builder-analytics.r70v5.mongodb.net/traffic?retryWrites=true&w=majority";
+    const uri = process.env.MONGO_URI;
     const client = new MongoClient(uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true

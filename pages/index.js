@@ -5,7 +5,7 @@ import {useEffect} from 'react'
 
 export default function Home() {
     const access_key = process.env.IPREGISTRY_KEY;
-    console.log(access_key);
+    
     useEffect(() => {
         let backgroundImage = new Image();
         backgroundImage.onload = () => {
