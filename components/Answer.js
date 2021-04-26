@@ -21,6 +21,7 @@ export default function Answer({
     videoRecorders,
     hardDrives,
     selectNewCamera,
+    duplicateCamera,
     deleteCamera,
     updateCameraName,
     selectedNVR,
@@ -77,6 +78,7 @@ export default function Answer({
                         cameras={cameras} 
                         deleteCamera={deleteCamera} 
                         updateCameraName={updateCameraName}
+                        duplicateCamera={duplicateCamera}
                     />
                 )
             case 4: 
@@ -172,6 +174,7 @@ export default function Answer({
                     cameras={cameras} 
                     deleteCamera={deleteCamera} 
                     updateCameraName={updateCameraName}
+                    duplicateCamera={duplicateCamera}
                 />
             )
         case 4: 

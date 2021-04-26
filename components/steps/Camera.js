@@ -4,8 +4,9 @@ import { BiEditAlt, BiCheck } from 'react-icons/bi'
 import { IoMdClose } from 'react-icons/io'
 import {FaTrashAlt, FaEdit, FaCheckCircle} from 'react-icons/fa'
 import Image from 'next/image'
+import DuplicateCamera from './DuplicateCamera'
 
-export default function Camera({camera, index, updateCameraName, deleteCamera}) {
+export default function Camera({camera, index, updateCameraName, deleteCamera, duplicateCamera, lastIndex}) {
     const [isEditing, setIsEditing] = useState(false);
     const [editedName, setEditedName] = useState(camera.cameraName);
     const [isBeingDeleted, setIsBeingDeleted] = useState(false);
@@ -95,6 +96,9 @@ export default function Camera({camera, index, updateCameraName, deleteCamera}) 
                 <p className="font-light mb-1">Resolution: {camera.resolution}</p>
                 <p className={"font-light mb-1 " + (camera.audio != 'No Audio' ? 'text-blue-600' : '')}>{camera.audio}</p>
                 <p className="font-normal text-green-600">${parseFloat(camera.price?.$numberDecimal).toFixed(2)}</p>
+                {/* {isEditing && 
+                    <DuplicateCamera duplicateCamera={duplicateCamera} camera={camera} lastIndex={lastIndex}/>
+                } */}
             </div>
             <span 
                 onClick={e => handleDelete(index)}
