@@ -35,7 +35,7 @@ export default function FreeItems({freeProducts}) {
                 freeProducts.map((product, index) => {
                     let splitName = product.name.split('-');
                     return(
-                        <div style={{width: '350px'}} className="flex justify-start items-center border-b py-5 ">
+                        <div style={{width: '350px'}} className="flex justify-start items-center border-b py-5 " key={index}>
                             <div style={{width: '75px', height: '75px'}}>
                                 <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                     <Image
