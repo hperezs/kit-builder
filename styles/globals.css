@@ -54,6 +54,39 @@ input[type=number] {
   }
 }
 
+@media screen and (max-width: 550px) {
+  .page-title, .welcome-banner {
+    height: 40vh;
+  }
+  .welcome-container {
+    min-height: 60vh;
+  }
+
+  .page-title {
+    width: 100% !important;
+  }
+  .welcome-banner {
+    background-position-x: right;
+  }
+  .welcome-text {
+    width: 80%;
+  }
+  .get-started {
+    padding: 0.5rem 1.25rem 0.5rem 1.25rem !important;
+  }
+  .kit-banner {
+    visibility: hidden;
+    height: 0px !important;
+  }
+  .how-it-works-img {
+    width: 100% !important;
+    height: 250px !important;
+  }
+  .why-backstreet-img {
+    height: 250px !important;
+  }
+}
+
 @media screen and (min-width: 2000px) {
   .page-title, .welcome-banner {
     height: 65vh;
