@@ -73,6 +73,7 @@ export default function Home() {
                 <meta property="twitter:description" content="Build your own complete CCTV Kit, including cameras, video recorder, cables, hard drives, and other accessories in minutes. We guide you through the complexity of picking the right components of your system with short simple steps."/>
                 <meta property="twitter:image" content="https://www.cctvkitbuilder.com/images/meta-data-picture.PNG"/>
                 <link rel="icon" href="/KitBuilderFavicon.png"/>
+                <link rel="alternate" href="https://www.cctvkitbuilder.com/" hreflang="en" />
             </Head>
 
             <main className=" relative h-screen w-screen">
