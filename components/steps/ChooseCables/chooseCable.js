@@ -22,6 +22,7 @@ export default function ChooseCable({camera, selectedNVR, index, indoorCables, o
 
     const handleSelect = cable => {
         let selectedCable = {
+            id: cable.id,
             sku: cable.sku,
             name: cable.name,
             price: cable.price,

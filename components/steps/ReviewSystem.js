@@ -34,7 +34,8 @@ export default function ReviewSystem({
     deletePowerInjector,
     deleteSMProduct,
     deleteInstallation,
-    freeProducts
+    freeProducts,
+    proceedToPurchase
 }) {
     
     return(
@@ -46,7 +47,7 @@ export default function ReviewSystem({
                     This will take you back to the related step.
                 </p>
 
-                <DiscountsModal />
+                <DiscountsModal proceedToPurchase={proceedToPurchase}/>
             </div>
 
             <div className={"relative p-6 flex flex-col overflow-y-auto lg:w-10/12 xl:w-9/12"}>

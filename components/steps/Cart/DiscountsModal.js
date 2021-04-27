@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import {FaTrashAlt} from 'react-icons/fa'
 
-export default function DiscountsModal({confirmDelete}) {
+export default function DiscountsModal({proceedToPurchase}) {
   const [showModal, setShowModal] = React.useState(true);
   return (
     <>
@@ -55,7 +55,7 @@ export default function DiscountsModal({confirmDelete}) {
                   <button
                     className="bg-green-600 text-white active:bg-green-600 font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 focus:outline-none focus:ring focus:ring-green-300 focus:ring-opacity-80 hover:bg-green-500"
                     type="button"
-                    onClick={() => {setShowModal(false)}}
+                    onClick={() => {setShowModal(false); proceedToPurchase()}}
                   >
                     Proceed to purchase / quote
                   </button>

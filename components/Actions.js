@@ -4,7 +4,7 @@ import 'tippy.js/dist/tippy.css';
 import 'tippy.js/themes/translucent.css';
 import Image from 'next/image'
 
-export default function Actions({ nextStep, prevStep, currentStep, canClickNext, isLastStep, displayBackToReview, goToStep, subtotal }) {
+export default function Actions({ nextStep, prevStep, currentStep, canClickNext, isLastStep, displayBackToReview, goToStep, subtotal, proceedToPurchase }) {
     return(
         <section className="flex flex-row items-center justify-center w-full border-t pt-7 border-gray-300">
             <a href="https://backstreet-surveillance.com/" target="_blank" className={isLastStep() ? "relative" : 'absolute top-0 left-0 mt-5'} style={{height: '60px', width: '220px'}}> 
@@ -65,6 +65,7 @@ export default function Actions({ nextStep, prevStep, currentStep, canClickNext,
 
             {isLastStep() && 
                 <button 
+                    onClick={e => proceedToPurchase()}
                     className={"text-xl text-white mx-6 border rounded px-7 py-4 transition-all duration-300 ease " 
                         + 'border-green-400 bg-green-600 hover:bg-green-400 hover:text-white focus:outline-none focus:ring-4 focus:ring-green-300 focus:ring-opacity-500'}
                 >

@@ -56,7 +56,8 @@ export default function Answer({
     deleteInstallation,
     subtotal,
     goToStep,
-    freeProducts
+    freeProducts,
+    proceedToPurchase
     }) {
 
     // Skip choose cables step if user selected "I have my own"
@@ -152,6 +153,7 @@ export default function Answer({
                         deleteSMProduct={deleteSMProduct}
                         deleteInstallation={deleteInstallation}
                         freeProducts={freeProducts}
+                        proceedToPurchase={proceedToPurchase}
                     />
                 )
         }    
@@ -267,6 +269,7 @@ export default function Answer({
                     deleteSMProduct={deleteSMProduct}
                     deleteInstallation={deleteInstallation}
                     freeProducts={freeProducts}
+                    proceedToPurchase={proceedToPurchase}
                 />
             )
     }    

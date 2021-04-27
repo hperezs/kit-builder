@@ -93,6 +93,7 @@ export default function Guide() {
                 console.log('******VIDEO RECORDERS *****');
                 // Compile object scheme to match the rest of the app
                 let compiled = data.items.map(product => ({
+                    id: product.id,
                     sku: product.sku,
                     price: {$numberDecimal: parseFloat(product.price).toFixed(2)},
                     oldPrice: product.custom_attributes.find(attribute => attribute.attribute_code == 'compare_price').value,
@@ -328,13 +329,13 @@ export default function Guide() {
         // Add cameras, cables and mounts cost
         cameras?.forEach(camera => {
             price_subtotal = price_subtotal + parseFloat(camera.price.$numberDecimal)
-            price_subtotal = price_subtotal + parseFloat((camera.cable?.price ? camera.cable.price : 0));
+            if(cablesType == 'pre-made') price_subtotal = price_subtotal + parseFloat((camera.cable?.price ? camera.cable.price : 0));
             price_subtotal = price_subtotal + parseFloat((camera.mount?.price ? camera.mount.price : 0));
         })
 
         // Add NVR cost
         if(selectedNVR != '') price_subtotal = price_subtotal + parseFloat(selectedNVR?.price.$numberDecimal);
-        if(selectedNVR?.cable) price_subtotal = price_subtotal + parseFloat(selectedNVR.cable.price);
+        if(selectedNVR?.cable && cablesType == 'pre-made') price_subtotal = price_subtotal + parseFloat(selectedNVR.cable.price);
 
         selectedHardDrives?.forEach(hardDrive => {
             price_subtotal = price_subtotal + parseFloat((hardDrive?.price ? hardDrive.price : 0));
@@ -840,6 +841,50 @@ export default function Guide() {
         submitNotification('applicationRestarted');
     }
 
+    const proceedToPurchase = () => {
+        let products = '';
+
+        cameras.forEach(camera => {
+            products = products + camera.id + ',' + camera?.mount?.id + ',';;
+            if(cablesType == 'pre-made') products = products + camera?.cable?.id + ',';
+        })
+
+        products = products + selectedNVR?.id + ',' 
+        if(cablesType == 'pre-made') products = products + selectedNVR?.cable?.id + ',';
+
+        selectedHardDrives.forEach(hardDrive => {
+            products = products + hardDrive?.id + ',';
+        })
+
+        selectedPowerInjectors.forEach(powerInjector => {
+            let i = 0;
+            while(i != powerInjector.quantity){
+                products = products + powerInjector?.id + ',';
+                i++;
+            }
+        })
+
+        if (cablesType == 'self-made') {
+            selectedSMProducts.forEach(item => {
+                let i = 0;
+                while(i != item?.quantity) {
+                    products = products + item?.id + ',';
+                    i++;
+                }
+            })
+        }
+
+        freeProducts.forEach(item => {
+            products = products + item?.id + ',';
+        })
+
+        products = products + selectedMonitor?.id + ',' + selectedMonitor?.cable?.id;
+
+        console.log(products);
+
+        window.open('https://www.backstreet-surveillance.com/customcart/add/add/pro_ids/' + products);
+    }
+
     return(
         <div className="relative">
             <Head>
@@ -910,6 +955,7 @@ export default function Guide() {
                             subtotal={subtotal}
                             goToStep={goToStep}
                             freeProducts={freeProducts}
+                            proceedToPurchase={proceedToPurchase}
                         />
                     </div>
 
@@ -925,6 +971,7 @@ export default function Guide() {
                                 displayBackToReview={displayBackToReview}
                                 goToStep={goToStep}
                                 subtotal={subtotal}
+                                proceedToPurchase={proceedToPurchase}
                             />
                         </div>
                     </div>
