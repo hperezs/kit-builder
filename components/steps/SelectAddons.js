@@ -18,7 +18,10 @@ export default function SelectAddons({
     deleteHDMI,
     selectedPowerInjectors,
     addPowerInjector,
-    deletePowerInjector
+    deletePowerInjector,
+    duplicateCamera,
+    deleteCamera,
+    updateCameraName
 }) {
     const [addonsType, setAddonsType] = useState('');
     const [selectedMonitorCount, setSelectedMonitorCount] = useState(0);
@@ -94,7 +97,17 @@ export default function SelectAddons({
                     deleteHDMI={deleteHDMI}
                 />
             }
-            {addonsType == 'mounts' && <Mounts mountProducts={mountProducts} cameras={cameras} addMount={addMount} deleteMount={deleteMount}/>}
+            {addonsType == 'mounts' && 
+                <Mounts 
+                    mountProducts={mountProducts} 
+                    cameras={cameras} 
+                    addMount={addMount} 
+                    deleteMount={deleteMount}
+                    duplicateCamera={duplicateCamera}
+                    deleteCamera={deleteCamera} 
+                    updateCameraName={updateCameraName}
+                />
+            }
             {addonsType == 'poe' && 
                 <PowerInjectors 
                     powerInjectors={powerInjectors} 

@@ -42,8 +42,9 @@ export default function Camera({camera, index, updateCameraName, deleteCamera, d
 
     return(
         <div 
+            style={{height: isEditing ? '498px' : '403px', transitionDuration: '0.4s'}}
             transition-style={isBeingDeleted ? "out:square:bottom-right" : "fade:in"}
-            className={"relative flex flex-col justify-start items-center my-7 mx-3 border rounded p-5 bg-white shadow-xl " + (isEditing ? 'edit-grow overflow-hidden' : '')}
+            className={"relative flex flex-col justify-start items-center my-7 mx-3 border rounded p-5 bg-white shadow-xl transition-all ease " + (isEditing ? 'overflow-hidden' : '')}
         >
             <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
                 <div style={{height: '86px', width: '120px'}}> 
@@ -96,9 +97,9 @@ export default function Camera({camera, index, updateCameraName, deleteCamera, d
                 <p className="font-light mb-1">Resolution: {camera.resolution}</p>
                 <p className={"font-light mb-1 " + (camera.audio != 'No Audio' ? 'text-blue-600' : '')}>{camera.audio}</p>
                 <p className="font-normal text-green-600">${parseFloat(camera.price?.$numberDecimal).toFixed(2)}</p>
-                {/* {isEditing && 
-                    <DuplicateCamera duplicateCamera={duplicateCamera} camera={camera} lastIndex={lastIndex}/>
-                } */}
+                {isEditing && 
+                    <DuplicateCamera duplicateCamera={duplicateCamera} camera={camera} lastIndex={lastIndex} setIsEditing={setIsEditing}/>
+                }
             </div>
             <span 
                 onClick={e => handleDelete(index)}

@@ -17,7 +17,8 @@ export default function ChooseCables({
     deleteCamera,
     updateCameraName,
     deleteSMProduct,
-    updateSMProductQuantity
+    updateSMProductQuantity,
+    duplicateCamera
 }) {
 
     const [isEditing, setIsEditing] = useState(false);
@@ -50,6 +51,8 @@ export default function ChooseCables({
                                 deleteCable={deleteCable}
                                 deleteCamera={deleteCamera}
                                 updateCameraName={updateCameraName}
+                                duplicateCamera={duplicateCamera}
+                                lastIndex={cameras?.length}
                             />
                         )
                     })

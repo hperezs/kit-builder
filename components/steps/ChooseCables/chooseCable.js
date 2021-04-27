@@ -7,7 +7,19 @@ import CableLocationDropdown from '../dropdowns/cableLocationDropdown'
 import CableColorDropdown from '../dropdowns/cableColorDropdown'
 import Camera from "../Camera"
 
-export default function ChooseCable({camera, selectedNVR, index, indoorCables, outdoorCables, selectCable, deleteCable, deleteCamera, updateCameraName}) {
+export default function ChooseCable({
+    camera, 
+    selectedNVR, 
+    index, 
+    indoorCables, 
+    outdoorCables, 
+    selectCable, 
+    deleteCable, 
+    deleteCamera, 
+    updateCameraName, 
+    duplicateCamera,
+    lastIndex
+}) {
     const [cableLength, setCableLength] = useState(25);
     const [indoorOrOutdoor, setIndoorOrOutdoor] = useState('indoor');
     const [cableColor, setCableColor] = useState("White");
@@ -48,7 +60,17 @@ export default function ChooseCable({camera, selectedNVR, index, indoorCables, o
                 </div>
             }
 
-            {camera && <Camera camera={camera} key={index} index={index} deleteCamera={deleteCamera} updateCameraName={updateCameraName}/>}
+            {camera && 
+                <Camera 
+                    camera={camera} 
+                    key={index} 
+                    index={index} 
+                    deleteCamera={deleteCamera} 
+                    updateCameraName={updateCameraName} 
+                    duplicateCamera={duplicateCamera} 
+                    lastIndex={lastIndex}
+                />
+            }
 
             {selectedNVR && 
                 <div className={'flex flex-col justify-start items-center mx-3 rounded px-3 py-7 border bg-white shadow-lg'}>

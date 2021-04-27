@@ -5,7 +5,7 @@ import Camera from '../Camera';
 import RecommendedMount from './recommendedMount';
 import {FaTrashAlt} from 'react-icons/fa'
 
-export default function ChooseMount({camera, cameraIndex, mountProducts, addMount, deleteMount}) {
+export default function ChooseMount({camera, cameraIndex, mountProducts, addMount, deleteMount, lastIndex, duplicateCamera, deleteCamera, updateCameraName}) {
     const [isChoosing, setIsChoosing] = useState(!camera?.mount);
 
     const hasSpecialMount = (camera) => {
@@ -30,7 +30,16 @@ export default function ChooseMount({camera, cameraIndex, mountProducts, addMoun
 
     return(
         <div className="flex flex-row justify-start items-center" key={cameraIndex}>
-            <Camera camera={camera} />
+            <Camera 
+                camera={camera}
+                index={cameraIndex} 
+                updateCameraName={updateCameraName}
+                deleteCamera={deleteCamera}
+                duplicateCamera={duplicateCamera}
+                lastIndex={lastIndex}
+                deleteCamera={deleteCamera} 
+                updateCameraName={updateCameraName}
+            />
             {!isChoosing ? 
                 <div transition-style="in:square:center" className="flex flex-col items-center justify-center p-5">
                     <div className={card_styles}>

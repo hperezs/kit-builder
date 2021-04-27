@@ -6,7 +6,7 @@ import RecommendedMount from './recommendedMount';
 import {FaTrashAlt} from 'react-icons/fa'
 import ChooseMount from './chooseMount';
 
-export default function Mounts({mountProducts, cameras, addMount, deleteMount}) {
+export default function Mounts({mountProducts, cameras, addMount, deleteMount, duplicateCamera, deleteCamera, updateCameraName}) {
     
     return(
         <section className="mt-5 w-11/12 xl:w-9/12">
@@ -21,6 +21,10 @@ export default function Mounts({mountProducts, cameras, addMount, deleteMount}) 
                             addMount={addMount}
                             deleteMount={deleteMount}
                             key={cameraIndex}
+                            lastIndex={cameras?.length}
+                            duplicateCamera={duplicateCamera}
+                            deleteCamera={deleteCamera} 
+                            updateCameraName={updateCameraName}
                         />
                     ))
                 }

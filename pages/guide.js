@@ -400,27 +400,10 @@ export default function Guide() {
 
     const selectNewCamera = (camera) => {
         let cameras_copy = cameras.slice();
-        cameras_copy.push(camera);
+        cameras_copy.push(JSON.parse(JSON.stringify(camera))); //Making a clean copy to avoid memory issues
         setCameras(cameras_copy);
         submitNotification('addedToCart', camera.sku);
         if(isInstallationSelected) submitNotification('installationUpdated');
-
-        // Not sure why, but refetching data fixes the weird camera name bug
-        const getAllCameras_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=housing_style&searchCriteria[filterGroups][0][filters][0][conditionType]=eq&searchCriteria[filterGroups][0][filters][0][value]=5521&searchCriteria[filterGroups][0][filters][1][field]=housing_style&searchCriteria[filterGroups][0][filters][1][conditionType]=eq&searchCriteria[filterGroups][0][filters][1][value]=5522&searchCriteria[filterGroups][0][filters][2][field]=housing_style&searchCriteria[filterGroups][0][filters][2][conditionType]=eq&searchCriteria[filterGroups][0][filters][2][value]=5523';
-        fetch(getAllCameras_url, {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + bearerToken
-            }
-        }).then(response => {
-            response.json().then(data => {
-                console.log('****Magento Cameras****');
-                let camera_products = CompileCameras(data.items);
-                camera_products.sort((a, b) => a.price.$numberDecimal - b.price.$numberDecimal);
-                console.log(camera_products);
-                setAllProducts(camera_products)
-            })
-        })
     }
 
     const deleteCamera = index => {
@@ -442,8 +425,10 @@ export default function Guide() {
         let cameras_copy = cameras.slice();
 
         for(let i = 0; i != count; i++) {
-            camera.cameraName = camera.sku;
-            cameras_copy.push(camera);
+            lastIndex++;
+            let new_camera = JSON.parse(JSON.stringify(camera));
+            new_camera.cameraName = 'Camera ' + lastIndex;
+            cameras_copy.push(new_camera);
         }
 
         setCameras(cameras_copy);

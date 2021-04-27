@@ -122,6 +122,9 @@ export default function Answer({
                         selectedPowerInjectors={selectedPowerInjectors}
                         addPowerInjector={addPowerInjector}
                         deletePowerInjector={deletePowerInjector}
+                        duplicateCamera={duplicateCamera}
+                        deleteCamera={deleteCamera} 
+                        updateCameraName={updateCameraName}
                     />
                 )
             case 8:
@@ -219,6 +222,7 @@ export default function Answer({
                     updateCameraName={updateCameraName}
                     deleteSMProduct={deleteSMProduct}
                     updateSMProductQuantity={updateSMProductQuantity}
+                    duplicateCamera={duplicateCamera}
                 />
             )
         case 8:
@@ -238,6 +242,9 @@ export default function Answer({
                     selectedPowerInjectors={selectedPowerInjectors}
                     addPowerInjector={addPowerInjector}
                     deletePowerInjector={deletePowerInjector}
+                    duplicateCamera={duplicateCamera}
+                    deleteCamera={deleteCamera} 
+                    updateCameraName={updateCameraName}
                 />
             )
         case 9:
