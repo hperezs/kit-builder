@@ -842,6 +842,9 @@ export default function Guide() {
     }
 
     const proceedToPurchase = () => {
+        // ANALYTICS: Record that user proceeded to cart
+        fetch('/api/updateRecord?step=end&ipAddress=' + ipAddress);
+
         let products = '';
 
         cameras.forEach(camera => {
