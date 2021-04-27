@@ -24,7 +24,7 @@ export default function InstallationInCart({homeOrBusiness, cablesType, cameras,
     }, [])
 
     const baseFee = (homeOrBusiness == 'home' ? 299 : 349);
-    const subtotal = baseFee + (212.50 * cameras.length);
+    const subtotal = baseFee + (212.00 * cameras.length);
 
     return(
         <div
@@ -65,7 +65,7 @@ export default function InstallationInCart({homeOrBusiness, cablesType, cameras,
                         </div>
                         <div className="flex justify-between w-full mb-2 px-2">
                             <span className="mr-5">Installation fee per camera</span>
-                            <span>$212.50</span>
+                            <span>$212.00</span>
                         </div>
                         <div className="flex justify-between w-full px-2 pb-2">
                             <span className="mr-5">Your cameras</span>
@@ -84,7 +84,7 @@ export default function InstallationInCart({homeOrBusiness, cablesType, cameras,
                 className={"absolute flex flex-col items-center rounded transition-all duration-500 ease"}
             >
                 <p>Price:</p>
-                <p className="font-normal text-green-600">{((homeOrBusiness == 'home' ? 299 : 349) + (cameras.length * 212.50)).toLocaleString('en-US', {style: 'currency', currency: 'USD'})}</p>
+                <p className="font-normal text-green-600">{((homeOrBusiness == 'home' ? 299 : 349) + (cameras.length * 212.00)).toLocaleString('en-US', {style: 'currency', currency: 'USD'})}</p>
             </div>}
            {displayEditButton && 
             <span 

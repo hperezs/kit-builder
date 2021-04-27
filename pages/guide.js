@@ -366,7 +366,7 @@ export default function Guide() {
 
         // Add Installation Costs
         if(isInstallationSelected){
-            price_subtotal = price_subtotal + parseFloat((homeOrBusiness == 'home' ? 299 : 349) + (cameras.length * 212.50))
+            price_subtotal = price_subtotal + parseFloat((homeOrBusiness == 'home' ? 299 : 349) + (cameras.length * 212.00))
         }
 
         setSubtotal(price_subtotal);
@@ -861,13 +861,28 @@ export default function Guide() {
                 }
             })
         }
-
+        
+        products = products + selectedMonitor?.id + ',' + selectedMonitor?.cable?.id + ',';
+        
+        if(isInstallationSelected) {
+            if(homeOrBusiness == 'home') {
+                products = products + '641,'; 
+            } else if (homeOrBusiness == 'business') {
+                products = products + '642,'; 
+            }
+            
+            let i = 0;
+            while(i != cameras.length) {
+                products = products + '644,';
+                i++;
+            }
+            
+        }
+        
         freeProducts.forEach(item => {
             products = products + item?.id + ',';
         })
-
-        products = products + selectedMonitor?.id + ',' + selectedMonitor?.cable?.id;
-
+        
         console.log(products);
 
         window.open('https://www.backstreet-surveillance.com/customcart/add/add/pro_ids/' + products);

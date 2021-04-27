@@ -6,7 +6,7 @@ export default function ChooseInstallation({homeOrBusiness, cameras, isInstallat
     const [ selfInstallationSelected, setSelfInstallationSelected ] = useState(false);
 
     const baseFee = (homeOrBusiness == 'home' ? 299 : 349);
-    const subtotal = baseFee + (212.50 * cameras.length);
+    const subtotal = baseFee + (212 * cameras.length);
 
     const selectButton_styles = "px-5 py-1 mt-10 border rounded bg-green-600 text-white text-sm uppercase tracking-wider font-semibold transition hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
 
@@ -47,7 +47,7 @@ export default function ChooseInstallation({homeOrBusiness, cameras, isInstallat
                     </div>
                     <div className="flex justify-between w-full mb-2 px-2">
                         <span className="mr-5">Installation fee per camera</span>
-                        <span>$212.50</span>
+                        <span>$212.00</span>
                     </div>
                     <div className="flex justify-between w-full px-2 pb-2">
                         <span className="mr-5">Your cameras</span>
@@ -94,7 +94,7 @@ export default function ChooseInstallation({homeOrBusiness, cameras, isInstallat
                     </div>
                     <div className="flex justify-between w-full mb-2 px-2">
                         <span className="mr-5">Installation fee per camera</span>
-                        <span>$212.50</span>
+                        <span>$212.00</span>
                     </div>
                     <div className="flex justify-between w-full px-2 pb-2">
                         <span className="mr-5">Your cameras</span>
