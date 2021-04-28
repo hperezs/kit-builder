@@ -53,6 +53,20 @@ export default function Guide() {
         ReactGa.pageview(window.location.pathname + window.location.search);
    }, [])
 
+   const logStepProgress = () => {
+        ReactGa.event({
+            category: 'Bounce',
+            action: 'User bounced at step #' + currentStep,
+        })
+   }
+
+   useEffect(() => {
+        window.addEventListener("beforeunload", logStepProgress)
+
+        return () => {
+            window.removeEventListener("beforeunload", logStepProgress)
+        }
+   }, [currentStep])
 
     // ANALYTICS: Record that user started app
     useEffect(() => {
@@ -838,6 +852,10 @@ export default function Guide() {
     const proceedToPurchase = () => {
         // ANALYTICS: Record that user proceeded to cart
         fetch('/api/updateRecord?step=end&ipAddress=' + ipAddress);
+        ReactGa.event({
+            category: 'Button',
+            action: 'Customer proceeded to purchase / quote!!',
+        })
 
         let products = '';
 
