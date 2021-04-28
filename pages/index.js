@@ -112,6 +112,7 @@ export default function Home() {
                             layout="fill"
                             objectFit="contain"
                             quality={100}
+                            alt="kit-builder-banner"
                         />
                     </div>
                 </div>
@@ -129,6 +130,7 @@ export default function Home() {
                                 layout="fill"
                                 objectFit="contain"
                                 quality={100}
+                                alt="personalized selections of cameras"
                             />
                         </div>
                     </div>
@@ -147,6 +149,7 @@ export default function Home() {
                                             layout="fill"
                                             objectFit="contain"
                                             quality={100}
+                                            alt="camera-icon"
                                         />
                                     </div>
                                 </div>
@@ -160,6 +163,7 @@ export default function Home() {
                                             layout="fill"
                                             objectFit="contain"
                                             quality={100}
+                                            alt="video-recorder-icon"
                                         />
                                     </div>
                                 </div>
@@ -173,6 +177,7 @@ export default function Home() {
                                             layout="fill"
                                             objectFit="contain"
                                             quality={100}
+                                            alt="hard-drive-icon"
                                         />
                                     </div>
                                 </div>
@@ -186,6 +191,7 @@ export default function Home() {
                                             layout="fill"
                                             objectFit="contain"
                                             quality={100}
+                                            alt="cables-icon"
                                         />
                                     </div>
                                 </div>
@@ -199,6 +205,7 @@ export default function Home() {
                                             layout="fill"
                                             objectFit="contain"
                                             quality={100}
+                                            alt="mounts-icon"
                                         />
                                     </div>
                                 </div>
@@ -212,6 +219,7 @@ export default function Home() {
                                             layout="fill"
                                             objectFit="contain"
                                             quality={100}
+                                            alt="monitor-icon"
                                         />
                                     </div>
                                 </div>
@@ -225,6 +233,7 @@ export default function Home() {
                                             layout="fill"
                                             objectFit="contain"
                                             quality={100}
+                                            alt="power-injector-icon"
                                         />
                                     </div>
                                 </div>
@@ -238,6 +247,7 @@ export default function Home() {
                                             layout="fill"
                                             objectFit="contain"
                                             quality={100}
+                                            alt="installation-icon"
                                         />
                                     </div>
                                 </div>
@@ -258,6 +268,7 @@ export default function Home() {
                                 layout="fill"
                                 objectFit="contain"
                                 quality={100}
+                                alt="backstreet employee stocking products"
                             />
                         </div>
                     </div>
@@ -280,6 +291,7 @@ export default function Home() {
                                     layout="fill"
                                     objectFit="contain"
                                     quality={100}
+                                    alt="30-day money-back guarantee"
                                 />
                             </div>
                         </div>
@@ -296,6 +308,7 @@ export default function Home() {
                                     layout="fill"
                                     objectFit="contain"
                                     quality={100}
+                                    alt="5-year warranty"
                                 />
                             </div>
                         </div>
@@ -312,6 +325,7 @@ export default function Home() {
                                     layout="fill"
                                     objectFit="contain"
                                     quality={100}
+                                    alt="usa-based"
                                 />
                             </div>
                         </div>
@@ -331,6 +345,7 @@ export default function Home() {
                                     layout="fill"
                                     objectFit="contain"
                                     quality={100}
+                                    alt="facebook-link"
                                 />
                             </div>
                         </a>
@@ -341,6 +356,7 @@ export default function Home() {
                                     layout="fill"
                                     objectFit="contain"
                                     quality={100}
+                                    alt="instagram-link"
                                 />
                             </div>
                         </a>
@@ -351,6 +367,7 @@ export default function Home() {
                                     layout="fill"
                                     objectFit="contain"
                                     quality={100}
+                                    alt="twitter-link"
                                 />
                             </div>
                         </a>
@@ -361,6 +378,7 @@ export default function Home() {
                                     layout="fill"
                                     objectFit="contain"
                                     quality={100}
+                                    alt="pinterest-link"
                                 />
                             </div>
                         </a>
@@ -380,6 +398,7 @@ export default function Home() {
                                         layout="fill"
                                         objectFit="contain"
                                         quality={100}
+                                        alt="phone-icon"
                                     />
                                 </div>
                             </div>800-431-3056
