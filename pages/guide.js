@@ -11,6 +11,8 @@ import ProgressBar from "../components/ProgressBar";
 import Head from 'next/head'
 import {CompileCameras} from '../lib/helpers'
 
+import ReactGa from 'react-ga'
+
 export default function Guide() {
     // Product data
     const [ allProducts, setAllProducts ] = useState([]); // These are cameras from MongoDB
@@ -44,6 +46,13 @@ export default function Guide() {
     const [ hasReviewBeenVisited, setHasReviewBeenVisited ] = useState(false);
 
     const bearerToken = process.env.BEARER_TOKEN;
+
+    //  Google Analytics
+    useEffect(() => {
+        ReactGa.initialize("UA-195816848-1");
+        ReactGa.pageview(window.location.pathname + window.location.search);
+   }, [])
+
 
     // ANALYTICS: Record that user started app
     useEffect(() => {
