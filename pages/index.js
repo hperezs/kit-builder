@@ -318,10 +318,10 @@ export default function Home() {
                     </div>                     
                 </section>
                 <section className="flex flex-col items-center justify-center bg-green-700 text-gray-50 py-12">
-                    <h5 className="need-help sm:text-3xl sm:mx-5 sm:text-center">Need More Information About Security Cameras?</h5>
+                    <h5 className="need-help sm:text-3xl lg:text-4xl sm:mx-5 sm:text-center">Need More Information About Security Cameras?</h5>
                     <a href="https://backstreet-surveillance.com/blog" target="_blank" className="text-xl mt-5 cursor-pointer hover:text-green-100">View our security blog</a>
                 </section>
-                <footer style={{backgroundColor: '#494949'}} className="flex sm:flex-col justify-between items-center justify-center w-full py-2 sm:py-10 sm:px-5 lg:px-10">
+                <footer style={{backgroundColor: '#494949'}} className="flex sm:flex-col lg:flex-row justify-between items-center justify-center w-full lg:py-4 sm:py-10 sm:px-5 lg:px-10">
                     {/* Icons */}
                     <div style={{maxWidth: '420px'}} className="flex justify-start">
                         <a href="https://www.facebook.com/Backstreetsecure/" target="_blank" style={{height: '35px', width: '45px'}} className="mx-2 cursor-pointer"> 
@@ -367,11 +367,11 @@ export default function Home() {
                     </div>
                     {/* Link */}
                     <div style={{maxWidth: '420px'}} className="flex flex-col items-center justify-center lg:ml-16">
-                        <a href="https://www.backstreet-surveillance.com" target="_blank" className="text-gray-100 tracking-wider sm:text-lg sm:mt-7 lg:text-2xl mt-2">Visit: www.Backstreet-Surveillance.com</a>
+                        <a href="https://www.backstreet-surveillance.com" target="_blank" className="text-gray-100 tracking-wider sm:text-lg sm:mt-7 lg:text-2xl lg:mt-0">Visit: www.Backstreet-Surveillance.com</a>
                         <span className="tracking-wider text-sm font-light text-gray-200 text-center my-1">Copyright © 2021 Backstreet Surveillance. All rights reserved.</span>
                     </div>
                     {/* Contact */}
-                    <div style={{maxWidth: '420px'}} className="flex flex-col items-end sm:items-center sm:mt-5 text-gray-100 lg:mr-10">
+                    <div style={{maxWidth: '420px'}} className="flex flex-col items-end sm:items-center sm:mt-5 lg:mt-0 text-gray-100 lg:mr-10">
                         <span className="text-2xl">
                             <div style={{height: '20px', width: '30px'}} className="inline-block"> 
                                 <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>

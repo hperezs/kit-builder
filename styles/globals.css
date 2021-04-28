@@ -87,6 +87,12 @@ input[type=number] {
   }
 }
 
+@media screen and (min-width: 800px) {
+  .need-help {
+    font-size: 2.4rem !important;
+  }
+}
+
 @media screen and (min-width: 2000px) {
   .page-title, .welcome-banner {
     height: 65vh;
