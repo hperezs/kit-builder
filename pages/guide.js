@@ -882,6 +882,9 @@ export default function Guide() {
         freeProducts.forEach(item => {
             products = products + item?.id + ',';
         })
+
+        // Built with Kit Builder product for analytics
+        products = products + '645';
         
         console.log(products);
 
