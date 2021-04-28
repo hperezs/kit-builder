@@ -8,6 +8,15 @@ export default function Home() {
     const access_key = process.env.IPREGISTRY_KEY;
 
     useEffect(() => {
+         //  Google Analytics
+         ReactGa.initialize("UA-195816848-1");
+
+         ReactGa.pageview(window.location.pathname + window.location.search);
+
+         console.log("Google analytics initialized");
+    }, [])
+
+    useEffect(() => {
         let backgroundImage = new Image();
         backgroundImage.onload = () => {
             console.log('image loaded');    
@@ -47,11 +56,6 @@ export default function Home() {
 
             })
         });
-
-        //  Google Analytics
-        ReactGa.initialize("G-NQTZFQMX8R");
-
-        ReactGa.pageview('/');
 
     }, [])
 
