@@ -55,7 +55,7 @@ export default function Home() {
     return (
         <div className="flex flex-col justify-center">
             <Head>
-                <title>Surveillance System Kit Builder</title>
+                <title>Build the Perfect Surveillance System | Backstreet Surveillance</title>
                 <meta name="title" content="Build the Perfect Surveillance System"/>
                 <meta name="description" content="Build your own complete CCTV Kit, including cameras, video recorder, cables, hard drives, and other accessories in minutes. We guide you through the complexity of picking the right components of your system with short simple steps."/>
 
