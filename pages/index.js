@@ -7,13 +7,10 @@ import ReactGa from 'react-ga'
 export default function Home() {
     const access_key = process.env.IPREGISTRY_KEY;
 
+    //  Google Analytics
     useEffect(() => {
-         //  Google Analytics
          ReactGa.initialize("UA-195816848-1");
-
          ReactGa.pageview(window.location.pathname + window.location.search);
-
-         console.log("Google analytics initialized");
     }, [])
 
     useEffect(() => {

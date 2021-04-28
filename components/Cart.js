@@ -97,7 +97,7 @@ export default function Cart({
     return (
         <>
             <button
-                className="absolute top-7 right-0 text-3xl outline-none focus:outline-none focus:ring focus:ring-green-400 focus:ring-opacity-50 ease-linear transition-all duration-150"
+                className="absolute top-7 right-0 text-3xl sm:mr-4 lg:mr-0 outline-none focus:outline-none focus:ring focus:ring-green-400 focus:ring-opacity-50 ease-linear transition-all duration-150"
                 type="button"
                 onClick={() => setShowCart(true)}
             >

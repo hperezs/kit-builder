@@ -908,7 +908,7 @@ export default function Guide() {
             </div>
             <ReactNotification className="mt-20"/>
             <ProgressBar progress={(cablesType != 'none' ? currentStep / 10 : currentStep / 9)} />
-            <main className="flex flex-row justify-center items-start mt-14 z-20">
+            <main className="flex flex-row justify-center items-start lg:mt-14 z-20">
                 <div className="relative flex flex-col justify-center 2xl:w-8/12 xl:w-10/12 lg:w-10/12 md:w-11/12">
                     <Question currentStep={currentStep} cablesType={cablesType} />
                     <hr className="mt-5"/>
@@ -965,7 +965,7 @@ export default function Guide() {
                         />
                     </div>
 
-                    <div className="fixed bottom-0 pb-10 left-0 w-screen flex flex-col items-center mt-10 bg-white">
+                    <div className="fixed bottom-0 lg:pb-10 left-0 w-screen flex flex-col items-center mt-10 bg-white">
                         <div className="flex relative flex-col justify-center 2xl:w-8/12 xl:w-10/12 lg:w-10/12 md:w-11/12">
                             <Actions 
                                 nextStep={nextStep} 

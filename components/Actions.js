@@ -6,8 +6,8 @@ import Image from 'next/image'
 
 export default function Actions({ nextStep, prevStep, currentStep, canClickNext, isLastStep, displayBackToReview, goToStep, subtotal, proceedToPurchase }) {
     return(
-        <section className="flex flex-row items-center justify-center w-full border-t pt-7 border-gray-300">
-            <a href="https://backstreet-surveillance.com/" target="_blank" className={isLastStep() ? "relative" : 'absolute top-0 left-0 mt-5'} style={{height: '60px', width: '220px'}}> 
+        <section className="flex flex-row items-center justify-center sm:w-screen lg:w-full border-t pt-7 border-gray-300 flex-wrap-reverse">
+            <a href="https://backstreet-surveillance.com/" target="_blank" className={isLastStep() ? "relative" : 'actions-logo sm:relative lg:absolute lg:top-0 lg:left-0 mt-5 sm:mb-5 lg:mb-0'} style={{height: '60px', width: '220px'}}> 
                 <div style={{maxWidth: '100%', height: '100%'}}>
                     <Image
                         src='/images/BS_logo.png'

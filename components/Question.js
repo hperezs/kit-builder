@@ -71,7 +71,7 @@ export default function Question({ currentStep, cablesType }) {
     
 
     return(
-        <h4 className="text-3xl text-gray-800 mt-5">
+        <h4 style={{maxWidth: '80%'}} className="sm:text-2xl lg:text-3xl sm:ml-4 lg:ml-0 text-gray-800 mt-5">
             {currentQuestion}
         </h4>
     )

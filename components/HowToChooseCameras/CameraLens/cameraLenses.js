@@ -6,7 +6,7 @@ export default function CameraLenses() {
         <section id="cameraLenses" className="my-10 pb-10">
             <h3 className="text-center my-10 text-4xl font-light">Camera Lens</h3>
             <div className="flex flex-row justify-center">
-                <div className="w-8/12">
+                <div className="lg:w-8/12">
                     <p className="text-center">The camera lens is determined by the viewing area.</p>
                     <br/>
                     <ul className="list-inside">

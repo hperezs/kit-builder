@@ -15,18 +15,18 @@ export default function HowToChooseCameras() {
         }
     }, [activeFeature])
 
-    const feature_card_styles = "flex flex-col justify-center w-56 items-center p-7 border border-gray-400 rounded mx-5 cursor-pointer focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 ";
+    const feature_card_styles = "flex flex-col justify-center w-56 items-center p-7 border border-gray-400 rounded mx-5 sm:mb-4 lg:mb-0 cursor-pointer focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 ";
     const active_card_styles = "bg-green-200 shadow-lg";
 
     return(
         <section className="h-96 my-10">
             <div className="text-xl">
-                <p>Before you choose your cameras, spend some time looking at these key camera features. You'll need to consider them when choosing each camera.</p>
+                <p className="sm:px-10 lg:px-0">Before you choose your cameras, spend some time looking at these key camera features. You'll need to consider them when choosing each camera.</p>
                 <br/> 
                 <div id="featureDescription"></div>
-                <p className="font-light rounded p-3 bg-green-50"><span className="text-green-700">&#8594;</span> When you are ready to move on, click <span className="text-green-600 font-normal">Next</span>.</p>
+                <p className="sm:mx-5 lg:mx-0 sm:text-center lg:text-left font-light rounded p-3 bg-green-50"><span className="text-green-700">&#8594;</span> When you are ready to move on, click <span className="text-green-600 font-normal">Next</span>.</p>
 
-                <div className="flex flex-row justify-evenly mt-10">
+                <div className="flex flex-row justify-evenly mt-10 flex-wrap">
                     <a
                         tabIndex={0}
                         onClick={e => setActiveFeature('cameraHousing')} 

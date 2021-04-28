@@ -85,6 +85,9 @@ input[type=number] {
   .why-backstreet-img {
     height: 250px !important;
   }
+  .actions-logo {
+    width: 420px !important;
+  }
 }
 
 @media screen and (min-width: 800px) {

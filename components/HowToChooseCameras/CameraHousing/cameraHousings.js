@@ -16,10 +16,10 @@ export default function CameraHousings() {
     const selected = 'border-green-200 border-4 shadow-lg';
 
     return (
-        <section id="cameraHousings" className="my-10 pb-20">
+        <section id="cameraHousings" className="my-10 pb-20 ">
             <h3 className="text-center my-10 text-4xl font-light">Camera Housings</h3>
             <p className="ml-3 text-xl mb-14 text-center">There are 3 types of camera housings. Click on each one to see more information about them.</p>
-            <div className="flex flex-row justify-center items-center mt-5 mb-20">
+            <div className="flex flex-row justify-center items-center mt-5 mb-20 flex-wrap">
                 <div 
                     className={"p-5 text-center mx-10 rounded border-black-200 " + (housingSelected == 'dome' ? selected : 'border hover:shadow-lg hover:border-green-200')}
                     onClick={e => setHousingSelected('dome')}
