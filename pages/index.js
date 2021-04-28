@@ -117,10 +117,10 @@ export default function Home() {
                 </div>
                 
                 {/* How it works section */}
-                <section className="mx-5 lg:mx-20 my-14 lg:p-10 flex flex-wrap justify-center">
+                <section className="mx-5 lg:mx-20 my-14 lg:p-10 flex flex-wrap justify-center items-center">
                     <div style={{maxWidth: '600px'}} className="">
                         <h3 className="text-3xl mb-8 font-semibold text-green-900">How it works</h3>   
-                        <p className="text-xl">The experts at Backstreet Surveillance have applied their 57+ years of experience and created this beginner-friendly CCTV design tool. The Custom Kit Builder simplifies the complex process of assembling the perfect video surveillance system.  <br/> <br/> We have removed the hassle of researching and finding each individual component. Our Kit Builder allows you to design your ideal system in a matter of minutes, then proceed to purchase or have a line item quote sent to your email, you choose.</p>
+                        <p className="text-xl">The experts at Backstreet Surveillance have applied their 57+ years of experience and created this beginner-friendly CCTV design tool. The Custom Kit Builder simplifies the complex process of assembling the perfect video surveillance system.  <br/> <br/> We have removed the hassle of researching and finding each individual component. Our Kit Builder allows you to design your ideal system in a matter of minutes, then proceed to purchase or have a line item quote sent to your email.</p>
                     </div>
                     <div style={{height: '400px', width: '600px'}} className="how-it-works-img sm:mt-10 lg:ml-20"> 
                         <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
@@ -136,7 +136,7 @@ export default function Home() {
 
                 <section className="my-14 py-20 border-t border-b border-gray-400">
                     <h3 className="text-center text-3xl mb-10 font-semibold text-green-900">What's included</h3>
-                    <p className="text-xl text-center">We make sure you don't miss any of the essential components you'll need.</p>
+                    <p className="text-xl text-center">We make sure you don't miss any of the essential components of a high-performance video surveillance system.</p>
                     <div className="flex justify-center">
                         <div className="flex justify-center mt-20 md:w-10/12 lg:w-8/12 xl:w-10/12 flex-wrap">
                             <div className="flex flex-col justify-center items-center mx-7 my-4">
