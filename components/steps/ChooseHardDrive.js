@@ -152,21 +152,6 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
        setSelectedHDStorage(totalStorage);
     }, [selectedHardDrives])
 
-    // If hard drive products are not visible display a message
-    useEffect(() => {
-        if(isChoosing){
-            var observer = new IntersectionObserver(entries => {
-                if(entries[0].isIntersecting) {
-                    setDisplayScrollBox(false)
-                } else {
-                    setDisplayScrollBox(true)
-                }
-            }, { threshold: [0.8]});
-
-            observer.observe(document.querySelector('#hardDrive-products'));
-        }
-    }, [])
-
     useEffect(() => {
         console.log(displayScrollBox);
     }, [displayScrollBox])
@@ -311,22 +296,24 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
                     </div>
                 </div>
 
-                <RecommendedHardDrive hardDrive={recommendedHD} additionalHD={additionalHD} recommendedHDMultiplier={recommendedHDMultiplier}/> 
+                <RecommendedHardDrive 
+                    hardDrive={recommendedHD} 
+                    additionalHD={additionalHD} 
+                    recommendedHDMultiplier={recommendedHDMultiplier} 
+                    addToCart={addToCart} 
+                    setIsEditing={setIsEditing}
+                    selectedHardDrives={selectedHardDrives}
+                /> 
 
             </div>
 
-            {/* Scroll down message */}
-            {displayScrollBox && 
-            <div transition-style="fade:in:faster" className="absolute top-20 right-10 p-5 bg-green-600 text-white bg-opacity-80 rounded">
-                Scroll down to choose your Hard Drive
-            </div>}
-
             {isChoosing &&
-                <div className="flex justify-center my-10">
+                <div className="relative flex justify-center my-10">
+                    <h4 className="absolute top-0 pt-5 text-center z-10 font-light text-2xl">All Hard Drives</h4>
                     <div
                         id="hardDrive-products"
                         transition-style="in:wipe:right" 
-                        className="flex flex-row justify-evenly items-center p-10 border rounded bg-gray-100 shadow">
+                        className="flex flex-row justify-evenly items-center p-10 pt-20 border rounded bg-gray-100 shadow">
                         {hardDrives && 
                             hardDrives.map((hardDrive, index) => {
                                 let isRecommended = ((hardDrive.sku == recommendedHD.sku || hardDrive.sku == additionalHD.sku) && !isSelected(hardDrive));

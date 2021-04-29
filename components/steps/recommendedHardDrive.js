@@ -1,8 +1,38 @@
 import Image from 'next/image'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import {FaCheckCircle} from 'react-icons/fa'
 
-export default function RecommendedHardDrive({hardDrive, additionalHD, recommendedHDMultiplier}) {
+export default function RecommendedHardDrive({hardDrive, additionalHD, recommendedHDMultiplier, addToCart, setIsEditing, selectedHardDrives}) {
 
+    const [ isHDAdded, setIsHDAdded ] = useState(false);
+    const [ isAdditionalHDAdded, setIsAdditionalHDAdded ] = useState(false);
+
+    useEffect(() => {
+        console.log('running useEffect');
+        let wasHDFound = false;
+        let wasAdditionalHDFound = false;
+        let wasHDFoundMultiplier = 0;
+
+        selectedHardDrives.forEach(item => {
+            if (recommendedHDMultiplier > 0) {
+                if (item.sku == hardDrive.sku) {
+                    wasHDFoundMultiplier++;
+                    if(wasHDFoundMultiplier == recommendedHDMultiplier) wasHDFound = true;
+                }
+            } else {
+                console.log('useEffect ran');
+                if (item.sku == hardDrive.sku) wasHDFound = true;
+                console.log(item.sku == hardDrive.sku);
+            }
+
+            if (item.sku == additionalHD.sku) wasAdditionalHDFound = true;
+        })
+
+        setIsHDAdded(wasHDFound);
+        setIsAdditionalHDAdded(wasAdditionalHDFound);
+    }, [selectedHardDrives, hardDrive, additionalHD])
+
+    const selectButton_styles = "py-1 border rounded bg-green-600 text-white text-sm uppercase tracking-wider font-semibold mt-3 transition hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
 
     // If there is just one recommended HD
     if(additionalHD == '--') return(
@@ -10,7 +40,7 @@ export default function RecommendedHardDrive({hardDrive, additionalHD, recommend
             <div className="text-2xl font-light w-full p-5 text-center bg-white border">Recommended Hard Drive{recommendedHDMultiplier != 0 ? 's' : ''}</div>
 
             <div className="flex flex-col items-center justify-center">
-                <div className="mx-10 mt-12 px-6 py-10 flex flex-col justify-center items-center border rounded border-gray-300 bg-white shadow-lg ">
+                <div className={"relative mx-10 mt-7 px-6 py-10 flex flex-col justify-center items-center border rounded border-gray-300 bg-white shadow-lg " + (isHDAdded ? 'border-green-400' : '')}>
                     <div style={{height: '186px', width: '220px'}}> 
                         <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                             <Image
@@ -31,7 +61,16 @@ export default function RecommendedHardDrive({hardDrive, additionalHD, recommend
                             }
                         <p className="font-light text-lg">{hardDrive.sku}</p>
                         <p className="text-green-600 text-lg">${hardDrive.price?.toFixed(2)}</p>
+                        {!isHDAdded && 
+                            <button onClick={e => {addToCart(hardDrive); setIsEditing(false); setIsHDAdded(true)}} className={selectButton_styles + 'px-5'}>Add to cart</button>
+                        }
                     </div>
+                    <span 
+                        transition-style="fade:in"
+                        className={"absolute top-0 right-0 p-2 " + (isHDAdded ? '' : 'hidden')}
+                    >
+                        <FaCheckCircle className="fill-current text-green-600 text-2xl"/>
+                    </span>
                 </div>
             </div>
         </div>
@@ -43,7 +82,10 @@ export default function RecommendedHardDrive({hardDrive, additionalHD, recommend
 
             <div className="flex flex-row justify-center mt-20">
                 <div className="flex flex-col items-center justify-center">
-                    <div style={{width: '178px', height: '240px'}} className="p-6 ml-7 flex flex-col justify-center items-center border rounded border-gray-300 bg-white shadow-lg ">
+                    <div 
+                        style={{width: '178px', height: '240px'}} 
+                        className={"relative p-6 ml-7 flex flex-col justify-center items-center border rounded border-gray-300 bg-white shadow-lg " + (isHDAdded ? 'border-green-400' : '')}
+                    >
                         <div style={{height: '94px', width: '110px'}}> 
                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                 <Image
@@ -64,14 +106,26 @@ export default function RecommendedHardDrive({hardDrive, additionalHD, recommend
                             }
                             <p className="font-light">{hardDrive.sku}</p>
                             <p className="text-green-600">${hardDrive.price?.toFixed(2)}</p>
+                            {!isHDAdded &&
+                                <button onClick={e => {addToCart(hardDrive); setIsEditing(false)}} className={selectButton_styles + ' px-2'}>Add to cart</button>
+                            }
                         </div>
+                        <span 
+                            transition-style="fade:in"
+                            className={"absolute top-0 right-0 p-2 " + (isHDAdded ? '' : 'hidden')}
+                        >
+                            <FaCheckCircle className="fill-current text-green-600 text-2xl"/>
+                        </span>
                     </div>
                 </div>
 
                 <span className="flex flex-col justify-center text-4xl mx-4 ">+</span>
 
                 <div className="flex flex-col items-center justify-center flex-shrink-0">
-                    <div style={{width: '178px', height: '240px'}} className="p-6 mr-7 flex flex-col justify-center items-center border rounded border-gray-300 bg-white shadow-lg">
+                    <div 
+                        style={{width: '178px', height: '240px'}} 
+                        className={"relative p-6 mr-7 flex flex-col justify-center items-center border rounded border-gray-300 bg-white shadow-lg " + (isAdditionalHDAdded ? 'border-green-400' : '')}
+                    >
                         <div style={{height: '94px', width: '110px'}}> 
                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                 <Image
@@ -86,7 +140,16 @@ export default function RecommendedHardDrive({hardDrive, additionalHD, recommend
                             <p>{additionalHD.name}</p>
                             <p className="font-light">{additionalHD.sku}</p>
                             <p className="text-green-600">${additionalHD.price?.toFixed(2)}</p>
+                            {!isAdditionalHDAdded &&
+                                <button onClick={e => {addToCart(additionalHD); setIsEditing(false)}} className={selectButton_styles + ' px-2'}>Add to cart</button>
+                            }
                         </div>
+                        <span 
+                            transition-style="fade:in"
+                            className={"absolute top-0 right-0 p-2 " + (isAdditionalHDAdded ? '' : 'hidden')}
+                        >
+                            <FaCheckCircle className="fill-current text-green-600 text-2xl"/>
+                        </span>
                     </div>
                 </div>
             </div>
