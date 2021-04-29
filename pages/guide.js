@@ -68,22 +68,6 @@ export default function Guide() {
         }
    }, [currentStep])
 
-    // ANALYTICS: Record that user started app
-    useEffect(() => {
-        fetch('https://morning-anchorage-80357.herokuapp.com/http://api.ipify.org/?format=json').then(response => {
-            response.json().then(data => {
-                setIpAddress(data.ip);
-                fetch('/api/updateRecord?step=start&ipAddress=' + data.ip);
-            })
-        })
-    }, [])
-
-    // ANALYTICS: Record that user reached review step
-    useEffect(() => {
-        if((currentStep == 10 && cablesType != 'none') || (currentStep == 9 && cablesType == 'none')){
-            fetch('/api/updateRecord?step=review&ipAddress=' + ipAddress);
-        }
-    }, [currentStep])
 
     // Fetch all necessary products
     useEffect(() => {
@@ -992,7 +976,7 @@ export default function Guide() {
                         />
                     </div>
 
-                    <div className="fixed bottom-0 lg:pb-10 left-0 w-screen flex flex-col items-center mt-10 bg-white">
+                    <div className="fixed bottom-0 lg:pb-10 left-0 w-screen flex flex-col items-center mt-10 bg-white z-20">
                         <div className="flex relative flex-col justify-center 2xl:w-8/12 xl:w-10/12 lg:w-10/12 md:w-11/12">
                             <Actions 
                                 nextStep={nextStep} 

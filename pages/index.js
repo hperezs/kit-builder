@@ -5,8 +5,6 @@ import React, {useEffect} from 'react'
 import ReactGa from 'react-ga'
 
 export default function Home() {
-    const access_key = process.env.IPREGISTRY_KEY;
-
     //  Google Analytics
     useEffect(() => {
          ReactGa.initialize("UA-195816848-1");
@@ -21,39 +19,6 @@ export default function Home() {
             document.getElementById('background-image').classList.remove('welcome-banner-loading');
         }
         backgroundImage.src = '../images/welcome-background.jpg';
-    }, [])
-    
-    // Analytics
-    useEffect(() => {
-        // Manual
-        fetch('https://morning-anchorage-80357.herokuapp.com/http://api.ipify.org/?format=json').then(response => {
-            response.json().then(data => {
-                console.log(data);
-                const getlocation_url = 'https://api.ipregistry.co/' + data.ip + '?key=' + access_key;
-                fetch(getlocation_url).then(response => {
-                    response.json().then(locationData => {
-                        console.log(locationData)
-                        let userLog = {
-                            ipAddress: data.ip,
-                            country: locationData.location.country.name,
-                            state: locationData.location.region.name,
-                            city: locationData.location.city,
-                        }
-                        fetch('/api/logUserTraffic', {
-                            method: "POST",
-                            body: JSON.stringify({
-                                userLog: JSON.stringify(userLog),
-                                timeOfVisit: locationData.time_zone.current_time,
-                            })
-                        }).then(response => {
-                            console.log(response);
-                        }).catch(error => console.log(error))
-                    });
-                })
-
-            })
-        });
-
     }, [])
 
     const handleClick = () => {
