@@ -72,7 +72,7 @@ export default function Monitors({monitorProducts, addMonitor, addHDMI, selected
             {!isChoosing && 
             <div transition-style="in:square:center" className="flex flex-col items-center mt-10 border border-gray-300 rounded p-10 shadow">
                 <h4 className="font-light text-xl">Your selection:</h4>
-                <div className="flex flex-row justify-center items-center">
+                <div style={{minHeight: "412px", minWidth: "488px"}} className="flex flex-row justify-center items-center">
                     {/* Selected Monitor */}
                     {selectedMonitor != '' &&
                         <div 
@@ -112,7 +112,7 @@ export default function Monitors({monitorProducts, addMonitor, addHDMI, selected
                     {!selectedMonitor?.cable && !isAddingHDMI && 
                         <div
                             transition-style="fade:in" 
-                            className="m-4 p-6 flex flex-col justify-center bg-white shadow-lg items-center rounded border border-gray-300 cursor-pointer hover:shadow-xl hover:border-green-500"
+                            className="m-4 p-7 flex flex-col justify-center bg-white shadow-lg items-center rounded border border-gray-300 cursor-pointer hover:shadow-xl hover:border-green-500"
                             onClick={e => {setIsAddingHDMI(true);}}
                         >
                             <span className="text-5xl my-6 text-green-600 opacity-90"><FiPlus /></span>
@@ -171,7 +171,7 @@ export default function Monitors({monitorProducts, addMonitor, addHDMI, selected
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex flex-col items-center mt-3 mb-4 mx-2">
+                            <div className="flex flex-col items-center mt-3 mb-4">
                                 <p>{selectedMonitor.cable.name}</p>
                                 <p className="font-light">{selectedMonitor.cable.sku}</p>
                                 <p className="font-normal text-green-600">${selectedMonitor.cable.price.toFixed(2)}</p>
