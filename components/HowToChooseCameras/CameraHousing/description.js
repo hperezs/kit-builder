@@ -7,7 +7,7 @@ export default function Description({ displayMoreInfo, housingSelected }) {
             return (
                 <section className="mt-10 mb-10 flex flex-col items-center">
                     <div className="lg:w-8/12 text-center">
-                        <p><span className="text-green-600 font-semibold">Vandal Dome</span> cameras, also known as <span className="text-green-600 font-semibold">Turret Dome or Armored</span> cameras, are often used indoors because of low ceilings and its small size, despite being outdoor rated (IP67). It is the perfect answer <span className="text-green-600 font-semibold">if the public may have access to the camera</span>, as they are much more difficult to vandalize. </p>
+                        <p><span className="text-green-600 font-semibold">Vandal Dome</span> cameras, also known as <span className="text-green-600 font-semibold">Turret Dome or Armored</span> cameras, are often used indoors because of low ceilings and its small size - despite being outdoor rated (IP67). It is the perfect answer <span className="text-green-600 font-semibold">if the public may have access to the camera</span>, as they are much more difficult to vandalize. </p>
                     </div>
                 </section>
             )
