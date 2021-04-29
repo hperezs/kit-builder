@@ -10,7 +10,7 @@ export default function Actions({ nextStep, prevStep, currentStep, canClickNext,
     const trackClick = () => {
         ReactGa.event({
             category: 'Button',
-            action: 'Proceeded to step ' + currentStep,
+            action: 'Proceeded to step ' + (currentStep + 1),
         })
 
         console.log(currentStep);
