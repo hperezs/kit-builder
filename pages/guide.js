@@ -438,6 +438,12 @@ export default function Guide() {
             cameras_copy.push(new_camera);
         }
 
+        // Google Analytics
+        ReactGa.event({
+            category: 'Camera duplicated',
+            action: camera.sku + ' duplicated.',
+        })
+
         setCameras(cameras_copy);
     }
 
@@ -668,21 +674,32 @@ export default function Guide() {
                       onScreen: false
                     }
                   });
-                  break;
+                // Google Analytics
+                ReactGa.event({
+                    category: 'Add to cart',
+                    action: payload + ' added to cart',
+                })
+                break;
             case 'addedToCartMultiple':
-            store.addNotification({
-                title: 'Items added',
-                message: payload + " were added to cart",
-                type: "success",
-                insert: "top",
-                container: "top-right",
-                animationIn: ["fade-in"],
-                animationOut: ["animate__animated", "animate__fadeOut"],
-                dismiss: {
-                    duration: 4000,
-                    onScreen: false
-                }
-                });
+                store.addNotification({
+                    title: 'Items added',
+                    message: payload + " were added to cart",
+                    type: "success",
+                    insert: "top",
+                    container: "top-right",
+                    animationIn: ["fade-in"],
+                    animationOut: ["animate__animated", "animate__fadeOut"],
+                    dismiss: {
+                        duration: 4000,
+                        onScreen: false
+                    }
+                    });
+
+                // Google Analytics
+                ReactGa.event({
+                    category: 'Add to cart',
+                    action: payload + ' added to cart',
+                })
                 break;
             case 'deletedFromCart':
                 store.addNotification({
@@ -698,6 +715,11 @@ export default function Guide() {
                       onScreen: false
                     }
                   });
+                // Google Analytics
+                ReactGa.event({
+                    category: 'Add to cart',
+                    action: payload + ' added to cart',
+                })
                 break;
             case 'cartUpdated':
                 store.addNotification({
@@ -743,6 +765,11 @@ export default function Guide() {
                         onScreen: false
                     }
                     });
+                // Google Analytics
+                ReactGa.event({
+                    category: 'Returning user',
+                    action: 'User returned to application',
+                })
                 break;
             case 'goToCheckout':
                 store.addNotification({
