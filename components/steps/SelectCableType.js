@@ -14,24 +14,30 @@ export default function SelectCableType({cablesType, selectCablesType}) {
         <div className="flex flex-col items-center">
             <div className="flex flex-row justify-center w-full">
                 <section className="mt-40 flex flex-row justify-around items-center 2xl:w-7/12 xl:w-9/12 md:w-10/12 ">
-                    <span className={"flex flex-col items-center text-center cursor-pointer px-16 py-8 border rounded border-gray-300 transition-colors transition-shadow " 
-                        + (cablesType == 'pre-made' ? selected : 'hover:shadow-lg hover:border-green-200 hover:bg-green-50')}
+                    <span
+                        style={{minWidth: '250px'}} 
+                        className={"flex flex-col items-center text-center cursor-pointer px-16 py-8 border rounded border-gray-300 transition-colors transition-shadow " 
+                            + (cablesType == 'pre-made' ? selected : 'hover:shadow-lg hover:border-green-200 hover:bg-green-50')}
                         onClick={e => selectCablesType('pre-made')}
                         >
                         <span className="text-6xl text-gray-700"><FiCheckSquare /></span>
                         <h5 className="text-xl mt-4 font-light">Pre-made</h5>
                     </span>
 
-                    <span className={" flex flex-col items-center text-center cursor-pointer px-16 py-8 border rounded border-gray-300 transition-colors transition-shadow " 
-                        + (cablesType == 'self-made' ? selected : 'hover:shadow-lg hover:border-green-200 hover:bg-green-50')}
+                    <span
+                        style={{minWidth: '250px'}} 
+                        className={" flex flex-col items-center text-center cursor-pointer px-16 py-8 border rounded border-gray-300 transition-colors transition-shadow " 
+                            + (cablesType == 'self-made' ? selected : 'hover:shadow-lg hover:border-green-200 hover:bg-green-50')}
                         onClick={e => selectCablesType('self-made')}
                         >
                         <span className="text-6xl text-gray-700"><GiTinker /></span>
                         <h5 className="text-xl mt-4 font-light">Self-made</h5>
                     </span>
 
-                    <span className={"flex flex-col items-center  text-center cursor-pointer px-16 py-8 border rounded border-gray-300 transition-colors transition-shadow " 
-                        + (cablesType == 'none' ? selected : 'hover:shadow-lg hover:border-green-200 hover:bg-green-50')}
+                    <span
+                        style={{minWidth: '250px'}} 
+                        className={"flex flex-col items-center  text-center cursor-pointer px-16 py-8 border rounded border-gray-300 transition-colors transition-shadow " 
+                            + (cablesType == 'none' ? selected : 'hover:shadow-lg hover:border-green-200 hover:bg-green-50')}
                         onClick={e => selectCablesType('none')}
                         >
                         <span className="text-6xl text-gray-700"><BsPersonCheckFill /></span>
