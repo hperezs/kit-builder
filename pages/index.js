@@ -325,8 +325,8 @@ export default function Home() {
                     </div> 
                     <div className="flex justify-center flex-wrap items-center mb-10">
                         <div style={{maxWidth: '600px'}}>
-                            <h5 className="text-2xl font-semibold text-green-900">USA Based - Unlimited Technical Support</h5>
-                            <p className="text-lg mt-5">We provide USA based, Free, Unlimited, Life-time Technical Support for all the equipment that we offer.</p>
+                            <h5 className="text-2xl font-semibold text-green-900">USA-Based Unlimited Technical Support</h5>
+                            <p className="text-lg mt-5">We provide USA-based, free, unlimited, life-time technical support for all of the equipment that we offer. We answer all kinds of questions, from simple ones such as installing your system for the first time, to more advanced questions such as port forwarding or network performance improvements. Feel free to call for any questions. We make sure you get the most out of your system.</p>
                         </div>
                         <div style={{height: '200px', width: '280px'}} className="sm:mt-10 lg:ml-20"> 
                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
