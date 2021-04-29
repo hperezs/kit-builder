@@ -25,7 +25,7 @@ export default function PowerInjectors({powerInjectors, selectedPowerInjectors, 
             
             {displayDetails &&
                 <div transition-style="fade:in:faster" style={{maxWidth: '450px'}} className="relative p-10 border shadow-lg"> 
-                    <p><span className="text-green-600 font-semibold">Power injectors</span> are used to transmit power to the cameras when they will not be connected to the video recorder. A common use case is to connect the cameras to the network via a power injector.</p>
+                    <p><span className="text-green-600 font-semibold">Power injectors</span> are used to transmit power to the cameras when they will not be connected to the video recorder. A common use is to connect the cameras to the network via a power injector.</p>
                     <span className="absolute top-0 right-0 text-gray-500 mt-4 mr-4 cursor-pointer" onClick={e => setDisplayDetails(false)}><GrClose /></span>
                 </div>}
 
