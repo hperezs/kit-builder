@@ -37,6 +37,7 @@ export default function VideoRecorder({nvr, handleSelect, isRecommended}) {
                 <p className="font-bold mb-1 text-yellow-500"><span className="line-through">${nvr.oldPrice}</span> Save Big!</p>
                 <p className="font-normal text-green-600">${nvr.price.$numberDecimal}</p>
                 <button className={selectButton_styles} onClick={e => handleSelect(nvr)}>Select</button>
+                <a href={backstreet_domain + nvr.productLink} target="_blank" className="font-light text-green-600 hover:text-green-400">See more details</a>
             </div>
         </div>
     )
