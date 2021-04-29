@@ -40,7 +40,7 @@ export default function HardDriveInCart({hardDrive, cablesType, goToStep, index,
         <div 
             onMouseEnter={e => setDisplayEditButton(true)}
             onMouseLeave={e => setDisplayEditButton(false)}
-            className={"relative flex flex-row py-7 px-5 justify-evenly items-center border rounded bg-white border-gray-300 shadow " + (index == 0 ? 'w-3/12 ml-3' : (isReviewStep ? 'w-full': 'w-6/12'))}
+            className={"relative flex flex-row py-7 px-5 justify-evenly items-center border rounded bg-white border-gray-300 shadow " + (index == 0 ? 'w-3/12 ml-3' : (isReviewStep ? 'w-full mb-3': 'w-6/12 mr-3 mb-3'))}
         >
             <div style={{height: '66px', width: '80px'}}> 
                 <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
