@@ -65,7 +65,7 @@ export default function Home() {
                 </div>
                 
                 {/* Welcome section */}
-                <section className="welcome-container flex flex-col items-center w-screen border-b border-gray-400">
+                <section className="welcome-container flex flex-col items-center w-screen ">
                     <div className="flex flex-col justify-center w-screen ">
                         <div style={{borderTopWidth: '5px'}} className="flex flex-col items-center justify-start border-green-600">
                             <h2 className="text-2xl lg:text-4xl text-center px-3 font-semibold mt-14 text-green-800">Build Your Custom Surveillance System in Minutes</h2>
@@ -80,7 +80,37 @@ export default function Home() {
                     </div>
                 </section>
 
-                <div style={{height: '500px', width: '100%'}} className="kit-banner mt-16"> 
+                <section className="flex flex-col items-center justify-center bg-gray-600 text-gray-50 py-12 mt-16">
+                    <div>
+                        <h5 className="need-help sm:text-3xl lg:text-4xl text-center">Looking for Individual Security Products?</h5>
+                        <div className="flex justify-between w-full">
+                            <a 
+                                href="https://www.backstreet-surveillance.com/pro-vue-4k-live-video/4k-live-video-cctv.html" 
+                                target="_blank" 
+                                className="text-xl mt-5 cursor-pointer border-r border-l border-gray-50 px-5 pb-1 hover:text-green-100"
+                            >
+                                View 4K Cameras
+                            </a>
+                            <a 
+                                href="https://www.backstreet-surveillance.com/pro-vue-4k-live-video/pro-vue-video-recorders.html" 
+                                target="_blank" 
+                                className="text-xl mt-5 cursor-pointer border-r border-l border-gray-50 px-5 pb-1 hover:text-green-100"
+                            >
+                                View Video Recorders
+                            </a>
+                            <a 
+                                href="https://www.backstreet-surveillance.com/ip-security-camera-systems/4-camera-systems.html" 
+                                target="_blank" 
+                                className="text-xl mt-5 cursor-pointer border-r border-l border-gray-50 px-5 pb-1 hover:text-green-100"
+                            >
+                                View Systems
+                            </a>
+                        </div>
+
+                    </div>
+                </section>
+
+                <div style={{height: '500px', width: '100%'}} className="kit-banner mt-20"> 
                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                         <NextImage
                             src={"/images/kitbuilder-banner.jpg"}
