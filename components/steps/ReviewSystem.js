@@ -94,7 +94,7 @@ export default function ReviewSystem({
                         )
                     })}
                     <div className="flex flex-row">
-                        <div className="flex flex-col w-6/12">
+                        <div className="flex flex-col w-6/12 flex-shrink-0">
                             {/* Installation */}
                             {isInstallationSelected && 
                                 <InstallationInCart homeOrBusiness={homeOrBusiness} cablesType={cablesType} cameras={cameras} goToStep={goToStep} deleteInstallation={deleteInstallation} isReviewStep={true}/>
