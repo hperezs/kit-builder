@@ -10,7 +10,7 @@ export default function Mounts({mountProducts, cameras, addMount, deleteMount, d
     
     return(
         <section className="mt-5 w-11/12 xl:w-9/12">
-            <p className="text-center text-lg">Bellow, you will find the recommended mount for each of your cameras.</p>
+            <p className="text-center text-lg">Below, you will find the recommended mount for each of your cameras.</p>
             <div transition-style="in:wipe:right" className="mt-10 border rounded px-10 py-5 bg-gray-100 w-full">
                 {
                     cameras.map((camera, cameraIndex) => (
