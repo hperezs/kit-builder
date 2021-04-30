@@ -8,8 +8,7 @@ export default function RecommendedCamera({camera, handleSelect}) {
     const [onLoadCount, setOnLoadCount] = useState(0);
 
     useEffect(() => {
-        setIsLoading(true)
-        console.log(camera);
+        setIsLoading(true);
     }, [camera])
 
     const handleOnLoad = () => {

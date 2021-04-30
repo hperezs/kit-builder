@@ -54,6 +54,23 @@ input[type=number] {
   }
 }
 
+@media screen and (max-width: 1400px) {
+  .page-title, .welcome-banner {
+    height: 60vh;
+  }
+  .welcome-container {
+    min-height: 40vh;
+  }
+  
+  .get-started {
+    padding: 0.75rem 2.25rem 0.75rem 2.25rem !important;
+  }
+
+  .kit-banner {
+    height: 300px !important;
+  }
+}
+
 @media screen and (max-width: 550px) {
   .page-title, .welcome-banner {
     height: 40vh;
@@ -61,7 +78,6 @@ input[type=number] {
   .welcome-container {
     min-height: 60vh;
   }
-
   .page-title {
     width: 100% !important;
   }

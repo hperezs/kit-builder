@@ -9,11 +9,12 @@ export default function PowerInjectorInCart({product, cablesType, goToStep, dele
 
     return(
         <div 
+            style={{minHeight: "148px"}}
             onMouseEnter={e => setDisplayEditButton(true)}
             onMouseLeave={e => setDisplayEditButton(false)}
             className={"relative flex flex-row justify-start items-center mb-3 rounded p-5 border bg-white border-gray-300 shadow " + (isReviewStep ? '' : 'w-7/12')} 
         >
-            <div className="m-2 p-3 flex flex-col justify-center items-center rounded border-gray-300 ">
+            <div className="xl:m-2 xl:p-3 flex flex-col justify-center items-center rounded border-gray-300 ">
                 <div style={{height: '66px', width: '100px'}}> 
                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                         <Image
@@ -25,7 +26,7 @@ export default function PowerInjectorInCart({product, cablesType, goToStep, dele
                     </div>
                 </div>
             </div>
-            <div style={{width: '114px'}} className="flex flex-col items-center mx-7">
+            <div style={{width: '114px'}} className="flex flex-col items-center xl:mx-7">
                 <p className="text-center">{product.name}</p>
                 <p className="font-normal text-green-600">${product.price.toFixed(2)}</p>
             </div>

@@ -9,7 +9,7 @@ import SelectHousing from "./SelectHousing"
 import NightvisionRadio from "./dropdowns/nightVisionRadio"
 import ResolutionRadio from "./dropdowns/resolutionRadio"
 
-export default function AddNewCamera({displayAddNewCamera , allProducts, selectNewCamera, isAddingNewCamera, setIsAddingNewCamera, lastIndex}) {
+export default function AddNewCamera({allProducts, selectNewCamera, isAddingNewCamera, setIsAddingNewCamera, lastIndex}) {
     const [isEditingName, setIsEditingName] = useState(false);
     const [cameraHousing, setCameraHousing] = useState('');
     const [cameraName, setCameraName] = useState('Camera Name');

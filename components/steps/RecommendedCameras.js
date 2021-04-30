@@ -47,10 +47,19 @@ export default function RecommendedCameras({allProducts, cameraHousing, cameraLe
                                     )
                                 })
         setRecommendedCameras(filteredProducts);
+        
+        
 }, [cameraHousing, cameraLens, nightVisionDist, resolution])
 
+    useEffect(() => {
+        if(recommendedCameras?.length != 0 ){
+            document.getElementById('filtered-cameras')?.scrollIntoView({block: "center"});
+            
+        }
+    }, [recommendedCameras])
+
     return(
-        <section className="flex flex-row items-center flex-wrap">
+        <section id="filtered-cameras" className="flex flex-row items-center flex-wrap">
             {recommendedCameras.length != 0 &&
                 recommendedCameras.map((camera, index) => {
                     return(

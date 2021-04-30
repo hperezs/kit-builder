@@ -133,7 +133,7 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
     }, [requiredStorage])
 
     useEffect(() => {
-        document.getElementById('yourHardDrives')?.scrollIntoView();
+        document.getElementById('yourHardDrives')?.scrollIntoView({block: "center"});
     }, [isChoosing])
 
     useEffect(() => {

@@ -68,11 +68,11 @@ export default function Home() {
                 <section className="welcome-container flex flex-col items-center w-screen ">
                     <div className="flex flex-col justify-center w-screen ">
                         <div style={{borderTopWidth: '5px'}} className="flex flex-col items-center justify-start border-green-600">
-                            <h2 className="text-2xl lg:text-4xl text-center px-3 font-semibold mt-14 text-green-800">Build Your Custom Surveillance System in Minutes</h2>
-                            <p style={{maxWidth: '850px'}} className="welcome-text text-xl lg:text-2xl text-center w-6/12 my-10">
+                            <h2 className="text-2xl lg:text-3xl xl:text-4xl text-center px-3 font-semibold mt-14 text-green-800">Build Your Custom Surveillance System in Minutes</h2>
+                            <p style={{maxWidth: '850px'}} className="welcome-text text-xl xl:text-2xl text-center w-6/12 my-10">
                                 Our Custom Kit Builder will guide you through each step, choosing the components that best fit your needs. No skill or previous knowledge about security cameras is needed.
                             </p>
-                            <a style={{paddingBottom: '14px', paddingRight: '41px'}} onClick={handleClick} className="get-started py-3 px-10 mb-5 text-white border bg-green-700 bg-opacity-90 text-xl lg:text-3xl rounded text-white text-center align-middle transition-colors duration-300 ease hover:bg-green-500 my`-8 cursor-pointer">
+                            <a style={{paddingBottom: '14px', paddingRight: '41px'}} onClick={handleClick} className="get-started py-3 px-10 mb-5 text-white border bg-green-700 bg-opacity-90 text-xl lg:text-2xl xl:text-3xl rounded text-white text-center align-middle transition-colors duration-300 ease hover:bg-green-500 my`-8 cursor-pointer">
                                 Get started
                             </a>
                             <Link href="/guide"><span className="-z-50 opacity-0" id='get-started-link'>get started link</span></Link>
@@ -123,10 +123,10 @@ export default function Home() {
                 </div>
                 
                 {/* How it works section */}
-                <section className="mx-5 lg:mx-20 my-14 lg:p-10 flex flex-wrap justify-center items-center">
+                <section className="mx-5 lg:px-5 xl:mx-20 my-14 xl:p-10 flex flex-wrap justify-center items-center">
                     <div style={{maxWidth: '600px'}} className="">
-                        <h3 className="text-3xl mb-8 font-semibold text-green-900">How it works</h3>   
-                        <p className="text-xl">The experts at Backstreet Surveillance have applied their 57+ years of experience and created this beginner-friendly CCTV design tool. The Custom Kit Builder simplifies the complex process of assembling the perfect video surveillance system.  <br/> <br/> We have removed the hassle of researching and finding each individual component. Our Kit Builder allows you to design your ideal system in a matter of minutes, then proceed to purchase or have a line item quote sent to your email.</p>
+                        <h3 className="text-2xl xl:text-3xl mb-8 font-semibold text-green-900">How it works</h3>   
+                        <p className="text-lg xl:text-xl">The experts at Backstreet Surveillance have applied their 57+ years of experience and created this beginner-friendly CCTV design tool. The Custom Kit Builder simplifies the complex process of assembling the perfect video surveillance system.  <br/> <br/> We have removed the hassle of researching and finding each individual component. Our Kit Builder allows you to design your ideal system in a matter of minutes, then proceed to purchase or have a line item quote sent to your email.</p>
                     </div>
                     <div style={{height: '400px', width: '600px'}} className="how-it-works-img sm:mt-10 lg:ml-20"> 
                         <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
@@ -265,7 +265,7 @@ export default function Home() {
                 </section>
 
                 {/* Quote or Purchase */}
-                <section className="mx-5 lg:mx-20 my-20 lg:p-10 flex flex-wrap justify-center">
+                <section className="mx-5 lg:px-5 xl:mx-20 my-20 xl:p-10 flex flex-wrap justify-center">
                     <div style={{height: '400px', width: '600px'}} className="custom-quotes-img lg:mr-20"> 
                         <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                             <NextImage
@@ -278,13 +278,13 @@ export default function Home() {
                         </div>
                     </div>
                     <div style={{maxWidth: '600px'}} className="">
-                        <h3 className="text-3xl font-semibold mb-8 text-green-900">Proceed to Purchase or Quote</h3>   
-                        <p className="text-xl">We understand that purchasing a surveillance system is an important decision. It might take time to evaluate what components best fit your needs.</p>
+                        <h3 className="text-2xl xl:text-3xl mb-8 font-semibold text-green-900">Proceed to Purchase or Quote</h3>   
+                        <p className="text-lg xl:text-xl">We understand that purchasing a surveillance system is an important decision. It might take time to evaluate what components best fit your needs.</p>
                         <br/>
-                        <p className="text-xl">After you are done building your system, you can choose to receive a quote with your selections if you are not ready to place an order today. We also automatically save your selections, so you can come back and make changes until you are ready to purchase your system.</p>
+                        <p className="text-lg xl:text-xl">After you are done building your system, you can choose to receive a quote with your selections if you are not ready to place an order today. We also automatically save your selections, so you can come back and make changes until you are ready to purchase your system.</p>
                         <button
                             onClick={handleClick} 
-                            className="mt-7 py-3 px-7 text-white border bg-green-700 bg-opacity-90 text-xl lg:text-2xl rounded text-white text-center transition-colors duration-300 ease hover:bg-green-500 cursor-pointer outline-none  focus:outline-none focus:ring focus:ring-green-400 focus:ring-opacity-80"
+                            className="mt-7 py-2 px-5 xl:py-3 xl:px-7 text-white border bg-green-700 bg-opacity-90 text-xl xl:text-2xl rounded text-white text-center transition-colors duration-300 ease hover:bg-green-500 cursor-pointer outline-none focus:outline-none focus:ring focus:ring-green-400 focus:ring-opacity-80"
                         >
                             Get started
                         </button>
@@ -294,10 +294,10 @@ export default function Home() {
                 <hr className="border-gray-400"/>
 
                 {/* Why backstreet? */}
-                <section className="mx-5 lg:mx-20 mt-20 mb-10 lg:p-10 flex flex-wrap justify-center">
+                <section className="mx-5 lg:px-5 xl:mx-20 my-20 xl:p-10 flex flex-wrap justify-center">
                     <div style={{maxWidth: '600px'}} className="mt-10">
-                        <h3 className="text-3xl font-semibold mb-8 text-green-900">Why purchase from Backstreet?</h3>   
-                        <p className="text-xl">Backstreet is the affordable solution for easy to use professional surveillance equipment. We are an American owned company and all of our support representatives and facilities are located in the U.S. We only offer ultra high definition equipment and we back it with a 5 year warranty and free lifetime technical support. The Backstreet promise says it all: “We promise that you will not find a lower price for the same quality and support, anywhere.”</p>
+                        <h3 className="text-2xl xl:text-3xl mb-8 font-semibold text-green-900">Why purchase from Backstreet?</h3>   
+                        <p className="text-lg xl:text-xl">Backstreet is the affordable solution for easy to use professional surveillance equipment. We are an American owned company and all of our support representatives and facilities are located in the U.S. We only offer ultra high definition equipment and we back it with a 5 year warranty and free lifetime technical support. The Backstreet promise says it all: “We promise that you will not find a lower price for the same quality and support, anywhere.”</p>
                     </div>
                     <div style={{height: '400px', width: '600px'}} className="why-backstreet-img lg:ml-20"> 
                         <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
