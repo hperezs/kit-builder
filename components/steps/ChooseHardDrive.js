@@ -216,11 +216,11 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
 
     return(
         <section className="relative my-10">
-            <p className="text-lg">The size of the recommended Hard Drive varies according to your recording set-up. Choose between the following options to find the Hard Drive that best suits your needs.</p>
+            <p className="text-lg sm:px-7 lg:px-0">The size of the recommended Hard Drive varies according to your recording set-up. Choose between the following options to find the Hard Drive that best suits your needs.</p>
 
             <div className="flex flex-row justify-center flex-wrap mt-10 transition-all duration-300 ease">
                 {/* Calculator */}
-                <div id="calculator" style={{width: '380px'}} className="flex flex-col border border-gray-300 rounded p-10 mr-10 shadow">
+                <div id="calculator" style={{width: '380px'}} className="flex flex-col border border-gray-300 rounded sm:p-5 sm:mx-2 sm:mb-10 lg:mb-0 lg:p-10 lg:mr-10 shadow">
                     <div className="flex justify-center mb-10">
                         <div className="flex flex-col items-center justify-center p-7 border border-gray-300 rounded">
                             <span className="text-xl">Required Storage Capacity</span>
@@ -308,12 +308,12 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
             </div>
 
             {isChoosing &&
-                <div className="relative flex justify-center my-10">
+                <div className="relative flex justify-center my-10 ">
                     <h4 className="absolute top-0 pt-5 text-center z-10 font-light text-2xl">All Hard Drives</h4>
                     <div
                         id="hardDrive-products"
                         transition-style="in:wipe:right" 
-                        className="flex flex-row justify-evenly items-center p-10 pt-20 border rounded bg-gray-100 shadow">
+                        className="flex flex-row flex-wrap justify-evenly items-center sm:px-5 lg:px-10 pt-20 sm:mx-3 lg:mx-0 border rounded bg-gray-100 shadow">
                         {hardDrives && 
                             hardDrives.map((hardDrive, index) => {
                                 let isRecommended = ((hardDrive.sku == recommendedHD.sku || hardDrive.sku == additionalHD.sku) && !isSelected(hardDrive));

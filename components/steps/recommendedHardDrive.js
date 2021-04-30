@@ -40,7 +40,7 @@ export default function RecommendedHardDrive({hardDrive, additionalHD, recommend
             <div className="text-2xl font-light w-full p-5 text-center bg-white border">Recommended Hard Drive{recommendedHDMultiplier != 0 ? 's' : ''}</div>
 
             <div className="flex flex-col items-center justify-center">
-                <div className={"relative mx-10 mt-7 px-6 py-10 flex flex-col justify-center items-center border rounded border-gray-300 bg-white shadow-lg " + (isHDAdded ? 'border-green-400' : '')}>
+                <div className={"relative mx-10 sm:mb-7 lg:mb-0 mt-7 px-6 py-10 flex flex-col justify-center items-center border rounded border-gray-300 bg-white shadow-lg " + (isHDAdded ? 'border-green-400' : '')}>
                     <div style={{height: '186px', width: '220px'}}> 
                         <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                             <Image

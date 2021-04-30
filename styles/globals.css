@@ -108,6 +108,7 @@ input[type=number] {
   }
   .actions-logo {
     width: 420px !important;
+    height: 50px !important;
   }
 }
 

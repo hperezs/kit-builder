@@ -28,7 +28,8 @@ export default function RecommendedCamera({camera, handleSelect}) {
     return(
         <div 
             transition-style="in:wipe:down"
-            className="flex flex-col justify-start items-center flex-wrap my-10 mx-3 bg-white border rounded p-3 hover:shadow-lg hover:border-green-300 ">
+            className="flex flex-col justify-start items-center flex-wrap my-10 mx-3 bg-white border rounded p-3 hover:shadow-lg hover:border-green-300 "
+        >
             <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
                 <div className={"flex flex-row justify-center items-center " + (!isLoading ? 'hidden' : '')} style={{height: '86px', width: '120px'}}>
                     <ReactLoading type="spin" color="#a6e3b6" />

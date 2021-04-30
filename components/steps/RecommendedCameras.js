@@ -53,13 +53,13 @@ export default function RecommendedCameras({allProducts, cameraHousing, cameraLe
 
     useEffect(() => {
         if(recommendedCameras?.length != 0 ){
-            document.getElementById('filtered-cameras')?.scrollIntoView({block: "center"});
+            if(screen.width > 800)document.getElementById('filtered-cameras')?.scrollIntoView({block: "center"});
             
         }
     }, [recommendedCameras])
 
     return(
-        <section id="filtered-cameras" className="flex flex-row items-center flex-wrap">
+        <section id="filtered-cameras" className="flex flex-row sm:justify-center lg:justify-start items-center flex-wrap">
             {recommendedCameras.length != 0 &&
                 recommendedCameras.map((camera, index) => {
                     return(

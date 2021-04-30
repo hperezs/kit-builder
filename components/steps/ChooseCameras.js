@@ -44,11 +44,12 @@ export default function ChooseCameras({allProducts, selectNewCamera, cameras, de
             {cameras.length != 0 &&
                 <section 
                     transition-style="in:wipe:right"
-                    className="mt-20 border rounded shadow">
+                    className="mt-20 sm:mx-5 lg:mx-0 border rounded shadow"
+                >
                     <div className="flex flex-row justify-start border-b bg-white pt-5 px-5">
                         <span className="text-xl mb-5">Your cameras</span>
                     </div>
-                    <div className="flex flex-row justify-start items-center flex-wrap p-5 bg-gray-200">
+                    <div className="flex flex-row sm:justify-center lg:justify-start items-center flex-wrap p-5 bg-gray-200">
                         {
                             cameras.map((camera, index) => {
                                 return(
