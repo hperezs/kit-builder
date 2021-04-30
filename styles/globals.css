@@ -84,6 +84,11 @@ input[type=number] {
   }
   .why-backstreet-img {
     height: 250px !important;
+    margin-top: 1.25rem;
+  }
+  .custom-quotes-img {
+    height: 250px !important;
+    margin-bottom: 1.25rem;
   }
   .actions-logo {
     width: 420px !important;

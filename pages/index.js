@@ -80,7 +80,7 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section className="flex flex-col items-center justify-center bg-gray-600 text-gray-50 py-12 mt-16">
+                <section style={{backgroundColor: '#494949'}} className="flex flex-col items-center justify-center text-gray-50 py-12 mt-16 bg-opacity-80 ">
                     <div>
                         <h5 className="need-help sm:text-3xl lg:text-4xl text-center">Looking for Individual Security Products?</h5>
                         <div className="flex justify-between w-full">
@@ -264,9 +264,42 @@ export default function Home() {
                     
                 </section>
 
+                {/* Quote or Purchase */}
+                <section className="mx-5 lg:mx-20 my-20 lg:p-10 flex flex-wrap justify-center">
+                    <div style={{height: '400px', width: '600px'}} className="custom-quotes-img lg:mr-20"> 
+                        <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                            <NextImage
+                                src={"/images/custom-quotes.png"}
+                                layout="fill"
+                                objectFit="contain"
+                                quality={100}
+                                alt="custom quotes"
+                            />
+                        </div>
+                    </div>
+                    <div style={{maxWidth: '600px'}} className="">
+                        <h3 className="text-3xl font-semibold mb-8 text-green-900">Proceed to Purchase or Quote</h3>   
+                        <p className="text-xl">We understand that purchasing a surveillance system is an important decision. It might take time to evaluate what components best fit your needs.</p>
+                        <br/>
+                        <p className="text-xl">After you are done building your system, you can choose to receive a quote with your selections if you are not ready to place an order today. We also automatically save your selections, so you can come back and make changes until you are ready to purchase your system.</p>
+                        <button
+                            onClick={handleClick} 
+                            className="mt-7 py-3 px-7 text-white border bg-green-700 bg-opacity-90 text-xl lg:text-2xl rounded text-white text-center transition-colors duration-300 ease hover:bg-green-500 cursor-pointer outline-none  focus:outline-none focus:ring focus:ring-green-400 focus:ring-opacity-80"
+                        >
+                            Get started
+                        </button>
+                    </div>
+                </section>
+
+                <hr className="border-gray-400"/>
+
                 {/* Why backstreet? */}
                 <section className="mx-5 lg:mx-20 mt-20 mb-10 lg:p-10 flex flex-wrap justify-center">
-                    <div style={{height: '400px', width: '600px'}} className="why-backstreet-img lg:mr-20"> 
+                    <div style={{maxWidth: '600px'}} className="mt-10">
+                        <h3 className="text-3xl font-semibold mb-8 text-green-900">Why purchase from Backstreet?</h3>   
+                        <p className="text-xl">Backstreet is the affordable solution for easy to use professional surveillance equipment. We are an American owned company and all of our support representatives and facilities are located in the U.S. We only offer ultra high definition equipment and we back it with a 5 year warranty and free lifetime technical support. The Backstreet promise says it all: “We promise that you will not find a lower price for the same quality and support, anywhere.”</p>
+                    </div>
+                    <div style={{height: '400px', width: '600px'}} className="why-backstreet-img lg:ml-20"> 
                         <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                             <NextImage
                                 src={"/images/why_backstreet.png"}
@@ -276,10 +309,6 @@ export default function Home() {
                                 alt="backstreet employee stocking products"
                             />
                         </div>
-                    </div>
-                    <div style={{maxWidth: '600px'}} className="mt-10">
-                        <h3 className="text-3xl font-semibold mb-8 text-green-900">Why purchase from Backstreet?</h3>   
-                        <p className="text-xl">Backstreet is the affordable solution for easy to use professional surveillance equipment. We are an American owned company and all of our support representatives and facilities are located in the U.S. We only offer ultra high definition equipment and we back it with a 5 year warranty and free lifetime technical support. The Backstreet promise says it all: “We promise that you will not find a lower price for the same quality and support, anywhere.”</p>
                     </div>
                 </section>
 
