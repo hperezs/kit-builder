@@ -17,8 +17,13 @@ export default function Actions({ nextStep, prevStep, currentStep, canClickNext,
     }
 
     return(
-        <section className="flex flex-row items-center justify-center sm:w-screen lg:w-full border-t pt-7 border-gray-300 flex-wrap-reverse">
-            <a href="https://backstreet-surveillance.com/" target="_blank" className={isLastStep() ? "relative" : 'actions-logo sm:relative lg:absolute lg:top-0 lg:left-0 mt-5 sm:mb-5 lg:mb-0'} style={{height: '60px', width: '220px'}}> 
+        <section className={"flex flex-row items-center justify-center sm:w-screen lg:w-full border-t pt-7 border-gray-300 flex-wrap-reverse " + (isLastStep() ? 'sm:flex-row-reverse lg:flex-row sm:mb-3 lg:mb-0 lg:justify-between' : '')}>
+            <a 
+                href="https://backstreet-surveillance.com/" 
+                target="_blank" 
+                className={isLastStep() ? " relative actions-logo-smaller" : 'actions-logo sm:relative lg:absolute lg:top-0 lg:left-0 mt-5 sm:mb-5 lg:mb-0'} 
+                style={{height: '60px', width: '220px'}}
+            > 
                 <div style={{maxWidth: '100%', height: '100%'}}>
                     <Image
                         src='/images/BS_logo.png'
@@ -39,7 +44,7 @@ export default function Actions({ nextStep, prevStep, currentStep, canClickNext,
                 </Link>
             </span>
 
-            {isLastStep() && 
+            {isLastStep() && window?.innerWidth > 800 &&
             <div className={"flex flex-col items-center justify-center mx-auto pl-36"}>
                 <div className="text-2xl font-medium">
                     Subtotal: {subtotal.toLocaleString('en-US', {style: 'currency', currency: 'USD'})}*
@@ -77,14 +82,14 @@ export default function Actions({ nextStep, prevStep, currentStep, canClickNext,
             {isLastStep() && 
                 <button 
                     onClick={e => proceedToPurchase()}
-                    className={"text-xl text-white mx-6 border rounded px-7 py-4 transition-all duration-300 ease " 
+                    className={"text-xl text-white mx-6 border rounded sm:px-5 sm:py-3 lg:px-7 lg:py-4 sm:mb-5 lg:mb-0 transition-all duration-300 ease " 
                         + 'border-green-400 bg-green-600 hover:bg-green-400 hover:text-white focus:outline-none focus:ring-4 focus:ring-green-300 focus:ring-opacity-500'}
                 >
                     Proceed to Purchase / Quote
                 </button>
             }
 
-            {displayBackToReview &&
+            {displayBackToReview && window?.screen > 800 && 
                 <button
                     onClick={e => goToStep('review')}
                     style={{borderWidth: '1.5px'}}

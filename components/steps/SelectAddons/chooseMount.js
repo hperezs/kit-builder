@@ -29,7 +29,7 @@ export default function ChooseMount({camera, cameraIndex, mountProducts, addMoun
     const card_styles = "relative flex flex-col justify-start items-center m-3 rounded px-5 py-7 bg-white border shadow-xl "
 
     return(
-        <div className="flex flex-row justify-start items-center" key={cameraIndex}>
+        <div className="flex sm:flex-col lg:flex-row justify-start items-center sm:border-b lg:border-0 sm:pb-4 sm:pt-4 lg:p-0" key={cameraIndex}>
             <Camera 
                 camera={camera}
                 index={cameraIndex} 
@@ -76,11 +76,11 @@ export default function ChooseMount({camera, cameraIndex, mountProducts, addMoun
                         }
                     })
                 :
-                    mountProducts.map((product, productIndex) => {
-                        if(product.sku.includes('M5')) {
-                            return <RecommendedMount product={product} productIndex={productIndex} cameraIndex={cameraIndex} addMount={handleSelect}/>
-                        }
-                    })
+                mountProducts.map((product, productIndex) => {
+                    if(product.sku.includes('M5')) {
+                        return <RecommendedMount product={product} productIndex={productIndex} cameraIndex={cameraIndex} addMount={handleSelect}/>
+                    }
+                })
             }
         </div>
     )

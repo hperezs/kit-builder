@@ -945,7 +945,7 @@ export default function Guide() {
                     <Image src="/images/BS_Logo_White.png" width={375} height={100} priority={true}/>
                 </div>
             </div>
-            <ReactNotification className="mt-20"/>
+            <ReactNotification className="lg:mt-20"/>
             <ProgressBar progress={(cablesType != 'none' ? currentStep / 10 : currentStep / 9)} />
             <main className="flex flex-row justify-center items-start lg:mt-14 z-20">
                 <div className="relative flex flex-col justify-center 2xl:w-8/12 xl:w-10/12 lg:w-11/12 md:w-11/12">

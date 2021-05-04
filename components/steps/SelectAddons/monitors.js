@@ -22,15 +22,15 @@ export default function Monitors({monitorProducts, addMonitor, addHDMI, selected
         }
     }
 
-    const card_styles = "relative flex flex-col justify-start items-center my-10 mx-3 rounded px-3 py-5 bg-white border shadow-xl hover:border-green-300 "
+    const card_styles = "relative flex flex-col justify-start items-center sm:my-5 lg:my-10 mx-3 rounded px-3 py-5 bg-white border shadow-xl hover:border-green-300 "
     const selectButton_styles = "px-5 py-1 mb-4 border rounded bg-green-600 text-white text-sm uppercase tracking-wider font-semibold mt-3 transition hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
 
     return(
-        <section className="mt-5">
-            <p className="text-center text-lg">Video Recorders do not include a monitor, so it is recommended that you purchase one.</p>
+        <section id="monitors" className="pt-10">
+            <p className="text-center text-lg sm:px-4 lg:px-0">Video Recorders do not include a monitor, so it is recommended that you purchase one.</p>
             {isChoosing &&
-            <div transition-style="in:wipe:right" className="mt-10 border rounded p-10 bg-gray-100">
-                <div className="flex flex-row justify-center">
+            <div transition-style="in:wipe:right" className="mt-10 border rounded p-10 bg-gray-100 sm:mx-4 lg:mx-0">
+                <div className="flex flex-row justify-center flex-wrap">
                     {monitorProducts.length != 0 &&
                         monitorProducts.map((product, index) => {
                             if(product.sku.includes('MON'))return(
@@ -70,9 +70,9 @@ export default function Monitors({monitorProducts, addMonitor, addHDMI, selected
 
             {/* Selected Items */}
             {!isChoosing && 
-            <div transition-style="in:square:center" className="flex flex-col items-center mt-10 border border-gray-300 rounded p-10 shadow">
+            <div transition-style="in:square:center" className="flex flex-col items-center mt-10 sm:mx-4 lg:mx-0 border border-gray-300 rounded sm:p-5 lg:p-10 shadow">
                 <h4 className="font-light text-xl">Your selection:</h4>
-                <div style={{minHeight: "412px", minWidth: "488px"}} className="flex flex-row justify-center items-center">
+                <div style={(window?.innerWidth > 800 ? {minHeight: "412px", minWidth: "488px"} : {width: 'auto'})} className="flex flex-row justify-center items-center flex-wrap">
                     {/* Selected Monitor */}
                     {selectedMonitor != '' &&
                         <div 

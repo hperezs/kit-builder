@@ -13,35 +13,35 @@ export default function SelectCableType({cablesType, selectCablesType}) {
     return(
         <div className="flex flex-col items-center">
             <div className="flex flex-row justify-center w-full">
-                <section className="mt-40 flex flex-row justify-around items-center 2xl:w-7/12 xl:w-9/12 md:w-10/12 ">
+                <section className="sm:mt-10 lg:mt-40 flex sm:flex-col lg:flex-row justify-around items-center 2xl:w-7/12 xl:w-9/12 md:w-10/12 ">
                     <span
                         style={{minWidth: '250px'}} 
-                        className={"flex flex-col items-center text-center cursor-pointer px-16 py-8 border rounded border-gray-300 transition-colors transition-shadow " 
+                        className={"option flex flex-col items-center text-center cursor-pointer sm:py-5 sm:px-7 lg:px-16 lg:py-8 sm:my-4 lg:my-0 border rounded border-gray-300 transition-colors transition-shadow " 
                             + (cablesType == 'pre-made' ? selected : 'hover:shadow-lg hover:border-green-200 hover:bg-green-50')}
                         onClick={e => selectCablesType('pre-made')}
                         >
-                        <span className="text-6xl text-gray-700"><FiCheckSquare /></span>
-                        <h5 className="text-xl mt-4 font-light">Pre-made</h5>
+                        <span className="sm:text-4xl lg:text-6xl text-gray-700"><FiCheckSquare /></span>
+                        <h5 className="sm:text-lg lg:text-xl mt-4 font-light">Pre-made</h5>
                     </span>
 
                     <span
                         style={{minWidth: '250px'}} 
-                        className={" flex flex-col items-center text-center cursor-pointer px-16 py-8 border rounded border-gray-300 transition-colors transition-shadow " 
+                        className={"option flex flex-col items-center text-center cursor-pointer sm:py-5 sm:px-7 lg:px-16 lg:py-8 sm:my-4 lg:my-0 border rounded border-gray-300 transition-colors transition-shadow " 
                             + (cablesType == 'self-made' ? selected : 'hover:shadow-lg hover:border-green-200 hover:bg-green-50')}
                         onClick={e => selectCablesType('self-made')}
                         >
-                        <span className="text-6xl text-gray-700"><GiTinker /></span>
-                        <h5 className="text-xl mt-4 font-light">Self-made</h5>
+                        <span className="sm:text-4xl lg:text-6xl text-gray-700"><GiTinker /></span>
+                        <h5 className="sm:text-lg lg:text-xl mt-4 font-light">Self-made</h5>
                     </span>
 
                     <span
                         style={{minWidth: '250px'}} 
-                        className={"flex flex-col items-center  text-center cursor-pointer px-16 py-8 border rounded border-gray-300 transition-colors transition-shadow " 
+                        className={"option flex flex-col items-center  text-center cursor-pointer sm:py-5 sm:px-7 lg:px-16 lg:py-8 sm:my-4 lg:my-0 border rounded border-gray-300 transition-colors transition-shadow " 
                             + (cablesType == 'none' ? selected : 'hover:shadow-lg hover:border-green-200 hover:bg-green-50')}
                         onClick={e => selectCablesType('none')}
                         >
-                        <span className="text-6xl text-gray-700"><BsPersonCheckFill /></span>
-                        <h5 className="text-xl mt-4 font-light">I have my own</h5>
+                        <span className="sm:text-4xl lg:text-6xl text-gray-700"><BsPersonCheckFill /></span>
+                        <h5 className="sm:text-lg lg:text-xl mt-4 font-light">I have my own</h5>
                     </span>
                 </section>
             </div>
@@ -56,8 +56,8 @@ export default function SelectCableType({cablesType, selectCablesType}) {
             </div>}
             
             {displayDetails &&
-                <div transition-style="fade:in:faster" style={{maxWidth: '450px'}} className="relative p-10 mt-10 border shadow-lg"> 
-                    <ul className="">
+                <div transition-style="fade:in:faster" style={{maxWidth: '450px'}} className="relative sm:mx-4 lg:mx-0 p-10 mt-10 border shadow-lg"> 
+                    <ul className="text-sm">
                         <li className="mb-2"><span className="text-green-600 font-semibold">Pre-made</span> cables are ready to be used instantly.</li>
                         <li className="mb-2"><span className="text-green-600 font-semibold">Self-made</span> cables are put together by the customer, we provide the materials.</li>
                         <li>Select <span className="text-green-600 font-semibold">I have my own</span> if you already have cables you would like to use or you will provide your own.</li>

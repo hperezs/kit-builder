@@ -16,7 +16,7 @@ export default function ChooseInstallation({homeOrBusiness, cameras, isInstallat
             {!isInstallationSelected && 
             <div 
                 transition-style="fade:in"
-                className={"relative flex justify-evenly items-center rounded p-10 shadow-lg w-10/12 lg:w-8/12 xl:w-6/12 transition-all duration-300 ease " 
+                className={"relative flex flex-wrap justify-evenly items-center rounded sm:p-4 lg:p-10 shadow-lg w-10/12 lg:w-8/12 xl:w-6/12 transition-all duration-300 ease " 
                 + (isInstallationSelected ? 'border-2 border-green-300 border-opacity-80 bg-green-50 bg-opacity-30 ' : 'border cursor-pointer hover:border-green-400 hover:shadow-xl')}
             >
                 {/* Icon or graphic */}
@@ -71,7 +71,7 @@ export default function ChooseInstallation({homeOrBusiness, cameras, isInstallat
             {isInstallationSelected && 
             <div 
                 transition-style="in:square:center"
-                className={"relative flex flex-col items-center justify-evenly items-center rounded m-5 p-10 shadow-lg transition-all duration-300 ease border border-green-400 " }
+                className={"relative flex flex-col items-center justify-evenly items-center rounded m-5 sm:p-4 lg:p-10 shadow-lg transition-all duration-300 ease border border-green-400 " }
             >
                 {/* Icon or graphic */}
                 <div style={{width: '200px', height: '200px'}} className="m-4">

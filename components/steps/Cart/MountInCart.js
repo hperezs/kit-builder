@@ -11,7 +11,7 @@ export default function MountInCart({camera, cablesType, goToStep, deleteMount, 
         <div 
             onMouseEnter={e => setDisplayEditButton(true)}
             onMouseLeave={e => setDisplayEditButton(false)}
-            className={"relative flex flex-col items-center justify-center border rounded p-3 ml-3 bg-white border-gray-300 shadow w-3/12"}
+            className={"relative flex flex-col items-center justify-center border rounded p-3 ml-3 sm:mr-3 lg:mr-0 sm:mt-3 lg:mt-0 bg-white border-gray-300 shadow lg:w-3/12"}
         >
             <div style={{height: '36px', width: '70px'}}> 
                 <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
@@ -38,7 +38,7 @@ export default function MountInCart({camera, cablesType, goToStep, deleteMount, 
         <div 
             onMouseEnter={e => setDisplayEditButton(true)}
             onMouseLeave={e => setDisplayEditButton(false)}
-            className={"relative flex flex-col items-center justify-center border rounded p-4 ml-3 bg-white border-gray-300 shadow min-h-max w-3/12"}
+            className={"relative flex flex-col items-center justify-center border rounded p-4 ml-3 sm:mr-3 lg:mr-0 sm:mt-3 lg:mt-0 bg-white border-gray-300 shadow min-h-max lg:w-3/12"}
         >
             <div className="my-2 max-w-max flex flex-col justify-center items-center bg-white ">
                 <div style={{height: '56px', width: '56px'}}> 

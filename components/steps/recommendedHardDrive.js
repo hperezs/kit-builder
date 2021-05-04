@@ -80,11 +80,11 @@ export default function RecommendedHardDrive({hardDrive, additionalHD, recommend
         <div className="flex flex-col items-center border rounded shadow bg-gray-100">
             <span className="text-2xl font-light w-full p-5 text-center bg-white border">Recommended Hard Drives</span>
 
-            <div className="flex flex-row justify-center mt-20">
+            <div className="flex sm:flex-col lg:flex-row items-center justify-center sm:py-7 lg:py-0 lg:mt-20">
                 <div className="flex flex-col items-center justify-center">
                     <div 
                         style={{width: '178px', height: '240px'}} 
-                        className={"relative p-6 ml-7 flex flex-col justify-center items-center border rounded border-gray-300 bg-white shadow-lg " + (isHDAdded ? 'border-green-400' : '')}
+                        className={"relative p-6 lg:ml-7 flex flex-col justify-center items-center border rounded border-gray-300 bg-white shadow-lg " + (isHDAdded ? 'border-green-400' : '')}
                     >
                         <div style={{height: '94px', width: '110px'}}> 
                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
@@ -119,12 +119,12 @@ export default function RecommendedHardDrive({hardDrive, additionalHD, recommend
                     </div>
                 </div>
 
-                <span className="flex flex-col justify-center text-4xl mx-4 ">+</span>
+                <span className="flex flex-col justify-center text-4xl mx-4 sm:my-4 lg:my-0">+</span>
 
                 <div className="flex flex-col items-center justify-center flex-shrink-0">
                     <div 
                         style={{width: '178px', height: '240px'}} 
-                        className={"relative p-6 mr-7 flex flex-col justify-center items-center border rounded border-gray-300 bg-white shadow-lg " + (isAdditionalHDAdded ? 'border-green-400' : '')}
+                        className={"relative p-6 lg:mr-7 flex flex-col justify-center items-center border rounded border-gray-300 bg-white shadow-lg " + (isAdditionalHDAdded ? 'border-green-400' : '')}
                     >
                         <div style={{height: '94px', width: '110px'}}> 
                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>

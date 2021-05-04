@@ -109,7 +109,7 @@ export default function Cart({
             <div 
                 ref={cart} 
                 className={"fixed top-0 right-0 z-50 transition-width ease-in-out duration-500 " + 
-                (showCart ? '2xl:w-5/12 xl:w-7/12 lg:w-8/12 md:w-9/12 sm:w-10/12' : 'w-0')}
+                (showCart ? '2xl:w-5/12 xl:w-7/12 lg:w-8/12 md:w-10/12 sm:w-12/12' : 'w-0')}
             >
                 {/*content*/}
                 <div className={"h-screen shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none " + (showCart ? '' : '')}>
@@ -128,10 +128,10 @@ export default function Cart({
                         </button>
                     </div>
                     {/*body*/}
-                    <div className={"relative p-6 flex-auto overflow-y-auto" }>
+                    <div className={"relative lg:p-6 flex-auto overflow-y-auto" }>
                         <div className="flex flex-col">
                             {/* NVR and Cable */}
-                            <div className="flex flex-row justify-start mb-3">
+                            <div className="flex sm:flex-col lg:flex-row justify-start sm:mb-6 lg:mb-3 sm:bg-gray-200 lg:bg-white sm:py-5 lg:py-0">
                                 {/* NVR */}
                                 {
                                     <VideoRecorderInCart selectedNVR={selectedNVR} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('NVR')}} deleteNVR={deleteNVR} />
@@ -147,7 +147,7 @@ export default function Cart({
                             </div>
                             {/* Monitor(s) and HDMI(s) */}
                             {selectedMonitor &&
-                                <div className="flex flex-row justify-start mb-3">
+                                <div className="flex sm:flex-col lg:flex-row justify-start sm:mb-6 lg:mb-3 sm:bg-gray-200 lg:bg-white sm:py-5 lg:py-0">
                                     <MonitorInCart selectedMonitor={selectedMonitor} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('addons')}} deleteMonitor={deleteMonitor}/>
 
                                     {
@@ -158,7 +158,7 @@ export default function Cart({
                             {/* Cameras, Cables and Mount */}
                             {cameras?.map((camera, index) => {
                                 return(
-                                    <div className="flex flex-row justify-start mb-3" key={index}>
+                                    <div className="flex sm:flex-col lg:flex-row justify-start sm:mb-6 lg:mb-3 sm:bg-gray-200 lg:bg-white sm:py-5 lg:py-0" key={index}>
 
                                         <CameraInCart camera={camera} index={index} cablesType={cablesType} goToStep={() => {setShowCart(false); goToStep('cameras')}} deleteCamera={deleteCamera}/>
 
@@ -206,8 +206,8 @@ export default function Cart({
                         </div>  
                     </div>
                     {/*footer*/}
-                    <div className={"relative flex items-center justify-center p-6 border-t " + (showCart ? '' : 'hidden')}>
-                        <div className="text-2xl font-medium px-6 py-2">
+                    <div className={"relative flex items-center lg:justify-center p-6 border-t " + (showCart ? '' : 'hidden')}>
+                        <div className="sm:text-xl lg:text-2xl font-medium px-6 py-2">
                             Subtotal: {subtotal.toLocaleString('en-US', {style: 'currency', currency: 'USD'})}
                         </div>
                         <ClearCart restartApp={restartApp} setShowCart={setShowCart}/>

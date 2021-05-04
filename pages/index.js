@@ -83,27 +83,27 @@ export default function Home() {
                 <section style={{backgroundColor: '#494949'}} className="flex flex-col items-center justify-center text-gray-50 py-12 mt-16 bg-opacity-80 ">
                     <div>
                         <h5 className="need-help sm:text-3xl lg:text-4xl text-center">Looking for Individual Security Products?</h5>
-                        <div className="flex justify-between w-full">
+                        <div className="flex justify-between w-full mt-5">
                             <a 
                                 href="https://www.backstreet-surveillance.com/pro-vue-4k-live-video/4k-live-video-cctv.html" 
                                 target="_blank" 
-                                className="text-xl mt-5 cursor-pointer border-r border-l border-gray-50 px-5 pb-1 hover:text-green-100"
+                                className="lg:text-xl mt-5 cursor-pointer text-center mx-1 lg:border-r lg:border-l border-gray-50 px-5 pb-1 hover:text-green-100"
                             >
-                                View 4K Cameras
+                                4K Cameras
                             </a>
                             <a 
                                 href="https://www.backstreet-surveillance.com/pro-vue-4k-live-video/pro-vue-video-recorders.html" 
                                 target="_blank" 
-                                className="text-xl mt-5 cursor-pointer border-r border-l border-gray-50 px-5 pb-1 hover:text-green-100"
+                                className="lg:text-xl mt-5 cursor-pointer text-center mx-1 lg:border-r lg:border-l border-gray-50 px-5 pb-1 hover:text-green-100"
                             >
-                                View Video Recorders
+                                Video Recorders
                             </a>
                             <a 
                                 href="https://www.backstreet-surveillance.com/ip-security-camera-systems/4-camera-systems.html" 
                                 target="_blank" 
-                                className="text-xl mt-5 cursor-pointer border-r border-l border-gray-50 px-5 pb-1 hover:text-green-100"
+                                className="lg:text-xl mt-5 cursor-pointer text-center mx-1 lg:border-r lg:border-l border-gray-50 sm:px-2 lg:px-5 pb-1 hover:text-green-100"
                             >
-                                View Systems
+                                Camera Systems
                             </a>
                         </div>
 
@@ -277,7 +277,7 @@ export default function Home() {
                             />
                         </div>
                     </div>
-                    <div style={{maxWidth: '600px'}} className="">
+                    <div style={{maxWidth: '600px'}} className="flex flex-col sm:items-center lg:items-start">
                         <h3 className="text-2xl xl:text-3xl mb-8 font-semibold text-green-900">Proceed to Purchase or Quote</h3>   
                         <p className="text-lg xl:text-xl">We understand that purchasing a surveillance system is an important decision. It might take time to evaluate what components best fit your needs.</p>
                         <br/>

@@ -17,20 +17,20 @@ export default function PowerInjectors({powerInjectors, selectedPowerInjectors, 
     const selectButton_styles = "px-5 py-1 border rounded bg-green-600 text-white text-sm uppercase tracking-wider font-semibold mt-3 transition hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
 
     return(
-        <section className="flex flex-col items-center">
+        <section id="power-injectors" className="sm:pt-10 lg:pt-0 flex flex-col items-center">
             {!displayDetails && 
             <a transition-style="fade:in:faster" onClick={e => setDisplayDetails(true)} className="block text-green-600 text-center cursor-pointer text-lg hover:text-green-500">
                 What are Power Injectors used for?
             </a>}
             
             {displayDetails &&
-                <div transition-style="fade:in:faster" style={{maxWidth: '450px'}} className="relative p-10 border shadow-lg"> 
+                <div transition-style="fade:in:faster" style={{maxWidth: '450px'}} className="relative p-10 border shadow-lg sm:mx-4 lg:mx-0"> 
                     <p><span className="text-green-600 font-semibold">Power injectors</span> are used to transmit power to the cameras when they will not be connected to the video recorder. A common use is to connect the cameras to the network via a power injector.</p>
                     <span className="absolute top-0 right-0 text-gray-500 mt-4 mr-4 cursor-pointer" onClick={e => setDisplayDetails(false)}><GrClose /></span>
                 </div>}
 
-            <div transition-style="in:wipe:right" className="mt-10 border rounded p-10 bg-gray-100">
-                <div className="flex flex-row justify-center">
+            <div transition-style="in:wipe:right" className="mt-10 border rounded p-10 bg-gray-100 sm:mx-7 lg:mx-0">
+                <div className="flex flex-row justify-center flex-wrap">
                     {powerInjectors.length != 0 &&
                         powerInjectors.map((product, index) => {
                             return(
@@ -68,9 +68,9 @@ export default function PowerInjectors({powerInjectors, selectedPowerInjectors, 
                 </div>
             </div>
             {selectedPowerInjectors.length != 0 && 
-            <div id='selectedPOE' transition-style="in:square:center" className="flex flex-col items-center max-w-max mt-10 border border-gray-300 rounded p-10 shadow">
+            <div id='selectedPOE' transition-style="in:square:center" className="flex flex-col items-center max-w-max mt-10 border border-gray-300 rounded p-10 shadow sm:mx-7 lg:mx-0">
                 <h4 className="font-light text-xl text-center">Your selection:</h4>
-                <div className="flex flex-row justify-center max-w-max">
+                <div className="flex flex-row justify-center max-w-max flex-wrap">
                     {selectedPowerInjectors.length != 0 &&
                         selectedPowerInjectors.map((product, index) => {
                             return(

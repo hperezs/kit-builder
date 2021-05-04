@@ -37,7 +37,7 @@ export default function Instructions({}) {
          {showModal ? (
         <>
           <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+            className="justify-center items-center flex sm:mx-3 lg:mx-0 overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
           >
             <div
               ref={modal}
@@ -46,8 +46,8 @@ export default function Instructions({}) {
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-gray-200 rounded-t">
-                  <h3 className="text-3xl font-semibold">
+                <div className="flex items-start justify-between sm:p-3 lg:p-5 border-b border-solid border-gray-200 rounded-t">
+                  <h3 className="sm:text-xl lg:text-3xl font-semibold">
                     Choosing cameras
                   </h3>
                   <button

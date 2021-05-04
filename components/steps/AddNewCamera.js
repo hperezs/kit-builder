@@ -111,6 +111,9 @@ export default function AddNewCamera({allProducts, selectNewCamera, isAddingNewC
                         <ResolutionRadio setResolution={setResolution} />
                     </div>}
                 </div>
+                {window?.innerWidth < 800 && cameraHousing &&
+                    <p className="mt-6 italic">See camera options below</p>
+                }
             </div>
 
             {/* Recommended Cameras */}

@@ -25,7 +25,7 @@ export default function ChooseCables({
 
     if(cablesType == 'pre-made')return(
         <section className="my-10">
-            <div className="flex flex-row items-start justify-start flex-wrap">
+            <div className="flex flex-row items-start justify-between flex-wrap">
                 {selectedNVR != '' && 
                     <ChooseCable 
                         camera={null} 
@@ -64,7 +64,7 @@ export default function ChooseCables({
 
     if(cablesType == 'self-made')return(
         <section className="my-10">
-            <div transition-style="in:wipe:right" className="flex justify-center bg-gray-100">
+            <div transition-style="in:wipe:right" className="flex flex-wrap items-center justify-center sm:mx-4 lg:mx-0 bg-gray-100">
                 {selfMadeProducts.map((product, index) => {
                     return <SelfMadeProduct product={product} selectSMProducts={selectSMProducts} key={index}/>
                 })}
@@ -72,9 +72,9 @@ export default function ChooseCables({
 
            {selectedSMProducts.length != 0 && 
                 <div className="flex justify-center mt-10">
-                    <div className="flex flex-col items-center border rounded py-3 px-10 shadow-xl">
+                    <div className="flex flex-col items-center border rounded py-3 lg:px-10 shadow-xl sm:mx-4 lg:mx-0">
                         <h4 className="font-light text-xl mb-4">Your selections: </h4>
-                        <div className="flex justify-center ">
+                        <div className="flex justify-center flex-wrap">
                                 {selectedSMProducts.map((product, index) => {
                                     return(
                                         <SelectedSelfMadeProduct 

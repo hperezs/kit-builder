@@ -30,13 +30,13 @@ export default function CameraInCart({camera, cablesType, goToStep, deleteCamera
             onMouseLeave={e => setDisplayEditButton(false)}
             ref={item} 
             style={{height: (displayMoreDetails ? '240px' : '176px')}}
-            className={"relative flex flex-row px-5 py-4 items-center border rounded flex-shrink-0 bg-white border-gray-300 shadow transition-all duration-500 ease overflow-hidden w-6/12"}
+            className={"relative flex flex-row px-5 py-4 sm:mx-3 lg:mx-0 items-center border rounded flex-shrink-0 bg-white border-gray-300 shadow transition-all duration-500 ease overflow-hidden lg:w-6/12"}
         >
             <div  
                 style={{left: '6%'}}
                 className="absolute top-10 flex flex-col justify-center items-center  border-gray-300 "
             >
-                <div style={{height: '86px', width: '120px'}}> 
+                <div style={{height: '86px', width: (window?.innerWidth > 800 ? '120px' : '90px')}}> 
                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                         <Image
                             src={backstreet_domain + camera.imageLink}
@@ -64,7 +64,7 @@ export default function CameraInCart({camera, cablesType, goToStep, deleteCamera
                 }
             </div>
             <div 
-                style={{right: (displayMoreDetails ? '10%' : '14%'), padding: '15px 15px 0px 0px'}}
+                style={{right: (window?.innerWidth > 800 ? (displayMoreDetails ? '10%' : '14%') : (displayMoreDetails ? '2%' : '6%')), padding: '15px 15px 0px 0px'}}
                 className={"absolute top-10 flex flex-col items-center rounded transition-all duration-500 ease"}
             >
                 <p>Price:</p>

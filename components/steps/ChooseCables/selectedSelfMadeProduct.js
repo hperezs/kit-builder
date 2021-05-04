@@ -12,7 +12,7 @@ export default function SelectedSelfMadeProduct({product, index, deleteSMProduct
     }, [product.quantity])
 
     return(
-        <div transition-style="fade:in" className="relative flex flex-col justify-start items-center mx-5 mb-3 rounded px-5 pt-7 pb-10 border border-gray-300 shadow">
+        <div transition-style="fade:in" className="relative flex flex-col justify-start items-center mx-5 sm:mb-5 lg:mb-3 rounded px-5 pt-7 pb-10 border border-gray-300 shadow">
             <div className="m-2 p-5 flex flex-col justify-center items-center border rounded border-gray-300">
                 <div style={{height: '86px', width: '120px'}}> 
                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>

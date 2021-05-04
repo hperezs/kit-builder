@@ -55,7 +55,7 @@ export default function RecommendedCamera({camera, handleSelect}) {
                 <p className="font-bold mb-1 text-yellow-500"><span className="line-through">${camera.comparePrice}</span> Save Big!</p>
                 <p className="font-normal text-green-600">${parseFloat(camera.price?.$numberDecimal).toFixed(2)}</p>
                 <button className={addToCart_styles} onClick={e => handleSelect(camera)}>Select</button>
-                <a href={backstreet_domain + camera.productLink} target="_blank" className="font-light text-green-600 hover:text-green-400">See more details</a>
+                <a href={backstreet_domain + camera.productLink} target="_blank" className="font-light mt-2 text-green-600 hover:text-green-400">See more details</a>
             </div>
         </div>
     )

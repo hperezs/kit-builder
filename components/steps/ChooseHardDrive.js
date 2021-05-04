@@ -220,9 +220,9 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
 
             <div className="flex flex-row justify-center flex-wrap mt-10 transition-all duration-300 ease">
                 {/* Calculator */}
-                <div id="calculator" style={{width: '380px'}} className="flex flex-col border border-gray-300 rounded sm:p-5 sm:mx-2 sm:mb-10 lg:mb-0 lg:p-10 lg:mr-10 shadow">
+                <div id="calculator" style={{width: '370px'}} className="flex flex-col border border-gray-300 rounded sm:px-4 sm:py-7 sm:mx-1 sm:mb-10 lg:mb-0 lg:p-10 lg:mr-10 shadow-md">
                     <div className="flex justify-center mb-10">
-                        <div className="flex flex-col items-center justify-center p-7 border border-gray-300 rounded">
+                        <div className="flex flex-col items-center justify-center p-5 border border-gray-300 rounded">
                             <span className="text-xl">Required Storage Capacity</span>
                             <span className="text-2xl font-semibold mt-5">{requiredStorage} TB</span>
                         </div>
@@ -353,9 +353,10 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
                     <div 
                         id="yourHardDrives" 
                         transition-style="in:square:center" 
-                        className={"flex flex-col justify-center items-center my-20 py-7 px-14 shadow border rounded " + (selectedHDStorage > requiredStorage ? 'border-green-400' : 'border-yellow-400')}>
+                        className={"flex flex-col justify-center items-center my-20 py-7 px-14 shadow border rounded " + (selectedHDStorage > requiredStorage ? 'border-green-400' : 'border-yellow-400')}
+                    >
                         <h4 className="font-light text-xl">Your Hard Drive{selectedHardDrives.length > 1 ? 's' : ''}:</h4>
-                        <div className="flex justify-center">
+                        <div className="flex justify-center flex-wrap">
                             {selectedHardDrives.map((hardDrive, index) => {
                                 return(
                                     <SelectedHardDrive hardDrive={hardDrive} index={index} isEditing={isEditing} handleDelete={handleDelete} key={index}/>

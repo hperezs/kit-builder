@@ -12,7 +12,7 @@ export default function CableInCart({cable, goToStep, deleteCable, selectedNVR, 
         <div 
             onMouseEnter={e => setDisplayEditButton(true)}
             onMouseLeave={e => setDisplayEditButton(false)}
-            className={"relative flex flex-col items-center justify-center border rounded p-3 ml-3 w-3/12 bg-white border-gray-300 shadow"}
+            className={"relative flex flex-col items-center justify-center border rounded p-3 ml-3 sm:mr-3 lg:mr-0 sm:mt-3 lg:mt-0 lg:w-3/12 bg-white border-gray-300 shadow"}
         >
             <div style={{height: '46px', width: '80px'}}> 
                 <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
@@ -40,7 +40,7 @@ export default function CableInCart({cable, goToStep, deleteCable, selectedNVR, 
         <div 
             onMouseEnter={e => setDisplayEditButton(true)}
             onMouseLeave={e => setDisplayEditButton(false)}
-            className={"relative flex flex-col items-center justify-center border rounded p-3 ml-3 w-3/12 bg-white border-gray-300 shadow"}
+            className={"relative flex flex-col items-center justify-center border rounded p-3 ml-3 sm:mr-3 lg:mr-0 sm:mt-3 lg:mt-0 lg:w-3/12 bg-white border-gray-300 shadow"}
         >
             <div className="my-2 max-w-max flex flex-col justify-center items-center bg-white">
                 <div style={{height: '56px', width: '56px'}}> 

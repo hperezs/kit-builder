@@ -12,7 +12,7 @@ export default function HardDriveInCart({hardDrive, cablesType, goToStep, index,
         <div 
             onMouseEnter={e => setDisplayEditButton(true)}
             onMouseLeave={e => setDisplayEditButton(false)}
-            className={"relative flex flex-col items-center justify-center border rounded py-7 ml-3 w-3/12 bg-white border-gray-300 shadow w-3/12"}
+            className={"relative flex flex-col items-center justify-center border rounded py-7 ml-3 sm:mr-3 lg:mr-0 sm:mt-3 lg:mt-0 lg:w-3/12 bg-white border-gray-300 shadow w-3/12"}
         >
             <div style={{height: '46px', width: '80px'}}> 
                 <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
@@ -40,7 +40,7 @@ export default function HardDriveInCart({hardDrive, cablesType, goToStep, index,
         <div 
             onMouseEnter={e => setDisplayEditButton(true)}
             onMouseLeave={e => setDisplayEditButton(false)}
-            className={"relative flex flex-row py-7 px-5 justify-evenly items-center border rounded bg-white border-gray-300 shadow " + (index == 0 ? 'w-3/12 ml-3' : (isReviewStep ? 'w-full mb-3': 'w-6/12 mr-3 mb-3'))}
+            className={"relative flex flex-row py-7 px-5 justify-evenly items-center border rounded bg-white border-gray-300 shadow sm:mr-3 lg:mr-0 sm:mt-3 lg:mt-0 " + (index == 0 ? 'lg:w-3/12 ml-3' : (isReviewStep ? 'w-full mb-3': 'lg:w-6/12 mr-3 mb-3'))}
         >
             <div style={{height: '66px', width: '80px'}}> 
                 <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>

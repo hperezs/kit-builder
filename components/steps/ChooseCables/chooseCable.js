@@ -24,13 +24,18 @@ export default function ChooseCable({
     const [indoorOrOutdoor, setIndoorOrOutdoor] = useState('indoor');
     const [cableColor, setCableColor] = useState("White");
     const [selectedCable, setSelectedCable] = useState(camera ? camera?.cable : selectedNVR?.cable);
-    const [isChoosing, setIsChoosing] = useState((!camera?.cable && !selectedNVR?.cable))
+    const [isChoosing, setIsChoosing] = useState((!camera?.cable && !selectedNVR?.cable));
+    const [screenWidth, setScreenWidth] = useState(0);
 
     useEffect(() => {
         if(cableLength == 1000) {
             setCableColor("Black");
         }
     }, [cableLength])
+
+    useEffect(() => {
+        setScreenWidth(window?.innerWidth);
+    }, [])
 
     const handleSelect = cable => {
         let selectedCable = {
@@ -49,7 +54,7 @@ export default function ChooseCable({
     const selected_card_styles = "flex flex-col justify-start items-center bg-white mb-3 border-green-400 rounded p-3 border shadow-lg"
 
     return(
-        <div style={{height: '515px', width: '744px'}} className={"relative flex flex-row justify-center items-center mr-auto mb-10 bg-gray-100 p-4 " 
+        <div style={(screenWidth > 800 ? {height: '515px', width: '744px'} : {height: 'auto'})} className={"relative flex flex-row sm:flex-wrap lg:flex-nowrap justify-center sm:items-start lg:items-center sm:mx-4 lg:mx-0 mr-auto mb-10 bg-gray-100 p-4 " 
             + (camera?.cable ? 'border border-green-400' : (selectedNVR ? '' : 'border-yellow-500 border-2 border-opacity-60'))}
         >
             {/* Optional note for NVR's */}
@@ -95,8 +100,8 @@ export default function ChooseCable({
             }
 
             {isChoosing &&
-                <div className="flex flex-row">
-                    <div className="flex flex-col justify-center items-center mr-5 ">
+                <div className="flex flex-row sm:flex-wrap lg:flex-nowrap justify-center sm:mt-7 lg:mt-0">
+                    <div className="flex flex-col justify-center items-center lg:mr-5 ">
                         <label className="mb-3">Select cable location:</label>
                         <CableLocationDropdown setCableLocation={setIndoorOrOutdoor} />
                         
@@ -112,7 +117,7 @@ export default function ChooseCable({
                     </div>
                     
                     {(indoorCables.length != 0 && indoorOrOutdoor == 'indoor') &&
-                        <div className="">
+                        <div className={(selectedNVR ? "sm:mb-24 lg:mb-0" : '')}>
                             {indoorCables.map((cable, index) => {
                                 let length = cable.sku.split('-')[1]
                                 if(cableLength == length) return(
@@ -149,7 +154,7 @@ export default function ChooseCable({
             
 
             {!isChoosing &&
-            <div transition-style="in:square:center" style={{width: '350px'}} className="flex flex-col items-center justify-center p-5">
+            <div transition-style="in:square:center" style={(screenWidth > 800 ? {width: '350px'} : {width: '275px'})} className="flex flex-col items-center justify-center p-5">
                 <p className="font-light text-center text-lg mb-3">Your selection:</p> 
                     <div className={selected_card_styles}>
                         <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 bg-white ">

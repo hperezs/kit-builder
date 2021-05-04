@@ -106,9 +106,23 @@ input[type=number] {
     height: 250px !important;
     margin-bottom: 1.25rem;
   }
+
+  .home-business-option {
+    width: 150px;
+  }
+
   .actions-logo {
-    width: 420px !important;
-    height: 50px !important;
+    width: 320px !important;
+    height: 40px !important;
+  }
+
+  .actions-logo-smaller {
+    width: 220px !important;
+    height: 40px !important;
+  }
+
+  .option {
+    min-width: 200px !important;
   }
 }
 

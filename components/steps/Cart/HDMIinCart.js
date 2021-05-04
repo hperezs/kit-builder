@@ -11,7 +11,7 @@ export default function HDMIinCart({selectedMonitor, cablesType, goToStep, delet
         <div 
             onMouseEnter={e => setDisplayEditButton(true)}
             onMouseLeave={e => setDisplayEditButton(false)}
-            className={"relative flex flex-col items-center justify-center border rounded p-3 ml-3 bg-white border-gray-300 shadow w-6/12"}
+            className={"relative flex flex-col items-center justify-center border rounded p-3 ml-3 sm:mr-3 lg:mr-3 sm:mt-3 lg:mt-0 bg-white border-gray-300 shadow lg:w-6/12"}
         >
             <p className="font-light text-lg">No HDMI cable added yet</p>
             {displayEditButton && 
@@ -29,7 +29,7 @@ export default function HDMIinCart({selectedMonitor, cablesType, goToStep, delet
         <div 
             onMouseEnter={e => setDisplayEditButton(true)}
             onMouseLeave={e => setDisplayEditButton(false)}
-            className={"relative flex flex-col items-center justify-center border rounded p-3 ml-3 bg-white border-gray-300 shadow w-6/12"}
+            className={"relative flex flex-col items-center justify-center border rounded p-3 ml-3 sm:mr-3 lg:mr-0 sm:mt-3 lg:mt-0 bg-white border-gray-300 shadow lg:w-6/12"}
         >
             <div className="my-2 max-w-max flex flex-col justify-center items-center bg-white">
                 <div style={{height: '56px', width: '56px'}}> 
