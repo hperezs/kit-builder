@@ -7,7 +7,7 @@ export default function StepDescription({currentStep}) {
         case 1:
             return(
                 <div className="relative sm:p-3 lg:p-6 flex-auto">
-                    <div className="my-4 text-lg leading-relaxed">
+                    <div className="flex flex-col items-center my-4 text-lg leading-relaxed">
                         <p className="mb-5">Start by choosing the <span className="text-green-600">housing style</span> for your camera.</p>
                         <div style={{height: '386px', width: (window?.screen > 800 ? '520px' : '300px')}}> 
                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
@@ -25,7 +25,7 @@ export default function StepDescription({currentStep}) {
         case 2:
             return(
                 <div className="relative sm:p-3 lg:p-6 flex-auto">
-                    <div className="my-4 text-lg leading-relaxed">
+                    <div className="flex flex-col items-center my-4 text-lg leading-relaxed">
                         <p className="mb-5">Then, select the <span className="text-green-600">viewing area</span>. This is how far you want your camera to be able to capture.</p>
                         <div style={{height: '300px', width: (window?.screen > 800 ? '520px' : '300px')}}> 
                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
@@ -44,7 +44,7 @@ export default function StepDescription({currentStep}) {
         case 3:
             return(
                 <div className="relative sm:p-3 lg:p-6 flex-auto">
-                    <div className="my-4 text-lg leading-relaxed">
+                    <div className="flex flex-col items-center my-4 text-lg leading-relaxed">
                         <p className="mb-5">Select a <span className="text-green-600">camera lens</span>. If you need help selecting a lens, you can go back to the previous step to review the differences between each lens.</p>
                         <div style={{height: '300px', width: (window?.screen > 800 ? '520px' : '300px')}}> 
                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
@@ -63,7 +63,7 @@ export default function StepDescription({currentStep}) {
         case 4:
             return(
                 <div className="relative sm:p-3 lg:p-6 flex-auto">
-                    <div className="my-4 text-lg leading-relaxed">
+                    <div className="flex flex-col items-center my-4 text-lg leading-relaxed">
                         <p className="mb-5">You can name your camera for reference. This might be helpful to visualize the purpose or location for each camera.</p>
                         <div style={{height: '300px', width: (window?.screen > 800 ? '520px' : '300px')}}> 
                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
@@ -82,7 +82,7 @@ export default function StepDescription({currentStep}) {
         case 5:
             return(
                 <div className="relative sm:p-3 lg:p-6 flex-auto">
-                    <div className="my-4 text-lg leading-relaxed">
+                    <div className="flex flex-col items-center my-4 text-lg leading-relaxed">
                         <p className="mb-5">Whenever you change a selection the recommended cameras will be updated.</p>
                         <div style={{height: '300px', width: (window?.screen > 800 ? '520px' : '300px')}}> 
                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
