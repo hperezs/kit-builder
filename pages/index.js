@@ -352,7 +352,7 @@ export default function Home() {
                             <h5 className="text-2xl font-semibold text-green-900">USA-Based Unlimited Technical Support</h5>
                             <p className="text-lg mt-5">We provide USA-based, free, unlimited, life-time technical support for all of the equipment that we offer. We answer all kinds of questions, from simple ones such as installing your system for the first time, to more advanced questions such as port forwarding or network performance improvements. Feel free to call for any questions. We make sure you get the most out of your system.</p>
                         </div>
-                        <div style={{height: '225px', width: '280px'}} className="sm:mt-10 lg:mt-0 lg:ml-20"> 
+                        <div style={{height: '255px', width: '280px'}} className="sm:mt-10 lg:mt-0 lg:ml-20"> 
                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                 <NextImage
                                     src={"/images/usa_support.png"}
