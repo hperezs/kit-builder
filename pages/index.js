@@ -59,17 +59,29 @@ export default function Home() {
                 </div>
                 
                 {/* Banner */}
-                <div id="background-image" className="welcome-banner welcome-banner-loading relative flex justify-start z-10 w-screen transition-filter duration-1000 ease"></div>
+                <div id="background-image" className="relative welcome-banner welcome-banner-loading relative flex justify-start z-10 w-screen transition-filter duration-1000 ease"></div>
                 <div transition-style="in:wipe:right:delayed" style={{width: '35%', maxWidth: '850px'}} className="page-title flex flex-col absolute top-0 left-0 items-center justify-center z-20 bg-green-700 bg-opacity-80">
                     <h1 className="text-4xl lg:text-7xl uppercase font-semibold p-10 text-gray-100">CCTV Kit <br/> Builder</h1>
                 </div>
                 
                 {/* Welcome section */}
-                <section className="welcome-container flex flex-col items-center w-screen ">
-                    <div className="flex flex-col justify-center w-screen ">
-                        <div style={{borderTopWidth: '5px'}} className="flex flex-col items-center justify-start border-green-600">
+                <section style={{borderTopWidth: '5px'}} className="relative welcome-container flex justify-evenly items-center w-screen border-green-600">
+                    <div className="industryEra sm:hidden lg:block"> 
+                        <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                            <NextImage
+                                src={"/images/IndustryEra.png"}
+                                layout="fill"
+                                objectFit="contain"
+                                quality={100}
+                                alt="Industry Era Awarded"
+                                priority={true}
+                            />
+                        </div>
+                    </div>
+                    <div className="flex flex-col justify-center lg:mx-10">
+                        <div className="flex flex-col items-center justify-start">
                             <h2 className="text-2xl lg:text-3xl xl:text-4xl text-center px-3 font-semibold mt-14 text-green-800">Build Your Custom Surveillance System in Minutes</h2>
-                            <p style={{maxWidth: '850px'}} className="welcome-text text-xl xl:text-2xl text-center w-6/12 my-10">
+                            <p style={{maxWidth: '850px'}} className="welcome-text text-xl xl:text-2xl text-center my-10">
                                 Our Custom Kit Builder will guide you through each step, choosing the components that best fit your needs. No skill or previous knowledge about security cameras is needed.
                             </p>
                             <a style={{paddingBottom: '14px', paddingRight: '41px'}} onClick={handleClick} className="get-started py-3 px-10 mb-5 text-white border bg-green-700 bg-opacity-90 text-xl lg:text-2xl xl:text-3xl rounded text-white text-center align-middle transition-colors duration-300 ease hover:bg-green-500 my`-8 cursor-pointer">
@@ -78,9 +90,21 @@ export default function Home() {
                             <Link href="/guide"><span className="-z-50 opacity-0" id='get-started-link'>get started link</span></Link>
                         </div>
                     </div>
+                    <div className="bestOfState sm:hidden lg:block w-3/12"> 
+                        <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                            <NextImage
+                                src={"/images/BestOfState.png"}
+                                layout="fill"
+                                objectFit="contain"
+                                quality={100}
+                                alt="Best of State Winner"
+                                priority={true}
+                            />
+                        </div>
+                    </div>
                 </section>
 
-                <section style={{backgroundColor: '#494949'}} className="flex flex-col items-center justify-center text-gray-50 py-12 mt-16 bg-opacity-80 ">
+                <section style={{backgroundColor: '#494949'}} className="flex flex-col items-center justify-center text-gray-50 py-12 mt-10 bg-opacity-80 ">
                     <div>
                         <h5 className="need-help sm:text-3xl lg:text-4xl text-center">Looking for Individual Security Products?</h5>
                         <div className="flex justify-between w-full mt-5">

@@ -45,6 +45,15 @@ input[type=number] {
   min-height: 55vh;
 }
 
+.bestOfState {
+  width: 380px;
+  height: 200px;
+}
+.industryEra { 
+  width: 380px;
+  height: 180px;
+}
+
 @media screen and (min-width: 1400px) {
   .page-title, .welcome-banner {
     height: 60vh;
@@ -74,6 +83,14 @@ input[type=number] {
 @media screen and (max-width: 550px) {
   .page-title, .welcome-banner {
     height: 40vh;
+  }
+  .bestOfState {
+    width: 190px;
+    height: 70px;
+  }
+  .industryEra { 
+    width: 130px;
+    height: 70px;
   }
   .welcome-container {
     min-height: 60vh;
