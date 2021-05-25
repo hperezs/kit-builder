@@ -330,7 +330,7 @@ export default function Home() {
                                 layout="fill"
                                 objectFit="contain"
                                 quality={100}
-                                alt="System Designer app"
+                                alt="backstreet employee stocking products"
                             />
                         </div>
                     </div>
@@ -399,7 +399,7 @@ export default function Home() {
                                 layout="fill"
                                 objectFit="contain"
                                 quality={100}
-                                alt="custom quotes"
+                                alt="System Desginer app"
                             />
                         </div>
                     </div>
@@ -410,6 +410,7 @@ export default function Home() {
                         <p className="text-lg xl:text-xl">Strategically design all aspects of your surveillance system. From the cameras and their viewing areas, to their connection to the NVR, router and much more - this surveillance system design tool covers it all.</p>
                         <a
                             href="https://system-designer.vercel.app/"
+                            target="_blank"
                             className="mt-7 py-2 px-5 xl:py-3 xl:px-7 text-white border bg-green-700 bg-opacity-90 text-xl xl:text-2xl rounded text-white text-center transition-colors duration-300 ease hover:bg-green-500 cursor-pointer outline-none focus:outline-none focus:ring focus:ring-green-400 focus:ring-opacity-80"
                         >
                             Go to System Designer
