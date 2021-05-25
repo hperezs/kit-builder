@@ -318,7 +318,7 @@ export default function Home() {
                 <hr className="border-gray-400"/>
 
                 {/* Why backstreet? */}
-                <section className="mx-5 lg:px-5 xl:mx-20 my-20 xl:p-10 flex flex-wrap justify-center">
+                <section className="mx-5 lg:px-5 xl:mx-20 mt-20 mb-10 xl:p-10 flex flex-wrap justify-center">
                     <div style={{maxWidth: '600px'}} className="mt-10">
                         <h3 className="text-2xl xl:text-3xl mb-8 font-semibold text-green-900">Why purchase from Backstreet?</h3>   
                         <p className="text-lg xl:text-xl">Backstreet is the affordable solution for easy to use professional surveillance equipment. We are an American owned company and all of our support representatives and facilities are located in the U.S. We only offer ultra high definition equipment and we back it with a 5 year warranty and free lifetime technical support. The Backstreet promise says it all: “We promise that you will not find a lower price for the same quality and support, anywhere.”</p>
@@ -330,7 +330,7 @@ export default function Home() {
                                 layout="fill"
                                 objectFit="contain"
                                 quality={100}
-                                alt="backstreet employee stocking products"
+                                alt="System Designer app"
                             />
                         </div>
                     </div>
@@ -388,6 +388,33 @@ export default function Home() {
                             </div>
                         </div>
                     </div>                     
+                </section>
+                <hr className="border-gray-400"/>
+                {/* System Designer */}
+                <section className="mx-5 lg:px-5 xl:mx-20 my-20 xl:p-10 flex flex-wrap justify-center">
+                    <div style={{height: '400px', width: '600px'}} className="custom-quotes-img lg:mr-20"> 
+                        <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
+                            <NextImage
+                                src={"/images/home-design-demo.png"}
+                                layout="fill"
+                                objectFit="contain"
+                                quality={100}
+                                alt="custom quotes"
+                            />
+                        </div>
+                    </div>
+                    <div style={{maxWidth: '600px'}} className="flex flex-col sm:items-center lg:items-start">
+                        <h3 className="text-2xl xl:text-3xl mb-8 font-semibold text-green-900">Take your System Design to the Next Level</h3>   
+                        <p className="text-lg xl:text-xl">Visualize the location of each camera and their viewing distances on your home or business with our System Designer.</p>
+                        <br/>
+                        <p className="text-lg xl:text-xl">Strategically design all aspects of your surveillance system. From the cameras and their viewing areas, to their connection to the NVR, router and much more - this surveillance system design tool covers it all.</p>
+                        <a
+                            href="https://system-designer.vercel.app/"
+                            className="mt-7 py-2 px-5 xl:py-3 xl:px-7 text-white border bg-green-700 bg-opacity-90 text-xl xl:text-2xl rounded text-white text-center transition-colors duration-300 ease hover:bg-green-500 cursor-pointer outline-none focus:outline-none focus:ring focus:ring-green-400 focus:ring-opacity-80"
+                        >
+                            Go to System Designer
+                        </a>
+                    </div>
                 </section>
                 <section className="flex flex-col items-center justify-center bg-green-700 text-gray-50 py-12">
                     <h5 className="need-help sm:text-3xl lg:text-4xl sm:mx-5 sm:text-center">Need More Information About Security Cameras?</h5>
