@@ -15,7 +15,7 @@ import ReactGa from 'react-ga'
 
 export default function Guide() {
     // Product data
-    const [ allProducts, setAllProducts ] = useState([]); // These are cameras from MongoDB
+    const [ allProducts, setAllProducts ] = useState([]); // These are cameras from Magento
     const [ videoRecorders, setAllVideoRecorders ] = useState([]);
     const [ hardDrives, setHardDrives ] = useState([])
     const [ indoorCables, setIndoorCables ] = useState([]);
@@ -30,6 +30,7 @@ export default function Guide() {
     const [ ipAddress, setIpAddress ] = useState('');
 
     // App state
+    const [ isLoading, setIsLoading ] = useState(false);
     const [ currentStep, setCurrentStep ] = useState(1);
     const [ homeOrBusiness, setHomeOrBusiness ] = useState('');
     const [ cameras, setCameras ] = useState([]);
@@ -252,7 +253,31 @@ export default function Guide() {
         }).catch(error => {
             console.log(error);
         })
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        if(allProducts && 
+            videoRecorders && 
+            hardDrives && 
+            indoorCables && 
+            outdoorCables && 
+            selfMadeProducts && 
+            monitorProducts && 
+            mountProducts && 
+            powerInjectors && 
+            freeProducts ) {
+                setIsLoading(false);
+            }
+    }, [allProducts,
+        videoRecorders,
+        hardDrives,
+        indoorCables,
+        outdoorCables,
+        selfMadeProducts,
+        monitorProducts,
+        mountProducts,
+        powerInjectors,
+        freeProducts,])
 
     // Get localStorage
     useEffect(() => {
@@ -946,6 +971,12 @@ export default function Guide() {
                 </div>
             </div>
             <ReactNotification className="lg:mt-20"/>
+            {isLoading && 
+            <div id="slider" class="slider w-full">
+                <div class="line bg-green-600"></div>
+                <div class="subline bg-green-600 inc"></div>
+                <div class="subline bg-green-600 dec"></div>
+            </div>}
             <ProgressBar progress={(cablesType != 'none' ? currentStep / 10 : currentStep / 9)} />
             <main className="flex flex-row justify-center items-start lg:mt-14 z-20">
                 <div className="relative flex flex-col justify-center 2xl:w-8/12 xl:w-10/12 lg:w-11/12 md:w-11/12">
