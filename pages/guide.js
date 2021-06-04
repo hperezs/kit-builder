@@ -25,12 +25,9 @@ export default function Guide() {
     const [ mountProducts, setMountProducts ] = useState([]);
     const [ powerInjectors, setPowerInjectors ] = useState([]);
     const [ freeProducts, setFreeProducts ] = useState([]);
-    
-    // For Analytics
-    const [ ipAddress, setIpAddress ] = useState('');
 
     // App state
-    const [ isLoading, setIsLoading ] = useState(false);
+    const [ isLoading, setIsLoading ] = useState(true);
     const [ currentStep, setCurrentStep ] = useState(1);
     const [ homeOrBusiness, setHomeOrBusiness ] = useState('');
     const [ cameras, setCameras ] = useState([]);
@@ -268,6 +265,7 @@ export default function Guide() {
             freeProducts ) {
                 setIsLoading(false);
             }
+        
     }, [allProducts,
         videoRecorders,
         hardDrives,
@@ -887,8 +885,6 @@ export default function Guide() {
     }
 
     const proceedToPurchase = () => {
-        // ANALYTICS: Record that user proceeded to cart
-        fetch('/api/updateRecord?step=end&ipAddress=' + ipAddress);
         ReactGa.event({
             category: 'Button',
             action: 'Customer proceeded to purchase / quote!!',
