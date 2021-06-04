@@ -105,7 +105,7 @@ export default function AddNewCamera({allProducts, selectNewCamera, isAddingNewC
                             cameraHousing={cameraHousing}
                         />
                     </div>
-                    {(cameraLens == '3.6mm fixed' && cameraHousing == 'dome') && 
+                    {(cameraLens == '3.6mm fixed' && (cameraHousing == 'dome' || cameraHousing == 'bullet')) && 
                     <div className="mt-5 flex flex-row justify-between items-center">
                         <span>Resolution:</span>
                         <ResolutionRadio setResolution={setResolution} />

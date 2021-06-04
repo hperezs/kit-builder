@@ -33,7 +33,8 @@ export default function RecommendedCameras({allProducts, cameraHousing, cameraLe
                                     )
                                     if(cameraHousing == 'bullet' && cameraLens == '3.6mm fixed') return(
                                         cameraHousing == product.housingStyle && 
-                                        cameraLens == product.cameraLens 
+                                        cameraLens == product.cameraLens && 
+                                        resolution == product.resolution
                                     )
                                     
                                     if(cameraHousing == 'ptz') return (
