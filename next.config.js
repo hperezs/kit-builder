@@ -5,7 +5,6 @@ module.exports = {
         issuer: {
           test: /\.(js|ts)x?$/,
         },
-        use: ['@svgr/webpack'],
       });
 
       return config;
