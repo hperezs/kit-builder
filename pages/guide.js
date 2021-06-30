@@ -47,7 +47,7 @@ export default function Guide() {
 
     //  Google Analytics
     useEffect(() => {
-        ReactGa.initialize("UA-195816848-1");
+        ReactGa.initialize(process.env.GA_ID);
         ReactGa.pageview(window.location.pathname + window.location.search);
    }, [])
 
