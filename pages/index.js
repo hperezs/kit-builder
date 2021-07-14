@@ -134,15 +134,9 @@ export default function Home() {
                     </div>
                 </section>
 
-                <div style={{height: '500px', width: '100%'}} className="kit-banner mt-20"> 
-                    <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
-                        <NextImage
-                            src={"/images/kitbuilder-banner.jpg"}
-                            layout="fill"
-                            objectFit="contain"
-                            quality={100}
-                            alt="kit-builder-banner"
-                        />
+                <div className="flex justify-center w-full mt-10">
+                    <div style={{maxWidth: "1000px", width: "100%"}}>
+                        <iframe width={"100%"} height={563} src="https://www.youtube.com/embed/Lt4hdx1OSPE" />
                     </div>
                 </div>
                 
