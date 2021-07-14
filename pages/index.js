@@ -136,7 +136,7 @@ export default function Home() {
 
                 <div className="flex justify-center w-full mt-10">
                     <div style={{maxWidth: "1000px", width: "100%"}}>
-                        <iframe width={"100%"} height={563} src="https://www.youtube.com/embed/Lt4hdx1OSPE" />
+                        <iframe width={"100%"} height={563}  src="https://www.youtube.com/embed/videoseries?list=PLdEoiXZnd3Gt-BxuKUG6tZ_UI041F8ASz" title="YouTube video player" frameBorder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
                     </div>
                 </div>
                 
