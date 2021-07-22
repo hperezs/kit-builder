@@ -38,7 +38,7 @@ export default function DiscountsModal({proceedToPurchase}) {
 
                         <div style={{maxWidth: "400px"}} className="text-lg mt-5 text-center">
                           <span className="text-green-600 text-2xl font-light mr-2">&#8594;</span>Head over to our checkout page and use the code 
-                          <span className="text-green-600 font-semibold">SAFESUMMER</span> for a discount.
+                          <span className="text-green-600 font-semibold"> SAFESUMMER</span> for a discount.
                         </div>
 
                         <div className="p-4 border mt-5 shadow w-11/12 border-green-400 border-opacity-80">
