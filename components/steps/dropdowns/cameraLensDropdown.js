@@ -47,7 +47,7 @@ export default function CameraLensDropdown({
           }
         >
           <option>3.6mm fixed</option>
-          <option>2.8-12mm manual</option>
+          <option disabled={cameraHousing == "bullet"}>2.8-12mm manual</option>
           <option>2.8-12mm motorized</option>
         </select>
       </div>
@@ -63,7 +63,7 @@ export default function CameraLensDropdown({
           onChange={handleChange}
           className={classNames + ""}
         >
-          <option>2.8-12mm manual</option>
+          <option disabled={cameraHousing == "bullet"}>2.8-12mm manual</option>
           <option>2.8-12mm motorized</option>
         </select>
       </div>
