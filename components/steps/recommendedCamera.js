@@ -47,7 +47,7 @@ export default function RecommendedCamera({camera, handleSelect}) {
                 </div>
             </div>
             <div className="flex flex-col items-center">
-                <p className="">{camera.sku} </p>
+                <p className="">{camera.name} </p>
                 <p className="font-light mb-1">Lens: {camera.cameraLens}</p>
                 <p className="font-light mb-1">Night Vision: {camera.nightVision}</p>
                 <p className={"font-light mb-1 " + (camera.resolution == '4K' ? 'text-yellow-600' : '')}>Resolution: {camera.resolution}</p>

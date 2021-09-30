@@ -91,7 +91,7 @@ export default function Camera({camera, index, updateCameraName, deleteCamera, d
                 :
                     <p className="text-lg mb-3 border-b border-gray-500 px-3 italic">{camera.cameraName}</p>
             }
-                <p className="">{camera.sku} </p>
+                <p className="">{camera?.name || camera.sku} </p>
                 <p className="font-light mb-1">Lens: {camera.cameraLens}</p>
                 <p className="font-light mb-1">Night Vision: {camera.nightVision}</p>
                 <p className="font-light mb-1">Resolution: {camera.resolution}</p>

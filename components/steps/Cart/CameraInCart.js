@@ -52,7 +52,7 @@ export default function CameraInCart({camera, cablesType, goToStep, deleteCamera
                 className={"absolute top-10 flex flex-col items-center transition-all duration-500 ease"}
             >
                 <p className="text-lg mb-3 border-b border-gray-500 px-3 italic">{camera.cameraName}</p>
-                <p className="mb-1">{camera.sku} </p>
+                <p className="mb-1">{camera.name} </p>
                 {!displayMoreDetails && <a onClick={e => setDisplayMoreDetails(true)} className="text-green-700 font-light cursor-pointer hover:text-green-500">See more details</a>}
                 {displayMoreDetails &&
                 <div className="text-center ">
