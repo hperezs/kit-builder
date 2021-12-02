@@ -32,14 +32,8 @@ export default function DiscountsModal({proceedToPurchase}) {
                 {/*body*/}
                 <div style={{minHeight: '400px', maxWidth: '700px'}} className="relative sm:p-3 lg:p-6">
                     <div className="mx-3 sm:text-lg lg:text-xl flex flex-col items-center">
-                        <p className="lg:text-2xl mb-7">Your selections qualify for a discount!</p>
                         
                         <Image src="/images/NDAA_Approved.jpeg" width={773} height={300} />
-
-//                         <div style={{maxWidth: "400px"}} className="text-lg mt-5 text-center">
-//                           <span className="text-green-600 text-2xl font-light mr-2">&#8594;</span>Head over to our checkout page to see the discount automatically applied.
-//                           {/* <span className="text-green-600 font-semibold"> SAFESUMMER</span> for a discount. */}
-//                         </div>
 
                         <div className="p-4 border mt-5 shadow w-11/12 border-green-400 border-opacity-80">
                           <span className="text-green-600 font-semibold mr-1">Note:</span> You can choose to send a quote of your selections to your email or finish placing your order
