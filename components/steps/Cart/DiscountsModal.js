@@ -33,7 +33,9 @@ export default function DiscountsModal({proceedToPurchase}) {
                 <div style={{minHeight: '400px', maxWidth: '700px'}} className="relative sm:p-3 lg:p-6">
                     <div className="mx-3 sm:text-lg lg:text-xl flex flex-col items-center">
                         
-                        <Image src="/images/NDAA_Approved.jpeg" width={773} height={300} />
+                        <a href="https://www.backstreet-surveillance.com/ndaa-banned-security-brands.html" target="_blank">
+                          <Image src="/images/NDAA_Approved.jpeg" width={773} height={300} />
+                        </a>
 
                         <div className="p-4 border mt-5 shadow w-11/12 border-green-400 border-opacity-80">
                           <span className="text-green-600 font-semibold mr-1">Note:</span> You can choose to send a quote of your selections to your email or finish placing your order
