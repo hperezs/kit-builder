@@ -12,15 +12,15 @@ export default function CameraLensDropdown({
   useEffect(() => {
     switch (viewingArea) {
       case "Under 60 ft":
-        setCameraLens("3.6mm fixed");
-        setSelectedValue("3.6mm fixed");
+        setCameraLens("Fixed Lens");
+        setSelectedValue("Fixed Lens");
         break;
       case "Up to 180 ft":
-        setSelectedValue("2.8-12mm motorized");
-        setCameraLens("2.8-12mm motorized");
+        setSelectedValue("Motorized Zoom");
+        setCameraLens("Motorized Zoom");
         break;
       case "200-1000 ft":
-        setCameraLens("4-84+mm motorized");
+        setCameraLens("Motorized Zoom");
         break;
     }
   }, [viewingArea]);
@@ -38,7 +38,7 @@ export default function CameraLensDropdown({
     return (
       <div>
         <select
-          disabled={cameraHousing == ""}
+          disabled={cameraHousing == "bullet"}
           value={selectedValue}
           style={{ textAlignLast: "center" }}
           onChange={handleChange}
@@ -46,9 +46,9 @@ export default function CameraLensDropdown({
             classNames + (cameraHousing == "" ? "cursor-not-allowed" : "")
           }
         >
-          <option>3.6mm fixed</option>
-          <option disabled={cameraHousing == "bullet"}>2.8-12mm manual</option>
-          <option>2.8-12mm motorized</option>
+          <option>Fixed Lens</option>
+          <option disabled={cameraHousing == "bullet"}>Manual Zoom</option>
+          <option disabled>Motorized Zoom</option>
         </select>
       </div>
     );
@@ -63,8 +63,8 @@ export default function CameraLensDropdown({
           onChange={handleChange}
           className={classNames + ""}
         >
-          <option disabled={cameraHousing == "bullet"}>2.8-12mm manual</option>
-          <option>2.8-12mm motorized</option>
+          <option disabled={cameraHousing == "bullet"}>Manual Zoom</option>
+          <option>Motorized Zoom</option>
         </select>
       </div>
     );
@@ -75,10 +75,10 @@ export default function CameraLensDropdown({
       <div>
         <select
           disabled
-          value="4-84+mm motorized"
+          value="Motorized Zoom"
           className={classNames + "bg-gray-50 cursor-not-allowed"}
         >
-          <option>4-84+mm motorized</option>
+          <option>Motorized Zoom</option>
         </select>
       </div>
     );
@@ -93,13 +93,13 @@ export default function CameraLensDropdown({
         className={classNames}
       >
         <option
-          value={"2.8-12mm manual"}
+          value={"Manual Zoom"}
           disabled={viewingArea != "50-180 ft" ? true : false}
         >
           manual zoom
         </option>
         <option
-          value={"2.8-12mm motorized"}
+          value={"Motorized Zoom"}
           disabled={viewingArea != "50-180 ft" ? true : false}
         >
           motorized zoom

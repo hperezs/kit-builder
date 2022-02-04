@@ -100,8 +100,7 @@ export default function Guide() {
                 let compiled = data.items.map(product => ({
                     id: product.id,
                     sku: product.sku,
-                    price: {$numberDecimal: parseFloat(product.price).toFixed(2)},
-                    oldPrice: product.custom_attributes.find(attribute => attribute.attribute_code == 'compare_price').value,
+                    price: {$numberDecimal: parseFloat(product.price).toFixed(2)},                    
                     channelCount: product.sku.split('PRO')[1].split('NVR')[0],
                     productLink: '/' + product.custom_attributes.find(attribute => attribute.attribute_code == 'url_key').value + '.html',
                 }));

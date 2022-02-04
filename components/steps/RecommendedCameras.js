@@ -16,26 +16,27 @@ export default function RecommendedCameras({
     console.log(cameraLens, cameraHousing, viewingArea);
     let allProductsCopy = allProducts;
     let filteredProducts = allProductsCopy.filter((product) => {
-      if (cameraHousing == "dome" && cameraLens == "2.8-12mm motorized")
+      if (cameraHousing == "dome" && cameraLens == "Motorized Zoom")
         return (
           cameraHousing == product.housingStyle &&
           (cameraLens == product.cameraLens ||
             product.cameraLens?.includes("motorized"))
         );
 
-      if (cameraHousing == "dome" && cameraLens == "2.8-12mm manual")
+      if (cameraHousing == "dome" && cameraLens == "Manual Zoom")
         return (
           cameraHousing == product.housingStyle &&
-          cameraLens == product.cameraLens
+          product.cameraLens === "2.8-12mm manual"
         );
 
-      if (cameraHousing == "dome" && cameraLens == "3.6mm fixed")
+      if (cameraHousing == "dome" && cameraLens == "Fixed Lens")
         return (
           cameraHousing == product.housingStyle &&
-          cameraLens == product.cameraLens &&
+          (product.cameraLens == "3.6mm fixed" ||
+            product.cameraLens == "2.8mm fixed") &&
           resolution == product.resolution
         );
-      if (cameraHousing == "bullet" && cameraLens == "2.8-12mm manual")
+      if (cameraHousing == "bullet" && cameraLens == "Manual Zoom")
         return (
           cameraHousing == product.housingStyle &&
           product.cameraLens == "2.8-12mm manual"
@@ -43,7 +44,7 @@ export default function RecommendedCameras({
 
       if (
         cameraHousing == "bullet" &&
-        cameraLens == "2.8-12mm motorized" &&
+        cameraLens == "Motorized Zoom" &&
         viewingArea == "Under 60 ft"
       )
         return (
@@ -53,7 +54,7 @@ export default function RecommendedCameras({
 
       if (
         cameraHousing == "bullet" &&
-        cameraLens == "2.8-12mm motorized" &&
+        cameraLens == "Motorized Zoom" &&
         viewingArea == "Up to 180 ft"
       )
         return (
@@ -61,10 +62,11 @@ export default function RecommendedCameras({
           product.cameraLens.includes("motorized")
         );
 
-      if (cameraHousing == "bullet" && cameraLens == "3.6mm fixed")
+      if (cameraHousing == "bullet" && cameraLens == "Fixed Lens")
         return (
           cameraHousing == product.housingStyle &&
-          cameraLens == product.cameraLens &&
+          (product.cameraLens == "3.6mm fixed" ||
+            product.cameraLens == "2.8mm fixed") &&
           resolution == product.resolution
         );
 
@@ -76,6 +78,7 @@ export default function RecommendedCameras({
         nightVisionDist == product.nightVision
       );
     });
+
     setRecommendedCameras(filteredProducts);
     console.log(filteredProducts);
   }, [cameraHousing, cameraLens, nightVisionDist, resolution, viewingArea]);
