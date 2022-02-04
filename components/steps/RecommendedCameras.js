@@ -26,13 +26,14 @@ export default function RecommendedCameras({
       if (cameraHousing == "dome" && cameraLens == "Manual Zoom")
         return (
           cameraHousing == product.housingStyle &&
-          product.cameraLens === '2.8-12mm manual'
+          product.cameraLens === "2.8-12mm manual"
         );
 
       if (cameraHousing == "dome" && cameraLens == "Fixed Lens")
         return (
           cameraHousing == product.housingStyle &&
-          (product.cameraLens == "3.6mm fixed" || product.cameraLens == '2.8mm fixed') &&
+          (product.cameraLens == "3.6mm fixed" ||
+            product.cameraLens == "2.8mm fixed") &&
           resolution == product.resolution
         );
       if (cameraHousing == "bullet" && cameraLens == "Manual Zoom")
@@ -64,7 +65,8 @@ export default function RecommendedCameras({
       if (cameraHousing == "bullet" && cameraLens == "Fixed Lens")
         return (
           cameraHousing == product.housingStyle &&
-          (product.cameraLens == "3.6mm fixed" || product.cameraLens == '2.8mm fixed') &&
+          (product.cameraLens == "3.6mm fixed" ||
+            product.cameraLens == "2.8mm fixed") &&
           resolution == product.resolution
         );
 
@@ -77,7 +79,6 @@ export default function RecommendedCameras({
       );
     });
 
-    
     setRecommendedCameras(filteredProducts);
     console.log(filteredProducts);
   }, [cameraHousing, cameraLens, nightVisionDist, resolution, viewingArea]);
