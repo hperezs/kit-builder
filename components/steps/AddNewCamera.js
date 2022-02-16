@@ -129,13 +129,12 @@ export default function AddNewCamera({
                 cameraHousing={cameraHousing}
               />
             </div>
-            {cameraLens == "3.6mm fixed" &&
-              (cameraHousing == "dome" || cameraHousing == "bullet") && (
-                <div className="mt-5 flex flex-row justify-between items-center">
-                  <span>Resolution:</span>
-                  <ResolutionRadio setResolution={setResolution} />
-                </div>
-              )}
+            {cameraLens == "Fixed Lens" && (
+              <div className="mt-5 flex flex-row justify-between items-center">
+                <span>Resolution:</span>
+                <ResolutionRadio setResolution={setResolution} />
+              </div>
+            )}
           </div>
           {window?.innerWidth < 800 && cameraHousing && (
             <p className="mt-6 italic">See camera options below</p>
