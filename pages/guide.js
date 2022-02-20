@@ -81,7 +81,23 @@ export default function Guide() {
                 let camera_products = CompileCameras(data.items);
                 camera_products.sort((a, b) => a.price.$numberDecimal - b.price.$numberDecimal);
                 console.log(camera_products);
-                setAllProducts(camera_products)
+                const getCybersecure_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=housing_style&searchCriteria[filterGroups][0][filters][0][conditionType]=eq&searchCriteria[filterGroups][0][filters][0][value]=5521&searchCriteria[filterGroups][0][filters][1][field]=housing_style&searchCriteria[filterGroups][0][filters][1][conditionType]=eq&searchCriteria[filterGroups][0][filters][1][value]=5522&searchCriteria[filterGroups][0][filters][2][field]=housing_style&searchCriteria[filterGroups][0][filters][2][conditionType]=eq&searchCriteria[filterGroups][0][filters][2][value]=5523&searchCriteria[filterGroups][1][filters][0][field]=is_cybersecure&searchCriteria[filterGroups][1][filters][0][value]=1&searchCriteria[filterGroups][1][filters][0][conditionType]=eq';
+                fetch(getCybersecure_url, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'Bearer ' + bearerToken
+                    }
+                }).then(response => {
+                    response.json().then(data_2 => {
+                        console.log('****Cybersecure Cameras****');
+                        let cs_cameras = CompileCameras(data_2.items, true);
+                        cs_cameras.sort((a, b) => a.price.$numberDecimal - b.price.$numberDecimal);
+                        console.log(cs_cameras);
+                        setAllProducts([...camera_products, ...cs_cameras])
+                    })
+                }).catch(error => {
+                    console.log(error);
+                })
             })
         }).catch(error => {
             console.log(error);
