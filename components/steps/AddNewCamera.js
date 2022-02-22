@@ -7,6 +7,7 @@ import RecommendedCameras from "./RecommendedCameras";
 import SelectHousing from "./SelectHousing";
 import ResolutionRadio from "./dropdowns/resolutionRadio";
 import CyberSecureToggle from "./dropdowns/cyberSecureToggle";
+import CyberSecureModal from "./CyberSecureModal";
 
 export default function AddNewCamera({
   allProducts,
@@ -141,7 +142,7 @@ export default function AddNewCamera({
               </div>
             )}
             <div className="mt-5 flex flex-row justify-between items-center">
-                <span>Cybersecure:</span>
+                <span className={cyberSecure ? "text-green-600 font-semibold" : ''}>Cyber Secure: </span>
                 <CyberSecureToggle 
                   cyberSecure={cyberSecure} 
                   setCybersecure={setCyberSecure}
@@ -150,6 +151,7 @@ export default function AddNewCamera({
                   resolution={resolution}
                 />
               </div>
+              <CyberSecureModal />
           </div>
           {window?.innerWidth < 800 && cameraHousing && (
             <p className="mt-6 italic">See camera options below</p>
