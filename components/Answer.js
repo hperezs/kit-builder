@@ -8,6 +8,7 @@ import ChooseHardDrive from './steps/ChooseHardDrive'
 import SelectAddons from './steps/SelectAddons'
 import ChooseInstallation from './steps/ChooseInstallation'
 import ReviewSystem from './steps/ReviewSystem'
+import ChooseCameraSeries from './steps/ChooseCameraSeries'
 
 export default function Answer({
     currentStep,
@@ -57,7 +58,9 @@ export default function Answer({
     subtotal,
     goToStep,
     freeProducts,
-    proceedToPurchase
+    proceedToPurchase,
+    cyberSecure,
+    setCyberSecure,
     }) {
 
     // Skip choose cables step if user selected "I have my own"
@@ -71,7 +74,11 @@ export default function Answer({
                 return(
                     <HowToChooseCameras />
                 )
-            case 3:
+            case 3: 
+                return(
+                    <ChooseCameraSeries cyberSecure={cyberSecure} setCyberSecure={setCyberSecure} />
+                )
+            case 4:
                 return(
                     <ChooseCameras 
                         allProducts={allProducts} 
@@ -82,7 +89,7 @@ export default function Answer({
                         duplicateCamera={duplicateCamera}
                     />
                 )
-            case 4: 
+            case 5: 
                 return(
                     <ChooseVideoRecorder 
                         cameras={cameras} 
@@ -91,7 +98,7 @@ export default function Answer({
                         selectNVR={selectNVR}
                     />
                 )
-            case 5: 
+            case 6: 
                 return(
                     <ChooseHardDrive 
                         hardDrives={hardDrives} 
@@ -101,11 +108,11 @@ export default function Answer({
                         deleteHardDrive={deleteHardDrive}
                     />
                 )
-            case 6:
+            case 7:
                 return(
                     <SelectCableType cablesType={cablesType} selectCablesType={selectCablesType}/>
                 )
-            case 7:
+            case 8:
                 return(
                     <SelectAddons 
                         monitorProducts={monitorProducts}
@@ -127,11 +134,11 @@ export default function Answer({
                         updateCameraName={updateCameraName}
                     />
                 )
-            case 8:
+            case 9:
                 return(
                     <ChooseInstallation homeOrBusiness={homeOrBusiness} cameras={cameras} isInstallationSelected={isInstallationSelected} addInstallation={addInstallation}/>
                 )
-            case 9:
+            case 10:
                 return(
                     <ReviewSystem 
                         cameras={cameras} 
@@ -171,7 +178,11 @@ export default function Answer({
             return(
                 <HowToChooseCameras />
             )
-        case 3:
+        case 3: 
+            return(
+                <ChooseCameraSeries cyberSecure={cyberSecure} setCyberSecure={setCyberSecure} />
+            )
+        case 4:
             return(
                 <ChooseCameras 
                     allProducts={allProducts} 
@@ -180,9 +191,10 @@ export default function Answer({
                     deleteCamera={deleteCamera} 
                     updateCameraName={updateCameraName}
                     duplicateCamera={duplicateCamera}
+                    cyberSecure={cyberSecure}
                 />
             )
-        case 4: 
+        case 5: 
             return(
                 <ChooseVideoRecorder 
                     cameras={cameras} 
@@ -191,7 +203,7 @@ export default function Answer({
                     selectNVR={selectNVR}
                 />
             )
-        case 5: 
+        case 6: 
             return(
                 <ChooseHardDrive 
                     hardDrives={hardDrives} 
@@ -201,11 +213,11 @@ export default function Answer({
                     deleteHardDrive={deleteHardDrive}
                 />
             )
-        case 6:
+        case 7:
             return(
                 <SelectCableType cablesType={cablesType} selectCablesType={selectCablesType}/>
             )
-        case 7: 
+        case 8: 
             return(
                 <ChooseCables 
                     cablesType={cablesType} 
@@ -225,7 +237,7 @@ export default function Answer({
                     duplicateCamera={duplicateCamera}
                 />
             )
-        case 8:
+        case 9:
             return(
                 <SelectAddons 
                     monitorProducts={monitorProducts}
@@ -247,11 +259,11 @@ export default function Answer({
                     updateCameraName={updateCameraName}
                 />
             )
-        case 9:
+        case 10:
             return(
                 <ChooseInstallation homeOrBusiness={homeOrBusiness} cameras={cameras} isInstallationSelected={isInstallationSelected} addInstallation={addInstallation}/>
             )
-        case 10:
+        case 11:
             return(
                 <ReviewSystem 
                     cameras={cameras} 

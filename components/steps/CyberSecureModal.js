@@ -6,15 +6,15 @@ export default function CyberSecureModal({ confirmDelete }) {
   const [showModal, setShowModal] = React.useState(false);
   return (
     <>
-      <span
+      <p
         onClick={(e) => setShowModal(true)}
         className={
-          "mt-3 text-green-600 text-sm text-center cursor-pointer hover:text-green-500"
+          "mt-3 text-green-600 text-center cursor-pointer hover:text-green-500"
         }
         transition-style="fade:in:faster"
       >
         What is Cyber Secure?
-      </span>
+      </p>
       {showModal ? (
         <>
           <div
@@ -65,7 +65,7 @@ export default function CyberSecureModal({ confirmDelete }) {
                   <img
                     src={"/images/CyberSafeLogoLong.png"}
                     width={300}
-                    height={300}
+                    style={{ height: '300px' }}
                   />
                 </div>
                 {/*footer*/}

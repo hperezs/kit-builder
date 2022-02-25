@@ -14,24 +14,27 @@ export default function Question({ currentStep, cablesType }) {
                     setCurrentQuestion('How to Choose the Right Cameras');
                     break;
                 case 3:
-                    setCurrentQuestion('Choose Your Cameras');
+                    setCurrentQuestion('Choose Your Camera Series');
                     break;
                 case 4:
-                    setCurrentQuestion('Choose a Video Recorder');
+                    setCurrentQuestion('Choose Your Cameras');
                     break;
                 case 5:
-                    setCurrentQuestion('Choose your Hard Drive(s)');
+                    setCurrentQuestion('Choose a Video Recorder');
                     break;
                 case 6:
-                    setCurrentQuestion('How do you want to choose your cables?');
+                    setCurrentQuestion('Choose your Hard Drive(s)');
                     break;
                 case 7:
-                    setCurrentQuestion('Choose additional items')
+                    setCurrentQuestion('How do you want to choose your cables?');
                     break;
                 case 8:
-                    setCurrentQuestion('Installation')
+                    setCurrentQuestion('Choose additional items')
                     break;
                 case 9:
+                    setCurrentQuestion('Installation')
+                    break;
+                case 10:
                     setCurrentQuestion('Review your system')
                     break;
             }
@@ -43,27 +46,30 @@ export default function Question({ currentStep, cablesType }) {
                 setCurrentQuestion('How to Choose the Right Cameras');
                 break;
             case 3:
-                setCurrentQuestion('Choose Your Cameras');
+                setCurrentQuestion('Choose Your Camera Series');
                 break;
             case 4:
-                setCurrentQuestion('Choose a Video Recorder');
+                setCurrentQuestion('Choose Your Cameras');
                 break;
             case 5:
-                setCurrentQuestion('Choose your Hard Drive(s)');
+                setCurrentQuestion('Choose a Video Recorder');
                 break;
             case 6:
-                setCurrentQuestion('How do you want to choose your cables?');
+                setCurrentQuestion('Choose your Hard Drive(s)');
                 break;
             case 7:
-                setCurrentQuestion('Choose your cables');
+                setCurrentQuestion('How do you want to choose your cables?');
                 break;
             case 8:
-                setCurrentQuestion('Choose additional items');
+                setCurrentQuestion('Choose your cables');
                 break;
             case 9:
+                setCurrentQuestion('Choose additional items');
+                break;
+            case 10:
                 setCurrentQuestion('Installation');
                 break;
-            case 10: 
+            case 11: 
                 setCurrentQuestion('Review your system');
                 break;
         }

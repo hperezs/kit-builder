@@ -25,6 +25,7 @@ export default function Guide() {
     const [ mountProducts, setMountProducts ] = useState([]);
     const [ powerInjectors, setPowerInjectors ] = useState([]);
     const [ freeProducts, setFreeProducts ] = useState([]);
+    const [ cyberSecure, setCyberSecure ] = useState(false);
 
     // App state
     const [ isLoading, setIsLoading ] = useState(true);
@@ -323,18 +324,21 @@ export default function Guide() {
                 setCanClickNext(true);
                 break;
             case 3:
+                setCanClickNext(true);
+                break;
+            case 4:
                 setCanClickNext(cameras.length != 0);
                 break;
-            case 4: 
+            case 5: 
                 setCanClickNext(selectedNVR);
                 break;
-            case 5:
+            case 6:
                 setCanClickNext(selectedHardDrives.length != 0);
                 break;
-            case 6:
+            case 7:
                 setCanClickNext(cablesType);
                 break;
-            case 7: 
+            case 8: 
                 if(cablesType == 'self-made') {
                     setCanClickNext(selectedSMProducts.length != 0);
                 }
@@ -347,14 +351,14 @@ export default function Guide() {
                     setCanClickNext(true);
                 }
                 break;
-            case 8:
+            case 9:
                 if(cablesType != 'none') {
                     setCanClickNext(true);
                 } else {
                     setCanClickNext(isInstallationSelected != null)
                 }
                 break;
-            case 9:
+            case 10:
                 if(cablesType != 'none') setCanClickNext(isInstallationSelected != null);
 
         }
@@ -842,29 +846,29 @@ export default function Guide() {
     const goToStep = (step) => {
         switch(step){
             case 'cameras':
-                setCurrentStep(3);
-                break;
-            case 'NVR':
                 setCurrentStep(4);
                 break;
-            case 'hard drives':
+            case 'NVR':
                 setCurrentStep(5);
                 break;
-            case 'cables':
-                if(cablesType != 'none') setCurrentStep(7);
-                if(cablesType == 'none') setCurrentStep(6);
+            case 'hard drives':
+                setCurrentStep(6);
                 break;
-            case 'addons':
+            case 'cables':
                 if(cablesType != 'none') setCurrentStep(8);
                 if(cablesType == 'none') setCurrentStep(7);
                 break;
-            case 'installation':
+            case 'addons':
                 if(cablesType != 'none') setCurrentStep(9);
                 if(cablesType == 'none') setCurrentStep(8);
                 break;
-            case 'review':
+            case 'installation':
                 if(cablesType != 'none') setCurrentStep(10);
-                if(cablesType == 'none') setCurrentStep(9);
+                if(cablesType == 'none') setCurrentStep(11);
+                break;
+            case 'review':
+                if(cablesType != 'none') setCurrentStep(11);
+                if(cablesType == 'none') setCurrentStep(10);
                 setDisplayBackToReview(false);
                 break;
         }
@@ -874,9 +878,9 @@ export default function Guide() {
 
     const isLastStep = () => {
         if(cablesType == 'none'){
-            return (currentStep == 9)
-        } else {
             return (currentStep == 10)
+        } else {
+            return (currentStep == 11)
         }
     }
 
@@ -1043,6 +1047,8 @@ export default function Guide() {
                             goToStep={goToStep}
                             freeProducts={freeProducts}
                             proceedToPurchase={proceedToPurchase}
+                            cyberSecure={cyberSecure}
+                            setCyberSecure={setCyberSecure}
                         />
                     </div>
 

@@ -15,6 +15,7 @@ export default function AddNewCamera({
   isAddingNewCamera,
   setIsAddingNewCamera,
   lastIndex,
+  cyberSecure
 }) {
   const [isEditingName, setIsEditingName] = useState(false);
   const [cameraHousing, setCameraHousing] = useState("");
@@ -23,7 +24,6 @@ export default function AddNewCamera({
   const [cameraLens, setCameraLens] = useState("");
   const [nightVisionDist, setNightVisionDist] = useState("");
   const [resolution, setResolution] = useState("");
-  const [cyberSecure, setCyberSecure] = useState(false);
 
   const handleNameChanges = (event) => {
     setCameraName(event.target.value);
@@ -141,17 +141,6 @@ export default function AddNewCamera({
                 />
               </div>
             )}
-            <div className="mt-5 flex flex-row justify-between items-center">
-                <span className={cyberSecure ? "text-green-600 font-semibold" : ''}>Cyber Secure: </span>
-                <CyberSecureToggle 
-                  cyberSecure={cyberSecure} 
-                  setCybersecure={setCyberSecure}
-                  cameraLens={cameraLens} 
-                  cameraHousing={cameraHousing}
-                  resolution={resolution}
-                />
-              </div>
-              <CyberSecureModal />
           </div>
           {window?.innerWidth < 800 && cameraHousing && (
             <p className="mt-6 italic">See camera options below</p>
