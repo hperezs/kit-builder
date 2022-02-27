@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { FaTrashAlt } from "react-icons/fa";
 
-export default function CyberSecureModal({ confirmDelete }) {
+export default function ProVueModal() {
   const [showModal, setShowModal] = React.useState(false);
   return (
     <>
@@ -13,7 +13,7 @@ export default function CyberSecureModal({ confirmDelete }) {
         }
         transition-style="fade:in:faster"
       >
-        What is Cyber Secure?
+        What is ProVue?
       </p>
       {showModal ? (
         <>
@@ -27,7 +27,7 @@ export default function CyberSecureModal({ confirmDelete }) {
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                   <h3 className="text-3xl font-semibold ml-2">
-                    What is Cyber Secure?
+                    What is ProVue?
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -40,19 +40,13 @@ export default function CyberSecureModal({ confirmDelete }) {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto flex">
-                  <p className="my-4 text-lg ">
-                    The Cyber Secure Series is designed to be NDAA compliant and
-                    supplier certified. It is perfect for any application that
-                    requires the highest level of security and performance.{" "}
+                <p className="my-4 text-lg ">
+                    This is a paragraph
                     <br />
-                    <br /> The Cyber Secure Series offers cutting edge
-                    technology that is hardened against cyber attacks. It is
-                    also supported by the industry's longest warranty (5 years)
-                    and includes free, lifetime, USA based technical support.{" "}
+                    <br /> This is another paragraph
                     <br />
                     <br />
-                    For more detail on the elevated security measures Cyber
-                    Secure offers,{" "}
+                    For more details,{" "}
                     <a
                       href="https://www.backstreet-surveillance.com/cyber-secure-ndaa/cyber-security.html"
                       target={"_blank"}
@@ -62,11 +56,14 @@ export default function CyberSecureModal({ confirmDelete }) {
                     </a>
                     .
                   </p>
-                  <img
-                    src={"/images/CyberSafeLogoLong.png"}
-                    width={300}
-                    style={{ height: '300px' }}
-                  />
+                  <div className="flex items-center">
+                    <img
+                        src={"/images/ProVue_Transparent.png"}
+                        width={300}
+                        height={64}
+                        alt="ProVue logo"
+                    />
+                  </div>
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">

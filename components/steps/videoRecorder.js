@@ -22,7 +22,7 @@ export default function VideoRecorder({nvr, handleSelect, isRecommended}) {
                 <div style={(isLoading ? {height: '0px', width: '0px'} : {height: '86px', width: '120px'})}> 
                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                         <Image
-                            src="/images/nvr-hero.jpg"
+                            src={nvr?.isCyberSecure ? '/images/cs_nvr_hero.jpg' : '/images/nvr-hero.jpg'}
                             layout="fill"
                             objectFit="contain"
                             quality={20}

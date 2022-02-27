@@ -9,7 +9,7 @@ import 'react-notifications-component/dist/theme.css'
 import Image from 'next/image'
 import ProgressBar from "../components/ProgressBar";
 import Head from 'next/head'
-import {CompileCameras} from '../lib/helpers'
+import {CompileCameras, compileCyberSecureRecorders} from '../lib/helpers'
 
 import ReactGa from 'react-ga'
 
@@ -26,6 +26,7 @@ export default function Guide() {
     const [ powerInjectors, setPowerInjectors ] = useState([]);
     const [ freeProducts, setFreeProducts ] = useState([]);
     const [ cyberSecure, setCyberSecure ] = useState(false);
+    const [ csVideoRecorders, setCsVideoRecorders ] = useState([]); // cyber secure nvr's
 
     // App state
     const [ isLoading, setIsLoading ] = useState(true);
@@ -125,6 +126,23 @@ export default function Guide() {
                 let sorted = compiled.sort((a, b) => a.price.$numberDecimal - b.price.$numberDecimal);
                 setAllVideoRecorders(sorted);
                 console.log(sorted);
+            })
+        }).catch(error => {
+            console.log(error);
+        });
+
+        const getCsVideoRecorders_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=CS%25-4K&searchCriteria[filterGroups][1][filters][0][field]=name&searchCriteria[filterGroups][1][filters][0][conditionType]=like&searchCriteria[filterGroups][1][filters][0][value]=%25NVR';
+        fetch(getCsVideoRecorders_url, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + bearerToken
+            }
+        }).then(response => {
+            response.json().then(data => {
+                console.log('******CYBERSECURE VIDEO RECORDERS *****');
+                const compiledData = compileCyberSecureRecorders(data.items);
+                setCsVideoRecorders(compiledData);
+                console.log(compiledData);
             })
         }).catch(error => {
             console.log(error);
@@ -304,6 +322,7 @@ export default function Guide() {
         if(localStorage.getItem('selectedMonitor')) setSelectedMonitor(JSON.parse(localStorage.getItem('selectedMonitor')));
         if(localStorage.getItem('selectedPowerInjectors')) setSelectedPowerInjectors(JSON.parse(localStorage.getItem('selectedPowerInjectors')));
         if(localStorage.getItem('isInstallationSelected')) setIsInstallationSelected((localStorage.getItem('isInstallationSelected') == 'true'));
+        if(localStorage.getItem('cyberSecure')) setCyberSecure((localStorage.getItem('cyberSecure') == 'true'));
 
         if(JSON.parse(localStorage.getItem('cameras'))?.length != 0) submitNotification('welcomeBack');
     }, [])
@@ -312,7 +331,7 @@ export default function Guide() {
     useEffect(() => {
         updateSubtotal();
         updateLocalStorage();
-    }, [cameras, selectedNVR, selectedHardDrives, cablesType, selectedSMProducts, selectedPowerInjectors, selectedMonitor, isInstallationSelected])
+    }, [cameras, selectedNVR, selectedHardDrives, cablesType, selectedSMProducts, selectedPowerInjectors, selectedMonitor, isInstallationSelected, cyberSecure])
 
     // Allow user to click next when selections are made
     useEffect(() => {
@@ -436,6 +455,7 @@ export default function Guide() {
         localStorage.setItem('selectedMonitor', JSON.stringify(selectedMonitor));
         localStorage.setItem('selectedPowerInjectors', JSON.stringify(selectedPowerInjectors));
         localStorage.setItem('isInstallationSelected', (isInstallationSelected ? 'true' : 'false'));
+        localStorage.setItem('cyberSecure', (cyberSecure ? 'true' : 'false'));
     }
 
     const nextStep = () => {
@@ -1049,6 +1069,7 @@ export default function Guide() {
                             proceedToPurchase={proceedToPurchase}
                             cyberSecure={cyberSecure}
                             setCyberSecure={setCyberSecure}
+                            csVideoRecorders={csVideoRecorders}
                         />
                     </div>
 

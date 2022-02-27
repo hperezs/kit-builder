@@ -61,6 +61,7 @@ export default function Answer({
     proceedToPurchase,
     cyberSecure,
     setCyberSecure,
+    csVideoRecorders,
     }) {
 
     // Skip choose cables step if user selected "I have my own"
@@ -93,9 +94,10 @@ export default function Answer({
                 return(
                     <ChooseVideoRecorder 
                         cameras={cameras} 
-                        videoRecorders={videoRecorders} 
+                        videoRecorders={cyberSecure ? csVideoRecorders : videoRecorders} 
                         selectedNVR={selectedNVR} 
                         selectNVR={selectNVR}
+                        cyberSecure={cyberSecure}
                     />
                 )
             case 6: 
@@ -198,9 +200,11 @@ export default function Answer({
             return(
                 <ChooseVideoRecorder 
                     cameras={cameras} 
-                    videoRecorders={videoRecorders} 
+                    videoRecorders={cyberSecure ? csVideoRecorders : videoRecorders} 
                     selectedNVR={selectedNVR} 
                     selectNVR={selectNVR}
+                    csVideoRecorders={csVideoRecorders}
+                    cyberSecure={cyberSecure}
                 />
             )
         case 6: 
