@@ -721,6 +721,12 @@ export default function Guide() {
         submitNotification('deletedFromCart', 'Installation');
     }
 
+    const clearCart = () => {
+        setCameras([]);
+        setSelectedNVR('');
+        submitNotification('cartUpdated');
+    }
+
     const submitNotification = (type, payload) => {
         switch(type) {
             case 'addedToCart':
@@ -1070,6 +1076,7 @@ export default function Guide() {
                             cyberSecure={cyberSecure}
                             setCyberSecure={setCyberSecure}
                             csVideoRecorders={csVideoRecorders}
+                            clearCart={clearCart}
                         />
                     </div>
 

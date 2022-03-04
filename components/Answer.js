@@ -62,6 +62,7 @@ export default function Answer({
     cyberSecure,
     setCyberSecure,
     csVideoRecorders,
+    clearCart
     }) {
 
     // Skip choose cables step if user selected "I have my own"
@@ -77,7 +78,12 @@ export default function Answer({
                 )
             case 3: 
                 return(
-                    <ChooseCameraSeries cyberSecure={cyberSecure} setCyberSecure={setCyberSecure} />
+                    <ChooseCameraSeries 
+                        cyberSecure={cyberSecure} 
+                        setCyberSecure={setCyberSecure}
+                        isCartNotEmpty={Boolean(cameras.length || selectedNVR)} 
+                        clearCart={clearCart}
+                    />
                 )
             case 4:
                 return(
@@ -182,7 +188,12 @@ export default function Answer({
             )
         case 3: 
             return(
-                <ChooseCameraSeries cyberSecure={cyberSecure} setCyberSecure={setCyberSecure} />
+                <ChooseCameraSeries 
+                    cyberSecure={cyberSecure} 
+                    setCyberSecure={setCyberSecure}
+                    isCartNotEmpty={Boolean(cameras.length || selectedNVR)}
+                    clearCart={clearCart}
+                />
             )
         case 4:
             return(
