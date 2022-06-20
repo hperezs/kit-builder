@@ -71,219 +71,131 @@ export default function Guide() {
 
     // Fetch all necessary products
     useEffect(() => {
-        const getAllCameras_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=housing_style&searchCriteria[filterGroups][0][filters][0][conditionType]=eq&searchCriteria[filterGroups][0][filters][0][value]=5521&searchCriteria[filterGroups][0][filters][1][field]=housing_style&searchCriteria[filterGroups][0][filters][1][conditionType]=eq&searchCriteria[filterGroups][0][filters][1][value]=5522&searchCriteria[filterGroups][0][filters][2][field]=housing_style&searchCriteria[filterGroups][0][filters][2][conditionType]=eq&searchCriteria[filterGroups][0][filters][2][value]=5523&searchCriteria[filterGroups][1][filters][0][field]=is_cybersecure&searchCriteria[filterGroups][1][filters][0][value]=0&searchCriteria[filterGroups][1][filters][0][conditionType]=eq';
-        fetch(getAllCameras_url, {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + bearerToken
-            }
-        }).then(response => {
-            response.json().then(data => {
-                console.log('****Magento Cameras****');
-                let camera_products = CompileCameras(data.items);
-                camera_products.sort((a, b) => a.price.$numberDecimal - b.price.$numberDecimal);
-                console.log(camera_products);
-                const getCybersecure_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=housing_style&searchCriteria[filterGroups][0][filters][0][conditionType]=eq&searchCriteria[filterGroups][0][filters][0][value]=5521&searchCriteria[filterGroups][0][filters][1][field]=housing_style&searchCriteria[filterGroups][0][filters][1][conditionType]=eq&searchCriteria[filterGroups][0][filters][1][value]=5522&searchCriteria[filterGroups][0][filters][2][field]=housing_style&searchCriteria[filterGroups][0][filters][2][conditionType]=eq&searchCriteria[filterGroups][0][filters][2][value]=5523&searchCriteria[filterGroups][1][filters][0][field]=is_cybersecure&searchCriteria[filterGroups][1][filters][0][value]=1&searchCriteria[filterGroups][1][filters][0][conditionType]=eq';
-                fetch(getCybersecure_url, {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': 'Bearer ' + bearerToken
-                    }
-                }).then(response => {
-                    response.json().then(data_2 => {
-                        console.log('****Cybersecure Cameras****');
-                        let cs_cameras = CompileCameras(data_2.items, true);
-                        cs_cameras.sort((a, b) => a.price.$numberDecimal - b.price.$numberDecimal);
-                        console.log(cs_cameras);
-                        setAllProducts([...camera_products, ...cs_cameras])
-                    })
-                }).catch(error => {
-                    console.log(error);
-                })
-            })
-        }).catch(error => {
-            console.log(error);
-        })
-
-        const getVideoRecorders_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][value]=%25NVR&searchCriteria[filterGroups][0][filters][0][conditionType]=like';
-        fetch(getVideoRecorders_url, {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + bearerToken
-            }
-        }).then(response => {
-            response.json().then(data => {
-                console.log('******VIDEO RECORDERS *****');
-                // Compile object scheme to match the rest of the app
-                let compiled = data.items.map(product => ({
-                    id: product.id,
-                    sku: product.sku,
-                    price: {$numberDecimal: parseFloat(product.price).toFixed(2)},                    
-                    channelCount: product.sku.split('PRO')[1].split('NVR')[0],
-                    productLink: '/' + product.custom_attributes.find(attribute => attribute.attribute_code == 'url_key').value + '.html',
-                }));
-                // Sort by price
-                let sorted = compiled.sort((a, b) => a.price.$numberDecimal - b.price.$numberDecimal);
-                setAllVideoRecorders(sorted);
-                console.log(sorted);
-            })
-        }).catch(error => {
-            console.log(error);
+        fetch('/api/getAllCameras').then(response => {
+            response
+              .json()
+              .then((data) => {
+                setAllProducts([...data.camera_products, ...data.cs_cameras]);
+              })
+              .catch((error) => console.error(error));;
         });
 
-        const getCsVideoRecorders_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=CS%25-4K&searchCriteria[filterGroups][1][filters][0][field]=name&searchCriteria[filterGroups][1][filters][0][conditionType]=like&searchCriteria[filterGroups][1][filters][0][value]=%25NVR';
-        fetch(getCsVideoRecorders_url, {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + bearerToken
-            }
-        }).then(response => {
-            response.json().then(data => {
-                console.log('******CYBERSECURE VIDEO RECORDERS *****');
-                const compiledData = compileCyberSecureRecorders(data.items);
-                setCsVideoRecorders(compiledData);
-                console.log(compiledData);
-            })
-        }).catch(error => {
-            console.log(error);
-        })
+        fetch("/api/getVideoRecorders").then(response => {
+            response
+              .json()
+              .then((data) => {
+                setAllVideoRecorders(data.video_recorders);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+        });
+
+        fetch("/api/getCsVideoRecorders").then(response => {
+            response
+              .json()
+              .then((data) => {
+                setCsVideoRecorders(data.cs_video_recorders);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+        });
 
         // Get Cables from Magento API
-        const getIndoorCables_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=cat6-%25'
-        fetch(getIndoorCables_url, {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + bearerToken
-            }
-        }).then(response => {
-            response.json().then(data => {
-                console.log('****INDOOR CABLES****');
-                console.log(data.items);
-                setIndoorCables(data.items)
-            })
-        }).catch(error => {
-            console.log(error);
-        })
+        fetch("/api/getIndoorCables").then(response => {
+            response
+              .json()
+              .then((data) => {
+                setIndoorCables(data.items);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+        });
 
-        const getOutdoorCables_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=db-cat6-%25'
-        fetch(getOutdoorCables_url, {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + bearerToken
-            }
-        }).then(response => {
-            response.json().then(data => {
-                console.log('****OUTDOOR CABLES****');
-                console.log(data.items);
+        fetch("/api/getOutdoorCables").then(response => {
+            response
+              .json()
+              .then((data) => {
                 setOurdoorCables(data.items);
-            })
-        }).catch(error => {
-            console.log(error);
-        })
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+        });
 
-        const getSelfMadeCables_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=%25CAT6-500&searchCriteria[filterGroups][0][filters][1][field]=sku&searchCriteria[filterGroups][0][filters][1][conditionType]=like&searchCriteria[filterGroups][0][filters][1][value]=%25CAT6-1000&searchCriteria[filterGroups][0][filters][2][field]=sku&searchCriteria[filterGroups][0][filters][2][value]=C208&searchCriteria[filterGroups][0][filters][3][field]=sku&searchCriteria[filterGroups][0][filters][3][value]=VDV226-011-SEN';
-        fetch(getSelfMadeCables_url, {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + bearerToken
-            }
-        }).then(response => {
-            response.json().then(data => {
-                console.log('****SELFMADE****');
-                console.log(data.items);
+        fetch("/api/getSelfMadeCables").then(response => {
+            response
+              .json()
+              .then((data) => {
                 setSelfMadeProducts(data.items);
-            })
-        }).catch(error => {
-            console.log(error);
-        })
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+        });
 
         // Get Hard Drives from Magento API
-        const getHardDrives_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=%25T-HD'
-        fetch(getHardDrives_url, {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + bearerToken
-            }
-        }).then(response => {
-            response.json().then(data => {
-                data.items.sort((a, b) => (a.price - b.price));
+        fetch("/api/getHardDrives").then(response => {
+            response
+              .json()
+              .then((data) => {
                 setHardDrives(data.items);
-                console.log('****HDDS****');
-                console.log(data.items);
-            })
-        }).catch(error => {
-            console.log(error);
-        })
+                console.log(data);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+        });
 
         // Get Monitor products
-        const getMonitors_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=MON%25&searchCriteria[filterGroups][0][filters][1][field]=sku&searchCriteria[filterGroups][0][filters][1][conditionType]=equals&searchCriteria[filterGroups][0][filters][1][value]=HDMI-Cable'
-        fetch(getMonitors_url, {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + bearerToken
-            }
-        }).then(response => {
-            response.json().then(data => {
-                data.items.sort((a, b) => (a.price - b.price));
+        fetch("/api/getMonitors").then(response => {
+            response
+              .json()
+              .then((data) => {
                 setMonitorProducts(data.items);
-                console.log('****MONITORS****');
-                console.log(data.items);
-            })
-        }).catch(error => {
-            console.log(error);
-        })
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+        });
 
         // Get Mounts
-        const getMounts_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=category_bullet_points&searchCriteria[filterGroups][0][filters][0][value]=%25Mounting %25for:%25&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][1][field]=name&searchCriteria[filterGroups][0][filters][1][value]=M5%25 Universal Mount&searchCriteria[filterGroups][0][filters][1][conditionType]=like'
-        fetch(getMounts_url, {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + bearerToken
-            }
-        }).then(response => {
-            response.json().then(data => {
+        fetch("/api/getMounts").then(response => {
+            response
+              .json()
+              .then((data) => {
                 setMountProducts(data.items);
-                console.log('****MOUNTS****');
-                console.log(data.items);
-            })
-        }).catch(error => {
-            console.log(error);
-        })
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+        });
 
         // Get POE products
-        const getPOEs_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=%25POE-1%25'
-        fetch(getPOEs_url, {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + bearerToken
-            }
-        }).then(response => {
-            response.json().then(data => {
-                data.items.sort((a, b) => (a.price - b.price));
-                console.log('****POWER INJECTORS****');
+        fetch("/api/getPOE").then(response => {
+            response
+              .json()
+              .then((data) => {
                 setPowerInjectors(data.items);
-                console.log(data.items);
-            })
-        }).catch(error => {
-            console.log(error);
-        })
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+        });
 
         // Get Free products
-        const getFreeProducts_url = 'https://morning-anchorage-80357.herokuapp.com/https://backstreet-surveillance.com/rest/default/V1/products?searchCriteria[filterGroups][0][filters][0][field]=name&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=%25FREE - %25&searchCriteria[filterGroups][2][filters][0][field]=sku&searchCriteria[filterGroups][2][filters][0][conditionType]=neq&searchCriteria[filterGroups][2][filters][0][value]=FREE COAX STRIPPER&searchCriteria[filterGroups][3][filters][0][field]=sku&searchCriteria[filterGroups][3][filters][0][conditionType]=neq&searchCriteria[filterGroups][3][filters][0][value]=5-year -extended-warranty';
-        fetch(getFreeProducts_url, {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + bearerToken
-            }
-        }).then(response => {
-            response.json().then(data => {
+        fetch("/api/getFreeProducts").then(response => {
+            response
+              .json()
+              .then((data) => {
                 setFreeProducts(data.items);
-                console.log('****FREE PRODUCTS****');
-                console.log(data.items);
-            })
-        }).catch(error => {
-            console.log(error);
-        })
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+        });
     }, []);
 
     useEffect(() => {

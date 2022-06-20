@@ -21,7 +21,10 @@ export default function ProVueModal() {
             transition-style="fade:in:faster"
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
           >
-            <div className="relative w-auto my-6 mx-auto" style={{ maxWidth: '900px' }}>
+            <div
+              className="relative w-auto my-6 mx-auto"
+              style={{ maxWidth: "900px" }}
+            >
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
@@ -40,28 +43,28 @@ export default function ProVueModal() {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto flex">
-                <p className="my-4 text-lg ">
-                    This is a paragraph
+                  <p className="my-4 text-lg ">
+                    Our ProVue series provides the perfect balance between cost
+                    and performance.
                     <br />
-                    <br /> This is another paragraph
+                    <br /> The system is a proven and tested platform offering a
+                    professional solution for home and business owners who are
+                    looking for value.
                     <br />
                     <br />
-                    For more details,{" "}
-                    <a
-                      href="https://www.backstreet-surveillance.com/cyber-secure-ndaa/cyber-security.html"
-                      target={"_blank"}
-                      className="text-green-600 cursor-pointer hover:text-green-500 hover:underline"
-                    >
-                      click here
-                    </a>
-                    .
+                    The series is equipped with standard AI features allowing
+                    users to customize automatic alerts and custom recording
+                    options. The series offers a large selection of low cost
+                    cameras packed with high performance feature such as 4K
+                    clarity, live 30 frames per second video, audio, extreme
+                    weather ratings and our industry exclusive 5 year warranty.
                   </p>
-                  <div className="flex items-center">
+                  <div className="flex items-center" style={{ minWidth: 300 }}>
                     <img
-                        src={"/images/ProVue_Transparent.png"}
-                        width={300}
-                        height={64}
-                        alt="ProVue logo"
+                      src={"/images/ProVue_Transparent.png"}
+                      width={300}
+                      height={64}
+                      alt="ProVue logo"
                     />
                   </div>
                 </div>
