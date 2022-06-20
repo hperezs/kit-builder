@@ -5,6 +5,7 @@ export default function CameraLensDropdown({
   setCameraLens,
   viewingArea,
   cameraHousing,
+  cyberSecure
 }) {
   const [selectedValue, setSelectedValue] = useState(cameraLens);
 
@@ -38,7 +39,7 @@ export default function CameraLensDropdown({
     return (
       <div>
         <select
-          disabled={cameraHousing == "bullet"}
+          disabled={cameraHousing == "bullet" || (cameraHousing === "dome" && cyberSecure)}
           value={selectedValue}
           style={{ textAlignLast: "center" }}
           onChange={handleChange}
@@ -62,6 +63,7 @@ export default function CameraLensDropdown({
           style={{ textAlignLast: "center" }}
           onChange={handleChange}
           className={classNames + ""}
+          disabled={(cameraHousing === "dome" && cyberSecure)}
         >
           <option disabled={cameraHousing == "bullet"}>Manual Zoom</option>
           <option>Motorized Zoom</option>

@@ -8,7 +8,6 @@ export default function RecommendedHardDrive({hardDrive, additionalHD, recommend
     const [ isAdditionalHDAdded, setIsAdditionalHDAdded ] = useState(false);
 
     useEffect(() => {
-        console.log('running useEffect');
         let wasHDFound = false;
         let wasAdditionalHDFound = false;
         let wasHDFoundMultiplier = 0;
@@ -20,9 +19,7 @@ export default function RecommendedHardDrive({hardDrive, additionalHD, recommend
                     if(wasHDFoundMultiplier == recommendedHDMultiplier) wasHDFound = true;
                 }
             } else {
-                console.log('useEffect ran');
                 if (item.sku == hardDrive.sku) wasHDFound = true;
-                console.log(item.sku == hardDrive.sku);
             }
 
             if (item.sku == additionalHD.sku) wasAdditionalHDFound = true;

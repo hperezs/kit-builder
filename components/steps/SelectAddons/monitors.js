@@ -46,7 +46,7 @@ export default function Monitors({monitorProducts, addMonitor, addHDMI, selected
                                         <div style={(isLoading ? {height: '0px', width: '0px'} : {height: '86px', width: '120px'})}> 
                                             <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                                 <Image
-                                                    src={backstreet_domain + '/pub/media/catalog/product' + product.media_gallery_entries[0].file}
+                                                    src={backstreet_domain + '/pub/media/catalog/product' + product.media_gallery_entries[0]?.file}
                                                     layout="fill"
                                                     objectFit="contain"
                                                     quality={20}

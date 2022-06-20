@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { backstreet_domain } from '../../lib/backstreet_domain'
 import { useEffect, useState } from "react";
 
-export default function ChooseVideoRecorder({cameras, videoRecorders, selectedNVR, selectNVR}) {
+export default function ChooseVideoRecorder({cameras, videoRecorders, selectedNVR, selectNVR, cyberSecure}) {
     const [isChoosing, setIsChoosing] = useState(selectedNVR == '');
 
     useEffect(() => {
@@ -16,7 +16,7 @@ export default function ChooseVideoRecorder({cameras, videoRecorders, selectedNV
     }
 
     // calculate recommended channel count    
-    let recommendedChannelCount = 4;
+    let recommendedChannelCount = cyberSecure ? 8 : 4;
 
     if(cameras.length > 4) {
         recommendedChannelCount = 8;
@@ -62,7 +62,7 @@ export default function ChooseVideoRecorder({cameras, videoRecorders, selectedNV
                                 <div style={{height: '86px', width: '120px'}}> 
                                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                                         <Image
-                                            src={'/images/nvr-hero.jpg'}
+                                            src={selectedNVR?.isCyberSecure ? '/images/cs_nvr_hero.jpg' : '/images/nvr-hero.jpg'}
                                             layout="fill"
                                             objectFit="contain"
                                             quality={100}

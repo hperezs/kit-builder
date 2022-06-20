@@ -9,57 +9,63 @@ export default function RecommendedCameras({
   handleSelect,
   resolution,
   viewingArea,
+  cyberSecure,
 }) {
   const [recommendedCameras, setRecommendedCameras] = useState([]);
 
   useEffect(() => {
-    console.log(cameraLens, cameraHousing, viewingArea);
     let allProductsCopy = allProducts;
     let filteredProducts = allProductsCopy.filter((product) => {
       if (cameraHousing == "dome" && cameraLens == "Motorized Zoom")
         return (
           cameraHousing == product.housingStyle &&
           (cameraLens == product.cameraLens ||
-            product.cameraLens?.includes("motorized"))
+            product.cameraLens?.includes("motorized")) &&
+          product.isCyberSecure === cyberSecure
         );
 
       if (cameraHousing == "dome" && cameraLens == "Manual Zoom")
         return (
           cameraHousing == product.housingStyle &&
-          product.cameraLens === "2.8-12mm manual"
+          product.cameraLens === "2.8-12mm manual" &&
+          product.isCyberSecure === cyberSecure
         );
 
       if (cameraHousing == "dome" && cameraLens == "Fixed Lens")
         return (
           cameraHousing == product.housingStyle &&
           (product.cameraLens == "3.6mm fixed" ||
-            product.cameraLens == "2.8mm fixed") &&
-          resolution == product.resolution
+            product.cameraLens == "2.8mm fixed" || product.cameraLens === "360° Panoramic") &&
+          resolution == product.resolution &&
+          product?.isCyberSecure == cyberSecure
         );
       if (cameraHousing == "bullet" && cameraLens == "Manual Zoom")
         return (
           cameraHousing == product.housingStyle &&
-          product.cameraLens == "2.8-12mm manual"
+          product.cameraLens == "2.8-12mm manual" &&
+          product.isCyberSecure === cyberSecure
         );
 
       if (
         cameraHousing == "bullet" &&
         cameraLens == "Motorized Zoom" &&
-        viewingArea == "Under 60 ft"
+        viewingArea == "Under 60 ft" 
       )
         return (
           cameraHousing == product.housingStyle &&
-          cameraLens == product.cameraLens
+          cameraLens == product.cameraLens &&
+          product.isCyberSecure === cyberSecure
         );
 
       if (
         cameraHousing == "bullet" &&
         cameraLens == "Motorized Zoom" &&
-        viewingArea == "Up to 180 ft"
+        viewingArea == "Up to 180 ft" 
       )
         return (
           cameraHousing == product.housingStyle &&
-          product.cameraLens.includes("motorized")
+          product.cameraLens.includes("motorized") &&
+          product.isCyberSecure === cyberSecure
         );
 
       if (cameraHousing == "bullet" && cameraLens == "Fixed Lens")
@@ -67,21 +73,24 @@ export default function RecommendedCameras({
           cameraHousing == product.housingStyle &&
           (product.cameraLens == "3.6mm fixed" ||
             product.cameraLens == "2.8mm fixed") &&
-          resolution == product.resolution
+          resolution == product.resolution &&
+          product.isCyberSecure === cyberSecure
         );
 
-      if (cameraHousing == "ptz") return cameraHousing == product.housingStyle;
+      if (cameraHousing == "ptz") return (
+        cameraHousing == product.housingStyle &&
+        product.isCyberSecure === cyberSecure);
 
       return (
         cameraHousing == product.housingStyle &&
         cameraLens == product.cameraLens &&
-        nightVisionDist == product.nightVision
+        nightVisionDist == product.nightVision &&
+        product.isCyberSecure === cyberSecure
       );
     });
 
     setRecommendedCameras(filteredProducts);
-    console.log(filteredProducts);
-  }, [cameraHousing, cameraLens, nightVisionDist, resolution, viewingArea]);
+  }, [cameraHousing, cameraLens, nightVisionDist, resolution, viewingArea, cyberSecure]);
 
   useEffect(() => {
     if (recommendedCameras?.length != 0) {

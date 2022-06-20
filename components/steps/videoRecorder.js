@@ -22,7 +22,7 @@ export default function VideoRecorder({nvr, handleSelect, isRecommended}) {
                 <div style={(isLoading ? {height: '0px', width: '0px'} : {height: '86px', width: '120px'})}> 
                     <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                         <Image
-                            src="/images/nvr-hero.jpg"
+                            src={nvr?.isCyberSecure ? '/images/cs_nvr_hero.jpg' : '/images/nvr-hero.jpg'}
                             layout="fill"
                             objectFit="contain"
                             quality={20}
@@ -34,7 +34,7 @@ export default function VideoRecorder({nvr, handleSelect, isRecommended}) {
             <div className="flex flex-col items-center">
                 <p className="">{nvr.sku} </p>
                 <p className="font-light mb-1">Supports up to {nvr.channelCount} cameras</p>
-                <p className="font-bold mb-1 text-yellow-500"><span className="line-through">${nvr.oldPrice}</span> Save Big!</p>
+                {/* <p className="font-bold mb-1 text-yellow-500"><span className="line-through">${nvr.oldPrice}</span> Save Big!</p> */}
                 <p className="font-normal text-green-600">${nvr.price.$numberDecimal}</p>
                 <button className={selectButton_styles} onClick={e => handleSelect(nvr)}>Select</button>
                 <a href={backstreet_domain + nvr.productLink} target="_blank" className="font-light text-green-600 hover:text-green-400">See more details</a>

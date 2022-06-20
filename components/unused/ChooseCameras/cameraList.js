@@ -17,7 +17,6 @@ export default function CameraList({cameras, allProducts}) {
             // Outdoor cameras
             let outdoor_calculated_list = cameras?.outdoor.map((camera, index) => {
                 let allProductsCopy = allProducts;
-                console.log(camera);
                 let filteredProducts = allProductsCopy.filter(product => { 
                                             if(camera.housing == 'bullet' && camera.cameraLens == '2.8-12mm manual') return(
                                                 camera.housing == product.housingStyle &&
@@ -52,13 +51,11 @@ export default function CameraList({cameras, allProducts}) {
                                         })
                 return([camera].concat(filteredProducts))
             })
-            console.log(outdoor_calculated_list);
             setOutdoorCalculatedList(outdoor_calculated_list);
 
             // Indoor Cameras
             let indoor_calculated_list = cameras?.indoor.map((camera, index) => {
                 let allProductsCopy = allProducts;
-                console.log(allProductsCopy);
                 let filteredProducts = allProductsCopy.filter(product => {
                                             return(
                                                 (camera.housing == product.housingStyle) &&
@@ -68,7 +65,6 @@ export default function CameraList({cameras, allProducts}) {
                                         })
                 return([camera].concat(filteredProducts))
             })
-            console.log(indoor_calculated_list);
             setIndoorCalculatedList(indoor_calculated_list);
             
         }

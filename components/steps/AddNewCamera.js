@@ -3,11 +3,11 @@ import { BiEditAlt, BiCheck } from "react-icons/bi";
 import { IoMdClose } from "react-icons/io";
 import ViewingAreaDropdown from "./dropdowns/viewingAreaDropdown";
 import CameraLensDropdown from "./dropdowns/cameraLensDropdown";
-import NightVisionDropdown from "./dropdowns/nightVisionDropdown";
 import RecommendedCameras from "./RecommendedCameras";
 import SelectHousing from "./SelectHousing";
-import NightvisionRadio from "./dropdowns/nightVisionRadio";
 import ResolutionRadio from "./dropdowns/resolutionRadio";
+import CyberSecureToggle from "./dropdowns/cyberSecureToggle";
+import CyberSecureModal from "./CyberSecureModal";
 
 export default function AddNewCamera({
   allProducts,
@@ -15,6 +15,7 @@ export default function AddNewCamera({
   isAddingNewCamera,
   setIsAddingNewCamera,
   lastIndex,
+  cyberSecure
 }) {
   const [isEditingName, setIsEditingName] = useState(false);
   const [cameraHousing, setCameraHousing] = useState("");
@@ -65,8 +66,7 @@ export default function AddNewCamera({
     return (
       <section className="border rounded lg:p-10 my-10 flex flex-row sm:justify-center lg:justify-start shadow items-center ease-linear transition-all duration-150 flex-wrap bg-gray-100 ">
         <div
-          style={{ height: "440px" }}
-          className="flex flex-col justify-center items-center sm:px-2 lg:px-5 border border-gray-300 lg:mr-3 my-10 rounded flex-shrink-0 min-w-min shadox-xl bg-white"
+          className="flex flex-col justify-center items-center sm:p-2 lg:p-5 border border-gray-300 lg:mr-3 my-10 rounded flex-shrink-0 min-w-min shadox-xl bg-white"
         >
           <SelectHousing
             cameraHousing={cameraHousing}
@@ -127,12 +127,18 @@ export default function AddNewCamera({
                 setCameraLens={setCameraLens}
                 viewingArea={viewingArea}
                 cameraHousing={cameraHousing}
+                cyberSecure={cyberSecure}
               />
             </div>
             {cameraLens == "Fixed Lens" && (
               <div className="mt-5 flex flex-row justify-between items-center">
                 <span>Resolution:</span>
-                <ResolutionRadio setResolution={setResolution} />
+                <ResolutionRadio 
+                  setResolution={setResolution}
+                  cameraHousing={cameraHousing}
+                  cyberSecure={cyberSecure}
+                  viewingArea={viewingArea} 
+                />
               </div>
             )}
           </div>
@@ -151,6 +157,7 @@ export default function AddNewCamera({
             handleSelect={handleSelect}
             resolution={resolution}
             viewingArea={viewingArea}
+            cyberSecure={cyberSecure}
           />
         </div>
       </section>

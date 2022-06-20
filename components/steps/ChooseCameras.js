@@ -3,7 +3,15 @@ import AddNewCamera from "./AddNewCamera";
 import Instructions from "./instructions";
 import Camera from "./Camera";
 
-export default function ChooseCameras({allProducts, selectNewCamera, cameras, deleteCamera, updateCameraName, duplicateCamera}) {
+export default function ChooseCameras({
+    allProducts, 
+    selectNewCamera, 
+    cameras, 
+    deleteCamera, 
+    updateCameraName, 
+    duplicateCamera, 
+    cyberSecure
+}) {
     const [isAddingNewCamera, setIsAddingNewCamera] = useState(true);
 
     useEffect(() => {
@@ -38,6 +46,7 @@ export default function ChooseCameras({allProducts, selectNewCamera, cameras, de
                 isAddingNewCamera={isAddingNewCamera} 
                 setIsAddingNewCamera={setIsAddingNewCamera}
                 lastIndex={cameras?.length + 1} 
+                cyberSecure={cyberSecure}
             />
 
             {/* Camera List */}

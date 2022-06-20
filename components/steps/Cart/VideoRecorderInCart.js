@@ -43,7 +43,7 @@ export default function VideoRecorderInCart({selectedNVR, cablesType, goToStep, 
             <div className="m-3" style={{height: '86px', width: '120px'}}> 
                 <div style={{position: 'relative', maxWidth: '100%', height: '100%'}}>
                     <Image
-                        src={'/images/nvr-hero.jpg'}
+                        src={selectedNVR?.isCyberSecure ? '/images/cs_nvr_hero.jpg' : '/images/nvr-hero.jpg'}
                         layout="fill"
                         objectFit="contain"
                         quality={100}
