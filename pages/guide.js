@@ -87,7 +87,7 @@ export default function Guide() {
                 setAllVideoRecorders(data.video_recorders);
               })
               .catch((error) => {
-                console.log(error);
+                console.error(error);
               });
         });
 
@@ -98,7 +98,7 @@ export default function Guide() {
                 setCsVideoRecorders(data.cs_video_recorders);
               })
               .catch((error) => {
-                console.log(error);
+                console.error(error);
               });
         });
 
@@ -110,7 +110,7 @@ export default function Guide() {
                 setIndoorCables(data.items);
               })
               .catch((error) => {
-                console.log(error);
+                console.error(error);
               });
         });
 
@@ -121,7 +121,7 @@ export default function Guide() {
                 setOurdoorCables(data.items);
               })
               .catch((error) => {
-                console.log(error);
+                console.error(error);
               });
         });
 
@@ -132,7 +132,7 @@ export default function Guide() {
                 setSelfMadeProducts(data.items);
               })
               .catch((error) => {
-                console.log(error);
+                console.error(error);
               });
         });
 
@@ -142,10 +142,9 @@ export default function Guide() {
               .json()
               .then((data) => {
                 setHardDrives(data.items);
-                console.log(data);
               })
               .catch((error) => {
-                console.log(error);
+                console.error(error);
               });
         });
 
@@ -157,7 +156,7 @@ export default function Guide() {
                 setMonitorProducts(data.items);
               })
               .catch((error) => {
-                console.log(error);
+                console.error(error);
               });
         });
 
@@ -169,7 +168,7 @@ export default function Guide() {
                 setMountProducts(data.items);
               })
               .catch((error) => {
-                console.log(error);
+                console.error(error);
               });
         });
 
@@ -181,7 +180,7 @@ export default function Guide() {
                 setPowerInjectors(data.items);
               })
               .catch((error) => {
-                console.log(error);
+                console.error(error);
               });
         });
 
@@ -193,7 +192,7 @@ export default function Guide() {
                 setFreeProducts(data.items);
               })
               .catch((error) => {
-                console.log(error);
+                console.error(error);
               });
         });
     }, []);
@@ -340,7 +339,6 @@ export default function Guide() {
         // Add POE costs
         if(selectedPowerInjectors?.length != 0) {
             selectedPowerInjectors?.forEach(product => {
-                console.log(product);
                 price_subtotal = price_subtotal + parseFloat(product.price * product.quantity);
             })
         }
@@ -509,7 +507,6 @@ export default function Guide() {
             }
         }).then(response => {
             response.json().then(data => {
-                console.log(data.items);
                 setSelfMadeProducts(data.items);
             })
         })
@@ -599,7 +596,6 @@ export default function Guide() {
         let new_POEs = selectedPowerInjectors.slice();
 
         let index = new_POEs.findIndex(poe => poe.sku == product.sku)
-        console.log(index);
 
         if(index == -1){
             product.quantity = 1;
@@ -902,8 +898,6 @@ export default function Guide() {
 
         // Built with Kit Builder product for analytics
         products = products + '645';
-        
-        console.log(products);
 
         window.open('https://www.backstreet-surveillance.com/customcart/add/add/pro_ids/' + products);
     }

@@ -12,8 +12,6 @@ export default function Actions({ nextStep, prevStep, currentStep, canClickNext,
             category: 'Button',
             action: 'Proceeded to step ' + (currentStep + 1),
         })
-
-        console.log(currentStep);
     }
 
     return(

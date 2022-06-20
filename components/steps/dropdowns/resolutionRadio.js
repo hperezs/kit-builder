@@ -12,7 +12,6 @@ export default function ResolutionRadio({
     cyberSecure && cameraHousing === "bullet" && viewingArea === "Under 60 ft";
 
   useEffect(() => {
-      console.log('Use effect hook called')
     if (cyberSecure && cameraHousing === "bullet") {
       setSelectedValue("4K");
       setResolution("4K");

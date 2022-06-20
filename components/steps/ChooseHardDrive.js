@@ -152,10 +152,6 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
        setSelectedHDStorage(totalStorage);
     }, [selectedHardDrives])
 
-    useEffect(() => {
-        console.log(displayScrollBox);
-    }, [displayScrollBox])
-
     const input_styles = "inline ml-3 rounded-md border-gray-300 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 "
     const selectButton_styles = "px-5 py-1 border rounded bg-green-600 text-white text-sm uppercase tracking-wider font-semibold mt-3 transition hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
 
@@ -198,9 +194,7 @@ export default function ChooseHardDrive({hardDrives, cameras, addHardDrive, sele
     const handleDelete = index => {
         deleteHardDrive(index); 
         setIsEditing(false); 
-        console.log(selectedHardDrives);
         if(selectedHardDrives.length == 1) {
-            console.log('length is 0.')
             setIsChoosing(true);
         }
     }

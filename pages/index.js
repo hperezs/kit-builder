@@ -13,8 +13,7 @@ export default function Home() {
 
     useEffect(() => {
         let backgroundImage = new Image();
-        backgroundImage.onload = () => {
-            console.log('image loaded');    
+        backgroundImage.onload = () => {  
             document.getElementById('background-image').style.backgroundImage = 'url(' + backgroundImage.src + ')';
             document.getElementById('background-image').classList.remove('welcome-banner-loading');
         }

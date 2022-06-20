@@ -133,11 +133,9 @@ export default function ChooseCable({
                                 // White cables have W at the end of the sku so the W has to be cut off first
                                 if(cableColor == 'White') {
                                     if(cable.sku.split('').splice(-1)[0] == 'W'){
-                                        console.log(cable.sku);
                                         let sku_no_W = cable.sku.split('');
                                         sku_no_W.pop();
                                         let productLength = sku_no_W.join('').split('6-')[1];
-                                        console.log(productLength)
                                         if((cableLength == productLength)) return <CableProduct cable={cable} handleSelect={handleSelect} key={index}/>
                                     }
                                 } else {

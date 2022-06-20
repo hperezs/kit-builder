@@ -11,18 +11,6 @@ export default function RecommendedCamera({camera, handleSelect}) {
         setIsLoading(true);
     }, [camera])
 
-    const handleOnLoad = () => {
-        // Nextjs calls onLoad twice apparently, so I'm waiting for the second time to setIsLoading to true when it is actually done loading
-        console.log('On load ran for ' + camera.sku + ' count: ' + onLoadCount)
-        if(onLoadCount == 0) {
-            setOnLoadCount(onLoadCount + 1)
-        }
-        if(onLoadCount == 1) {
-            setIsLoading(false);
-            setOnLoadCount(0);
-        }
-    }
-
     const addToCart_styles = "px-3 py-1 border rounded bg-green-600 text-white text-sm uppercase tracking-wider font-semibold mt-3 transition hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
 
     return(

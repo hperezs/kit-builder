@@ -14,7 +14,6 @@ export default function RecommendedCameras({
   const [recommendedCameras, setRecommendedCameras] = useState([]);
 
   useEffect(() => {
-    console.log(cameraLens, cameraHousing, viewingArea, cyberSecure);
     let allProductsCopy = allProducts;
     let filteredProducts = allProductsCopy.filter((product) => {
       if (cameraHousing == "dome" && cameraLens == "Motorized Zoom")
@@ -91,7 +90,6 @@ export default function RecommendedCameras({
     });
 
     setRecommendedCameras(filteredProducts);
-    console.log(filteredProducts);
   }, [cameraHousing, cameraLens, nightVisionDist, resolution, viewingArea, cyberSecure]);
 
   useEffect(() => {
