@@ -8,13 +8,18 @@ import {FaTrashAlt} from 'react-icons/fa'
 export default function ChooseMount({camera, cameraIndex, mountProducts, addMount, deleteMount, lastIndex, duplicateCamera, deleteCamera, updateCameraName}) {
     const [isChoosing, setIsChoosing] = useState(!camera?.mount);
 
-    const hasSpecialMount = (camera) => {
-        let hasSpecialMount = false;
-        mountProducts.forEach(product => {
-            if(product.custom_attributes[11].value.toUpperCase().includes(camera.sku.toUpperCase())) hasSpecialMount = true;
-        })
-        return hasSpecialMount;
-    }
+    const hasSpecialMount = () => {
+      let hasSpecialMount = false;
+      mountProducts.forEach((product) => {
+        if (
+          product.custom_attributes[5].value
+            .toUpperCase()
+            .includes(camera.sku.toUpperCase())
+        )
+          hasSpecialMount = true;
+      });
+      return hasSpecialMount;
+    };
 
     const handleSelect = (index, mount) => {
         setIsChoosing(false);
@@ -37,8 +42,6 @@ export default function ChooseMount({camera, cameraIndex, mountProducts, addMoun
                 deleteCamera={deleteCamera}
                 duplicateCamera={duplicateCamera}
                 lastIndex={lastIndex}
-                deleteCamera={deleteCamera} 
-                updateCameraName={updateCameraName}
             />
             {!isChoosing ? 
                 <div transition-style="in:square:center" className="flex flex-col items-center justify-center p-5">
@@ -69,9 +72,9 @@ export default function ChooseMount({camera, cameraIndex, mountProducts, addMoun
                     </div>
                 </div>
             :
-                hasSpecialMount(camera) ? 
+                hasSpecialMount() ? 
                     mountProducts.map((product, productIndex) => {
-                        if(product.custom_attributes[11].value.toUpperCase().includes(camera.sku.toUpperCase())) {
+                        if(product.custom_attributes[5].value.toUpperCase().includes(camera.sku.toUpperCase())) {
                             return <RecommendedMount product={product} productIndex={productIndex} cameraIndex={cameraIndex} addMount={handleSelect}/>
                         }
                     })
