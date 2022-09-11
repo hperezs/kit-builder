@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import {backstreet_domain} from '../../../lib/backstreet_domain'
 import Camera from '../Camera';
 import RecommendedMount from './recommendedMount';
@@ -10,7 +10,6 @@ export default function ChooseMount({camera, cameraIndex, mountProducts, addMoun
 
     const hasSpecialMount = () => {
       let hasSpecialMount = false;
-      console.log("hasSpecialMount ran");
       mountProducts.forEach((product) => {
         if (
           product.custom_attributes[5].value
