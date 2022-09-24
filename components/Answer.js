@@ -94,6 +94,7 @@ export default function Answer({
                         deleteCamera={deleteCamera} 
                         updateCameraName={updateCameraName}
                         duplicateCamera={duplicateCamera}
+                        cyberSecure={cyberSecure}
                     />
                 )
             case 5: 
