@@ -165,7 +165,7 @@ export default function Guide() {
             response
               .json()
               .then((data) => {
-                setMountProducts(data.items);
+                setMountProducts(data);
               })
               .catch((error) => {
                 console.error(error);
@@ -919,10 +919,10 @@ export default function Guide() {
             </div>
             <ReactNotification className="lg:mt-20"/>
             {isLoading && 
-            <div id="slider" class="slider w-full">
-                <div class="line bg-green-600"></div>
-                <div class="subline bg-green-600 inc"></div>
-                <div class="subline bg-green-600 dec"></div>
+            <div id="slider" className="slider w-full">
+                <div className="line bg-green-600"></div>
+                <div className="subline bg-green-600 inc"></div>
+                <div className="subline bg-green-600 dec"></div>
             </div>}
             <ProgressBar progress={(cablesType != 'none' ? currentStep / 10 : currentStep / 9)} />
             <main className="flex flex-row justify-center items-start lg:mt-14 z-20">

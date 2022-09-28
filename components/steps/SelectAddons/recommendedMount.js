@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import {backstreet_domain} from '../../../lib/backstreet_domain'
 
-export default function RecommendedMount({product, productIndex, cameraIndex, addMount}) {
+export default function RecommendedMount({product, cameraIndex, addMount}) {
 
     const card_styles = "relative flex flex-col justify-start items-center my-10 mx-3 rounded px-5 py-7 bg-white border shadow-xl hover:border-green-300 "
     const selectButton_styles = "px-5 py-1 border rounded bg-green-600 text-white text-sm uppercase tracking-wider font-semibold mt-3 transition hover:bg-green-400 focus:outline-none focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-500 ";
@@ -10,7 +10,6 @@ export default function RecommendedMount({product, productIndex, cameraIndex, ad
         <div 
             transition-style="fade:in:fast"
             className={card_styles}
-            key={productIndex}
         >
             <div className="m-4 p-5 flex flex-col justify-center items-center border rounded border-gray-300 ">
                 <div style={{height: '86px', width: '120px'}}> 

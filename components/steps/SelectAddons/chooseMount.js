@@ -73,18 +73,15 @@ export default function ChooseMount({camera, cameraIndex, mountProducts, addMoun
                         </div>
                     </div>
                 :
-                    hasSpecialMount() ? 
-                        mountProducts.map((product, productIndex) => {
-                            if(product.custom_attributes[5].value.toUpperCase().includes(camera.sku.toUpperCase())) {
-                                return <RecommendedMount product={product} productIndex={productIndex} cameraIndex={cameraIndex} addMount={handleSelect}/>
-                            }
-                        })
+                    camera.mounts ? 
+                        camera.mounts.map((mountSku, index) => (
+                            <RecommendedMount product={mountProducts[mountSku]} cameraIndex={cameraIndex} addMount={handleSelect} key={mountSku + index} />
+                        ))
                     :
-                    mountProducts.map((product, productIndex) => {
-                        if(product.sku.includes('M5')) {
-                            return <RecommendedMount product={product} productIndex={productIndex} cameraIndex={cameraIndex} addMount={handleSelect}/>
-                        }
-                    })
+                    <>
+                        <RecommendedMount product={mountProducts["M5"]} cameraIndex={cameraIndex} addMount={handleSelect}/>
+                        <RecommendedMount product={mountProducts["M5B-Universal-Mount"]} cameraIndex={cameraIndex} addMount={handleSelect}/>
+                    </>
                 }            
             </div>
         </div>
