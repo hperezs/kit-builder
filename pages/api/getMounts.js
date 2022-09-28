@@ -16,7 +16,12 @@ export default async function getMounts(req, res) {
     if (!response.ok) throw response.statusText;
 
     const data = await response.json();
-    res.status(200).json(data);
+    const hash = {};
+    data.items.forEach((p) => {
+      hash[p.sku] = p;
+    });
+
+    res.status(200).json(hash);
   } catch (error) {
     console.error(error);
     res.status(500).send(error);
