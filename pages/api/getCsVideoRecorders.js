@@ -5,7 +5,7 @@ const bearerToken = process.env.BEARER_TOKEN;
 export default async function getCsVideoRecorders(req, res) {
   const url =
     BACKSTREET_URL +
-    "?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=CS%25-4K&searchCriteria[filterGroups][1][filters][0][field]=name&searchCriteria[filterGroups][1][filters][0][conditionType]=like&searchCriteria[filterGroups][1][filters][0][value]=%25NVR";
+    "?searchCriteria[filterGroups][0][filters][0][field]=is_cybersecure&searchCriteria[filterGroups][0][filters][0][conditionType]=eq&searchCriteria[filterGroups][0][filters][0][value]=1&searchCriteria[filterGroups][1][filters][0][field]=is_nvr&searchCriteria[filterGroups][1][filters][0][conditionType]=eq&searchCriteria[filterGroups][1][filters][0][value]=1";
 
   try {
     const response = await fetch(url, {
