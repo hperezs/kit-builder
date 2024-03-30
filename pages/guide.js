@@ -12,6 +12,7 @@ import Head from 'next/head'
 import {CompileCameras, compileCyberSecureRecorders} from '../lib/helpers'
 
 import ReactGa from 'react-ga'
+import { handleErrors } from "../lib/handleErrors";
 
 export default function Guide() {
     // Product data
@@ -77,7 +78,7 @@ export default function Guide() {
               .then((data) => {
                 setAllProducts([...data.camera_products, ...data.cs_cameras]);
               })
-              .catch((error) => console.error(error));;
+              .catch((error) => handleErrors(error));
         });
 
         fetch("/api/getVideoRecorders").then(response => {
@@ -87,7 +88,7 @@ export default function Guide() {
                 setAllVideoRecorders(data.video_recorders);
               })
               .catch((error) => {
-                console.error(error);
+                handleErrors(error);
               });
         });
 
@@ -98,7 +99,7 @@ export default function Guide() {
                 setCsVideoRecorders(data.cs_video_recorders);
               })
               .catch((error) => {
-                console.error(error);
+                handleErrors(error);
               });
         });
 
@@ -110,7 +111,7 @@ export default function Guide() {
                 setIndoorCables(data.items);
               })
               .catch((error) => {
-                console.error(error);
+                handleErrors(error);
               });
         });
 
@@ -121,7 +122,7 @@ export default function Guide() {
                 setOurdoorCables(data.items);
               })
               .catch((error) => {
-                console.error(error);
+                handleErrors(error);
               });
         });
 
@@ -132,7 +133,7 @@ export default function Guide() {
                 setSelfMadeProducts(data.items);
               })
               .catch((error) => {
-                console.error(error);
+                handleErrors(error);
               });
         });
 
@@ -144,7 +145,7 @@ export default function Guide() {
                 setHardDrives(data.items);
               })
               .catch((error) => {
-                console.error(error);
+                handleErrors(error);
               });
         });
 
@@ -156,7 +157,7 @@ export default function Guide() {
                 setMonitorProducts(data.items);
               })
               .catch((error) => {
-                console.error(error);
+                handleErrors(error);
               });
         });
 
@@ -168,7 +169,7 @@ export default function Guide() {
                 setMountProducts(data);
               })
               .catch((error) => {
-                console.error(error);
+                handleErrors(error);
               });
         });
 
@@ -180,7 +181,7 @@ export default function Guide() {
                 setPowerInjectors(data.items);
               })
               .catch((error) => {
-                console.error(error);
+                handleErrors(error);
               });
         });
 
@@ -192,7 +193,7 @@ export default function Guide() {
                 setFreeProducts(data.items);
               })
               .catch((error) => {
-                console.error(error);
+                handleErrors(error);
               });
         });
     }, []);

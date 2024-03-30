@@ -2,6 +2,7 @@ import ReactLoading from 'react-loading'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react';
 import { backstreet_domain } from '../../lib/backstreet_domain'
+import { shortCameraName } from '../../lib/shortCameraName'
 
 export default function RecommendedCamera({camera, handleSelect}) {
     const [isLoading, setIsLoading] = useState(false);
@@ -35,7 +36,7 @@ export default function RecommendedCamera({camera, handleSelect}) {
                 </div>
             </div>
             <div className="flex flex-col items-center">
-                <p className="">{camera.name} </p>
+                <p className="">{shortCameraName(camera.name)} </p>
                 <p className="font-light mb-1">Lens: {camera.cameraLens}</p>
                 <p className="font-light mb-1">Night Vision: {camera.nightVision}</p>
                 <p className={"font-light mb-1 " + (camera.resolution == '4K' ? 'text-yellow-600' : '')}>Resolution: {camera.resolution}</p>
