@@ -23,7 +23,7 @@ export default async function getAllCameras(req, res) {
     const data = await response.json();
     const camera_products = CompileCameras(data.items);
     camera_products.sort(
-      (a, b) => a.price.$numberDecimal - b.price.$numberDecimal
+      (a, b) => a.price.$numberDecimal - b.price.$numberDecimal,
     );
 
     const cs_response = await fetch(cybersecure_url, {

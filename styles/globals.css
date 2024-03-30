@@ -1,13 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Noto+Sans+HK:wght@300;400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@300;400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Noto+Sans+HK:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap");
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 input::-webkit-outer-spin-button,
@@ -17,12 +17,12 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
 .welcome-banner-loading {
-  background-image: url('../public/images/low-res-placeholder.jpg');
+  background-image: url("../public/images/low-res-placeholder.jpg");
   background-position: bottom;
   background-size: cover;
   filter: blur(4px);
@@ -38,7 +38,7 @@ input[type=number] {
 
 .page-title {
   height: 45vh;
-  font-family: 'Josefin Sans', Arial, Helvetica, sans-serif;
+  font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
 }
 
 .welcome-container {
@@ -49,13 +49,14 @@ input[type=number] {
   width: 380px;
   height: 200px;
 }
-.industryEra { 
+.industryEra {
   width: 380px;
   height: 180px;
 }
 
 @media screen and (min-width: 1400px) {
-  .page-title, .welcome-banner {
+  .page-title,
+  .welcome-banner {
     height: 60vh;
   }
   .welcome-container {
@@ -64,13 +65,14 @@ input[type=number] {
 }
 
 @media screen and (max-width: 1400px) {
-  .page-title, .welcome-banner {
+  .page-title,
+  .welcome-banner {
     height: 60vh;
   }
   .welcome-container {
     min-height: 40vh;
   }
-  
+
   .get-started {
     padding: 0.75rem 2.25rem 0.75rem 2.25rem !important;
   }
@@ -81,14 +83,15 @@ input[type=number] {
 }
 
 @media screen and (max-width: 550px) {
-  .page-title, .welcome-banner {
+  .page-title,
+  .welcome-banner {
     height: 40vh;
   }
   .bestOfState {
     width: 190px;
     height: 70px;
   }
-  .industryEra { 
+  .industryEra {
     width: 130px;
     height: 70px;
   }
@@ -150,7 +153,8 @@ input[type=number] {
 }
 
 @media screen and (min-width: 2000px) {
-  .page-title, .welcome-banner {
+  .page-title,
+  .welcome-banner {
     height: 65vh;
   }
   .welcome-container {
@@ -159,17 +163,17 @@ input[type=number] {
 }
 
 .welcome-container h2 {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .need-help {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 2.5rem;
   line-height: 2.75rem;
 }
 
 footer {
-  font-family: 'Barlow Semi Condensed', Arial, Helvetica, sans-serif;
+  font-family: "Barlow Semi Condensed", Arial, Helvetica, sans-serif;
 }
 
 /* Animations */
@@ -183,7 +187,7 @@ footer {
 }
 
 [transition-style="in:wipe:down"] {
-  animation: 1s cubic-bezier(.25, 1, .30, 1.2) wipe-in-down both;
+  animation: 1s cubic-bezier(0.25, 1, 0.3, 1.2) wipe-in-down both;
 }
 
 @keyframes square-in-center {
@@ -196,7 +200,7 @@ footer {
 }
 
 [transition-style="in:square:center"] {
-  animation: 2.5s cubic-bezier(.25, 1, .30, 1.2) square-in-center;
+  animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1.2) square-in-center;
 }
 
 @keyframes wipe-in-up {
@@ -209,7 +213,7 @@ footer {
 }
 
 [transition-style="in:wipe:up"] {
-  animation: 0.5s cubic-bezier(.25, 1, .30, 1) wipe-in-up both;
+  animation: 0.5s cubic-bezier(0.25, 1, 0.3, 1) wipe-in-up both;
 }
 
 @keyframes wipe-in-right {
@@ -222,15 +226,15 @@ footer {
 }
 
 [transition-style="in:wipe:right"] {
-  animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-in-right both;
+  animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) wipe-in-right both;
 }
 
 [transition-style="in:wipe:right:delayed"] {
-  animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-in-right both;
+  animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) wipe-in-right both;
   animation-delay: 1.25s;
 }
 
-@keyframes fade-in{
+@keyframes fade-in {
   from {
     opacity: 0;
   }
@@ -239,12 +243,13 @@ footer {
   }
 }
 
-[transition-style="fade:in"], .fade-in {
+[transition-style="fade:in"],
+.fade-in {
   animation: 0.75s ease-in-out fade-in;
 }
 
 [transition-style="fade:in:fast"] {
-  animation: 0.50s ease-in-out fade-in;
+  animation: 0.5s ease-in-out fade-in;
 }
 
 [transition-style="fade:in:faster"] {
@@ -261,7 +266,7 @@ footer {
 }
 
 [transition-style="in:wipe:bottom-right"] {
-  animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-in-bottom-right both;
+  animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) wipe-in-bottom-right both;
 }
 
 @keyframes edit-grow {
@@ -287,7 +292,7 @@ footer {
 }
 
 [transition-style="out:square:bottom-right"] {
-  animation: 1s cubic-bezier(.25, 1, .30, 1) square-out-bottom-right both;
+  animation: 1s cubic-bezier(0.25, 1, 0.3, 1) square-out-bottom-right both;
 }
 
 @keyframes faded-disable {
@@ -331,13 +336,13 @@ footer {
 }
 
 .in-wipe-right-green {
-  animation: 1.25s cubic-bezier(.41,0,.58,.99) wipe-in-right-green both;
-  background-color: '#407033';
+  animation: 1.25s cubic-bezier(0.41, 0, 0.58, 0.99) wipe-in-right-green both;
+  background-color: "#407033";
 }
 
 .out-wipe-right {
-  animation: 1.25s cubic-bezier(.41,0,.58,.99) wipe-in-right both;
-  background-color: '#407033';
+  animation: 1.25s cubic-bezier(0.41, 0, 0.58, 0.99) wipe-in-right both;
+  background-color: "#407033";
 }
 
 @keyframes animate-gray {
@@ -353,35 +358,46 @@ footer {
   animation: 1.25s ease animate-gray;
 }
 
-
 /* Loading Animation */
-.line{
-  position:fixed;
+.line {
+  position: fixed;
   bottom: 0;
   z-index: 40;
   opacity: 0.4;
-  width:150%;
-  height:5px;
+  width: 150%;
+  height: 5px;
 }
 
-.subline{
-  position:fixed;
+.subline {
+  position: fixed;
   bottom: 0;
   z-index: 40;
-  height:5px; 
+  height: 5px;
 }
-.inc{
-animation: increase 2s infinite;
+.inc {
+  animation: increase 2s infinite;
 }
-.dec{
-animation: decrease 2s 0.5s infinite;
+.dec {
+  animation: decrease 2s 0.5s infinite;
 }
 
 @keyframes increase {
- from { left: -5%; width: 5%; }
- to { left: 130%; width: 100%;}
+  from {
+    left: -5%;
+    width: 5%;
+  }
+  to {
+    left: 130%;
+    width: 100%;
+  }
 }
 @keyframes decrease {
- from { left: -80%; width: 80%; }
- to { left: 110%; width: 10%;}
+  from {
+    left: -80%;
+    width: 80%;
+  }
+  to {
+    left: 110%;
+    width: 10%;
+  }
 }

@@ -25,13 +25,13 @@ export default async function getVideoRecorders(req, res) {
       productLink:
         "/" +
         product.custom_attributes.find(
-          (attribute) => attribute.attribute_code == "url_key"
+          (attribute) => attribute.attribute_code == "url_key",
         ).value +
         ".html",
     }));
     // Sort by price
     const video_recorders = compiled.sort(
-      (a, b) => a.price.$numberDecimal - b.price.$numberDecimal
+      (a, b) => a.price.$numberDecimal - b.price.$numberDecimal,
     );
 
     res.status(200).json({

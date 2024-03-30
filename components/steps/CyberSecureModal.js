@@ -21,7 +21,10 @@ export default function CyberSecureModal({ confirmDelete }) {
             transition-style="fade:in:faster"
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
           >
-            <div className="relative w-auto my-6 mx-auto" style={{ maxWidth: '900px' }}>
+            <div
+              className="relative w-auto my-6 mx-auto"
+              style={{ maxWidth: "900px" }}
+            >
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
@@ -65,7 +68,7 @@ export default function CyberSecureModal({ confirmDelete }) {
                   <img
                     src={"/images/CyberSafeLogoLong.png"}
                     width={300}
-                    style={{ height: '300px' }}
+                    style={{ height: "300px" }}
                   />
                 </div>
                 {/*footer*/}
