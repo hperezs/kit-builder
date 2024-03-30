@@ -35,7 +35,8 @@ export default function RecommendedCameras({
         return (
           cameraHousing == product.housingStyle &&
           (product.cameraLens == "3.6mm fixed" ||
-            product.cameraLens == "2.8mm fixed" || product.cameraLens === "360° Panoramic") &&
+            product.cameraLens == "2.8mm fixed" ||
+            product.cameraLens === "360° Panoramic") &&
           resolution == product.resolution &&
           product?.isCyberSecure == cyberSecure
         );
@@ -49,7 +50,7 @@ export default function RecommendedCameras({
       if (
         cameraHousing == "bullet" &&
         cameraLens == "Motorized Zoom" &&
-        viewingArea == "Under 60 ft" 
+        viewingArea == "Under 60 ft"
       )
         return (
           cameraHousing == product.housingStyle &&
@@ -60,7 +61,7 @@ export default function RecommendedCameras({
       if (
         cameraHousing == "bullet" &&
         cameraLens == "Motorized Zoom" &&
-        viewingArea == "Up to 180 ft" 
+        viewingArea == "Up to 180 ft"
       )
         return (
           cameraHousing == product.housingStyle &&
@@ -77,9 +78,11 @@ export default function RecommendedCameras({
           product.isCyberSecure === cyberSecure
         );
 
-      if (cameraHousing == "ptz") return (
-        cameraHousing == product.housingStyle &&
-        product.isCyberSecure === cyberSecure);
+      if (cameraHousing == "ptz")
+        return (
+          cameraHousing == product.housingStyle &&
+          product.isCyberSecure === cyberSecure
+        );
 
       return (
         cameraHousing == product.housingStyle &&
@@ -90,7 +93,14 @@ export default function RecommendedCameras({
     });
 
     setRecommendedCameras(filteredProducts);
-  }, [cameraHousing, cameraLens, nightVisionDist, resolution, viewingArea, cyberSecure]);
+  }, [
+    cameraHousing,
+    cameraLens,
+    nightVisionDist,
+    resolution,
+    viewingArea,
+    cyberSecure,
+  ]);
 
   useEffect(() => {
     if (recommendedCameras?.length != 0) {

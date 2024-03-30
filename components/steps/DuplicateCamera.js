@@ -1,37 +1,42 @@
 import React from "react";
 
-export default function DuplicateCamera({duplicateCamera, camera, lastIndex, setIsEditing}) {
+export default function DuplicateCamera({
+  duplicateCamera,
+  camera,
+  lastIndex,
+  setIsEditing,
+}) {
   const [showModal, setShowModal] = React.useState(false);
   const [duplicateCount, setDuplicateCount] = React.useState(1);
 
-  const handleChange = e => {
-      let value = e.target.value;
-      if(value > 25) {
-          setDuplicateCount(25);
-      } else if(value < 0) {
-          setDuplicateCount(1);
-      } else {
-          setDuplicateCount(value);
-      }
-  }
-
-  const listenForEnterKey = event => {
-    if(event.keyCode === 13) {
-        duplicateCamera(camera, duplicateCount, lastIndex);
-        setShowModal(false);
-        setIsEditing(false);
+  const handleChange = (e) => {
+    let value = e.target.value;
+    if (value > 25) {
+      setDuplicateCount(25);
+    } else if (value < 0) {
+      setDuplicateCount(1);
+    } else {
+      setDuplicateCount(value);
     }
-}
+  };
+
+  const listenForEnterKey = (event) => {
+    if (event.keyCode === 13) {
+      duplicateCamera(camera, duplicateCount, lastIndex);
+      setShowModal(false);
+      setIsEditing(false);
+    }
+  };
 
   return (
     <>
-        <button 
-            onClick={e => setShowModal(true)}
-            className="text-green-600 mt-2 py-1 px-2 uppercase font-semibold border rounded border-green-600 hover:bg-green-600 hover:text-white transition-colors duration-400 ease focus:outline-none focus:ring focus:ring-green-300 focus:ring-opacity-80"
-        >
-            Duplicate
-        </button>
-        {showModal ? (
+      <button
+        onClick={(e) => setShowModal(true)}
+        className="text-green-600 mt-2 py-1 px-2 uppercase font-semibold border rounded border-green-600 hover:bg-green-600 hover:text-white transition-colors duration-400 ease focus:outline-none focus:ring focus:ring-green-300 focus:ring-opacity-80"
+      >
+        Duplicate
+      </button>
+      {showModal ? (
         <>
           <div
             transition-style="fade:in:faster"
@@ -56,17 +61,17 @@ export default function DuplicateCamera({duplicateCamera, camera, lastIndex, set
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto flex flex-col items-center">
-                    <p className="my-4 text-blueGray-500 text-lg leading-relaxed text-center">
-                        How many duplicates do you want to create?
-                    </p>
-                    <input 
-                        type="number" 
-                        value={duplicateCount}
-                        onChange={handleChange}
-                        className="border border-gray-300 rounded w-14 outline-none focus:border-green-300 focus:ring focus:ring-green-300 focus:ring-opacity-80"
-                        onKeyDown={listenForEnterKey}
-                        autoFocus
-                    />
+                  <p className="my-4 text-blueGray-500 text-lg leading-relaxed text-center">
+                    How many duplicates do you want to create?
+                  </p>
+                  <input
+                    type="number"
+                    value={duplicateCount}
+                    onChange={handleChange}
+                    className="border border-gray-300 rounded w-14 outline-none focus:border-green-300 focus:ring focus:ring-green-300 focus:ring-opacity-80"
+                    onKeyDown={listenForEnterKey}
+                    autoFocus
+                  />
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
@@ -80,7 +85,11 @@ export default function DuplicateCamera({duplicateCamera, camera, lastIndex, set
                   <button
                     className="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    onClick={() => {setShowModal(false); setIsEditing(false); duplicateCamera(camera, duplicateCount, lastIndex)}}
+                    onClick={() => {
+                      setShowModal(false);
+                      setIsEditing(false);
+                      duplicateCamera(camera, duplicateCount, lastIndex);
+                    }}
                   >
                     Duplicate
                   </button>

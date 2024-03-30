@@ -1,18 +1,18 @@
 import React from "react";
-import {FaTrashAlt} from 'react-icons/fa'
+import { FaTrashAlt } from "react-icons/fa";
 
-export default function DeleteModal({confirmDelete}) {
+export default function DeleteModal({ confirmDelete }) {
   const [showModal, setShowModal] = React.useState(false);
   return (
     <>
-        <span 
-            onClick={e => setShowModal(true)}
-            className={"absolute bottom-0 right-0 cursor-pointer p-2 "}
-            transition-style="fade:in:faster" 
-        >
-            <FaTrashAlt className="fill-current text-red-600 text-xl hover:text-red-400"/>
-        </span>
-        {showModal ? (
+      <span
+        onClick={(e) => setShowModal(true)}
+        className={"absolute bottom-0 right-0 cursor-pointer p-2 "}
+        transition-style="fade:in:faster"
+      >
+        <FaTrashAlt className="fill-current text-red-600 text-xl hover:text-red-400" />
+      </span>
+      {showModal ? (
         <>
           <div
             transition-style="fade:in:faster"
@@ -37,9 +37,9 @@ export default function DeleteModal({confirmDelete}) {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                    <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
-                        Are you sure you want to delete this item?
-                    </p>
+                  <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
+                    Are you sure you want to delete this item?
+                  </p>
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
@@ -53,7 +53,10 @@ export default function DeleteModal({confirmDelete}) {
                   <button
                     className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    onClick={() => {setShowModal(false); confirmDelete()}}
+                    onClick={() => {
+                      setShowModal(false);
+                      confirmDelete();
+                    }}
                   >
                     Delete
                   </button>

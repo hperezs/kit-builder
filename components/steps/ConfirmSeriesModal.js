@@ -9,7 +9,10 @@ export default function ConfirmSeriesModal({ cancel, confirm, isOpen }) {
             transition-style="fade:in:faster"
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
           >
-            <div className="relative w-auto my-6 mx-auto" style={{ maxWidth: '420px' }}>
+            <div
+              className="relative w-auto my-6 mx-auto"
+              style={{ maxWidth: "420px" }}
+            >
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
@@ -29,7 +32,8 @@ export default function ConfirmSeriesModal({ cancel, confirm, isOpen }) {
                 {/*body*/}
                 <div className="relative p-6 flex-auto flex">
                   <p className="my-4 text-lg ">
-                    Are you sure you want to change series? The selected Video Recorder and cameras will be removed from your cart.
+                    Are you sure you want to change series? The selected Video
+                    Recorder and cameras will be removed from your cart.
                   </p>
                 </div>
                 {/*footer*/}

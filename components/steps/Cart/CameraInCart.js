@@ -108,8 +108,8 @@ export default function CameraInCart({
                 ? "10%"
                 : "14%"
               : displayMoreDetails
-              ? "2%"
-              : "6%",
+                ? "2%"
+                : "6%",
           padding: "15px 15px 0px 0px",
         }}
         className={

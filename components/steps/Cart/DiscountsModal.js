@@ -1,12 +1,12 @@
 import Image from "next/image";
 import React from "react";
-import {FaTrashAlt} from 'react-icons/fa'
+import { FaTrashAlt } from "react-icons/fa";
 
-export default function DiscountsModal({proceedToPurchase}) {
+export default function DiscountsModal({ proceedToPurchase }) {
   const [showModal, setShowModal] = React.useState(true);
   return (
     <>
-        {showModal ? (
+      {showModal ? (
         <>
           <div
             transition-style="fade:in:faster"
@@ -30,17 +30,30 @@ export default function DiscountsModal({proceedToPurchase}) {
                   </button>
                 </div>
                 {/*body*/}
-                <div style={{minHeight: '400px', maxWidth: '700px'}} className="relative sm:p-3 lg:p-6">
-                    <div className="mx-3 sm:text-lg lg:text-xl flex flex-col items-center">
-                        
-                        <a href="https://www.backstreet-surveillance.com/ndaa-banned-security-brands.html" target="_blank">
-                          <Image src="/images/NDAA_Approved.jpeg" width={773} height={300} />
-                        </a>
+                <div
+                  style={{ minHeight: "400px", maxWidth: "700px" }}
+                  className="relative sm:p-3 lg:p-6"
+                >
+                  <div className="mx-3 sm:text-lg lg:text-xl flex flex-col items-center">
+                    <a
+                      href="https://www.backstreet-surveillance.com/ndaa-banned-security-brands.html"
+                      target="_blank"
+                    >
+                      <Image
+                        src="/images/NDAA_Approved.jpeg"
+                        width={773}
+                        height={300}
+                      />
+                    </a>
 
-                        <div className="p-4 border mt-5 shadow w-11/12 border-green-400 border-opacity-80">
-                          <span className="text-green-600 font-semibold mr-1">Note:</span> You can choose to send a quote of your selections to your email or finish placing your order
-                        </div>
+                    <div className="p-4 border mt-5 shadow w-11/12 border-green-400 border-opacity-80">
+                      <span className="text-green-600 font-semibold mr-1">
+                        Note:
+                      </span>{" "}
+                      You can choose to send a quote of your selections to your
+                      email or finish placing your order
                     </div>
+                  </div>
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-center flex-wrap-reverse p-6 border-t border-solid border-blueGray-200 rounded-b">
@@ -54,7 +67,10 @@ export default function DiscountsModal({proceedToPurchase}) {
                   <button
                     className="bg-green-600 text-white active:bg-green-600 font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 mb-1 ease-linear transition-all duration-150 focus:outline-none focus:ring focus:ring-green-300 focus:ring-opacity-80 hover:bg-green-500"
                     type="button"
-                    onClick={() => {setShowModal(false); proceedToPurchase()}}
+                    onClick={() => {
+                      setShowModal(false);
+                      proceedToPurchase();
+                    }}
                   >
                     Proceed to purchase / quote
                   </button>
