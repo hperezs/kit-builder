@@ -30,8 +30,14 @@ export default function InstallationInCart({
     };
   }, []);
 
-  const baseFee = homeOrBusiness == "home" ? 329 : 349;
-  const perCameraFee = homeOrBusiness == "home" ? 269 : 298;
+  const baseFee =
+    homeOrBusiness == "home"
+      ? HOME_INSTALLATION_BASE_FEE
+      : BUSINESS_INSTALLATION_BASE_FEE;
+  const perCameraFee =
+    homeOrBusiness == "home"
+      ? HOME_INSTALLATION_PER_CAMERA_FEE
+      : BUSINESS_INSTALLATION_PER_CAMERA_FEE;
   const subtotal = baseFee + perCameraFee * cameras.length;
 
   return (

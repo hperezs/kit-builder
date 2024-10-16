@@ -2,6 +2,11 @@ import { useState } from "react";
 import { BsDot } from "react-icons/bs";
 import Image from "next/image";
 
+export const HOME_INSTALLATION_BASE_FEE = 329;
+export const BUSINESS_INSTALLATION_BASE_FEE = 349;
+export const HOME_INSTALLATION_PER_CAMERA_FEE = 269;
+export const BUSINESS_INSTALLATION_PER_CAMERA_FEE = 298;
+
 export default function ChooseInstallation({
   homeOrBusiness,
   cameras,
@@ -11,8 +16,14 @@ export default function ChooseInstallation({
   const [selfInstallationSelected, setSelfInstallationSelected] =
     useState(false);
 
-  const baseFee = homeOrBusiness == "home" ? 329 : 349;
-  const perCameraFee = homeOrBusiness == "home" ? 269 : 298;
+  const baseFee =
+    homeOrBusiness == "home"
+      ? HOME_INSTALLATION_BASE_FEE
+      : BUSINESS_INSTALLATION_BASE_FEE;
+  const perCameraFee =
+    homeOrBusiness == "home"
+      ? HOME_INSTALLATION_PER_CAMERA_FEE
+      : BUSINESS_INSTALLATION_PER_CAMERA_FEE;
   const subtotal = baseFee + perCameraFee * cameras.length;
 
   const selectButton_styles =

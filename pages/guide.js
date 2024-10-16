@@ -13,6 +13,12 @@ import { CompileCameras, compileCyberSecureRecorders } from "../lib/helpers";
 
 import ReactGa from "react-ga";
 import { handleErrors } from "../lib/handleErrors";
+import {
+  BUSINESS_INSTALLATION_BASE_FEE,
+  BUSINESS_INSTALLATION_PER_CAMERA_FEE,
+  HOME_INSTALLATION_BASE_FEE,
+  HOME_INSTALLATION_PER_CAMERA_FEE,
+} from "../components/steps/ChooseInstallation";
 
 export default function Guide() {
   // Product data
@@ -402,11 +408,16 @@ export default function Guide() {
 
     // Add Installation Costs
     if (isInstallationSelected) {
+      const baseFee =
+        homeOrBusiness == "home"
+          ? HOME_INSTALLATION_BASE_FEE
+          : BUSINESS_INSTALLATION_BASE_FEE;
+      const perCameraFee =
+        homeOrBusiness == "home"
+          ? HOME_INSTALLATION_PER_CAMERA_FEE
+          : BUSINESS_INSTALLATION_PER_CAMERA_FEE;
       price_subtotal =
-        price_subtotal +
-        parseFloat(
-          (homeOrBusiness == "home" ? 299 : 349) + cameras.length * 212.0,
-        );
+        price_subtotal + parseFloat(baseFee + cameras.length * perCameraFee);
     }
 
     setSubtotal(price_subtotal);
