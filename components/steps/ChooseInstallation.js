@@ -2,10 +2,10 @@ import { useState } from "react";
 import { BsDot } from "react-icons/bs";
 import Image from "next/image";
 
-export const HOME_INSTALLATION_BASE_FEE = 329;
+export const HOME_INSTALLATION_BASE_FEE = 399;
 export const BUSINESS_INSTALLATION_BASE_FEE = 349;
-export const HOME_INSTALLATION_PER_CAMERA_FEE = 269;
-export const BUSINESS_INSTALLATION_PER_CAMERA_FEE = 298;
+export const HOME_INSTALLATION_PER_CAMERA_FEE = 345;
+export const BUSINESS_INSTALLATION_PER_CAMERA_FEE = 345;
 
 export default function ChooseInstallation({
   homeOrBusiness,
