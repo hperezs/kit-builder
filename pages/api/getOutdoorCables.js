@@ -1,18 +1,10 @@
-import { BACKSTREET_URL } from "../../config";
-const bearerToken = process.env.BEARER_TOKEN;
+import { PROXY_URL } from "../../config";
 
 export default async function getOutdoorCables(req, res) {
-  const url =
-    BACKSTREET_URL +
-    "?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=db-cat6-%25";
+  const url = PROXY_URL + "outdoor-cables";
 
   try {
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + bearerToken,
-      },
-    });
+    const response = await fetch(url);
     if (!response.ok) throw response.statusText;
 
     const data = await response.json();

@@ -1,18 +1,10 @@
-import { BACKSTREET_URL } from "../../config";
-const bearerToken = process.env.BEARER_TOKEN;
+import { PROXY_URL } from "../../config";
 
 export default async function getMonitors(req, res) {
-  const url =
-    BACKSTREET_URL +
-    "?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][conditionType]=like&searchCriteria[filterGroups][0][filters][0][value]=MON%25&searchCriteria[filterGroups][0][filters][1][field]=sku&searchCriteria[filterGroups][0][filters][1][conditionType]=equals&searchCriteria[filterGroups][0][filters][1][value]=HDMI-Cable";
+  const url = PROXY_URL + "monitors";
 
   try {
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + bearerToken,
-      },
-    });
+    const response = await fetch(url);
     if (!response.ok) throw response.statusText;
 
     const data = await response.json();

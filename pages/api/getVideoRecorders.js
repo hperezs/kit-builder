@@ -1,19 +1,10 @@
-import { BACKSTREET_URL } from "../../config";
-import { CompileCameras } from "../../lib/helpers";
-const bearerToken = process.env.BEARER_TOKEN;
+import { PROXY_URL } from "../../config";
 
 export default async function getVideoRecorders(req, res) {
-  const url =
-    BACKSTREET_URL +
-    "?searchCriteria[filterGroups][0][filters][0][field]=sku&searchCriteria[filterGroups][0][filters][0][value]=%25NVR&searchCriteria[filterGroups][0][filters][0][conditionType]=like";
+  const url = PROXY_URL + "video-recorders";
 
   try {
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + bearerToken,
-      },
-    });
+    const response = await fetch(url);
     if (!response.ok) throw response.statusText;
 
     const data = await response.json();
